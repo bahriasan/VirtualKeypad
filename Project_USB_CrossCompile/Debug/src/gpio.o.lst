@@ -1,0 +1,712 @@
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.align	1
+  18              		.global	Gpio_Init
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	Gpio_Init:
+  24              	.LFB137:
+  25              		.file 1 "../src/gpio.c"
+   1:../src/gpio.c **** /*
+   2:../src/gpio.c ****  * gpio.c
+   3:../src/gpio.c ****  *
+   4:../src/gpio.c ****  *  Created on: 14 Oca 2024
+   5:../src/gpio.c ****  *      Author: bahri
+   6:../src/gpio.c ****  */
+   7:../src/gpio.c **** 
+   8:../src/gpio.c **** #include "gpio.h"
+   9:../src/gpio.c **** static void Gpio_ChannelEnable(GPIO_TypeDef* structGpio);
+  10:../src/gpio.c **** 
+  11:../src/gpio.c **** 
+  12:../src/gpio.c **** void Gpio_Init(gpio_cfg configGpio, GPIO_TypeDef* structGpio)
+  13:../src/gpio.c **** {
+  26              		.loc 1 13 1
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 16
+  29              		@ frame_needed = 1, uses_anonymous_args = 0
+  30 0000 80B5     		push	{r7, lr}
+  31              		.cfi_def_cfa_offset 8
+  32              		.cfi_offset 7, -8
+  33              		.cfi_offset 14, -4
+  34 0002 84B0     		sub	sp, sp, #16
+  35              		.cfi_def_cfa_offset 24
+  36 0004 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  38 0006 07F10803 		add	r3, r7, #8
+  39 000a 83E80300 		stm	r3, {r0, r1}
+  40 000e 7A60     		str	r2, [r7, #4]
+  14:../src/gpio.c **** 	//0.Enable Channel
+  15:../src/gpio.c **** 	Gpio_ChannelEnable(structGpio);
+  41              		.loc 1 15 2
+  42 0010 7868     		ldr	r0, [r7, #4]
+  43 0012 00F09BF8 		bl	Gpio_ChannelEnable
+  16:../src/gpio.c **** 
+  17:../src/gpio.c **** 	//1. Configure Mode
+  18:../src/gpio.c **** 	//Clear Bit Positions
+  19:../src/gpio.c **** 	structGpio->MODER &= ~(3 << (configGpio.pinNumber * 2));
+  44              		.loc 1 19 20
+  45 0016 7B68     		ldr	r3, [r7, #4]
+  46 0018 1B68     		ldr	r3, [r3]
+  47              		.loc 1 19 41
+  48 001a 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+  49              		.loc 1 19 52
+  50 001c 5200     		lsls	r2, r2, #1
+  51              		.loc 1 19 27
+  52 001e 0321     		movs	r1, #3
+  53 0020 01FA02F2 		lsl	r2, r1, r2
+  54              		.loc 1 19 23
+  55 0024 D243     		mvns	r2, r2
+  56              		.loc 1 19 20
+  57 0026 1A40     		ands	r2, r2, r3
+  58 0028 7B68     		ldr	r3, [r7, #4]
+  59 002a 1A60     		str	r2, [r3]
+  20:../src/gpio.c **** 	//Set Bits
+  21:../src/gpio.c **** 	structGpio->MODER |= (configGpio.mode << (configGpio.pinNumber * 2));
+  60              		.loc 1 21 20
+  61 002c 7B68     		ldr	r3, [r7, #4]
+  62 002e 1B68     		ldr	r3, [r3]
+  63              		.loc 1 21 34
+  64 0030 7A7A     		ldrb	r2, [r7, #9]	@ zero_extendqisi2
+  65 0032 1146     		mov	r1, r2
+  66              		.loc 1 21 54
+  67 0034 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+  68              		.loc 1 21 65
+  69 0036 5200     		lsls	r2, r2, #1
+  70              		.loc 1 21 40
+  71 0038 01FA02F2 		lsl	r2, r1, r2
+  72              		.loc 1 21 20
+  73 003c 1A43     		orrs	r2, r2, r3
+  74 003e 7B68     		ldr	r3, [r7, #4]
+  75 0040 1A60     		str	r2, [r3]
+  22:../src/gpio.c **** 
+  23:../src/gpio.c **** 	//2. Output Type
+  24:../src/gpio.c **** 	if(configGpio.outputType != OUTPUT_TYPE_NA)
+  76              		.loc 1 24 15
+  77 0042 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+  78              		.loc 1 24 4
+  79 0044 022B     		cmp	r3, #2
+  80 0046 13D0     		beq	.L2
+  25:../src/gpio.c **** 	{
+  26:../src/gpio.c **** 		//Clear Bit Position
+  27:../src/gpio.c **** 		structGpio->OTYPER &= ~(1 << configGpio.pinNumber);
+  81              		.loc 1 27 22
+  82 0048 7B68     		ldr	r3, [r7, #4]
+  83 004a 5B68     		ldr	r3, [r3, #4]
+  84              		.loc 1 27 42
+  85 004c 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+  86 004e 1146     		mov	r1, r2
+  87              		.loc 1 27 29
+  88 0050 0122     		movs	r2, #1
+  89 0052 8A40     		lsls	r2, r2, r1
+  90              		.loc 1 27 25
+  91 0054 D243     		mvns	r2, r2
+  92              		.loc 1 27 22
+  93 0056 1A40     		ands	r2, r2, r3
+  94 0058 7B68     		ldr	r3, [r7, #4]
+  95 005a 5A60     		str	r2, [r3, #4]
+  28:../src/gpio.c **** 		//Set Bit
+  29:../src/gpio.c **** 		structGpio->OTYPER |= (configGpio.outputType << configGpio.pinNumber);
+  96              		.loc 1 29 22
+  97 005c 7B68     		ldr	r3, [r7, #4]
+  98 005e 5B68     		ldr	r3, [r3, #4]
+  99              		.loc 1 29 36
+ 100 0060 BA7A     		ldrb	r2, [r7, #10]	@ zero_extendqisi2
+ 101 0062 1146     		mov	r1, r2
+ 102              		.loc 1 29 61
+ 103 0064 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 104              		.loc 1 29 48
+ 105 0066 01FA02F2 		lsl	r2, r1, r2
+ 106              		.loc 1 29 22
+ 107 006a 1A43     		orrs	r2, r2, r3
+ 108 006c 7B68     		ldr	r3, [r7, #4]
+ 109 006e 5A60     		str	r2, [r3, #4]
+ 110              	.L2:
+  30:../src/gpio.c **** 	}
+  31:../src/gpio.c **** 
+  32:../src/gpio.c **** 	//3. Output Speed
+  33:../src/gpio.c **** 	if(configGpio.outputType != OUTPUT_SPEED_NA)
+ 111              		.loc 1 33 15
+ 112 0070 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 113              		.loc 1 33 4
+ 114 0072 042B     		cmp	r3, #4
+ 115 0074 15D0     		beq	.L3
+  34:../src/gpio.c **** 	{
+  35:../src/gpio.c **** 		//Clear Bit Position
+  36:../src/gpio.c **** 		structGpio->OSPEEDR &= ~(3 << (configGpio.pinNumber * 2));
+ 116              		.loc 1 36 23
+ 117 0076 7B68     		ldr	r3, [r7, #4]
+ 118 0078 9B68     		ldr	r3, [r3, #8]
+ 119              		.loc 1 36 44
+ 120 007a 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 121              		.loc 1 36 55
+ 122 007c 5200     		lsls	r2, r2, #1
+ 123              		.loc 1 36 30
+ 124 007e 0321     		movs	r1, #3
+ 125 0080 01FA02F2 		lsl	r2, r1, r2
+ 126              		.loc 1 36 26
+ 127 0084 D243     		mvns	r2, r2
+ 128              		.loc 1 36 23
+ 129 0086 1A40     		ands	r2, r2, r3
+ 130 0088 7B68     		ldr	r3, [r7, #4]
+ 131 008a 9A60     		str	r2, [r3, #8]
+  37:../src/gpio.c **** 		//Set Bit
+  38:../src/gpio.c **** 		structGpio->OSPEEDR |= (configGpio.outputType << (configGpio.pinNumber * 2));
+ 132              		.loc 1 38 23
+ 133 008c 7B68     		ldr	r3, [r7, #4]
+ 134 008e 9B68     		ldr	r3, [r3, #8]
+ 135              		.loc 1 38 37
+ 136 0090 BA7A     		ldrb	r2, [r7, #10]	@ zero_extendqisi2
+ 137 0092 1146     		mov	r1, r2
+ 138              		.loc 1 38 63
+ 139 0094 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 140              		.loc 1 38 74
+ 141 0096 5200     		lsls	r2, r2, #1
+ 142              		.loc 1 38 49
+ 143 0098 01FA02F2 		lsl	r2, r1, r2
+ 144              		.loc 1 38 23
+ 145 009c 1A43     		orrs	r2, r2, r3
+ 146 009e 7B68     		ldr	r3, [r7, #4]
+ 147 00a0 9A60     		str	r2, [r3, #8]
+ 148              	.L3:
+  39:../src/gpio.c **** 	}
+  40:../src/gpio.c **** 
+  41:../src/gpio.c **** 	//4. PullUp/PullDown
+  42:../src/gpio.c **** 
+  43:../src/gpio.c **** 	//Clear Bit Positions
+  44:../src/gpio.c **** 	structGpio->PUPDR &= ~(3 << (configGpio.pinNumber *2));
+ 149              		.loc 1 44 20
+ 150 00a2 7B68     		ldr	r3, [r7, #4]
+ 151 00a4 DB68     		ldr	r3, [r3, #12]
+ 152              		.loc 1 44 41
+ 153 00a6 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 154              		.loc 1 44 52
+ 155 00a8 5200     		lsls	r2, r2, #1
+ 156              		.loc 1 44 27
+ 157 00aa 0321     		movs	r1, #3
+ 158 00ac 01FA02F2 		lsl	r2, r1, r2
+ 159              		.loc 1 44 23
+ 160 00b0 D243     		mvns	r2, r2
+ 161              		.loc 1 44 20
+ 162 00b2 1A40     		ands	r2, r2, r3
+ 163 00b4 7B68     		ldr	r3, [r7, #4]
+ 164 00b6 DA60     		str	r2, [r3, #12]
+  45:../src/gpio.c **** 	//Set Bit
+  46:../src/gpio.c **** 	structGpio->PUPDR |= (configGpio.pullUp_Down << (configGpio.pinNumber * 2));
+ 165              		.loc 1 46 20
+ 166 00b8 7B68     		ldr	r3, [r7, #4]
+ 167 00ba DB68     		ldr	r3, [r3, #12]
+ 168              		.loc 1 46 34
+ 169 00bc 3A7B     		ldrb	r2, [r7, #12]	@ zero_extendqisi2
+ 170 00be 1146     		mov	r1, r2
+ 171              		.loc 1 46 61
+ 172 00c0 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 173              		.loc 1 46 72
+ 174 00c2 5200     		lsls	r2, r2, #1
+ 175              		.loc 1 46 47
+ 176 00c4 01FA02F2 		lsl	r2, r1, r2
+ 177              		.loc 1 46 20
+ 178 00c8 1A43     		orrs	r2, r2, r3
+ 179 00ca 7B68     		ldr	r3, [r7, #4]
+ 180 00cc DA60     		str	r2, [r3, #12]
+  47:../src/gpio.c **** 
+  48:../src/gpio.c **** 	//5. Alternate Function
+  49:../src/gpio.c **** 
+  50:../src/gpio.c **** 	if( GPIO_MODE_ALTERNATE == configGpio.mode)
+ 181              		.loc 1 50 39
+ 182 00ce 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 183              		.loc 1 50 4
+ 184 00d0 022B     		cmp	r3, #2
+ 185 00d2 37D1     		bne	.L6
+  51:../src/gpio.c **** 	{
+  52:../src/gpio.c **** 		if(configGpio.pinNumber < 8)
+ 186              		.loc 1 52 16
+ 187 00d4 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 188              		.loc 1 52 5
+ 189 00d6 072B     		cmp	r3, #7
+ 190 00d8 16D8     		bhi	.L5
+  53:../src/gpio.c **** 		{
+  54:../src/gpio.c **** 			//Clear Bit Positions
+  55:../src/gpio.c **** 			structGpio->AFR[0] &= ~(0xF << (configGpio.pinNumber * 4));
+ 191              		.loc 1 55 23
+ 192 00da 7B68     		ldr	r3, [r7, #4]
+ 193 00dc 1B6A     		ldr	r3, [r3, #32]
+ 194              		.loc 1 55 46
+ 195 00de 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 196              		.loc 1 55 57
+ 197 00e0 9200     		lsls	r2, r2, #2
+ 198              		.loc 1 55 32
+ 199 00e2 0F21     		movs	r1, #15
+ 200 00e4 01FA02F2 		lsl	r2, r1, r2
+ 201              		.loc 1 55 26
+ 202 00e8 D243     		mvns	r2, r2
+ 203              		.loc 1 55 23
+ 204 00ea 1A40     		ands	r2, r2, r3
+ 205 00ec 7B68     		ldr	r3, [r7, #4]
+ 206 00ee 1A62     		str	r2, [r3, #32]
+  56:../src/gpio.c **** 			//Set Bit
+  57:../src/gpio.c **** 			structGpio->AFR[0] |= (configGpio.alternateFunctionNo << (configGpio.pinNumber * 4));
+ 207              		.loc 1 57 23
+ 208 00f0 7B68     		ldr	r3, [r7, #4]
+ 209 00f2 1B6A     		ldr	r3, [r3, #32]
+ 210              		.loc 1 57 37
+ 211 00f4 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 212 00f6 1146     		mov	r1, r2
+ 213              		.loc 1 57 72
+ 214 00f8 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 215              		.loc 1 57 83
+ 216 00fa 9200     		lsls	r2, r2, #2
+ 217              		.loc 1 57 58
+ 218 00fc 01FA02F2 		lsl	r2, r1, r2
+ 219              		.loc 1 57 23
+ 220 0100 1A43     		orrs	r2, r2, r3
+ 221 0102 7B68     		ldr	r3, [r7, #4]
+ 222 0104 1A62     		str	r2, [r3, #32]
+  58:../src/gpio.c **** 		}
+  59:../src/gpio.c **** 		else if((configGpio.pinNumber > 7) && (configGpio.pinNumber < 15))
+  60:../src/gpio.c **** 		{
+  61:../src/gpio.c **** 			//Clear Bit Positions
+  62:../src/gpio.c **** 			structGpio->AFR[1] &= ~(0xF << ((configGpio.pinNumber - 8) * 4));
+  63:../src/gpio.c **** 			//Set Bit
+  64:../src/gpio.c **** 			structGpio->AFR[1] |= (configGpio.alternateFunctionNo << ((configGpio.pinNumber - 8) * 4));
+  65:../src/gpio.c **** 		}
+  66:../src/gpio.c **** 		else
+  67:../src/gpio.c **** 		{ /* do Nothing */ }
+  68:../src/gpio.c **** 	}
+  69:../src/gpio.c **** }
+ 223              		.loc 1 69 1
+ 224 0106 1DE0     		b	.L6
+ 225              	.L5:
+  59:../src/gpio.c **** 		{
+ 226              		.loc 1 59 22
+ 227 0108 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+  59:../src/gpio.c **** 		{
+ 228              		.loc 1 59 10
+ 229 010a 072B     		cmp	r3, #7
+ 230 010c 1AD9     		bls	.L6
+  59:../src/gpio.c **** 		{
+ 231              		.loc 1 59 52 discriminator 1
+ 232 010e 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+  59:../src/gpio.c **** 		{
+ 233              		.loc 1 59 38 discriminator 1
+ 234 0110 0E2B     		cmp	r3, #14
+ 235 0112 17D8     		bhi	.L6
+  62:../src/gpio.c **** 			//Set Bit
+ 236              		.loc 1 62 23
+ 237 0114 7B68     		ldr	r3, [r7, #4]
+ 238 0116 5B6A     		ldr	r3, [r3, #36]
+  62:../src/gpio.c **** 			//Set Bit
+ 239              		.loc 1 62 47
+ 240 0118 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+  62:../src/gpio.c **** 			//Set Bit
+ 241              		.loc 1 62 58
+ 242 011a 083A     		subs	r2, r2, #8
+  62:../src/gpio.c **** 			//Set Bit
+ 243              		.loc 1 62 63
+ 244 011c 9200     		lsls	r2, r2, #2
+  62:../src/gpio.c **** 			//Set Bit
+ 245              		.loc 1 62 32
+ 246 011e 0F21     		movs	r1, #15
+ 247 0120 01FA02F2 		lsl	r2, r1, r2
+  62:../src/gpio.c **** 			//Set Bit
+ 248              		.loc 1 62 26
+ 249 0124 D243     		mvns	r2, r2
+  62:../src/gpio.c **** 			//Set Bit
+ 250              		.loc 1 62 23
+ 251 0126 1A40     		ands	r2, r2, r3
+ 252 0128 7B68     		ldr	r3, [r7, #4]
+ 253 012a 5A62     		str	r2, [r3, #36]
+  64:../src/gpio.c **** 		}
+ 254              		.loc 1 64 23
+ 255 012c 7B68     		ldr	r3, [r7, #4]
+ 256 012e 5B6A     		ldr	r3, [r3, #36]
+  64:../src/gpio.c **** 		}
+ 257              		.loc 1 64 37
+ 258 0130 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 259 0132 1146     		mov	r1, r2
+  64:../src/gpio.c **** 		}
+ 260              		.loc 1 64 73
+ 261 0134 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+  64:../src/gpio.c **** 		}
+ 262              		.loc 1 64 84
+ 263 0136 083A     		subs	r2, r2, #8
+  64:../src/gpio.c **** 		}
+ 264              		.loc 1 64 89
+ 265 0138 9200     		lsls	r2, r2, #2
+  64:../src/gpio.c **** 		}
+ 266              		.loc 1 64 58
+ 267 013a 01FA02F2 		lsl	r2, r1, r2
+  64:../src/gpio.c **** 		}
+ 268              		.loc 1 64 23
+ 269 013e 1A43     		orrs	r2, r2, r3
+ 270 0140 7B68     		ldr	r3, [r7, #4]
+ 271 0142 5A62     		str	r2, [r3, #36]
+ 272              	.L6:
+ 273              		.loc 1 69 1
+ 274 0144 00BF     		nop
+ 275 0146 1037     		adds	r7, r7, #16
+ 276              		.cfi_def_cfa_offset 8
+ 277 0148 BD46     		mov	sp, r7
+ 278              		.cfi_def_cfa_register 13
+ 279              		@ sp needed
+ 280 014a 80BD     		pop	{r7, pc}
+ 281              		.cfi_endproc
+ 282              	.LFE137:
+ 284              		.align	1
+ 285              		.syntax unified
+ 286              		.thumb
+ 287              		.thumb_func
+ 289              	Gpio_ChannelEnable:
+ 290              	.LFB138:
+  70:../src/gpio.c **** 
+  71:../src/gpio.c **** static void Gpio_ChannelEnable(GPIO_TypeDef* structGpio)
+  72:../src/gpio.c **** {
+ 291              		.loc 1 72 1
+ 292              		.cfi_startproc
+ 293              		@ args = 0, pretend = 0, frame = 8
+ 294              		@ frame_needed = 1, uses_anonymous_args = 0
+ 295              		@ link register save eliminated.
+ 296 014c 80B4     		push	{r7}
+ 297              		.cfi_def_cfa_offset 4
+ 298              		.cfi_offset 7, -4
+ 299 014e 83B0     		sub	sp, sp, #12
+ 300              		.cfi_def_cfa_offset 16
+ 301 0150 00AF     		add	r7, sp, #0
+ 302              		.cfi_def_cfa_register 7
+ 303 0152 7860     		str	r0, [r7, #4]
+  73:../src/gpio.c **** 	if(GPIOA == structGpio)
+ 304              		.loc 1 73 4
+ 305 0154 7B68     		ldr	r3, [r7, #4]
+ 306 0156 4E4A     		ldr	r2, .L18
+ 307 0158 9342     		cmp	r3, r2
+ 308 015a 0CD1     		bne	.L8
+  74:../src/gpio.c **** 	{
+  75:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOAEN_POSITION);
+ 309              		.loc 1 75 17
+ 310 015c 4D4B     		ldr	r3, .L18+4
+ 311 015e 1B69     		ldr	r3, [r3, #16]
+ 312 0160 4C4A     		ldr	r2, .L18+4
+ 313 0162 23F00103 		bic	r3, r3, #1
+ 314 0166 1361     		str	r3, [r2, #16]
+  76:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOAEN_POSITION);
+ 315              		.loc 1 76 16
+ 316 0168 4A4B     		ldr	r3, .L18+4
+ 317 016a 1B6B     		ldr	r3, [r3, #48]
+ 318 016c 494A     		ldr	r2, .L18+4
+ 319 016e 43F00103 		orr	r3, r3, #1
+ 320 0172 1363     		str	r3, [r2, #48]
+  77:../src/gpio.c **** 	}
+  78:../src/gpio.c **** 	else if(GPIOB == structGpio)
+  79:../src/gpio.c **** 	{
+  80:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOBEN_POSITION);
+  81:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOBEN_POSITION);
+  82:../src/gpio.c **** 	}
+  83:../src/gpio.c **** 	else if(GPIOC == structGpio)
+  84:../src/gpio.c **** 	{
+  85:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOCEN_POSITION);
+  86:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOCEN_POSITION);
+  87:../src/gpio.c **** 	}
+  88:../src/gpio.c **** 	else if(GPIOD == structGpio)
+  89:../src/gpio.c **** 	{
+  90:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIODEN_POSITION);
+  91:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIODEN_POSITION);
+  92:../src/gpio.c **** 	}
+  93:../src/gpio.c **** 	else if(GPIOE == structGpio)
+  94:../src/gpio.c **** 	{
+  95:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOEEN_POSITION);
+  96:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOEEN_POSITION);
+  97:../src/gpio.c **** 	}
+  98:../src/gpio.c **** 	else if(GPIOF == structGpio)
+  99:../src/gpio.c **** 	{
+ 100:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOFEN_POSITION);
+ 101:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOFEN_POSITION);
+ 102:../src/gpio.c **** 	}
+ 103:../src/gpio.c **** 	else if(GPIOG == structGpio)
+ 104:../src/gpio.c **** 	{
+ 105:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOGEN_POSITION);
+ 106:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOGEN_POSITION);
+ 107:../src/gpio.c **** 	}
+ 108:../src/gpio.c **** 	else if(GPIOH == structGpio)
+ 109:../src/gpio.c **** 	{
+ 110:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOHEN_POSITION);
+ 111:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOHEN_POSITION);
+ 112:../src/gpio.c **** 	}
+ 113:../src/gpio.c **** 	else if(GPIOI == structGpio)
+ 114:../src/gpio.c **** 	{
+ 115:../src/gpio.c **** 		RCC->AHB1RSTR &= ~(1 << GPIOIEN_POSITION);
+ 116:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOIEN_POSITION);
+ 117:../src/gpio.c **** 	}
+ 118:../src/gpio.c **** }
+ 321              		.loc 1 118 1
+ 322 0174 86E0     		b	.L17
+ 323              	.L8:
+  78:../src/gpio.c **** 	{
+ 324              		.loc 1 78 9
+ 325 0176 7B68     		ldr	r3, [r7, #4]
+ 326 0178 474A     		ldr	r2, .L18+8
+ 327 017a 9342     		cmp	r3, r2
+ 328 017c 0CD1     		bne	.L10
+  80:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOBEN_POSITION);
+ 329              		.loc 1 80 17
+ 330 017e 454B     		ldr	r3, .L18+4
+ 331 0180 1B69     		ldr	r3, [r3, #16]
+ 332 0182 444A     		ldr	r2, .L18+4
+ 333 0184 23F00203 		bic	r3, r3, #2
+ 334 0188 1361     		str	r3, [r2, #16]
+  81:../src/gpio.c **** 	}
+ 335              		.loc 1 81 16
+ 336 018a 424B     		ldr	r3, .L18+4
+ 337 018c 1B6B     		ldr	r3, [r3, #48]
+ 338 018e 414A     		ldr	r2, .L18+4
+ 339 0190 43F00203 		orr	r3, r3, #2
+ 340 0194 1363     		str	r3, [r2, #48]
+ 341              		.loc 1 118 1
+ 342 0196 75E0     		b	.L17
+ 343              	.L10:
+  83:../src/gpio.c **** 	{
+ 344              		.loc 1 83 9
+ 345 0198 7B68     		ldr	r3, [r7, #4]
+ 346 019a 404A     		ldr	r2, .L18+12
+ 347 019c 9342     		cmp	r3, r2
+ 348 019e 0CD1     		bne	.L11
+  85:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOCEN_POSITION);
+ 349              		.loc 1 85 17
+ 350 01a0 3C4B     		ldr	r3, .L18+4
+ 351 01a2 1B69     		ldr	r3, [r3, #16]
+ 352 01a4 3B4A     		ldr	r2, .L18+4
+ 353 01a6 23F00403 		bic	r3, r3, #4
+ 354 01aa 1361     		str	r3, [r2, #16]
+  86:../src/gpio.c **** 	}
+ 355              		.loc 1 86 16
+ 356 01ac 394B     		ldr	r3, .L18+4
+ 357 01ae 1B6B     		ldr	r3, [r3, #48]
+ 358 01b0 384A     		ldr	r2, .L18+4
+ 359 01b2 43F00403 		orr	r3, r3, #4
+ 360 01b6 1363     		str	r3, [r2, #48]
+ 361              		.loc 1 118 1
+ 362 01b8 64E0     		b	.L17
+ 363              	.L11:
+  88:../src/gpio.c **** 	{
+ 364              		.loc 1 88 9
+ 365 01ba 7B68     		ldr	r3, [r7, #4]
+ 366 01bc 384A     		ldr	r2, .L18+16
+ 367 01be 9342     		cmp	r3, r2
+ 368 01c0 0CD1     		bne	.L12
+  90:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIODEN_POSITION);
+ 369              		.loc 1 90 17
+ 370 01c2 344B     		ldr	r3, .L18+4
+ 371 01c4 1B69     		ldr	r3, [r3, #16]
+ 372 01c6 334A     		ldr	r2, .L18+4
+ 373 01c8 23F00803 		bic	r3, r3, #8
+ 374 01cc 1361     		str	r3, [r2, #16]
+  91:../src/gpio.c **** 	}
+ 375              		.loc 1 91 16
+ 376 01ce 314B     		ldr	r3, .L18+4
+ 377 01d0 1B6B     		ldr	r3, [r3, #48]
+ 378 01d2 304A     		ldr	r2, .L18+4
+ 379 01d4 43F00803 		orr	r3, r3, #8
+ 380 01d8 1363     		str	r3, [r2, #48]
+ 381              		.loc 1 118 1
+ 382 01da 53E0     		b	.L17
+ 383              	.L12:
+  93:../src/gpio.c **** 	{
+ 384              		.loc 1 93 9
+ 385 01dc 7B68     		ldr	r3, [r7, #4]
+ 386 01de 314A     		ldr	r2, .L18+20
+ 387 01e0 9342     		cmp	r3, r2
+ 388 01e2 0CD1     		bne	.L13
+  95:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOEEN_POSITION);
+ 389              		.loc 1 95 17
+ 390 01e4 2B4B     		ldr	r3, .L18+4
+ 391 01e6 1B69     		ldr	r3, [r3, #16]
+ 392 01e8 2A4A     		ldr	r2, .L18+4
+ 393 01ea 23F01003 		bic	r3, r3, #16
+ 394 01ee 1361     		str	r3, [r2, #16]
+  96:../src/gpio.c **** 	}
+ 395              		.loc 1 96 16
+ 396 01f0 284B     		ldr	r3, .L18+4
+ 397 01f2 1B6B     		ldr	r3, [r3, #48]
+ 398 01f4 274A     		ldr	r2, .L18+4
+ 399 01f6 43F01003 		orr	r3, r3, #16
+ 400 01fa 1363     		str	r3, [r2, #48]
+ 401              		.loc 1 118 1
+ 402 01fc 42E0     		b	.L17
+ 403              	.L13:
+  98:../src/gpio.c **** 	{
+ 404              		.loc 1 98 9
+ 405 01fe 7B68     		ldr	r3, [r7, #4]
+ 406 0200 294A     		ldr	r2, .L18+24
+ 407 0202 9342     		cmp	r3, r2
+ 408 0204 0CD1     		bne	.L14
+ 100:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOFEN_POSITION);
+ 409              		.loc 1 100 17
+ 410 0206 234B     		ldr	r3, .L18+4
+ 411 0208 1B69     		ldr	r3, [r3, #16]
+ 412 020a 224A     		ldr	r2, .L18+4
+ 413 020c 23F02003 		bic	r3, r3, #32
+ 414 0210 1361     		str	r3, [r2, #16]
+ 101:../src/gpio.c **** 	}
+ 415              		.loc 1 101 16
+ 416 0212 204B     		ldr	r3, .L18+4
+ 417 0214 1B6B     		ldr	r3, [r3, #48]
+ 418 0216 1F4A     		ldr	r2, .L18+4
+ 419 0218 43F02003 		orr	r3, r3, #32
+ 420 021c 1363     		str	r3, [r2, #48]
+ 421              		.loc 1 118 1
+ 422 021e 31E0     		b	.L17
+ 423              	.L14:
+ 103:../src/gpio.c **** 	{
+ 424              		.loc 1 103 9
+ 425 0220 7B68     		ldr	r3, [r7, #4]
+ 426 0222 224A     		ldr	r2, .L18+28
+ 427 0224 9342     		cmp	r3, r2
+ 428 0226 0CD1     		bne	.L15
+ 105:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOGEN_POSITION);
+ 429              		.loc 1 105 17
+ 430 0228 1A4B     		ldr	r3, .L18+4
+ 431 022a 1B69     		ldr	r3, [r3, #16]
+ 432 022c 194A     		ldr	r2, .L18+4
+ 433 022e 23F04003 		bic	r3, r3, #64
+ 434 0232 1361     		str	r3, [r2, #16]
+ 106:../src/gpio.c **** 	}
+ 435              		.loc 1 106 16
+ 436 0234 174B     		ldr	r3, .L18+4
+ 437 0236 1B6B     		ldr	r3, [r3, #48]
+ 438 0238 164A     		ldr	r2, .L18+4
+ 439 023a 43F04003 		orr	r3, r3, #64
+ 440 023e 1363     		str	r3, [r2, #48]
+ 441              		.loc 1 118 1
+ 442 0240 20E0     		b	.L17
+ 443              	.L15:
+ 108:../src/gpio.c **** 	{
+ 444              		.loc 1 108 9
+ 445 0242 7B68     		ldr	r3, [r7, #4]
+ 446 0244 1A4A     		ldr	r2, .L18+32
+ 447 0246 9342     		cmp	r3, r2
+ 448 0248 0CD1     		bne	.L16
+ 110:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOHEN_POSITION);
+ 449              		.loc 1 110 17
+ 450 024a 124B     		ldr	r3, .L18+4
+ 451 024c 1B69     		ldr	r3, [r3, #16]
+ 452 024e 114A     		ldr	r2, .L18+4
+ 453 0250 23F08003 		bic	r3, r3, #128
+ 454 0254 1361     		str	r3, [r2, #16]
+ 111:../src/gpio.c **** 	}
+ 455              		.loc 1 111 16
+ 456 0256 0F4B     		ldr	r3, .L18+4
+ 457 0258 1B6B     		ldr	r3, [r3, #48]
+ 458 025a 0E4A     		ldr	r2, .L18+4
+ 459 025c 43F08003 		orr	r3, r3, #128
+ 460 0260 1363     		str	r3, [r2, #48]
+ 461              		.loc 1 118 1
+ 462 0262 0FE0     		b	.L17
+ 463              	.L16:
+ 113:../src/gpio.c **** 	{
+ 464              		.loc 1 113 9
+ 465 0264 7B68     		ldr	r3, [r7, #4]
+ 466 0266 134A     		ldr	r2, .L18+36
+ 467 0268 9342     		cmp	r3, r2
+ 468 026a 0BD1     		bne	.L17
+ 115:../src/gpio.c **** 		RCC->AHB1ENR |= (1 << GPIOIEN_POSITION);
+ 469              		.loc 1 115 17
+ 470 026c 094B     		ldr	r3, .L18+4
+ 471 026e 1B69     		ldr	r3, [r3, #16]
+ 472 0270 084A     		ldr	r2, .L18+4
+ 473 0272 23F48073 		bic	r3, r3, #256
+ 474 0276 1361     		str	r3, [r2, #16]
+ 116:../src/gpio.c **** 	}
+ 475              		.loc 1 116 16
+ 476 0278 064B     		ldr	r3, .L18+4
+ 477 027a 1B6B     		ldr	r3, [r3, #48]
+ 478 027c 054A     		ldr	r2, .L18+4
+ 479 027e 43F48073 		orr	r3, r3, #256
+ 480 0282 1363     		str	r3, [r2, #48]
+ 481              	.L17:
+ 482              		.loc 1 118 1
+ 483 0284 00BF     		nop
+ 484 0286 0C37     		adds	r7, r7, #12
+ 485              		.cfi_def_cfa_offset 4
+ 486 0288 BD46     		mov	sp, r7
+ 487              		.cfi_def_cfa_register 13
+ 488              		@ sp needed
+ 489 028a 80BC     		pop	{r7}
+ 490              		.cfi_restore 7
+ 491              		.cfi_def_cfa_offset 0
+ 492 028c 7047     		bx	lr
+ 493              	.L19:
+ 494 028e 00BF     		.align	2
+ 495              	.L18:
+ 496 0290 00000240 		.word	1073872896
+ 497 0294 00380240 		.word	1073887232
+ 498 0298 00040240 		.word	1073873920
+ 499 029c 00080240 		.word	1073874944
+ 500 02a0 000C0240 		.word	1073875968
+ 501 02a4 00100240 		.word	1073876992
+ 502 02a8 00140240 		.word	1073878016
+ 503 02ac 00180240 		.word	1073879040
+ 504 02b0 001C0240 		.word	1073880064
+ 505 02b4 00200240 		.word	1073881088
+ 506              		.cfi_endproc
+ 507              	.LFE138:
+ 509              	.Letext0:
+ 510              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 511              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 512              		.file 4 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\system\\include\\cmsis/stm
+ 513              		.file 5 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/types.h"
+ 514              		.file 6 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/gpio.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:17     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:23     .text:00000000 Gpio_Init
+C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:289    .text:0000014c Gpio_ChannelEnable
+C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:496    .text:00000290 $d
+                           .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
+                           .group:00000000 wm4.stm32f407xx.h.34.dfd2ea1697b5c77f46734fce8e0379c1
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.d0b7f3cd6ee95f610104014bb3ed522a
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e9ec14ff72395df130e3e13849031638
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f407xx.h.906.b83b06aeff1423f0cb818f8b4e776e34
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.181.c3f52a3b0f4c288bddb5dda1562858e2
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.stddef.h.39.b727a6c3269d9d6ef9fc646b721a8287
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.c2dcbbb5c1f4f0e5cb716ebf7776da48
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.2a55589bfa3ee24eeb84e3c79458e4a9
+                           .group:00000000 wm4.types.h.12.bce82e9f7fdaaedfc4e7f8871bae11e3
+                           .group:00000000 wm4.gpio.h.17.09b9729e79873f95fb70fa283a88068f
+
+NO UNDEFINED SYMBOLS

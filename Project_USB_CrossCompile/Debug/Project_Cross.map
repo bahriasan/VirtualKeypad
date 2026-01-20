@@ -1,0 +1,1006 @@
+
+Discarded input sections
+
+ .text          0x00000000       0x14 ./system/src/cmsis/startup.o
+ .data          0x00000000        0x0 ./system/src/cmsis/startup.o
+ .bss           0x00000000        0x0 ./system/src/cmsis/startup.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./system/src/cmsis/system_stm32f4xx.o
+ .text          0x00000000      0x10c ./system/src/cmsis/system_stm32f4xx.o
+ .data          0x00000000        0x4 ./system/src/cmsis/system_stm32f4xx.o
+ .bss           0x00000000        0x0 ./system/src/cmsis/system_stm32f4xx.o
+ .rodata        0x00000000       0x18 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_info    0x00000000      0x361 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_abbrev  0x00000000      0x116 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_aranges
+                0x00000000       0x20 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0xda ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000      0xa72 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x2e ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x2f ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x22 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x56 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x51 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000      0x103 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x6a ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000      0x1df ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x1c ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x22 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0xfb ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000     0x1011 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000      0x11f ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000    0x15e97 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_macro   0x00000000       0x6d ./system/src/cmsis/system_stm32f4xx.o
+ .debug_line    0x00000000      0x380 ./system/src/cmsis/system_stm32f4xx.o
+ .debug_str     0x00000000    0x8834e ./system/src/cmsis/system_stm32f4xx.o
+ .comment       0x00000000       0x4a ./system/src/cmsis/system_stm32f4xx.o
+ .debug_frame   0x00000000       0x58 ./system/src/cmsis/system_stm32f4xx.o
+ .ARM.attributes
+                0x00000000       0x2e ./system/src/cmsis/system_stm32f4xx.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/SystemInit.o
+ .data          0x00000000        0x0 ./src/SystemInit.o
+ .bss           0x00000000        0x0 ./src/SystemInit.o
+ .debug_macro   0x00000000      0xa72 ./src/SystemInit.o
+ .debug_macro   0x00000000       0x2f ./src/SystemInit.o
+ .debug_macro   0x00000000       0x22 ./src/SystemInit.o
+ .debug_macro   0x00000000       0x56 ./src/SystemInit.o
+ .debug_macro   0x00000000       0x51 ./src/SystemInit.o
+ .debug_macro   0x00000000      0x103 ./src/SystemInit.o
+ .debug_macro   0x00000000       0x6a ./src/SystemInit.o
+ .debug_macro   0x00000000      0x1df ./src/SystemInit.o
+ .debug_macro   0x00000000       0x1c ./src/SystemInit.o
+ .debug_macro   0x00000000       0x22 ./src/SystemInit.o
+ .debug_macro   0x00000000       0xfb ./src/SystemInit.o
+ .debug_macro   0x00000000     0x1011 ./src/SystemInit.o
+ .debug_macro   0x00000000      0x11f ./src/SystemInit.o
+ .debug_macro   0x00000000    0x15e97 ./src/SystemInit.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .group         0x00000000        0xc ./src/gpio.o
+ .data          0x00000000        0x0 ./src/gpio.o
+ .bss           0x00000000        0x0 ./src/gpio.o
+ .debug_macro   0x00000000      0xa72 ./src/gpio.o
+ .debug_macro   0x00000000       0x2f ./src/gpio.o
+ .debug_macro   0x00000000       0x22 ./src/gpio.o
+ .debug_macro   0x00000000       0x56 ./src/gpio.o
+ .debug_macro   0x00000000       0x51 ./src/gpio.o
+ .debug_macro   0x00000000      0x103 ./src/gpio.o
+ .debug_macro   0x00000000       0x6a ./src/gpio.o
+ .debug_macro   0x00000000      0x1df ./src/gpio.o
+ .debug_macro   0x00000000       0x1c ./src/gpio.o
+ .debug_macro   0x00000000       0x22 ./src/gpio.o
+ .debug_macro   0x00000000       0xfb ./src/gpio.o
+ .debug_macro   0x00000000     0x1011 ./src/gpio.o
+ .debug_macro   0x00000000      0x11f ./src/gpio.o
+ .debug_macro   0x00000000    0x15e97 ./src/gpio.o
+ .debug_macro   0x00000000       0x64 ./src/gpio.o
+ .debug_macro   0x00000000       0x18 ./src/gpio.o
+ .debug_macro   0x00000000       0x35 ./src/gpio.o
+ .debug_macro   0x00000000       0x34 ./src/gpio.o
+ .debug_macro   0x00000000       0x16 ./src/gpio.o
+ .debug_macro   0x00000000       0x97 ./src/gpio.o
+ .debug_macro   0x00000000      0x341 ./src/gpio.o
+ .debug_macro   0x00000000       0xfd ./src/gpio.o
+ .debug_macro   0x00000000       0x10 ./src/gpio.o
+ .debug_macro   0x00000000       0x16 ./src/gpio.o
+ .debug_macro   0x00000000       0x43 ./src/gpio.o
+ .debug_macro   0x00000000       0x34 ./src/gpio.o
+ .debug_macro   0x00000000       0x10 ./src/gpio.o
+ .debug_macro   0x00000000       0x58 ./src/gpio.o
+ .debug_macro   0x00000000      0x182 ./src/gpio.o
+ .debug_macro   0x00000000       0xbe ./src/gpio.o
+ .debug_macro   0x00000000       0x16 ./src/gpio.o
+ .debug_macro   0x00000000      0x129 ./src/gpio.o
+ .debug_macro   0x00000000       0x10 ./src/gpio.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .group         0x00000000        0xc ./src/main.o
+ .data          0x00000000        0x0 ./src/main.o
+ .debug_macro   0x00000000      0xa72 ./src/main.o
+ .debug_macro   0x00000000       0x22 ./src/main.o
+ .debug_macro   0x00000000       0x18 ./src/main.o
+ .debug_macro   0x00000000       0x35 ./src/main.o
+ .debug_macro   0x00000000       0x34 ./src/main.o
+ .debug_macro   0x00000000       0x16 ./src/main.o
+ .debug_macro   0x00000000       0x97 ./src/main.o
+ .debug_macro   0x00000000      0x341 ./src/main.o
+ .debug_macro   0x00000000       0xfd ./src/main.o
+ .debug_macro   0x00000000       0x10 ./src/main.o
+ .debug_macro   0x00000000       0x16 ./src/main.o
+ .debug_macro   0x00000000       0x43 ./src/main.o
+ .debug_macro   0x00000000       0x34 ./src/main.o
+ .debug_macro   0x00000000       0x10 ./src/main.o
+ .debug_macro   0x00000000       0x58 ./src/main.o
+ .debug_macro   0x00000000      0x182 ./src/main.o
+ .debug_macro   0x00000000       0x6a ./src/main.o
+ .debug_macro   0x00000000       0x16 ./src/main.o
+ .debug_macro   0x00000000      0x129 ./src/main.o
+ .debug_macro   0x00000000       0x2e ./src/main.o
+ .debug_macro   0x00000000       0x2f ./src/main.o
+ .debug_macro   0x00000000      0x103 ./src/main.o
+ .debug_macro   0x00000000      0x1df ./src/main.o
+ .debug_macro   0x00000000       0x1c ./src/main.o
+ .debug_macro   0x00000000       0x22 ./src/main.o
+ .debug_macro   0x00000000       0xfb ./src/main.o
+ .debug_macro   0x00000000     0x1011 ./src/main.o
+ .debug_macro   0x00000000      0x11f ./src/main.o
+ .debug_macro   0x00000000    0x15e97 ./src/main.o
+ .debug_macro   0x00000000       0x6d ./src/main.o
+ .debug_macro   0x00000000       0x10 ./src/main.o
+ .debug_macro   0x00000000      0x124 ./src/main.o
+ .debug_macro   0x00000000      0x11e ./src/main.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .group         0x00000000        0xc ./src/rcc.o
+ .bss           0x00000000        0x0 ./src/rcc.o
+ .debug_macro   0x00000000      0xa72 ./src/rcc.o
+ .debug_macro   0x00000000       0x2f ./src/rcc.o
+ .debug_macro   0x00000000       0x22 ./src/rcc.o
+ .debug_macro   0x00000000       0x56 ./src/rcc.o
+ .debug_macro   0x00000000       0x51 ./src/rcc.o
+ .debug_macro   0x00000000      0x103 ./src/rcc.o
+ .debug_macro   0x00000000       0x6a ./src/rcc.o
+ .debug_macro   0x00000000      0x1df ./src/rcc.o
+ .debug_macro   0x00000000       0x1c ./src/rcc.o
+ .debug_macro   0x00000000       0x22 ./src/rcc.o
+ .debug_macro   0x00000000       0xfb ./src/rcc.o
+ .debug_macro   0x00000000     0x1011 ./src/rcc.o
+ .debug_macro   0x00000000      0x11f ./src/rcc.o
+ .debug_macro   0x00000000    0x15e97 ./src/rcc.o
+ .debug_macro   0x00000000       0x64 ./src/rcc.o
+ .debug_macro   0x00000000       0x18 ./src/rcc.o
+ .debug_macro   0x00000000       0x35 ./src/rcc.o
+ .debug_macro   0x00000000       0x34 ./src/rcc.o
+ .debug_macro   0x00000000       0x16 ./src/rcc.o
+ .debug_macro   0x00000000       0x97 ./src/rcc.o
+ .debug_macro   0x00000000      0x341 ./src/rcc.o
+ .debug_macro   0x00000000       0xfd ./src/rcc.o
+ .debug_macro   0x00000000       0x10 ./src/rcc.o
+ .debug_macro   0x00000000       0x16 ./src/rcc.o
+ .debug_macro   0x00000000       0x43 ./src/rcc.o
+ .debug_macro   0x00000000       0x34 ./src/rcc.o
+ .debug_macro   0x00000000       0x10 ./src/rcc.o
+ .debug_macro   0x00000000       0x58 ./src/rcc.o
+ .debug_macro   0x00000000      0x182 ./src/rcc.o
+ .debug_macro   0x00000000       0xbe ./src/rcc.o
+ .debug_macro   0x00000000       0x16 ./src/rcc.o
+ .debug_macro   0x00000000      0x129 ./src/rcc.o
+ .debug_macro   0x00000000       0x10 ./src/rcc.o
+ .debug_macro   0x00000000      0x11e ./src/rcc.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .group         0x00000000        0xc ./src/uart.o
+ .data          0x00000000        0x0 ./src/uart.o
+ .debug_macro   0x00000000      0xa72 ./src/uart.o
+ .debug_macro   0x00000000       0x2f ./src/uart.o
+ .debug_macro   0x00000000       0x22 ./src/uart.o
+ .debug_macro   0x00000000       0x56 ./src/uart.o
+ .debug_macro   0x00000000       0x51 ./src/uart.o
+ .debug_macro   0x00000000      0x103 ./src/uart.o
+ .debug_macro   0x00000000       0x6a ./src/uart.o
+ .debug_macro   0x00000000      0x1df ./src/uart.o
+ .debug_macro   0x00000000       0x1c ./src/uart.o
+ .debug_macro   0x00000000       0x22 ./src/uart.o
+ .debug_macro   0x00000000       0xfb ./src/uart.o
+ .debug_macro   0x00000000     0x1011 ./src/uart.o
+ .debug_macro   0x00000000      0x11f ./src/uart.o
+ .debug_macro   0x00000000    0x15e97 ./src/uart.o
+ .debug_macro   0x00000000       0x64 ./src/uart.o
+ .debug_macro   0x00000000       0x18 ./src/uart.o
+ .debug_macro   0x00000000       0x35 ./src/uart.o
+ .debug_macro   0x00000000       0x34 ./src/uart.o
+ .debug_macro   0x00000000       0x16 ./src/uart.o
+ .debug_macro   0x00000000       0x97 ./src/uart.o
+ .debug_macro   0x00000000      0x341 ./src/uart.o
+ .debug_macro   0x00000000       0xfd ./src/uart.o
+ .debug_macro   0x00000000       0x10 ./src/uart.o
+ .debug_macro   0x00000000       0x16 ./src/uart.o
+ .debug_macro   0x00000000       0x43 ./src/uart.o
+ .debug_macro   0x00000000       0x34 ./src/uart.o
+ .debug_macro   0x00000000       0x10 ./src/uart.o
+ .debug_macro   0x00000000       0x58 ./src/uart.o
+ .debug_macro   0x00000000      0x182 ./src/uart.o
+ .debug_macro   0x00000000       0xbe ./src/uart.o
+ .debug_macro   0x00000000       0x16 ./src/uart.o
+ .debug_macro   0x00000000      0x129 ./src/uart.o
+ .debug_macro   0x00000000       0x10 ./src/uart.o
+ .debug_macro   0x00000000      0x1a8 ./src/uart.o
+ .debug_macro   0x00000000      0x11e ./src/uart.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .group         0x00000000        0xc ./src/usb.o
+ .debug_macro   0x00000000      0xa72 ./src/usb.o
+ .debug_macro   0x00000000       0x2f ./src/usb.o
+ .debug_macro   0x00000000       0x22 ./src/usb.o
+ .debug_macro   0x00000000       0x56 ./src/usb.o
+ .debug_macro   0x00000000       0x51 ./src/usb.o
+ .debug_macro   0x00000000      0x103 ./src/usb.o
+ .debug_macro   0x00000000       0x6a ./src/usb.o
+ .debug_macro   0x00000000      0x1df ./src/usb.o
+ .debug_macro   0x00000000       0x1c ./src/usb.o
+ .debug_macro   0x00000000       0x22 ./src/usb.o
+ .debug_macro   0x00000000       0xfb ./src/usb.o
+ .debug_macro   0x00000000     0x1011 ./src/usb.o
+ .debug_macro   0x00000000      0x11f ./src/usb.o
+ .debug_macro   0x00000000    0x15e97 ./src/usb.o
+ .debug_macro   0x00000000       0x64 ./src/usb.o
+ .debug_macro   0x00000000       0x18 ./src/usb.o
+ .debug_macro   0x00000000       0x35 ./src/usb.o
+ .debug_macro   0x00000000       0x34 ./src/usb.o
+ .debug_macro   0x00000000       0x16 ./src/usb.o
+ .debug_macro   0x00000000       0x97 ./src/usb.o
+ .debug_macro   0x00000000      0x341 ./src/usb.o
+ .debug_macro   0x00000000       0xfd ./src/usb.o
+ .debug_macro   0x00000000       0x10 ./src/usb.o
+ .debug_macro   0x00000000       0x16 ./src/usb.o
+ .debug_macro   0x00000000       0x43 ./src/usb.o
+ .debug_macro   0x00000000       0x34 ./src/usb.o
+ .debug_macro   0x00000000       0x10 ./src/usb.o
+ .debug_macro   0x00000000       0x58 ./src/usb.o
+ .debug_macro   0x00000000      0x182 ./src/usb.o
+ .debug_macro   0x00000000       0xbe ./src/usb.o
+ .debug_macro   0x00000000       0x16 ./src/usb.o
+ .debug_macro   0x00000000      0x129 ./src/usb.o
+ .debug_macro   0x00000000       0x10 ./src/usb.o
+ .debug_macro   0x00000000       0x4c ./src/usb.o
+ .debug_macro   0x00000000      0x261 ./src/usb.o
+ .debug_macro   0x00000000      0x130 ./src/usb.o
+ .debug_macro   0x00000000      0x124 ./src/usb.o
+ .debug_macro   0x00000000       0x35 ./src/usb.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd.o
+ .debug_macro   0x00000000      0xa72 ./src/usbd.o
+ .debug_macro   0x00000000       0x2f ./src/usbd.o
+ .debug_macro   0x00000000       0x22 ./src/usbd.o
+ .debug_macro   0x00000000       0x56 ./src/usbd.o
+ .debug_macro   0x00000000       0x51 ./src/usbd.o
+ .debug_macro   0x00000000      0x103 ./src/usbd.o
+ .debug_macro   0x00000000       0x6a ./src/usbd.o
+ .debug_macro   0x00000000      0x1df ./src/usbd.o
+ .debug_macro   0x00000000       0x1c ./src/usbd.o
+ .debug_macro   0x00000000       0x22 ./src/usbd.o
+ .debug_macro   0x00000000       0xfb ./src/usbd.o
+ .debug_macro   0x00000000     0x1011 ./src/usbd.o
+ .debug_macro   0x00000000      0x11f ./src/usbd.o
+ .debug_macro   0x00000000    0x15e97 ./src/usbd.o
+ .debug_macro   0x00000000       0x64 ./src/usbd.o
+ .debug_macro   0x00000000       0x18 ./src/usbd.o
+ .debug_macro   0x00000000       0x35 ./src/usbd.o
+ .debug_macro   0x00000000       0x34 ./src/usbd.o
+ .debug_macro   0x00000000       0x16 ./src/usbd.o
+ .debug_macro   0x00000000       0x97 ./src/usbd.o
+ .debug_macro   0x00000000      0x341 ./src/usbd.o
+ .debug_macro   0x00000000       0xfd ./src/usbd.o
+ .debug_macro   0x00000000       0x10 ./src/usbd.o
+ .debug_macro   0x00000000       0x16 ./src/usbd.o
+ .debug_macro   0x00000000       0x43 ./src/usbd.o
+ .debug_macro   0x00000000       0x34 ./src/usbd.o
+ .debug_macro   0x00000000       0x10 ./src/usbd.o
+ .debug_macro   0x00000000       0x58 ./src/usbd.o
+ .debug_macro   0x00000000      0x182 ./src/usbd.o
+ .debug_macro   0x00000000       0xbe ./src/usbd.o
+ .debug_macro   0x00000000       0x16 ./src/usbd.o
+ .debug_macro   0x00000000      0x129 ./src/usbd.o
+ .debug_macro   0x00000000       0x10 ./src/usbd.o
+ .debug_macro   0x00000000      0x261 ./src/usbd.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .group         0x00000000        0xc ./src/usbd_hid.o
+ .bss           0x00000000        0x0 ./src/usbd_hid.o
+ .debug_macro   0x00000000      0xa72 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x22 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x5e ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x18 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x5c ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x35 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x34 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x16 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x57 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x97 ./src/usbd_hid.o
+ .debug_macro   0x00000000      0x341 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0xfd ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x10 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x16 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x43 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x34 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x10 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x58 ./src/usbd_hid.o
+ .debug_macro   0x00000000      0x182 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x10 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x6a ./src/usbd_hid.o
+ .debug_macro   0x00000000       0xb2 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x16 ./src/usbd_hid.o
+ .debug_macro   0x00000000      0x129 ./src/usbd_hid.o
+ .debug_macro   0x00000000      0x103 ./src/usbd_hid.o
+ .debug_macro   0x00000000      0x1df ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x10 ./src/usbd_hid.o
+ .debug_macro   0x00000000       0x4c ./src/usbd_hid.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00020000         xr
+RAM              0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ./system/src/cmsis/startup.o
+LOAD ./system/src/cmsis/system_stm32f4xx.o
+LOAD ./src/SystemInit.o
+LOAD ./src/gpio.o
+LOAD ./src/main.o
+LOAD ./src/rcc.o
+LOAD ./src/uart.o
+LOAD ./src/usb.o
+LOAD ./src/usbd.o
+LOAD ./src/usbd_hid.o
+START GROUP
+LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1\libgcc.a
+LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1\libgcc.a
+LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a
+LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libnosys.a
+END GROUP
+                0x20005000                __stack = (ORIGIN (RAM) + LENGTH (RAM))
+                0x20005000                _estack = __stack
+                0x00000400                __Main_Stack_Size = 0x400
+                [!provide]                PROVIDE (_Main_Stack_Size = __Main_Stack_Size)
+                0x20004c00                __Main_Stack_Limit = (__stack - __Main_Stack_Size)
+                0x00000100                __Minimum_Stack_Size = 0x100
+                [!provide]                PROVIDE (_Heap_Begin = _sheap)
+                [!provide]                PROVIDE (_Heap_Limit = (__stack - __Main_Stack_Size))
+
+.isr_vector     0x08000000      0x188
+ FILL mask 0xff
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x188 ./system/src/cmsis/startup.o
+                0x08000000                g_pfnVectors
+
+.text           0x08000188     0x44d6
+ *(.text .text.*)
+ .text.Reset_Handler
+                0x08000188       0x48 ./system/src/cmsis/startup.o
+                0x08000188                Reset_Handler
+ .text.Default_Handler
+                0x080001d0        0x2 ./system/src/cmsis/startup.o
+                0x080001d0                RTC_Alarm_IRQHandler
+                0x080001d0                HASH_RNG_IRQHandler
+                0x080001d0                EXTI2_IRQHandler
+                0x080001d0                TIM8_CC_IRQHandler
+                0x080001d0                DebugMon_Handler
+                0x080001d0                TIM1_CC_IRQHandler
+                0x080001d0                DMA2_Stream5_IRQHandler
+                0x080001d0                HardFault_Handler
+                0x080001d0                DMA1_Stream5_IRQHandler
+                0x080001d0                SysTick_Handler
+                0x080001d0                PVD_IRQHandler
+                0x080001d0                SDIO_IRQHandler
+                0x080001d0                TAMP_STAMP_IRQHandler
+                0x080001d0                PendSV_Handler
+                0x080001d0                NMI_Handler
+                0x080001d0                CAN2_RX1_IRQHandler
+                0x080001d0                EXTI3_IRQHandler
+                0x080001d0                TIM8_TRG_COM_TIM14_IRQHandler
+                0x080001d0                TIM1_UP_TIM10_IRQHandler
+                0x080001d0                TIM8_UP_TIM13_IRQHandler
+                0x080001d0                I2C3_ER_IRQHandler
+                0x080001d0                EXTI0_IRQHandler
+                0x080001d0                I2C2_EV_IRQHandler
+                0x080001d0                DMA1_Stream2_IRQHandler
+                0x080001d0                CAN1_RX0_IRQHandler
+                0x080001d0                FPU_IRQHandler
+                0x080001d0                OTG_HS_WKUP_IRQHandler
+                0x080001d0                UsageFault_Handler
+                0x080001d0                CAN2_SCE_IRQHandler
+                0x080001d0                DMA2_Stream2_IRQHandler
+                0x080001d0                SPI1_IRQHandler
+                0x080001d0                TIM6_DAC_IRQHandler
+                0x080001d0                TIM1_BRK_TIM9_IRQHandler
+                0x080001d0                DCMI_IRQHandler
+                0x080001d0                CAN2_RX0_IRQHandler
+                0x080001d0                DMA2_Stream3_IRQHandler
+                0x080001d0                USART6_IRQHandler
+                0x080001d0                USART3_IRQHandler
+                0x080001d0                CAN1_RX1_IRQHandler
+                0x080001d0                UART5_IRQHandler
+                0x080001d0                DMA2_Stream0_IRQHandler
+                0x080001d0                TIM4_IRQHandler
+                0x080001d0                I2C1_EV_IRQHandler
+                0x080001d0                DMA1_Stream6_IRQHandler
+                0x080001d0                DMA1_Stream1_IRQHandler
+                0x080001d0                UART4_IRQHandler
+                0x080001d0                TIM3_IRQHandler
+                0x080001d0                RCC_IRQHandler
+                0x080001d0                TIM8_BRK_TIM12_IRQHandler
+                0x080001d0                Default_Handler
+                0x080001d0                EXTI15_10_IRQHandler
+                0x080001d0                ADC_IRQHandler
+                0x080001d0                DMA1_Stream7_IRQHandler
+                0x080001d0                TIM7_IRQHandler
+                0x080001d0                CAN2_TX_IRQHandler
+                0x080001d0                TIM5_IRQHandler
+                0x080001d0                DMA2_Stream7_IRQHandler
+                0x080001d0                I2C3_EV_IRQHandler
+                0x080001d0                EXTI9_5_IRQHandler
+                0x080001d0                RTC_WKUP_IRQHandler
+                0x080001d0                ETH_WKUP_IRQHandler
+                0x080001d0                SPI2_IRQHandler
+                0x080001d0                OTG_HS_EP1_IN_IRQHandler
+                0x080001d0                MemManage_Handler
+                0x080001d0                DMA1_Stream0_IRQHandler
+                0x080001d0                CAN1_TX_IRQHandler
+                0x080001d0                SVC_Handler
+                0x080001d0                EXTI4_IRQHandler
+                0x080001d0                FSMC_IRQHandler
+                0x080001d0                ETH_IRQHandler
+                0x080001d0                OTG_HS_EP1_OUT_IRQHandler
+                0x080001d0                WWDG_IRQHandler
+                0x080001d0                TIM2_IRQHandler
+                0x080001d0                OTG_FS_WKUP_IRQHandler
+                0x080001d0                TIM1_TRG_COM_TIM11_IRQHandler
+                0x080001d0                OTG_HS_IRQHandler
+                0x080001d0                EXTI1_IRQHandler
+                0x080001d0                I2C2_ER_IRQHandler
+                0x080001d0                DMA2_Stream1_IRQHandler
+                0x080001d0                CAN1_SCE_IRQHandler
+                0x080001d0                FLASH_IRQHandler
+                0x080001d0                DMA2_Stream4_IRQHandler
+                0x080001d0                BusFault_Handler
+                0x080001d0                USART1_IRQHandler
+                0x080001d0                SPI3_IRQHandler
+                0x080001d0                DMA1_Stream4_IRQHandler
+                0x080001d0                I2C1_ER_IRQHandler
+                0x080001d0                DMA2_Stream6_IRQHandler
+                0x080001d0                DMA1_Stream3_IRQHandler
+ *fill*         0x080001d2        0x2 
+ .text          0x080001d4      0x11c ./src/SystemInit.o
+                0x080001d4                SystemClockConfig
+ .text          0x080002f0      0x2b8 ./src/gpio.o
+                0x080002f0                Gpio_Init
+ .text          0x080005a8      0x238 ./src/main.o
+                0x080005a8                main
+                0x080006d4                OTG_FS_IRQHandler
+                0x080006e0                USART2_IRQHandler
+ .text          0x080007e0      0x100 ./src/rcc.o
+                0x080007e0                RCC_ReadClock
+ .text          0x080008e0      0x870 ./src/uart.o
+                0x08000ca0                Uart_Init
+                0x08000d9a                Uart_Read
+                0x08000e6a                Uart_Write
+                0x08000f70                Uart_Write_Inst
+                0x08000fc8                Uart_Read_Inst
+                0x0800100c                Uart_EnableInterrupt
+ .text          0x08001150     0x316c ./src/usb.o
+                0x080038b4                Usb_FS_Init
+                0x080038de                Usb_FS_SendReport
+                0x08003978                USB_FS_IRQHandler
+                0x08003f4c                Helper_CopyByte
+                0x08003f90                Usb_FS_EP_ActivateAll
+                0x08004212                Usb_FS_EP_DeactivateAll
+ .text          0x080042bc      0x2e4 ./src/usbd.o
+                0x08004470                GetFSDeviceDescriptor
+                0x08004490                GetFSDeviceQualifierDescriptor
+                0x080044b0                GetFSConfigDescriptor
+                0x080044d0                GetFSLangIdStringDescriptor
+                0x080044f0                GetFSMfcIdStringDescriptor
+                0x08004514                GetFSPdcIdStringDescriptor
+                0x08004538                GetFSSerialStringDescriptor
+                0x08004558                GetFSConfigStringDescriptor
+                0x0800457c                GetFSInterfaceStringDescriptor
+ .text          0x080045a0       0x20 ./src/usbd_hid.o
+                0x080045a0                GetFSReportDescriptor
+ *(.rodata .rodata.* .constdata .constdata.*)
+ .rodata        0x080045c0       0x38 ./src/main.o
+ .rodata        0x080045f8       0x1e ./src/usb.o
+ *fill*         0x08004616        0x2 
+ .rodata        0x08004618       0x46 ./src/usbd.o
+ *(vtable)
+                0x08004660                _sidata = LOADADDR (.data)
+
+.glue_7         0x08004660        0x0
+ .glue_7        0x08004660        0x0 linker stubs
+
+.glue_7t        0x08004660        0x0
+ .glue_7t       0x08004660        0x0 linker stubs
+
+.vfp11_veneer   0x08004660        0x0
+ .vfp11_veneer  0x08004660        0x0 linker stubs
+
+.v4_bx          0x08004660        0x0
+ .v4_bx         0x08004660        0x0 linker stubs
+
+.iplt           0x08004660        0x0
+ .iplt          0x08004660        0x0 ./system/src/cmsis/startup.o
+
+.rel.dyn        0x08004660        0x0
+ .rel.iplt      0x08004660        0x0 ./system/src/cmsis/startup.o
+
+.data           0x20000000      0x134 load address 0x08004660
+                0x20000000                _sdata = .
+ *(.data .data.*)
+ .data          0x20000000       0x10 ./src/rcc.o
+                0x20000000                Prescaler_AHB
+                0x20000008                Prescaler_APB
+ .data          0x20000010       0x98 ./src/usb.o
+                0x20000010                USB_FS
+ .data          0x200000a8       0x4c ./src/usbd.o
+                0x200000a8                FSDeviceDescriptor
+                0x200000bc                FSDeviceQualifierDescriptor
+                0x200000c8                FSConfigurationDescriptor
+                0x200000ec                FSConfigurationDescriptorArray
+                0x200000f0                FSLangIdStringDescriptor
+ .data          0x200000f4       0x3f ./src/usbd_hid.o
+                0x200000f4                FSReportDescriptor
+                0x20000134                . = ALIGN (0x4)
+ *fill*         0x20000133        0x1 
+                0x20000134                _edata = .
+
+.igot.plt       0x20000134        0x0 load address 0x08004794
+ .igot.plt      0x20000134        0x0 ./system/src/cmsis/startup.o
+
+.bss            0x20000134      0x818 load address 0x08004794
+                0x20000134                __bss_start__ = .
+                0x20000134                _sbss = .
+ *(.bss .bss.*)
+ .bss           0x20000134       0x25 ./src/main.o
+                0x20000134                DataReceived_flag
+                0x20000138                readData
+ .bss           0x20000159        0x2 ./src/uart.o
+ *fill*         0x2000015b        0x1 
+ .bss           0x2000015c      0x5ed ./src/usb.o
+                0x2000015c                inputArray
+                0x20000164                pending_RX
+                0x20000165                resetReceived
+                0x20000166                enumReceived
+                0x20000168                TX_Ready
+                0x2000016c                XFER_Completed_In
+                0x20000170                XFER_Completed_Out
+                0x20000174                SetUpRX_Completed
+                0x20000178                arrDbgFlw
+                0x20000560                idd
+                0x20000564                debug_setCfg
+                0x20000568                dbgArrRead
+                0x200006f8                arr_dbgArr
+ *fill*         0x20000749        0x3 
+ .bss           0x2000074c      0x200 ./src/usbd.o
+                0x2000074c                USB_StringUnicode
+                0x2000094c                . = ALIGN (0x4)
+                0x2000094c                _ebss = .
+                0x2000094c                __bss_end__ = .
+                0x2000094c                _sheap = .
+OUTPUT(Project_USB_CrossCompile.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x2f
+ .ARM.attributes
+                0x00000000       0x21 ./system/src/cmsis/startup.o
+ .ARM.attributes
+                0x00000021       0x2e ./src/SystemInit.o
+ .ARM.attributes
+                0x0000004f       0x2e ./src/gpio.o
+ .ARM.attributes
+                0x0000007d       0x2e ./src/main.o
+ .ARM.attributes
+                0x000000ab       0x2e ./src/rcc.o
+ .ARM.attributes
+                0x000000d9       0x2e ./src/uart.o
+ .ARM.attributes
+                0x00000107       0x2e ./src/usb.o
+ .ARM.attributes
+                0x00000135       0x2e ./src/usbd.o
+ .ARM.attributes
+                0x00000163       0x2e ./src/usbd_hid.o
+
+.comment        0x00000000       0x49
+ .comment       0x00000000       0x49 ./src/SystemInit.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a ./src/gpio.o
+ .comment       0x00000049       0x4a ./src/main.o
+ .comment       0x00000049       0x4a ./src/rcc.o
+ .comment       0x00000049       0x4a ./src/uart.o
+ .comment       0x00000049       0x4a ./src/usb.o
+ .comment       0x00000049       0x4a ./src/usbd.o
+ .comment       0x00000049       0x4a ./src/usbd_hid.o
+
+.debug_info     0x00000000     0x4eab
+ .debug_info    0x00000000      0x345 ./src/SystemInit.o
+ .debug_info    0x00000345      0x3de ./src/gpio.o
+ .debug_info    0x00000723      0xde3 ./src/main.o
+ .debug_info    0x00001506      0x369 ./src/rcc.o
+ .debug_info    0x0000186f      0xc07 ./src/uart.o
+ .debug_info    0x00002476     0x2286 ./src/usb.o
+ .debug_info    0x000046fc      0x6c1 ./src/usbd.o
+ .debug_info    0x00004dbd       0xee ./src/usbd_hid.o
+
+.debug_abbrev   0x00000000      0xcc0
+ .debug_abbrev  0x00000000       0xe0 ./src/SystemInit.o
+ .debug_abbrev  0x000000e0      0x103 ./src/gpio.o
+ .debug_abbrev  0x000001e3      0x1f5 ./src/main.o
+ .debug_abbrev  0x000003d8      0x138 ./src/rcc.o
+ .debug_abbrev  0x00000510      0x258 ./src/uart.o
+ .debug_abbrev  0x00000768      0x33a ./src/usb.o
+ .debug_abbrev  0x00000aa2      0x185 ./src/usbd.o
+ .debug_abbrev  0x00000c27       0x99 ./src/usbd_hid.o
+
+.debug_aranges  0x00000000      0x100
+ .debug_aranges
+                0x00000000       0x20 ./src/SystemInit.o
+ .debug_aranges
+                0x00000020       0x20 ./src/gpio.o
+ .debug_aranges
+                0x00000040       0x20 ./src/main.o
+ .debug_aranges
+                0x00000060       0x20 ./src/rcc.o
+ .debug_aranges
+                0x00000080       0x20 ./src/uart.o
+ .debug_aranges
+                0x000000a0       0x20 ./src/usb.o
+ .debug_aranges
+                0x000000c0       0x20 ./src/usbd.o
+ .debug_aranges
+                0x000000e0       0x20 ./src/usbd_hid.o
+
+.debug_macro    0x00000000     0x2340
+ .debug_macro   0x00000000      0x1ba ./src/SystemInit.o
+ .debug_macro   0x000001ba       0x64 ./src/SystemInit.o
+ .debug_macro   0x0000021e       0x18 ./src/SystemInit.o
+ .debug_macro   0x00000236       0x35 ./src/SystemInit.o
+ .debug_macro   0x0000026b       0x34 ./src/SystemInit.o
+ .debug_macro   0x0000029f       0x16 ./src/SystemInit.o
+ .debug_macro   0x000002b5       0x97 ./src/SystemInit.o
+ .debug_macro   0x0000034c      0x341 ./src/SystemInit.o
+ .debug_macro   0x0000068d       0xfd ./src/SystemInit.o
+ .debug_macro   0x0000078a       0x10 ./src/SystemInit.o
+ .debug_macro   0x0000079a       0x16 ./src/SystemInit.o
+ .debug_macro   0x000007b0       0x43 ./src/SystemInit.o
+ .debug_macro   0x000007f3       0x34 ./src/SystemInit.o
+ .debug_macro   0x00000827       0x10 ./src/SystemInit.o
+ .debug_macro   0x00000837       0x58 ./src/SystemInit.o
+ .debug_macro   0x0000088f      0x182 ./src/SystemInit.o
+ .debug_macro   0x00000a11       0xbe ./src/SystemInit.o
+ .debug_macro   0x00000acf       0x16 ./src/SystemInit.o
+ .debug_macro   0x00000ae5      0x129 ./src/SystemInit.o
+ .debug_macro   0x00000c0e       0x10 ./src/SystemInit.o
+ .debug_macro   0x00000c1e      0x11e ./src/SystemInit.o
+ .debug_macro   0x00000d3c      0x1ba ./src/gpio.o
+ .debug_macro   0x00000ef6      0x124 ./src/gpio.o
+ .debug_macro   0x0000101a      0x273 ./src/main.o
+ .debug_macro   0x0000128d       0x5e ./src/main.o
+ .debug_macro   0x000012eb       0x5c ./src/main.o
+ .debug_macro   0x00001347       0x57 ./src/main.o
+ .debug_macro   0x0000139e       0x10 ./src/main.o
+ .debug_macro   0x000013ae       0xb2 ./src/main.o
+ .debug_macro   0x00001460       0x16 ./src/main.o
+ .debug_macro   0x00001476       0x35 ./src/main.o
+ .debug_macro   0x000014ab       0x22 ./src/main.o
+ .debug_macro   0x000014cd      0x1a8 ./src/main.o
+ .debug_macro   0x00001675       0x4c ./src/main.o
+ .debug_macro   0x000016c1      0x261 ./src/main.o
+ .debug_macro   0x00001922      0x130 ./src/main.o
+ .debug_macro   0x00001a52      0x1c2 ./src/rcc.o
+ .debug_macro   0x00001c14      0x1da ./src/uart.o
+ .debug_macro   0x00001dee      0x219 ./src/usb.o
+ .debug_macro   0x00002007       0x16 ./src/usb.o
+ .debug_macro   0x0000201d      0x1c0 ./src/usbd.o
+ .debug_macro   0x000021dd      0x163 ./src/usbd_hid.o
+
+.debug_line     0x00000000     0x462e
+ .debug_line    0x00000000      0x4ff ./src/SystemInit.o
+ .debug_line    0x000004ff      0x57b ./src/gpio.o
+ .debug_line    0x00000a7a      0x57d ./src/main.o
+ .debug_line    0x00000ff7      0x491 ./src/rcc.o
+ .debug_line    0x00001488      0x856 ./src/uart.o
+ .debug_line    0x00001cde     0x20a3 ./src/usb.o
+ .debug_line    0x00003d81      0x578 ./src/usbd.o
+ .debug_line    0x000042f9      0x335 ./src/usbd_hid.o
+
+.debug_str      0x00000000    0x8ec64
+ .debug_str     0x00000000    0x8af70 ./src/SystemInit.o
+                              0x8b164 (size before relaxing)
+ .debug_str     0x0008af70      0x32d ./src/gpio.o
+                              0x8b0a4 (size before relaxing)
+ .debug_str     0x0008b29d     0x2c5a ./src/main.o
+                              0x8dfc2 (size before relaxing)
+ .debug_str     0x0008def7       0x64 ./src/rcc.o
+                              0x8b129 (size before relaxing)
+ .debug_str     0x0008df5b      0x66a ./src/uart.o
+                              0x8bdab (size before relaxing)
+ .debug_str     0x0008e5c5      0x4e0 ./src/usb.o
+                              0x8d913 (size before relaxing)
+ .debug_str     0x0008eaa5      0x197 ./src/usbd.o
+                              0x8bbca (size before relaxing)
+ .debug_str     0x0008ec3c       0x28 ./src/usbd_hid.o
+                               0x6e9a (size before relaxing)
+
+.debug_frame    0x00000000      0xa30
+ .debug_frame   0x00000000       0x3c ./src/SystemInit.o
+ .debug_frame   0x0000003c       0x5c ./src/gpio.o
+ .debug_frame   0x00000098       0x90 ./src/main.o
+ .debug_frame   0x00000128       0x38 ./src/rcc.o
+ .debug_frame   0x00000160      0x1bc ./src/uart.o
+ .debug_frame   0x0000031c      0x4e0 ./src/usb.o
+ .debug_frame   0x000007fc      0x1fc ./src/usbd.o
+ .debug_frame   0x000009f8       0x38 ./src/usbd_hid.o
+
+.debug_ranges   0x00000000       0x78
+ .debug_ranges  0x00000000       0x78 ./src/usb.o

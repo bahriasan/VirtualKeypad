@@ -1,0 +1,364 @@
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"SystemInit.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.align	1
+  18              		.global	SystemClockConfig
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	SystemClockConfig:
+  24              	.LFB137:
+  25              		.file 1 "../src/SystemInit.c"
+   1:../src/SystemInit.c **** /*
+   2:../src/SystemInit.c ****  * SystemInit.c
+   3:../src/SystemInit.c ****  *
+   4:../src/SystemInit.c ****  *  Created on: 15 Oca 2024
+   5:../src/SystemInit.c ****  *      Author: bahri
+   6:../src/SystemInit.c ****  */
+   7:../src/SystemInit.c **** 
+   8:../src/SystemInit.c **** #include "SystemInit.h"
+   9:../src/SystemInit.c **** 
+  10:../src/SystemInit.c **** void SystemClockConfig(system_cfg configSystem)
+  11:../src/SystemInit.c **** {
+  26              		.loc 1 11 1
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 16
+  29              		@ frame_needed = 1, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31 0000 90B4     		push	{r4, r7}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 4, -8
+  34              		.cfi_offset 7, -4
+  35 0002 84B0     		sub	sp, sp, #16
+  36              		.cfi_def_cfa_offset 24
+  37 0004 00AF     		add	r7, sp, #0
+  38              		.cfi_def_cfa_register 7
+  39 0006 3C46     		mov	r4, r7
+  40 0008 84E80F00 		stm	r4, {r0, r1, r2, r3}
+  12:../src/SystemInit.c **** //First Oscillator Config
+  13:../src/SystemInit.c **** 	if((CLOCK_SOURCE_HSE == configSystem.systemClockSource) || ((configSystem.PLLType != NO_PLL) && (c
+  41              		.loc 1 13 38
+  42 000c 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
+  43              		.loc 1 13 4
+  44 000e 012B     		cmp	r3, #1
+  45 0010 05D0     		beq	.L2
+  46              		.loc 1 13 75 discriminator 1
+  47 0012 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+  48              		.loc 1 13 58 discriminator 1
+  49 0014 002B     		cmp	r3, #0
+  50 0016 10D0     		beq	.L3
+  51              		.loc 1 13 111 discriminator 2
+  52 0018 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+  53              		.loc 1 13 95 discriminator 2
+  54 001a 012B     		cmp	r3, #1
+  55 001c 0DD1     		bne	.L3
+  56              	.L2:
+  14:../src/SystemInit.c **** 	{
+  15:../src/SystemInit.c **** 		RCC->CR |= RCC_CR_HSEON;
+  57              		.loc 1 15 11
+  58 001e 3E4B     		ldr	r3, .L11
+  59 0020 1B68     		ldr	r3, [r3]
+  60 0022 3D4A     		ldr	r2, .L11
+  61 0024 43F48033 		orr	r3, r3, #65536
+  62 0028 1360     		str	r3, [r2]
+  16:../src/SystemInit.c **** 		while((RCC->CR & RCC_CR_HSERDY_Msk) != RCC_CR_HSERDY);
+  63              		.loc 1 16 8
+  64 002a 00BF     		nop
+  65              	.L4:
+  66              		.loc 1 16 13 discriminator 1
+  67 002c 3A4B     		ldr	r3, .L11
+  68 002e 1B68     		ldr	r3, [r3]
+  69              		.loc 1 16 18 discriminator 1
+  70 0030 03F40033 		and	r3, r3, #131072
+  71              		.loc 1 16 8 discriminator 1
+  72 0034 B3F5003F 		cmp	r3, #131072
+  73 0038 F8D1     		bne	.L4
+  74              	.L3:
+  17:../src/SystemInit.c **** 	}
+  18:../src/SystemInit.c **** 
+  19:../src/SystemInit.c **** 	if((CLOCK_SOURCE_HSI == configSystem.systemClockSource) || ((configSystem.PLLType != NO_PLL) && (c
+  75              		.loc 1 19 38
+  76 003a 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
+  77              		.loc 1 19 4
+  78 003c 002B     		cmp	r3, #0
+  79 003e 05D0     		beq	.L5
+  80              		.loc 1 19 75 discriminator 1
+  81 0040 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+  82              		.loc 1 19 58 discriminator 1
+  83 0042 002B     		cmp	r3, #0
+  84 0044 0FD0     		beq	.L6
+  85              		.loc 1 19 111 discriminator 2
+  86 0046 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+  87              		.loc 1 19 95 discriminator 2
+  88 0048 002B     		cmp	r3, #0
+  89 004a 0CD1     		bne	.L6
+  90              	.L5:
+  20:../src/SystemInit.c **** 	{
+  21:../src/SystemInit.c **** 		RCC->CR |= RCC_CR_HSION;
+  91              		.loc 1 21 11
+  92 004c 324B     		ldr	r3, .L11
+  93 004e 1B68     		ldr	r3, [r3]
+  94 0050 314A     		ldr	r2, .L11
+  95 0052 43F00103 		orr	r3, r3, #1
+  96 0056 1360     		str	r3, [r2]
+  22:../src/SystemInit.c **** 		while((RCC->CR & RCC_CR_HSIRDY_Msk) != RCC_CR_HSIRDY);
+  97              		.loc 1 22 8
+  98 0058 00BF     		nop
+  99              	.L7:
+ 100              		.loc 1 22 13 discriminator 1
+ 101 005a 2F4B     		ldr	r3, .L11
+ 102 005c 1B68     		ldr	r3, [r3]
+ 103              		.loc 1 22 18 discriminator 1
+ 104 005e 03F00203 		and	r3, r3, #2
+ 105              		.loc 1 22 8 discriminator 1
+ 106 0062 022B     		cmp	r3, #2
+ 107 0064 F9D1     		bne	.L7
+ 108              	.L6:
+  23:../src/SystemInit.c **** 	}
+  24:../src/SystemInit.c **** 
+  25:../src/SystemInit.c **** 	if((CLOCK_SOURCE_PLL == configSystem.systemClockSource) || (configSystem.PLLType != NO_PLL))
+ 109              		.loc 1 25 38
+ 110 0066 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
+ 111              		.loc 1 25 4
+ 112 0068 022B     		cmp	r3, #2
+ 113 006a 02D0     		beq	.L8
+ 114              		.loc 1 25 74 discriminator 1
+ 115 006c 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 116              		.loc 1 25 58 discriminator 1
+ 117 006e 002B     		cmp	r3, #0
+ 118 0070 1CD0     		beq	.L9
+ 119              	.L8:
+  26:../src/SystemInit.c **** 	{
+  27:../src/SystemInit.c **** 		// Select HSE Source for PLL
+  28:../src/SystemInit.c **** 		// Don't forget to clear initial value in case |= used
+  29:../src/SystemInit.c **** 		RCC->PLLCFGR = ((configSystem.PLLSrc << PLLSRC_POSITION) |
+ 120              		.loc 1 29 32
+ 121 0072 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 122              		.loc 1 29 40
+ 123 0074 9B05     		lsls	r3, r3, #22
+  30:../src/SystemInit.c **** 						(configSystem.PLL_M << PLLM_POSITION) |
+ 124              		.loc 1 30 20
+ 125 0076 FA88     		ldrh	r2, [r7, #6]
+  29:../src/SystemInit.c **** 						(configSystem.PLL_M << PLLM_POSITION) |
+ 126              		.loc 1 29 60
+ 127 0078 1A43     		orrs	r2, r2, r3
+  31:../src/SystemInit.c **** 						(configSystem.PLL_N << PLLN_POSITION) |
+ 128              		.loc 1 31 20
+ 129 007a 3B89     		ldrh	r3, [r7, #8]
+ 130              		.loc 1 31 27
+ 131 007c 9B01     		lsls	r3, r3, #6
+  30:../src/SystemInit.c **** 						(configSystem.PLL_M << PLLM_POSITION) |
+ 132              		.loc 1 30 45
+ 133 007e 1A43     		orrs	r2, r2, r3
+  32:../src/SystemInit.c **** 						(configSystem.PLL_P << PLLP_POSITION) |
+ 134              		.loc 1 32 20
+ 135 0080 7B89     		ldrh	r3, [r7, #10]
+ 136              		.loc 1 32 27
+ 137 0082 1B04     		lsls	r3, r3, #16
+  31:../src/SystemInit.c **** 						(configSystem.PLL_N << PLLN_POSITION) |
+ 138              		.loc 1 31 45
+ 139 0084 1A43     		orrs	r2, r2, r3
+  33:../src/SystemInit.c **** 						(configSystem.PLL_Q << PLLQ_POSITION));
+ 140              		.loc 1 33 20
+ 141 0086 BB89     		ldrh	r3, [r7, #12]
+ 142              		.loc 1 33 27
+ 143 0088 1B06     		lsls	r3, r3, #24
+  32:../src/SystemInit.c **** 						(configSystem.PLL_P << PLLP_POSITION) |
+ 144              		.loc 1 32 45
+ 145 008a 1A43     		orrs	r2, r2, r3
+  29:../src/SystemInit.c **** 						(configSystem.PLL_M << PLLM_POSITION) |
+ 146              		.loc 1 29 6
+ 147 008c 224B     		ldr	r3, .L11
+  29:../src/SystemInit.c **** 						(configSystem.PLL_M << PLLM_POSITION) |
+ 148              		.loc 1 29 16
+ 149 008e 5A60     		str	r2, [r3, #4]
+  34:../src/SystemInit.c **** 		// HSI(8MHz) / M(4) x N(96) / Q(4) = 48 MHz
+  35:../src/SystemInit.c **** 
+  36:../src/SystemInit.c **** 		RCC->CR |= RCC_CR_PLLON;
+ 150              		.loc 1 36 11
+ 151 0090 214B     		ldr	r3, .L11
+ 152 0092 1B68     		ldr	r3, [r3]
+ 153 0094 204A     		ldr	r2, .L11
+ 154 0096 43F08073 		orr	r3, r3, #16777216
+ 155 009a 1360     		str	r3, [r2]
+  37:../src/SystemInit.c **** 		while((RCC->CR & RCC_CR_PLLRDY_Msk) != RCC_CR_PLLRDY);
+ 156              		.loc 1 37 8
+ 157 009c 00BF     		nop
+ 158              	.L10:
+ 159              		.loc 1 37 13 discriminator 1
+ 160 009e 1E4B     		ldr	r3, .L11
+ 161 00a0 1B68     		ldr	r3, [r3]
+ 162              		.loc 1 37 18 discriminator 1
+ 163 00a2 03F00073 		and	r3, r3, #33554432
+ 164              		.loc 1 37 8 discriminator 1
+ 165 00a6 B3F1007F 		cmp	r3, #33554432
+ 166 00aa F8D1     		bne	.L10
+ 167              	.L9:
+  38:../src/SystemInit.c **** 	}
+  39:../src/SystemInit.c **** 
+  40:../src/SystemInit.c **** //System Clock Config
+  41:../src/SystemInit.c **** 
+  42:../src/SystemInit.c **** 	//Set AHB Bus Prescaler
+  43:../src/SystemInit.c **** 	//Clear Bit#4-7
+  44:../src/SystemInit.c **** 	RCC->CFGR &= ~(15 << AHB_POSITION);
+ 168              		.loc 1 44 12
+ 169 00ac 1A4B     		ldr	r3, .L11
+ 170 00ae 9B68     		ldr	r3, [r3, #8]
+ 171 00b0 194A     		ldr	r2, .L11
+ 172 00b2 23F0F003 		bic	r3, r3, #240
+ 173 00b6 9360     		str	r3, [r2, #8]
+  45:../src/SystemInit.c **** 	//Set Config
+  46:../src/SystemInit.c **** 	RCC->CFGR |= (configSystem.prescaler_AHB << AHB_POSITION);
+ 174              		.loc 1 46 12
+ 175 00b8 174B     		ldr	r3, .L11
+ 176 00ba 9B68     		ldr	r3, [r3, #8]
+ 177              		.loc 1 46 28
+ 178 00bc FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
+ 179              		.loc 1 46 43
+ 180 00be 1201     		lsls	r2, r2, #4
+ 181 00c0 1146     		mov	r1, r2
+ 182              		.loc 1 46 12
+ 183 00c2 154A     		ldr	r2, .L11
+ 184 00c4 0B43     		orrs	r3, r3, r1
+ 185 00c6 9360     		str	r3, [r2, #8]
+  47:../src/SystemInit.c **** 
+  48:../src/SystemInit.c **** 	//Set APB1 Bus Prescaler
+  49:../src/SystemInit.c **** 	//Clear Bit#10-12
+  50:../src/SystemInit.c **** 	RCC->CFGR &= ~(7 << APB1_POSITION);
+ 186              		.loc 1 50 12
+ 187 00c8 134B     		ldr	r3, .L11
+ 188 00ca 9B68     		ldr	r3, [r3, #8]
+ 189 00cc 124A     		ldr	r2, .L11
+ 190 00ce 23F4E053 		bic	r3, r3, #7168
+ 191 00d2 9360     		str	r3, [r2, #8]
+  51:../src/SystemInit.c **** 	//Set Config
+  52:../src/SystemInit.c **** 	RCC->CFGR |= (configSystem.prescaler_APB1 << APB1_POSITION);
+ 192              		.loc 1 52 12
+ 193 00d4 104B     		ldr	r3, .L11
+ 194 00d6 9B68     		ldr	r3, [r3, #8]
+ 195              		.loc 1 52 28
+ 196 00d8 7A78     		ldrb	r2, [r7, #1]	@ zero_extendqisi2
+ 197              		.loc 1 52 44
+ 198 00da 9202     		lsls	r2, r2, #10
+ 199 00dc 1146     		mov	r1, r2
+ 200              		.loc 1 52 12
+ 201 00de 0E4A     		ldr	r2, .L11
+ 202 00e0 0B43     		orrs	r3, r3, r1
+ 203 00e2 9360     		str	r3, [r2, #8]
+  53:../src/SystemInit.c **** 
+  54:../src/SystemInit.c **** 	//Set APB2 Bus PreScaler
+  55:../src/SystemInit.c **** 	//Clear Bit#13-15
+  56:../src/SystemInit.c **** 	RCC->CFGR &= ~(7 << APB2_POSITION);
+ 204              		.loc 1 56 12
+ 205 00e4 0C4B     		ldr	r3, .L11
+ 206 00e6 9B68     		ldr	r3, [r3, #8]
+ 207 00e8 0B4A     		ldr	r2, .L11
+ 208 00ea 23F46043 		bic	r3, r3, #57344
+ 209 00ee 9360     		str	r3, [r2, #8]
+  57:../src/SystemInit.c **** 	//Set Config
+  58:../src/SystemInit.c **** 	RCC->CFGR |= (configSystem.prescaler_APB2 << APB2_POSITION);
+ 210              		.loc 1 58 12
+ 211 00f0 094B     		ldr	r3, .L11
+ 212 00f2 9B68     		ldr	r3, [r3, #8]
+ 213              		.loc 1 58 28
+ 214 00f4 BA78     		ldrb	r2, [r7, #2]	@ zero_extendqisi2
+ 215              		.loc 1 58 44
+ 216 00f6 5203     		lsls	r2, r2, #13
+ 217 00f8 1146     		mov	r1, r2
+ 218              		.loc 1 58 12
+ 219 00fa 074A     		ldr	r2, .L11
+ 220 00fc 0B43     		orrs	r3, r3, r1
+ 221 00fe 9360     		str	r3, [r2, #8]
+  59:../src/SystemInit.c **** 
+  60:../src/SystemInit.c **** 	//Select System Clock Source
+  61:../src/SystemInit.c **** 	RCC->CFGR |= (configSystem.systemClockSource << SW_POSITION);
+ 222              		.loc 1 61 12
+ 223 0100 054B     		ldr	r3, .L11
+ 224 0102 9B68     		ldr	r3, [r3, #8]
+ 225              		.loc 1 61 28
+ 226 0104 3A78     		ldrb	r2, [r7]	@ zero_extendqisi2
+ 227              		.loc 1 61 47
+ 228 0106 1146     		mov	r1, r2
+ 229              		.loc 1 61 12
+ 230 0108 034A     		ldr	r2, .L11
+ 231 010a 0B43     		orrs	r3, r3, r1
+ 232 010c 9360     		str	r3, [r2, #8]
+  62:../src/SystemInit.c **** }
+ 233              		.loc 1 62 1
+ 234 010e 00BF     		nop
+ 235 0110 1037     		adds	r7, r7, #16
+ 236              		.cfi_def_cfa_offset 8
+ 237 0112 BD46     		mov	sp, r7
+ 238              		.cfi_def_cfa_register 13
+ 239              		@ sp needed
+ 240 0114 90BC     		pop	{r4, r7}
+ 241              		.cfi_restore 7
+ 242              		.cfi_restore 4
+ 243              		.cfi_def_cfa_offset 0
+ 244 0116 7047     		bx	lr
+ 245              	.L12:
+ 246              		.align	2
+ 247              	.L11:
+ 248 0118 00380240 		.word	1073887232
+ 249              		.cfi_endproc
+ 250              	.LFE137:
+ 252              	.Letext0:
+ 253              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 254              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 255              		.file 4 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\system\\include\\cmsis/stm
+ 256              		.file 5 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/types.h"
+ 257              		.file 6 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/SystemInit.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 SystemInit.c
+C:\Users\bahri\AppData\Local\Temp\cchsv9cH.s:17     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\cchsv9cH.s:23     .text:00000000 SystemClockConfig
+C:\Users\bahri\AppData\Local\Temp\cchsv9cH.s:248    .text:00000118 $d
+                           .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
+                           .group:00000000 wm4.stm32f407xx.h.34.dfd2ea1697b5c77f46734fce8e0379c1
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.d0b7f3cd6ee95f610104014bb3ed522a
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e9ec14ff72395df130e3e13849031638
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f407xx.h.906.b83b06aeff1423f0cb818f8b4e776e34
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.181.c3f52a3b0f4c288bddb5dda1562858e2
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.stddef.h.39.b727a6c3269d9d6ef9fc646b721a8287
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.c2dcbbb5c1f4f0e5cb716ebf7776da48
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.2a55589bfa3ee24eeb84e3c79458e4a9
+                           .group:00000000 wm4.types.h.12.bce82e9f7fdaaedfc4e7f8871bae11e3
+                           .group:00000000 wm4.SystemInit.h.5.20c4b263e99965427f2e2ddfcfbaedc4
+
+NO UNDEFINED SYMBOLS

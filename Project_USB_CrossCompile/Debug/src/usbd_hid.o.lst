@@ -1,0 +1,176 @@
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"usbd_hid.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	FSReportDescriptor
+  18              		.data
+  19              		.align	2
+  22              	FSReportDescriptor:
+  23 0000 05010906 		.ascii	"\005\001\011\006\241\001\005\007\031\340)\347\025\000"
+  23      A1010507 
+  23      19E029E7 
+  23      1500
+  24 000e 25017501 		.ascii	"%\001u\001\225\010\201\002\225\001u\010\201\001\225"
+  24      95088102 
+  24      95017508 
+  24      810195
+  25 001d 05750105 		.ascii	"\005u\001\005\010\031\001)\005\221\002\225\001u\003"
+  25      08190129 
+  25      05910295 
+  25      017503
+  26 002c 91019506 		.ascii	"\221\001\225\006u\010\025\000%e\005\007\031\000)e\201"
+  26      75081500 
+  26      25650507 
+  26      19002965 
+  26      81
+  27 003d 00C0     		.ascii	"\000\300"
+  28              		.text
+  29              		.align	1
+  30              		.global	GetFSReportDescriptor
+  31              		.syntax unified
+  32              		.thumb
+  33              		.thumb_func
+  35              	GetFSReportDescriptor:
+  36              	.LFB3:
+  37              		.file 1 "../src/usbd_hid.c"
+   1:../src/usbd_hid.c **** #include "usbd_hid.h"
+   2:../src/usbd_hid.c **** 
+   3:../src/usbd_hid.c **** /*
+   4:../src/usbd_hid.c ****  * When a Get_Descriptor(Configuration) request is issued, it returns the Configuration descriptor
+   5:../src/usbd_hid.c ****  * That is, the order shall be:
+   6:../src/usbd_hid.c ****  * Configuration descriptor
+   7:../src/usbd_hid.c ****  * Interface descriptor (specifying HID Class)
+   8:../src/usbd_hid.c ****  * HID descriptor (associated with above Interface)
+   9:../src/usbd_hid.c ****  * Endpoint descriptor (for HID Interrupt In Endpoint)
+  10:../src/usbd_hid.c ****  * Optional Endpoint descriptor (for HID Interrupt Out Endpoint)
+  11:../src/usbd_hid.c ****  */
+  12:../src/usbd_hid.c **** 
+  13:../src/usbd_hid.c **** uint8 FSReportDescriptor[63] =
+  14:../src/usbd_hid.c **** {
+  15:../src/usbd_hid.c **** 		0x05, 0x01,	//Usage Page (Generic Desktop),
+  16:../src/usbd_hid.c **** 		0x09, 0x06,	//Usage (Keyboard),
+  17:../src/usbd_hid.c **** 		0xA1, 0x01,	//Collection (Application),
+  18:../src/usbd_hid.c **** 		0x05, 0x07,	//Usage Page (Key Codes);
+  19:../src/usbd_hid.c **** 		0x19, 0xE0,	//Usage Minimum (224),
+  20:../src/usbd_hid.c **** 		0x29, 0xE7,	//Usage Maximum (231),
+  21:../src/usbd_hid.c **** 		0x15, 0x00,	//Logical Minimum (0),
+  22:../src/usbd_hid.c **** 		0x25, 0x01,	//Logical Maximum (1),
+  23:../src/usbd_hid.c **** 		0x75, 0x01,	//Report Size (1),
+  24:../src/usbd_hid.c **** 		0x95, 0x08,	//Report Count (8),
+  25:../src/usbd_hid.c **** 		0x81, 0x02,	//Input (Data, Variable, Absolute), ;Modifier byte
+  26:../src/usbd_hid.c **** 		0x95, 0x01,	//Report Count (1),
+  27:../src/usbd_hid.c **** 		0x75, 0x08,	//Report Size (8),
+  28:../src/usbd_hid.c **** 		0x81, 0x01,	//Input (Constant), ;Reserved byte
+  29:../src/usbd_hid.c **** 		0x95, 0x05,	//Report Count (5),
+  30:../src/usbd_hid.c **** 		0x75, 0x01,	//Report Size (1),
+  31:../src/usbd_hid.c **** 		0x05, 0x08,	//Usage Page (Page# for LEDs),
+  32:../src/usbd_hid.c **** 		0x19, 0x01,	//Usage Minimum (1),
+  33:../src/usbd_hid.c **** 		0x29, 0x05,	//Usage Maximum (5),
+  34:../src/usbd_hid.c **** 		0x91, 0x02,	//Output (Data, Variable, Absolute), ;LED report
+  35:../src/usbd_hid.c **** 		0x95, 0x01,	//Report Count (1),
+  36:../src/usbd_hid.c **** 		0x75, 0x03,	//Report Size (3),
+  37:../src/usbd_hid.c **** 		0x91, 0x01,	//Output (Constant), ;LED report padding
+  38:../src/usbd_hid.c **** 		0x95, 0x06,	//Report Count (6),
+  39:../src/usbd_hid.c **** 		0x75, 0x08,	//Report Size (8),
+  40:../src/usbd_hid.c **** 		0x15, 0x00,	//Logical Minimum (0),
+  41:../src/usbd_hid.c **** 		0x25, 0x65,	//Logical Maximum(101),
+  42:../src/usbd_hid.c **** 		0x05, 0x07,	//Usage Page (Key Codes),
+  43:../src/usbd_hid.c **** 		0x19, 0x00,	//Usage Minimum (0),
+  44:../src/usbd_hid.c **** 		0x29, 0x65,	//Usage Maximum (101),
+  45:../src/usbd_hid.c **** 		0x81, 0x00,	//Input (Data, Array), ;Key arrays (6 bytes)
+  46:../src/usbd_hid.c **** 		0xC0		//End Collection
+  47:../src/usbd_hid.c **** };
+  48:../src/usbd_hid.c **** 
+  49:../src/usbd_hid.c **** 
+  50:../src/usbd_hid.c **** uint8* GetFSReportDescriptor(uint16* length)
+  51:../src/usbd_hid.c **** {
+  38              		.loc 1 51 1
+  39              		.cfi_startproc
+  40              		@ args = 0, pretend = 0, frame = 8
+  41              		@ frame_needed = 1, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 80B4     		push	{r7}
+  44              		.cfi_def_cfa_offset 4
+  45              		.cfi_offset 7, -4
+  46 0002 83B0     		sub	sp, sp, #12
+  47              		.cfi_def_cfa_offset 16
+  48 0004 00AF     		add	r7, sp, #0
+  49              		.cfi_def_cfa_register 7
+  50 0006 7860     		str	r0, [r7, #4]
+  52:../src/usbd_hid.c **** 	*length = sizeof(FSReportDescriptor);
+  51              		.loc 1 52 10
+  52 0008 7B68     		ldr	r3, [r7, #4]
+  53 000a 3F22     		movs	r2, #63
+  54 000c 1A80     		strh	r2, [r3]	@ movhi
+  53:../src/usbd_hid.c **** 	return (uint8*)FSReportDescriptor;
+  55              		.loc 1 53 9
+  56 000e 034B     		ldr	r3, .L3
+  54:../src/usbd_hid.c **** }
+  57              		.loc 1 54 1
+  58 0010 1846     		mov	r0, r3
+  59 0012 0C37     		adds	r7, r7, #12
+  60              		.cfi_def_cfa_offset 4
+  61 0014 BD46     		mov	sp, r7
+  62              		.cfi_def_cfa_register 13
+  63              		@ sp needed
+  64 0016 80BC     		pop	{r7}
+  65              		.cfi_restore 7
+  66              		.cfi_def_cfa_offset 0
+  67 0018 7047     		bx	lr
+  68              	.L4:
+  69 001a 00BF     		.align	2
+  70              	.L3:
+  71 001c 00000000 		.word	FSReportDescriptor
+  72              		.cfi_endproc
+  73              	.LFE3:
+  75              	.Letext0:
+  76              		.file 2 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/types.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 usbd_hid.c
+C:\Users\bahri\AppData\Local\Temp\ccOQ8mVU.s:22     .data:00000000 FSReportDescriptor
+C:\Users\bahri\AppData\Local\Temp\ccOQ8mVU.s:19     .data:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\ccOQ8mVU.s:29     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\ccOQ8mVU.s:35     .text:00000000 GetFSReportDescriptor
+C:\Users\bahri\AppData\Local\Temp\ccOQ8mVU.s:71     .text:0000001c $d
+                           .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.newlib.h.18.1c9fedb6b3cd797cff253cc0fd593ef2
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.features.h.22.373b5fd716c8f28bb5383d71effbe848
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4._default_types.h.6.959254cf5f09734ea7516c89e8bb21bd
+                           .group:00000000 wm4.stddef.h.181.c3f52a3b0f4c288bddb5dda1562858e2
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.stddef.h.39.b727a6c3269d9d6ef9fc646b721a8287
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.types.h.98.130d89e96751ac000105a0b2b27ceff8
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.2a55589bfa3ee24eeb84e3c79458e4a9
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.types.h.12.bce82e9f7fdaaedfc4e7f8871bae11e3
+                           .group:00000000 wm4.usbd_hid.h.7.d508b76133adf5de59433dc08ce685e3
+
+NO UNDEFINED SYMBOLS

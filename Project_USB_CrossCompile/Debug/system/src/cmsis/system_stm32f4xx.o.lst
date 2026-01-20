@@ -1,0 +1,548 @@
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"system_stm32f4xx.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	SystemCoreClock
+  18              		.data
+  19              		.align	2
+  22              	SystemCoreClock:
+  23 0000 0024F400 		.word	16000000
+  24              		.global	AHBPrescTable
+  25              		.section	.rodata
+  26              		.align	2
+  29              	AHBPrescTable:
+  30 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+  30      00000000 
+  30      01020304 
+  30      06
+  31 000d 070809   		.ascii	"\007\010\011"
+  32              		.global	APBPrescTable
+  33              		.align	2
+  36              	APBPrescTable:
+  37 0010 00000000 		.ascii	"\000\000\000\000\001\002\003\004"
+  37      01020304 
+  38              		.text
+  39              		.align	1
+  40              		.global	SystemInit
+  41              		.syntax unified
+  42              		.thumb
+  43              		.thumb_func
+  45              	SystemInit:
+  46              	.LFB134:
+  47              		.file 1 "../system/src/cmsis/system_stm32f4xx.c"
+   1:../system/src/cmsis/system_stm32f4xx.c **** /**
+   2:../system/src/cmsis/system_stm32f4xx.c ****   ******************************************************************************
+   3:../system/src/cmsis/system_stm32f4xx.c ****   * @file    system_stm32f4xx.c
+   4:../system/src/cmsis/system_stm32f4xx.c ****   * @author  MCD Application Team
+   5:../system/src/cmsis/system_stm32f4xx.c ****   * @brief   CMSIS Cortex-M4 Device Peripheral Access Layer System Source File.
+   6:../system/src/cmsis/system_stm32f4xx.c ****   *
+   7:../system/src/cmsis/system_stm32f4xx.c ****   *   This file provides two functions and one global variable to be called from 
+   8:../system/src/cmsis/system_stm32f4xx.c ****   *   user application:
+   9:../system/src/cmsis/system_stm32f4xx.c ****   *      - SystemInit(): This function is called at startup just after reset and 
+  10:../system/src/cmsis/system_stm32f4xx.c ****   *                      before branch to main program. This call is made inside
+  11:../system/src/cmsis/system_stm32f4xx.c ****   *                      the "startup_stm32f4xx.s" file.
+  12:../system/src/cmsis/system_stm32f4xx.c ****   *
+  13:../system/src/cmsis/system_stm32f4xx.c ****   *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
+  14:../system/src/cmsis/system_stm32f4xx.c ****   *                                  by the user application to setup the SysTick 
+  15:../system/src/cmsis/system_stm32f4xx.c ****   *                                  timer or configure other parameters.
+  16:../system/src/cmsis/system_stm32f4xx.c ****   *                                     
+  17:../system/src/cmsis/system_stm32f4xx.c ****   *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
+  18:../system/src/cmsis/system_stm32f4xx.c ****   *                                 be called whenever the core clock is changed
+  19:../system/src/cmsis/system_stm32f4xx.c ****   *                                 during program execution.
+  20:../system/src/cmsis/system_stm32f4xx.c ****   *
+  21:../system/src/cmsis/system_stm32f4xx.c ****   *
+  22:../system/src/cmsis/system_stm32f4xx.c ****   ******************************************************************************
+  23:../system/src/cmsis/system_stm32f4xx.c ****   * @attention
+  24:../system/src/cmsis/system_stm32f4xx.c ****   *
+  25:../system/src/cmsis/system_stm32f4xx.c ****   * Copyright (c) 2017 STMicroelectronics.
+  26:../system/src/cmsis/system_stm32f4xx.c ****   * All rights reserved.
+  27:../system/src/cmsis/system_stm32f4xx.c ****   *
+  28:../system/src/cmsis/system_stm32f4xx.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  29:../system/src/cmsis/system_stm32f4xx.c ****   * in the root directory of this software component.
+  30:../system/src/cmsis/system_stm32f4xx.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  31:../system/src/cmsis/system_stm32f4xx.c ****   *
+  32:../system/src/cmsis/system_stm32f4xx.c ****   ******************************************************************************
+  33:../system/src/cmsis/system_stm32f4xx.c ****   */
+  34:../system/src/cmsis/system_stm32f4xx.c **** 
+  35:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup CMSIS
+  36:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+  37:../system/src/cmsis/system_stm32f4xx.c ****   */
+  38:../system/src/cmsis/system_stm32f4xx.c **** 
+  39:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup stm32f4xx_system
+  40:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+  41:../system/src/cmsis/system_stm32f4xx.c ****   */  
+  42:../system/src/cmsis/system_stm32f4xx.c ****   
+  43:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Includes
+  44:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+  45:../system/src/cmsis/system_stm32f4xx.c ****   */
+  46:../system/src/cmsis/system_stm32f4xx.c **** 
+  47:../system/src/cmsis/system_stm32f4xx.c **** 
+  48:../system/src/cmsis/system_stm32f4xx.c **** #include "stm32f4xx.h"
+  49:../system/src/cmsis/system_stm32f4xx.c **** 
+  50:../system/src/cmsis/system_stm32f4xx.c **** #if !defined  (HSE_VALUE) 
+  51:../system/src/cmsis/system_stm32f4xx.c ****   #define HSE_VALUE    ((uint32_t)25000000) /*!< Default value of the External oscillator in Hz */
+  52:../system/src/cmsis/system_stm32f4xx.c **** #endif /* HSE_VALUE */
+  53:../system/src/cmsis/system_stm32f4xx.c **** 
+  54:../system/src/cmsis/system_stm32f4xx.c **** #if !defined  (HSI_VALUE)
+  55:../system/src/cmsis/system_stm32f4xx.c ****   #define HSI_VALUE    ((uint32_t)16000000) /*!< Value of the Internal oscillator in Hz*/
+  56:../system/src/cmsis/system_stm32f4xx.c **** #endif /* HSI_VALUE */
+  57:../system/src/cmsis/system_stm32f4xx.c **** 
+  58:../system/src/cmsis/system_stm32f4xx.c **** /**
+  59:../system/src/cmsis/system_stm32f4xx.c ****   * @}
+  60:../system/src/cmsis/system_stm32f4xx.c ****   */
+  61:../system/src/cmsis/system_stm32f4xx.c **** 
+  62:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_TypesDefinitions
+  63:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+  64:../system/src/cmsis/system_stm32f4xx.c ****   */
+  65:../system/src/cmsis/system_stm32f4xx.c **** 
+  66:../system/src/cmsis/system_stm32f4xx.c **** /**
+  67:../system/src/cmsis/system_stm32f4xx.c ****   * @}
+  68:../system/src/cmsis/system_stm32f4xx.c ****   */
+  69:../system/src/cmsis/system_stm32f4xx.c **** 
+  70:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Defines
+  71:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+  72:../system/src/cmsis/system_stm32f4xx.c ****   */
+  73:../system/src/cmsis/system_stm32f4xx.c **** 
+  74:../system/src/cmsis/system_stm32f4xx.c **** /************************* Miscellaneous Configuration ************************/
+  75:../system/src/cmsis/system_stm32f4xx.c **** /*!< Uncomment the following line if you need to use external SRAM or SDRAM as data memory  */
+  76:../system/src/cmsis/system_stm32f4xx.c **** #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)\
+  77:../system/src/cmsis/system_stm32f4xx.c ****  || defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx)\
+  78:../system/src/cmsis/system_stm32f4xx.c ****  || defined(STM32F469xx) || defined(STM32F479xx) || defined(STM32F412Zx) || defined(STM32F412Vx)
+  79:../system/src/cmsis/system_stm32f4xx.c **** /* #define DATA_IN_ExtSRAM */
+  80:../system/src/cmsis/system_stm32f4xx.c **** #endif /* STM32F40xxx || STM32F41xxx || STM32F42xxx || STM32F43xxx || STM32F469xx || STM32F479xx ||
+  81:../system/src/cmsis/system_stm32f4xx.c ****           STM32F412Zx || STM32F412Vx */
+  82:../system/src/cmsis/system_stm32f4xx.c ****  
+  83:../system/src/cmsis/system_stm32f4xx.c **** #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx)\
+  84:../system/src/cmsis/system_stm32f4xx.c ****  || defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx)
+  85:../system/src/cmsis/system_stm32f4xx.c **** /* #define DATA_IN_ExtSDRAM */
+  86:../system/src/cmsis/system_stm32f4xx.c **** #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F446xx || STM32F469xx ||
+  87:../system/src/cmsis/system_stm32f4xx.c ****           STM32F479xx */
+  88:../system/src/cmsis/system_stm32f4xx.c **** 
+  89:../system/src/cmsis/system_stm32f4xx.c **** /* Note: Following vector table addresses must be defined in line with linker
+  90:../system/src/cmsis/system_stm32f4xx.c ****          configuration. */
+  91:../system/src/cmsis/system_stm32f4xx.c **** /*!< Uncomment the following line if you need to relocate the vector table
+  92:../system/src/cmsis/system_stm32f4xx.c ****      anywhere in Flash or Sram, else the vector table is kept at the automatic
+  93:../system/src/cmsis/system_stm32f4xx.c ****      remap of boot address selected */
+  94:../system/src/cmsis/system_stm32f4xx.c **** /* #define USER_VECT_TAB_ADDRESS */
+  95:../system/src/cmsis/system_stm32f4xx.c **** 
+  96:../system/src/cmsis/system_stm32f4xx.c **** #if defined(USER_VECT_TAB_ADDRESS)
+  97:../system/src/cmsis/system_stm32f4xx.c **** /*!< Uncomment the following line if you need to relocate your vector Table
+  98:../system/src/cmsis/system_stm32f4xx.c ****      in Sram else user remap will be done in Flash. */
+  99:../system/src/cmsis/system_stm32f4xx.c **** /* #define VECT_TAB_SRAM */
+ 100:../system/src/cmsis/system_stm32f4xx.c **** #if defined(VECT_TAB_SRAM)
+ 101:../system/src/cmsis/system_stm32f4xx.c **** #define VECT_TAB_BASE_ADDRESS   SRAM_BASE       /*!< Vector Table base address field.
+ 102:../system/src/cmsis/system_stm32f4xx.c ****                                                      This value must be a multiple of 0x200. */
+ 103:../system/src/cmsis/system_stm32f4xx.c **** #define VECT_TAB_OFFSET         0x00000000U     /*!< Vector Table base offset field.
+ 104:../system/src/cmsis/system_stm32f4xx.c ****                                                      This value must be a multiple of 0x200. */
+ 105:../system/src/cmsis/system_stm32f4xx.c **** #else
+ 106:../system/src/cmsis/system_stm32f4xx.c **** #define VECT_TAB_BASE_ADDRESS   FLASH_BASE      /*!< Vector Table base address field.
+ 107:../system/src/cmsis/system_stm32f4xx.c ****                                                      This value must be a multiple of 0x200. */
+ 108:../system/src/cmsis/system_stm32f4xx.c **** #define VECT_TAB_OFFSET         0x00000000U     /*!< Vector Table base offset field.
+ 109:../system/src/cmsis/system_stm32f4xx.c ****                                                      This value must be a multiple of 0x200. */
+ 110:../system/src/cmsis/system_stm32f4xx.c **** #endif /* VECT_TAB_SRAM */
+ 111:../system/src/cmsis/system_stm32f4xx.c **** #endif /* USER_VECT_TAB_ADDRESS */
+ 112:../system/src/cmsis/system_stm32f4xx.c **** /******************************************************************************/
+ 113:../system/src/cmsis/system_stm32f4xx.c **** 
+ 114:../system/src/cmsis/system_stm32f4xx.c **** /**
+ 115:../system/src/cmsis/system_stm32f4xx.c ****   * @}
+ 116:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 117:../system/src/cmsis/system_stm32f4xx.c **** 
+ 118:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Macros
+ 119:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+ 120:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 121:../system/src/cmsis/system_stm32f4xx.c **** 
+ 122:../system/src/cmsis/system_stm32f4xx.c **** /**
+ 123:../system/src/cmsis/system_stm32f4xx.c ****   * @}
+ 124:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 125:../system/src/cmsis/system_stm32f4xx.c **** 
+ 126:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Variables
+ 127:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+ 128:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 129:../system/src/cmsis/system_stm32f4xx.c ****   /* This variable is updated in three ways:
+ 130:../system/src/cmsis/system_stm32f4xx.c ****       1) by calling CMSIS function SystemCoreClockUpdate()
+ 131:../system/src/cmsis/system_stm32f4xx.c ****       2) by calling HAL API function HAL_RCC_GetHCLKFreq()
+ 132:../system/src/cmsis/system_stm32f4xx.c ****       3) each time HAL_RCC_ClockConfig() is called to configure the system clock frequency 
+ 133:../system/src/cmsis/system_stm32f4xx.c ****          Note: If you use this function to configure the system clock; then there
+ 134:../system/src/cmsis/system_stm32f4xx.c ****                is no need to call the 2 first functions listed above, since SystemCoreClock
+ 135:../system/src/cmsis/system_stm32f4xx.c ****                variable is updated automatically.
+ 136:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 137:../system/src/cmsis/system_stm32f4xx.c **** uint32_t SystemCoreClock = 16000000;
+ 138:../system/src/cmsis/system_stm32f4xx.c **** const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 139:../system/src/cmsis/system_stm32f4xx.c **** const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};
+ 140:../system/src/cmsis/system_stm32f4xx.c **** /**
+ 141:../system/src/cmsis/system_stm32f4xx.c ****   * @}
+ 142:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 143:../system/src/cmsis/system_stm32f4xx.c **** 
+ 144:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_FunctionPrototypes
+ 145:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+ 146:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 147:../system/src/cmsis/system_stm32f4xx.c **** 
+ 148:../system/src/cmsis/system_stm32f4xx.c **** #if defined (DATA_IN_ExtSRAM) || defined (DATA_IN_ExtSDRAM)
+ 149:../system/src/cmsis/system_stm32f4xx.c ****   static void SystemInit_ExtMemCtl(void); 
+ 150:../system/src/cmsis/system_stm32f4xx.c **** #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
+ 151:../system/src/cmsis/system_stm32f4xx.c **** 
+ 152:../system/src/cmsis/system_stm32f4xx.c **** /**
+ 153:../system/src/cmsis/system_stm32f4xx.c ****   * @}
+ 154:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 155:../system/src/cmsis/system_stm32f4xx.c **** 
+ 156:../system/src/cmsis/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Functions
+ 157:../system/src/cmsis/system_stm32f4xx.c ****   * @{
+ 158:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 159:../system/src/cmsis/system_stm32f4xx.c **** 
+ 160:../system/src/cmsis/system_stm32f4xx.c **** /**
+ 161:../system/src/cmsis/system_stm32f4xx.c ****   * @brief  Setup the microcontroller system
+ 162:../system/src/cmsis/system_stm32f4xx.c ****   *         Initialize the FPU setting, vector table location and External memory 
+ 163:../system/src/cmsis/system_stm32f4xx.c ****   *         configuration.
+ 164:../system/src/cmsis/system_stm32f4xx.c ****   * @param  None
+ 165:../system/src/cmsis/system_stm32f4xx.c ****   * @retval None
+ 166:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 167:../system/src/cmsis/system_stm32f4xx.c **** void SystemInit(void)
+ 168:../system/src/cmsis/system_stm32f4xx.c **** {
+  48              		.loc 1 168 1
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 1, uses_anonymous_args = 0
+  52              		@ link register save eliminated.
+  53 0000 80B4     		push	{r7}
+  54              		.cfi_def_cfa_offset 4
+  55              		.cfi_offset 7, -4
+  56 0002 00AF     		add	r7, sp, #0
+  57              		.cfi_def_cfa_register 7
+ 169:../system/src/cmsis/system_stm32f4xx.c ****   /* FPU settings ------------------------------------------------------------*/
+ 170:../system/src/cmsis/system_stm32f4xx.c ****   #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 171:../system/src/cmsis/system_stm32f4xx.c ****     SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+ 172:../system/src/cmsis/system_stm32f4xx.c ****   #endif
+ 173:../system/src/cmsis/system_stm32f4xx.c **** 
+ 174:../system/src/cmsis/system_stm32f4xx.c **** #if defined (DATA_IN_ExtSRAM) || defined (DATA_IN_ExtSDRAM)
+ 175:../system/src/cmsis/system_stm32f4xx.c ****   SystemInit_ExtMemCtl(); 
+ 176:../system/src/cmsis/system_stm32f4xx.c **** #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
+ 177:../system/src/cmsis/system_stm32f4xx.c **** 
+ 178:../system/src/cmsis/system_stm32f4xx.c ****   /* Configure the Vector Table location -------------------------------------*/
+ 179:../system/src/cmsis/system_stm32f4xx.c **** #if defined(USER_VECT_TAB_ADDRESS)
+ 180:../system/src/cmsis/system_stm32f4xx.c ****   SCB->VTOR = VECT_TAB_BASE_ADDRESS | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM 
+ 181:../system/src/cmsis/system_stm32f4xx.c **** #endif /* USER_VECT_TAB_ADDRESS */
+ 182:../system/src/cmsis/system_stm32f4xx.c **** }
+  58              		.loc 1 182 1
+  59 0004 00BF     		nop
+  60 0006 BD46     		mov	sp, r7
+  61              		.cfi_def_cfa_register 13
+  62              		@ sp needed
+  63 0008 80BC     		pop	{r7}
+  64              		.cfi_restore 7
+  65              		.cfi_def_cfa_offset 0
+  66 000a 7047     		bx	lr
+  67              		.cfi_endproc
+  68              	.LFE134:
+  70              		.align	1
+  71              		.global	SystemCoreClockUpdate
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  76              	SystemCoreClockUpdate:
+  77              	.LFB135:
+ 183:../system/src/cmsis/system_stm32f4xx.c **** 
+ 184:../system/src/cmsis/system_stm32f4xx.c **** /**
+ 185:../system/src/cmsis/system_stm32f4xx.c ****    * @brief  Update SystemCoreClock variable according to Clock Register Values.
+ 186:../system/src/cmsis/system_stm32f4xx.c ****   *         The SystemCoreClock variable contains the core clock (HCLK), it can
+ 187:../system/src/cmsis/system_stm32f4xx.c ****   *         be used by the user application to setup the SysTick timer or configure
+ 188:../system/src/cmsis/system_stm32f4xx.c ****   *         other parameters.
+ 189:../system/src/cmsis/system_stm32f4xx.c ****   *           
+ 190:../system/src/cmsis/system_stm32f4xx.c ****   * @note   Each time the core clock (HCLK) changes, this function must be called
+ 191:../system/src/cmsis/system_stm32f4xx.c ****   *         to update SystemCoreClock variable value. Otherwise, any configuration
+ 192:../system/src/cmsis/system_stm32f4xx.c ****   *         based on this variable will be incorrect.         
+ 193:../system/src/cmsis/system_stm32f4xx.c ****   *     
+ 194:../system/src/cmsis/system_stm32f4xx.c ****   * @note   - The system frequency computed by this function is not the real 
+ 195:../system/src/cmsis/system_stm32f4xx.c ****   *           frequency in the chip. It is calculated based on the predefined 
+ 196:../system/src/cmsis/system_stm32f4xx.c ****   *           constant and the selected clock source:
+ 197:../system/src/cmsis/system_stm32f4xx.c ****   *             
+ 198:../system/src/cmsis/system_stm32f4xx.c ****   *           - If SYSCLK source is HSI, SystemCoreClock will contain the HSI_VALUE(*)
+ 199:../system/src/cmsis/system_stm32f4xx.c ****   *                                              
+ 200:../system/src/cmsis/system_stm32f4xx.c ****   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(**)
+ 201:../system/src/cmsis/system_stm32f4xx.c ****   *                          
+ 202:../system/src/cmsis/system_stm32f4xx.c ****   *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**) 
+ 203:../system/src/cmsis/system_stm32f4xx.c ****   *             or HSI_VALUE(*) multiplied/divided by the PLL factors.
+ 204:../system/src/cmsis/system_stm32f4xx.c ****   *         
+ 205:../system/src/cmsis/system_stm32f4xx.c ****   *         (*) HSI_VALUE is a constant defined in stm32f4xx_hal_conf.h file (default value
+ 206:../system/src/cmsis/system_stm32f4xx.c ****   *             16 MHz) but the real value may vary depending on the variations
+ 207:../system/src/cmsis/system_stm32f4xx.c ****   *             in voltage and temperature.   
+ 208:../system/src/cmsis/system_stm32f4xx.c ****   *    
+ 209:../system/src/cmsis/system_stm32f4xx.c ****   *         (**) HSE_VALUE is a constant defined in stm32f4xx_hal_conf.h file (its value
+ 210:../system/src/cmsis/system_stm32f4xx.c ****   *              depends on the application requirements), user has to ensure that HSE_VALUE
+ 211:../system/src/cmsis/system_stm32f4xx.c ****   *              is same as the real frequency of the crystal used. Otherwise, this function
+ 212:../system/src/cmsis/system_stm32f4xx.c ****   *              may have wrong result.
+ 213:../system/src/cmsis/system_stm32f4xx.c ****   *                
+ 214:../system/src/cmsis/system_stm32f4xx.c ****   *         - The result of this function could be not correct when using fractional
+ 215:../system/src/cmsis/system_stm32f4xx.c ****   *           value for HSE crystal.
+ 216:../system/src/cmsis/system_stm32f4xx.c ****   *     
+ 217:../system/src/cmsis/system_stm32f4xx.c ****   * @param  None
+ 218:../system/src/cmsis/system_stm32f4xx.c ****   * @retval None
+ 219:../system/src/cmsis/system_stm32f4xx.c ****   */
+ 220:../system/src/cmsis/system_stm32f4xx.c **** void SystemCoreClockUpdate(void)
+ 221:../system/src/cmsis/system_stm32f4xx.c **** {
+  78              		.loc 1 221 1
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 24
+  81              		@ frame_needed = 1, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  83 000c 80B4     		push	{r7}
+  84              		.cfi_def_cfa_offset 4
+  85              		.cfi_offset 7, -4
+  86 000e 87B0     		sub	sp, sp, #28
+  87              		.cfi_def_cfa_offset 32
+  88 0010 00AF     		add	r7, sp, #0
+  89              		.cfi_def_cfa_register 7
+ 222:../system/src/cmsis/system_stm32f4xx.c ****   uint32_t tmp = 0, pllvco = 0, pllp = 2, pllsource = 0, pllm = 2;
+  90              		.loc 1 222 12
+  91 0012 0023     		movs	r3, #0
+  92 0014 3B61     		str	r3, [r7, #16]
+  93              		.loc 1 222 21
+  94 0016 0023     		movs	r3, #0
+  95 0018 7B61     		str	r3, [r7, #20]
+  96              		.loc 1 222 33
+  97 001a 0223     		movs	r3, #2
+  98 001c FB60     		str	r3, [r7, #12]
+  99              		.loc 1 222 43
+ 100 001e 0023     		movs	r3, #0
+ 101 0020 BB60     		str	r3, [r7, #8]
+ 102              		.loc 1 222 58
+ 103 0022 0223     		movs	r3, #2
+ 104 0024 7B60     		str	r3, [r7, #4]
+ 223:../system/src/cmsis/system_stm32f4xx.c ****   
+ 224:../system/src/cmsis/system_stm32f4xx.c ****   /* Get SYSCLK source -------------------------------------------------------*/
+ 225:../system/src/cmsis/system_stm32f4xx.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+ 105              		.loc 1 225 12
+ 106 0026 344B     		ldr	r3, .L10
+ 107 0028 9B68     		ldr	r3, [r3, #8]
+ 108              		.loc 1 225 7
+ 109 002a 03F00C03 		and	r3, r3, #12
+ 110 002e 3B61     		str	r3, [r7, #16]
+ 226:../system/src/cmsis/system_stm32f4xx.c **** 
+ 227:../system/src/cmsis/system_stm32f4xx.c ****   switch (tmp)
+ 111              		.loc 1 227 3
+ 112 0030 3B69     		ldr	r3, [r7, #16]
+ 113 0032 082B     		cmp	r3, #8
+ 114 0034 11D0     		beq	.L3
+ 115 0036 3B69     		ldr	r3, [r7, #16]
+ 116 0038 082B     		cmp	r3, #8
+ 117 003a 44D8     		bhi	.L4
+ 118 003c 3B69     		ldr	r3, [r7, #16]
+ 119 003e 002B     		cmp	r3, #0
+ 120 0040 03D0     		beq	.L5
+ 121 0042 3B69     		ldr	r3, [r7, #16]
+ 122 0044 042B     		cmp	r3, #4
+ 123 0046 04D0     		beq	.L6
+ 124 0048 3DE0     		b	.L4
+ 125              	.L5:
+ 228:../system/src/cmsis/system_stm32f4xx.c ****   {
+ 229:../system/src/cmsis/system_stm32f4xx.c ****     case 0x00:  /* HSI used as system clock source */
+ 230:../system/src/cmsis/system_stm32f4xx.c ****       SystemCoreClock = HSI_VALUE;
+ 126              		.loc 1 230 23
+ 127 004a 2C4B     		ldr	r3, .L10+4
+ 128 004c 2C4A     		ldr	r2, .L10+8
+ 129 004e 1A60     		str	r2, [r3]
+ 231:../system/src/cmsis/system_stm32f4xx.c ****       break;
+ 130              		.loc 1 231 7
+ 131 0050 3DE0     		b	.L7
+ 132              	.L6:
+ 232:../system/src/cmsis/system_stm32f4xx.c ****     case 0x04:  /* HSE used as system clock source */
+ 233:../system/src/cmsis/system_stm32f4xx.c ****       SystemCoreClock = HSE_VALUE;
+ 133              		.loc 1 233 23
+ 134 0052 2A4B     		ldr	r3, .L10+4
+ 135 0054 2B4A     		ldr	r2, .L10+12
+ 136 0056 1A60     		str	r2, [r3]
+ 234:../system/src/cmsis/system_stm32f4xx.c ****       break;
+ 137              		.loc 1 234 7
+ 138 0058 39E0     		b	.L7
+ 139              	.L3:
+ 235:../system/src/cmsis/system_stm32f4xx.c ****     case 0x08:  /* PLL used as system clock source */
+ 236:../system/src/cmsis/system_stm32f4xx.c **** 
+ 237:../system/src/cmsis/system_stm32f4xx.c ****       /* PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N
+ 238:../system/src/cmsis/system_stm32f4xx.c ****          SYSCLK = PLL_VCO / PLL_P
+ 239:../system/src/cmsis/system_stm32f4xx.c ****          */    
+ 240:../system/src/cmsis/system_stm32f4xx.c ****       pllsource = (RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) >> 22;
+ 140              		.loc 1 240 23
+ 141 005a 274B     		ldr	r3, .L10
+ 142 005c 5B68     		ldr	r3, [r3, #4]
+ 143              		.loc 1 240 55
+ 144 005e 9B0D     		lsrs	r3, r3, #22
+ 145              		.loc 1 240 17
+ 146 0060 03F00103 		and	r3, r3, #1
+ 147 0064 BB60     		str	r3, [r7, #8]
+ 241:../system/src/cmsis/system_stm32f4xx.c ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 148              		.loc 1 241 17
+ 149 0066 244B     		ldr	r3, .L10
+ 150 0068 5B68     		ldr	r3, [r3, #4]
+ 151              		.loc 1 241 12
+ 152 006a 03F03F03 		and	r3, r3, #63
+ 153 006e 7B60     		str	r3, [r7, #4]
+ 242:../system/src/cmsis/system_stm32f4xx.c ****       
+ 243:../system/src/cmsis/system_stm32f4xx.c ****       if (pllsource != 0)
+ 154              		.loc 1 243 10
+ 155 0070 BB68     		ldr	r3, [r7, #8]
+ 156 0072 002B     		cmp	r3, #0
+ 157 0074 0CD0     		beq	.L8
+ 244:../system/src/cmsis/system_stm32f4xx.c ****       {
+ 245:../system/src/cmsis/system_stm32f4xx.c ****         /* HSE used as PLL clock source */
+ 246:../system/src/cmsis/system_stm32f4xx.c ****         pllvco = (HSE_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);
+ 158              		.loc 1 246 29
+ 159 0076 234A     		ldr	r2, .L10+12
+ 160 0078 7B68     		ldr	r3, [r7, #4]
+ 161 007a B2FBF3F3 		udiv	r3, r2, r3
+ 162              		.loc 1 246 44
+ 163 007e 1E4A     		ldr	r2, .L10
+ 164 0080 5268     		ldr	r2, [r2, #4]
+ 165              		.loc 1 246 74
+ 166 0082 9209     		lsrs	r2, r2, #6
+ 167 0084 C2F30802 		ubfx	r2, r2, #0, #9
+ 168              		.loc 1 246 16
+ 169 0088 02FB03F3 		mul	r3, r2, r3
+ 170 008c 7B61     		str	r3, [r7, #20]
+ 171 008e 0BE0     		b	.L9
+ 172              	.L8:
+ 247:../system/src/cmsis/system_stm32f4xx.c ****       }
+ 248:../system/src/cmsis/system_stm32f4xx.c ****       else
+ 249:../system/src/cmsis/system_stm32f4xx.c ****       {
+ 250:../system/src/cmsis/system_stm32f4xx.c ****         /* HSI used as PLL clock source */
+ 251:../system/src/cmsis/system_stm32f4xx.c ****         pllvco = (HSI_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);
+ 173              		.loc 1 251 29
+ 174 0090 1B4A     		ldr	r2, .L10+8
+ 175 0092 7B68     		ldr	r3, [r7, #4]
+ 176 0094 B2FBF3F3 		udiv	r3, r2, r3
+ 177              		.loc 1 251 44
+ 178 0098 174A     		ldr	r2, .L10
+ 179 009a 5268     		ldr	r2, [r2, #4]
+ 180              		.loc 1 251 74
+ 181 009c 9209     		lsrs	r2, r2, #6
+ 182 009e C2F30802 		ubfx	r2, r2, #0, #9
+ 183              		.loc 1 251 16
+ 184 00a2 02FB03F3 		mul	r3, r2, r3
+ 185 00a6 7B61     		str	r3, [r7, #20]
+ 186              	.L9:
+ 252:../system/src/cmsis/system_stm32f4xx.c ****       }
+ 253:../system/src/cmsis/system_stm32f4xx.c **** 
+ 254:../system/src/cmsis/system_stm32f4xx.c ****       pllp = (((RCC->PLLCFGR & RCC_PLLCFGR_PLLP) >>16) + 1 ) *2;
+ 187              		.loc 1 254 20
+ 188 00a8 134B     		ldr	r3, .L10
+ 189 00aa 5B68     		ldr	r3, [r3, #4]
+ 190              		.loc 1 254 50
+ 191 00ac 1B0C     		lsrs	r3, r3, #16
+ 192 00ae 03F00303 		and	r3, r3, #3
+ 193              		.loc 1 254 56
+ 194 00b2 0133     		adds	r3, r3, #1
+ 195              		.loc 1 254 12
+ 196 00b4 5B00     		lsls	r3, r3, #1
+ 197 00b6 FB60     		str	r3, [r7, #12]
+ 255:../system/src/cmsis/system_stm32f4xx.c ****       SystemCoreClock = pllvco/pllp;
+ 198              		.loc 1 255 31
+ 199 00b8 7A69     		ldr	r2, [r7, #20]
+ 200 00ba FB68     		ldr	r3, [r7, #12]
+ 201 00bc B2FBF3F3 		udiv	r3, r2, r3
+ 202              		.loc 1 255 23
+ 203 00c0 0E4A     		ldr	r2, .L10+4
+ 204 00c2 1360     		str	r3, [r2]
+ 256:../system/src/cmsis/system_stm32f4xx.c ****       break;
+ 205              		.loc 1 256 7
+ 206 00c4 03E0     		b	.L7
+ 207              	.L4:
+ 257:../system/src/cmsis/system_stm32f4xx.c ****     default:
+ 258:../system/src/cmsis/system_stm32f4xx.c ****       SystemCoreClock = HSI_VALUE;
+ 208              		.loc 1 258 23
+ 209 00c6 0D4B     		ldr	r3, .L10+4
+ 210 00c8 0D4A     		ldr	r2, .L10+8
+ 211 00ca 1A60     		str	r2, [r3]
+ 259:../system/src/cmsis/system_stm32f4xx.c ****       break;
+ 212              		.loc 1 259 7
+ 213 00cc 00BF     		nop
+ 214              	.L7:
+ 260:../system/src/cmsis/system_stm32f4xx.c ****   }
+ 261:../system/src/cmsis/system_stm32f4xx.c ****   /* Compute HCLK frequency --------------------------------------------------*/
+ 262:../system/src/cmsis/system_stm32f4xx.c ****   /* Get HCLK prescaler */
+ 263:../system/src/cmsis/system_stm32f4xx.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ 215              		.loc 1 263 28
+ 216 00ce 0A4B     		ldr	r3, .L10
+ 217 00d0 9B68     		ldr	r3, [r3, #8]
+ 218              		.loc 1 263 52
+ 219 00d2 1B09     		lsrs	r3, r3, #4
+ 220 00d4 03F00F03 		and	r3, r3, #15
+ 221              		.loc 1 263 22
+ 222 00d8 0B4A     		ldr	r2, .L10+16
+ 223 00da D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 224              		.loc 1 263 7
+ 225 00dc 3B61     		str	r3, [r7, #16]
+ 264:../system/src/cmsis/system_stm32f4xx.c ****   /* HCLK frequency */
+ 265:../system/src/cmsis/system_stm32f4xx.c ****   SystemCoreClock >>= tmp;
+ 226              		.loc 1 265 19
+ 227 00de 074B     		ldr	r3, .L10+4
+ 228 00e0 1A68     		ldr	r2, [r3]
+ 229 00e2 3B69     		ldr	r3, [r7, #16]
+ 230 00e4 22FA03F3 		lsr	r3, r2, r3
+ 231 00e8 044A     		ldr	r2, .L10+4
+ 232 00ea 1360     		str	r3, [r2]
+ 266:../system/src/cmsis/system_stm32f4xx.c **** }
+ 233              		.loc 1 266 1
+ 234 00ec 00BF     		nop
+ 235 00ee 1C37     		adds	r7, r7, #28
+ 236              		.cfi_def_cfa_offset 4
+ 237 00f0 BD46     		mov	sp, r7
+ 238              		.cfi_def_cfa_register 13
+ 239              		@ sp needed
+ 240 00f2 80BC     		pop	{r7}
+ 241              		.cfi_restore 7
+ 242              		.cfi_def_cfa_offset 0
+ 243 00f4 7047     		bx	lr
+ 244              	.L11:
+ 245 00f6 00BF     		.align	2
+ 246              	.L10:
+ 247 00f8 00380240 		.word	1073887232
+ 248 00fc 00000000 		.word	SystemCoreClock
+ 249 0100 0024F400 		.word	16000000
+ 250 0104 40787D01 		.word	25000000
+ 251 0108 00000000 		.word	AHBPrescTable
+ 252              		.cfi_endproc
+ 253              	.LFE135:
+ 255              	.Letext0:
+ 256              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 257              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 258              		.file 4 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\system\\include\\cmsis/sys
+ 259              		.file 5 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\system\\include\\cmsis/stm
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32f4xx.c
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:22     .data:00000000 SystemCoreClock
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:19     .data:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:29     .rodata:00000000 AHBPrescTable
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:26     .rodata:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:36     .rodata:00000010 APBPrescTable
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:39     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:45     .text:00000000 SystemInit
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:76     .text:0000000c SystemCoreClockUpdate
+C:\Users\bahri\AppData\Local\Temp\ccynFav2.s:247    .text:000000f8 $d
+                           .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
+                           .group:00000000 wm4.stm32f4xx.h.38.d053a70ce905afacf9f39dda4c23396b
+                           .group:00000000 wm4.stm32f407xx.h.34.dfd2ea1697b5c77f46734fce8e0379c1
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.d0b7f3cd6ee95f610104014bb3ed522a
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e9ec14ff72395df130e3e13849031638
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f407xx.h.906.b83b06aeff1423f0cb818f8b4e776e34
+                           .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
+
+NO UNDEFINED SYMBOLS

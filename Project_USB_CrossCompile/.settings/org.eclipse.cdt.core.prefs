@@ -1,0 +1,11 @@
+doxygen/doxygen_new_line_after_brief=true
+doxygen/doxygen_use_brief_tag=false
+doxygen/doxygen_use_javadoc_tags=true
+doxygen/doxygen_use_pre_tag=false
+doxygen/doxygen_use_structural_commands=false
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.83755054/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.83755054/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.83755054/PATH/value=C\:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin;C\:/Users/bahri/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047/jre/bin/server;C\:/Users/bahri/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047/jre/bin;C\:\\WINDOWS\\system32;C\:\\WINDOWS;C\:\\WINDOWS\\System32\\Wbem;C\:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C\:\\WINDOWS\\System32\\OpenSSH\\;C\:\\Users\\bahri\\AppData\\Local\\Microsoft\\WindowsApps;C\:\\Users\\bahri\\.p2\\pool\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\\jre\\bin\\server;C\:\\Users\\bahri\\.p2\\pool\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230831-1047\\jre\\bin;C\:\\Users\\bahri\\OneDrive\\Masa\u00FCst\u00FC;C\:\\Program Files (x86)\\GnuWin32\\bin
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.83755054/append=true
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.83755054/appendContributed=true

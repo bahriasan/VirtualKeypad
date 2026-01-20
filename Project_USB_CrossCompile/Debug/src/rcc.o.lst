@@ -1,0 +1,364 @@
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"rcc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	Prescaler_AHB
+  18              		.data
+  19              		.align	2
+  22              	Prescaler_AHB:
+  23 0000 01020304 		.ascii	"\001\002\003\004\005\006\007\010"
+  23      05060708 
+  24              		.global	Prescaler_APB
+  25              		.align	2
+  28              	Prescaler_APB:
+  29 0008 01020304 		.ascii	"\001\002\003\004\000"
+  29      00
+  30 000d 000000   		.space	3
+  31              		.text
+  32              		.align	1
+  33              		.global	RCC_ReadClock
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  38              	RCC_ReadClock:
+  39              	.LFB137:
+  40              		.file 1 "../src/rcc.c"
+   1:../src/rcc.c  **** /*
+   2:../src/rcc.c  ****  * rcc.c
+   3:../src/rcc.c  ****  *
+   4:../src/rcc.c  ****  *  Created on: 12 May 2024
+   5:../src/rcc.c  ****  *      Author: bahri
+   6:../src/rcc.c  ****  */
+   7:../src/rcc.c  **** 
+   8:../src/rcc.c  **** #include "rcc.h"
+   9:../src/rcc.c  **** 
+  10:../src/rcc.c  **** 
+  11:../src/rcc.c  **** uint8 Prescaler_AHB[8]={1,2,3,4,5,6,7,8};
+  12:../src/rcc.c  **** uint8 Prescaler_APB[8]={1,2,3,4};
+  13:../src/rcc.c  **** 
+  14:../src/rcc.c  **** 
+  15:../src/rcc.c  **** uint32 RCC_ReadClock(bus_type bus, uint32* ret_clk)
+  16:../src/rcc.c  **** {
+  41              		.loc 1 16 1
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 24
+  44              		@ frame_needed = 1, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46 0000 80B4     		push	{r7}
+  47              		.cfi_def_cfa_offset 4
+  48              		.cfi_offset 7, -4
+  49 0002 87B0     		sub	sp, sp, #28
+  50              		.cfi_def_cfa_offset 32
+  51 0004 00AF     		add	r7, sp, #0
+  52              		.cfi_def_cfa_register 7
+  53 0006 0346     		mov	r3, r0
+  54 0008 3960     		str	r1, [r7]
+  55 000a FB71     		strb	r3, [r7, #7]
+  17:../src/rcc.c  **** 	uint8 temp, ps_apb1, ps_apb2, ps_ahb;
+  18:../src/rcc.c  **** 	uint32 clk;
+  19:../src/rcc.c  **** 
+  20:../src/rcc.c  **** 	//1. Check Clock Source
+  21:../src/rcc.c  **** 	if(((RCC->CFGR >> SWS_POSITION) & 0x3u) == 0x0u)	//HSI ENABLE
+  56              		.loc 1 21 10
+  57 000c 374B     		ldr	r3, .L14
+  58 000e 9B68     		ldr	r3, [r3, #8]
+  59              		.loc 1 21 17
+  60 0010 9B08     		lsrs	r3, r3, #2
+  61              		.loc 1 21 34
+  62 0012 03F00303 		and	r3, r3, #3
+  63              		.loc 1 21 4
+  64 0016 002B     		cmp	r3, #0
+  65 0018 02D1     		bne	.L2
+  22:../src/rcc.c  **** 	{
+  23:../src/rcc.c  **** 		clk = 16000000u;
+  66              		.loc 1 23 7
+  67 001a 354B     		ldr	r3, .L14+4
+  68 001c 3B61     		str	r3, [r7, #16]
+  69 001e 0BE0     		b	.L3
+  70              	.L2:
+  24:../src/rcc.c  **** 	}
+  25:../src/rcc.c  **** 	else if(((RCC->CFGR >> SWS_POSITION) & 0x3u) == 0x1u)	//HSE ENABLE
+  71              		.loc 1 25 15
+  72 0020 324B     		ldr	r3, .L14
+  73 0022 9B68     		ldr	r3, [r3, #8]
+  74              		.loc 1 25 22
+  75 0024 9B08     		lsrs	r3, r3, #2
+  76              		.loc 1 25 39
+  77 0026 03F00303 		and	r3, r3, #3
+  78              		.loc 1 25 9
+  79 002a 012B     		cmp	r3, #1
+  80 002c 02D1     		bne	.L4
+  26:../src/rcc.c  **** 	{
+  27:../src/rcc.c  **** 		clk = 8000000u;
+  81              		.loc 1 27 7
+  82 002e 314B     		ldr	r3, .L14+8
+  83 0030 3B61     		str	r3, [r7, #16]
+  84 0032 01E0     		b	.L3
+  85              	.L4:
+  28:../src/rcc.c  **** 	}
+  29:../src/rcc.c  **** 	else if(((RCC->CFGR >> SWS_POSITION) & 0x3u) == 0x2u)	//PLL ENABLE
+  86              		.loc 1 29 15
+  87 0034 2D4B     		ldr	r3, .L14
+  88 0036 9B68     		ldr	r3, [r3, #8]
+  89              	.L3:
+  30:../src/rcc.c  **** 	{
+  31:../src/rcc.c  **** 		//TBD
+  32:../src/rcc.c  **** 	}
+  33:../src/rcc.c  **** 
+  34:../src/rcc.c  **** 	//2. Read Prescaler Values
+  35:../src/rcc.c  **** 	//AHB_PreScaler
+  36:../src/rcc.c  **** 	temp = (RCC->CFGR >> AHB_POSITION) & 0xFu;
+  90              		.loc 1 36 13
+  91 0038 2C4B     		ldr	r3, .L14
+  92 003a 9B68     		ldr	r3, [r3, #8]
+  93              		.loc 1 36 20
+  94 003c 1B09     		lsrs	r3, r3, #4
+  95              		.loc 1 36 37
+  96 003e DBB2     		uxtb	r3, r3
+  97              		.loc 1 36 7
+  98 0040 03F00F03 		and	r3, r3, #15
+  99 0044 FB73     		strb	r3, [r7, #15]
+  37:../src/rcc.c  **** 	if(temp < 8)
+ 100              		.loc 1 37 4
+ 101 0046 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 102 0048 072B     		cmp	r3, #7
+ 103 004a 02D8     		bhi	.L5
+  38:../src/rcc.c  **** 	{
+  39:../src/rcc.c  **** 		ps_ahb = 0;
+ 104              		.loc 1 39 10
+ 105 004c 0023     		movs	r3, #0
+ 106 004e BB75     		strb	r3, [r7, #22]
+ 107 0050 04E0     		b	.L6
+ 108              	.L5:
+  40:../src/rcc.c  **** 	}
+  41:../src/rcc.c  **** 	else
+  42:../src/rcc.c  **** 	{
+  43:../src/rcc.c  **** 		ps_ahb = Prescaler_AHB[temp-8];
+ 109              		.loc 1 43 30
+ 110 0052 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 111 0054 083B     		subs	r3, r3, #8
+ 112              		.loc 1 43 10
+ 113 0056 284A     		ldr	r2, .L14+12
+ 114 0058 D35C     		ldrb	r3, [r2, r3]
+ 115 005a BB75     		strb	r3, [r7, #22]
+ 116              	.L6:
+  44:../src/rcc.c  **** 	}
+  45:../src/rcc.c  **** 
+  46:../src/rcc.c  **** 	//APB1_PreScaler
+  47:../src/rcc.c  **** 	temp = (RCC->CFGR >> APB1_POSITION) & 0x7u;
+ 117              		.loc 1 47 13
+ 118 005c 234B     		ldr	r3, .L14
+ 119 005e 9B68     		ldr	r3, [r3, #8]
+ 120              		.loc 1 47 20
+ 121 0060 9B0A     		lsrs	r3, r3, #10
+ 122              		.loc 1 47 38
+ 123 0062 DBB2     		uxtb	r3, r3
+ 124              		.loc 1 47 7
+ 125 0064 03F00703 		and	r3, r3, #7
+ 126 0068 FB73     		strb	r3, [r7, #15]
+  48:../src/rcc.c  **** 	if(temp < 4)
+ 127              		.loc 1 48 4
+ 128 006a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 129 006c 032B     		cmp	r3, #3
+ 130 006e 02D8     		bhi	.L7
+  49:../src/rcc.c  **** 	{
+  50:../src/rcc.c  **** 		ps_apb1 = 0;
+ 131              		.loc 1 50 11
+ 132 0070 0023     		movs	r3, #0
+ 133 0072 FB75     		strb	r3, [r7, #23]
+ 134 0074 04E0     		b	.L8
+ 135              	.L7:
+  51:../src/rcc.c  **** 	}
+  52:../src/rcc.c  **** 	else
+  53:../src/rcc.c  **** 	{
+  54:../src/rcc.c  **** 		ps_apb1 = Prescaler_APB[temp-4];
+ 136              		.loc 1 54 31
+ 137 0076 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 138 0078 043B     		subs	r3, r3, #4
+ 139              		.loc 1 54 11
+ 140 007a 204A     		ldr	r2, .L14+16
+ 141 007c D35C     		ldrb	r3, [r2, r3]
+ 142 007e FB75     		strb	r3, [r7, #23]
+ 143              	.L8:
+  55:../src/rcc.c  **** 	}
+  56:../src/rcc.c  **** 
+  57:../src/rcc.c  **** 	//APB2_PreScaler
+  58:../src/rcc.c  **** 	temp = (RCC->CFGR >> APB2_POSITION) & 0x7u;
+ 144              		.loc 1 58 13
+ 145 0080 1A4B     		ldr	r3, .L14
+ 146 0082 9B68     		ldr	r3, [r3, #8]
+ 147              		.loc 1 58 20
+ 148 0084 5B0B     		lsrs	r3, r3, #13
+ 149              		.loc 1 58 38
+ 150 0086 DBB2     		uxtb	r3, r3
+ 151              		.loc 1 58 7
+ 152 0088 03F00703 		and	r3, r3, #7
+ 153 008c FB73     		strb	r3, [r7, #15]
+  59:../src/rcc.c  **** 	if(temp < 4)
+ 154              		.loc 1 59 4
+ 155 008e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 156 0090 032B     		cmp	r3, #3
+ 157 0092 02D8     		bhi	.L9
+  60:../src/rcc.c  **** 	{
+  61:../src/rcc.c  **** 		ps_apb2 = 0;
+ 158              		.loc 1 61 11
+ 159 0094 0023     		movs	r3, #0
+ 160 0096 BB73     		strb	r3, [r7, #14]
+ 161 0098 04E0     		b	.L10
+ 162              	.L9:
+  62:../src/rcc.c  **** 	}
+  63:../src/rcc.c  **** 	else
+  64:../src/rcc.c  **** 	{
+  65:../src/rcc.c  **** 		ps_apb2 = Prescaler_APB[temp-4];
+ 163              		.loc 1 65 31
+ 164 009a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 165 009c 043B     		subs	r3, r3, #4
+ 166              		.loc 1 65 11
+ 167 009e 174A     		ldr	r2, .L14+16
+ 168 00a0 D35C     		ldrb	r3, [r2, r3]
+ 169 00a2 BB73     		strb	r3, [r7, #14]
+ 170              	.L10:
+  66:../src/rcc.c  **** 	}
+  67:../src/rcc.c  **** 
+  68:../src/rcc.c  **** 	//3. Check which clock is needed
+  69:../src/rcc.c  **** 	clk = clk >> ps_ahb;
+ 171              		.loc 1 69 12
+ 172 00a4 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 173              		.loc 1 69 6
+ 174 00a6 3A69     		ldr	r2, [r7, #16]
+ 175 00a8 22FA03F3 		lsr	r3, r2, r3
+ 176 00ac 3B61     		str	r3, [r7, #16]
+  70:../src/rcc.c  **** 
+  71:../src/rcc.c  **** 	if(bus == AHB)
+ 177              		.loc 1 71 4
+ 178 00ae FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 179 00b0 002B     		cmp	r3, #0
+ 180 00b2 03D1     		bne	.L11
+  72:../src/rcc.c  **** 	{
+  73:../src/rcc.c  **** 		*ret_clk = clk;
+ 181              		.loc 1 73 12
+ 182 00b4 3B68     		ldr	r3, [r7]
+ 183 00b6 3A69     		ldr	r2, [r7, #16]
+ 184 00b8 1A60     		str	r2, [r3]
+ 185 00ba 10E0     		b	.L12
+ 186              	.L11:
+  74:../src/rcc.c  **** 	}
+  75:../src/rcc.c  **** 	else if(bus == APB1)
+ 187              		.loc 1 75 9
+ 188 00bc FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 189 00be 012B     		cmp	r3, #1
+ 190 00c0 05D1     		bne	.L13
+  76:../src/rcc.c  **** 	{
+  77:../src/rcc.c  **** 		*ret_clk = clk >> ps_apb1;
+ 191              		.loc 1 77 18
+ 192 00c2 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 193 00c4 3A69     		ldr	r2, [r7, #16]
+ 194 00c6 DA40     		lsrs	r2, r2, r3
+ 195              		.loc 1 77 12
+ 196 00c8 3B68     		ldr	r3, [r7]
+ 197 00ca 1A60     		str	r2, [r3]
+ 198 00cc 07E0     		b	.L12
+ 199              	.L13:
+  78:../src/rcc.c  **** 	}
+  79:../src/rcc.c  **** 	else if(bus == APB2)
+ 200              		.loc 1 79 9
+ 201 00ce FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 202 00d0 022B     		cmp	r3, #2
+ 203 00d2 04D1     		bne	.L12
+  80:../src/rcc.c  **** 	{
+  81:../src/rcc.c  **** 		*ret_clk = clk >> ps_apb1;
+ 204              		.loc 1 81 18
+ 205 00d4 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 206 00d6 3A69     		ldr	r2, [r7, #16]
+ 207 00d8 DA40     		lsrs	r2, r2, r3
+ 208              		.loc 1 81 12
+ 209 00da 3B68     		ldr	r3, [r7]
+ 210 00dc 1A60     		str	r2, [r3]
+ 211              	.L12:
+  82:../src/rcc.c  **** 	}
+  83:../src/rcc.c  **** 
+  84:../src/rcc.c  **** }
+ 212              		.loc 1 84 1
+ 213 00de 00BF     		nop
+ 214 00e0 1846     		mov	r0, r3
+ 215 00e2 1C37     		adds	r7, r7, #28
+ 216              		.cfi_def_cfa_offset 4
+ 217 00e4 BD46     		mov	sp, r7
+ 218              		.cfi_def_cfa_register 13
+ 219              		@ sp needed
+ 220 00e6 80BC     		pop	{r7}
+ 221              		.cfi_restore 7
+ 222              		.cfi_def_cfa_offset 0
+ 223 00e8 7047     		bx	lr
+ 224              	.L15:
+ 225 00ea 00BF     		.align	2
+ 226              	.L14:
+ 227 00ec 00380240 		.word	1073887232
+ 228 00f0 0024F400 		.word	16000000
+ 229 00f4 00127A00 		.word	8000000
+ 230 00f8 00000000 		.word	Prescaler_AHB
+ 231 00fc 00000000 		.word	Prescaler_APB
+ 232              		.cfi_endproc
+ 233              	.LFE137:
+ 235              	.Letext0:
+ 236              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 237              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 238              		.file 4 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\system\\include\\cmsis/stm
+ 239              		.file 5 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/types.h"
+ 240              		.file 6 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/userdef.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 rcc.c
+C:\Users\bahri\AppData\Local\Temp\ccnkNg2Q.s:22     .data:00000000 Prescaler_AHB
+C:\Users\bahri\AppData\Local\Temp\ccnkNg2Q.s:19     .data:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\ccnkNg2Q.s:28     .data:00000008 Prescaler_APB
+C:\Users\bahri\AppData\Local\Temp\ccnkNg2Q.s:32     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\ccnkNg2Q.s:38     .text:00000000 RCC_ReadClock
+C:\Users\bahri\AppData\Local\Temp\ccnkNg2Q.s:227    .text:000000ec $d
+                           .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
+                           .group:00000000 wm4.stm32f407xx.h.34.dfd2ea1697b5c77f46734fce8e0379c1
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.d0b7f3cd6ee95f610104014bb3ed522a
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e9ec14ff72395df130e3e13849031638
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f407xx.h.906.b83b06aeff1423f0cb818f8b4e776e34
+                           .group:00000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:00000000 wm4.stddef.h.181.c3f52a3b0f4c288bddb5dda1562858e2
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.stddef.h.39.b727a6c3269d9d6ef9fc646b721a8287
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:00000000 wm4.types.h.40.c2dcbbb5c1f4f0e5cb716ebf7776da48
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.2a55589bfa3ee24eeb84e3c79458e4a9
+                           .group:00000000 wm4.types.h.12.bce82e9f7fdaaedfc4e7f8871bae11e3
+                           .group:00000000 wm4.SystemInit.h.5.20c4b263e99965427f2e2ddfcfbaedc4
+
+NO UNDEFINED SYMBOLS

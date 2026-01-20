@@ -1,0 +1,1974 @@
+#include "usb.h"
+#include "gpio.h"
+#include <string.h>
+
+static void Usb_FS_Msp_Init(Usb_Handler* USB_GS_Ptr);
+static void Usb_FS_Core_Init(Usb_Handler* USB_FS_Ptr);
+static void Usb_FS_Device_Init(Usb_Handler* USB_FS_Ptr);
+static void Usb_FS_Read(Usb_Handler* USB_FS_Ptr);
+static void Usb_FS_Write(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP, uint8* buffer, uint16 size);
+static void HandleSetUpPacket(Usb_Handler* USB_FS_Ptr);
+static void Usb_FS_EP_Activate(Usb_Handler* USB_FS_Ptr, EP_Typedef EP);
+static void Usb_FS_EP_Deactivate(Usb_Handler* USB_FS_Ptr, EP_Typedef EP);
+static void ReadPacket(uint8* dst, uint8 epNo, uint32 length);
+static void WritePacket(uint8* src, uint8 epNo, uint32 length);
+static void handleDInt(EP_Typedef EP);
+static uint8 findEPInOut(EpInOut InOut);
+static void WriteTxFifo(Usb_Handler* USB_FS_Ptr, EP_Typedef EP);
+static void HandleResetInt(Usb_Handler* USB_FS_Ptr);
+static void HandleEnumDneInt(Usb_Handler* USB_FS_Ptr);
+static void HandleSetConfig(Usb_Handler* USB_FS_Ptr);
+static void Handle_XferCompIn(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP);
+static void Handle_XferCompOut(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP);
+static void WriteError(Usb_Handler* USB_FS_Ptr);
+static void Enter_CriticalRegion(void);
+static void Exit_CriticalRegion(void);
+
+Usb_Handler USB_FS = {
+		{0,0,0,0,0,0,0,0},							//uint8 setupData[8];
+		0UL,										//uint32 mode;
+		FALSE,										//boolean FS;
+		DEF_STATE,									//Usb_State state;
+		TRUE,										//boolean remoteWU;	//0x00: No Remote WakeUp, 0x01: Remote WakeUp Enabled
+		TRUE,										//boolean selfPWD;	//0x00: bus-powered, 0x01: self-powered
+		1,											//uint8 interfaceCount
+		0x0UL,										//uint32 deviceAddres;
+		{&FSConfigurationDescriptor},				//FSConfigurationDescriptorType ConfigurationDescriptorArray[1];
+		&FSConfigurationDescriptor,					//FSConfigurationDescriptorType* ConfigurationDescriptor;
+		USB_OTG_FS_Global,							//USB_OTG_GlobalTypeDef* USB_OTG_FS_CoreRegister;
+		USB_OTG_FS_Device,							//USB_OTG_DeviceTypeDef* USB_OTG_FS_DeviceRegister;
+		{{EP_0, EP_IN, 0, EP_Control, NULL, 0, 0, 0, STATE_NOTACTIVE, USB_OTG_FS_EPIN_0_Addr, NULL},		//EP_Typedef INEP_Array[2];
+		 {EP_1, EP_IN, 0, EP_Interrupt, NULL, 0, 0, 0, STATE_NOTACTIVE, USB_OTG_FS_EPIN_1_Addr, NULL} },
+		{{EP_0, EP_OUT, 0, EP_Control, NULL, 0, 0, 0, STATE_NOTACTIVE, NULL, USB_OTG_FS_EPOUT_0_Addr}},  	//EP_Typedef OUTEP_Array[1];
+		USB_OTG_FS_PCGCCTL							//uint32* USB_OTG_FS_PCGCCTL_Register;
+};
+
+uint8 inputArray[8] = { 0 };
+boolean pending_RX = FALSE;
+boolean resetReceived = FALSE;
+boolean enumReceived = FALSE;
+uint32 TX_Ready = 0UL;
+uint32 XFER_Completed_In = 0UL;
+uint32 XFER_Completed_Out = 0UL;
+boolean SetUpRX_Completed = FALSE;
+
+uint8 arrDbgFlw[1000] = {0};
+uint32 idd = 0;
+
+static void Usb_FS_Msp_Init(Usb_Handler* USB_GS_Ptr)
+{
+	gpio_cfg configGpio_PA9 = {PIN_9, GPIO_MODE_INPUT, OUTPUT_PUSH_PULL, OUTPUT_SPEED_VERY_HIGH, NO_PULL, 0};	//USB_VB
+	gpio_cfg configGpio_PA11 = {PIN_11, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_VERY_HIGH, NO_PULL, AF10};	//USB_DM
+	gpio_cfg configGpio_PA12 = {PIN_12, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_VERY_HIGH, NO_PULL, AF10};	//USB_DP
+	gpio_cfg configGpio_PA10 = {PIN_10, GPIO_MODE_ALTERNATE, OUTPUT_OPEN_DRAIN, OUTPUT_SPEED_VERY_HIGH, PULL_UP, AF10};	//USB_ID
+
+/*
+ * Since we use micro A_B reptacle we need ID pin to decide device/host role.
+ * integrated ID pull-up resistor used to sample the ID line for A/B device identification
+ * If the B-side of the USB cable is connected with a floating ID wire, the integrated pullup
+ * resistor detects a high ID level and the default Peripheral role is confirmed.
+ * If the A-side of the USB cable is connected with a grounded ID, the OTG_FS issues an
+ * ID line status change interrupt (CIDSCHG bit in OTG_FS_GINTSTS) for host software
+ * initialization, and automatically switches to the host role.
+ */
+	Gpio_Init(configGpio_PA9, GPIOA);
+	Gpio_Init(configGpio_PA10, GPIOA);
+	Gpio_Init(configGpio_PA11, GPIOA);
+	Gpio_Init(configGpio_PA12, GPIOA);
+
+/*0. Enable AHB2 bus for USB_OTG and Enable Interrupt
+*/
+	RCC->AHB2ENR |= RCC_AHB2ENR_OTGFSEN;
+	//Interesting
+	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+	NVIC_SetPriority(OTG_FS_IRQn, 0);
+	NVIC_EnableIRQ(OTG_FS_IRQn);
+}
+
+static void Usb_FS_Core_Init(Usb_Handler* USB_FS_Ptr)
+{
+/*1. Program the following fields in the OTG_FS_GAHBCFG register:
+– Global interrupt mask bit GINTMSK = 1
+– RxFIFO non-empty (RXFLVL bit in OTG_FS_GINTSTS)
+– Periodic TxFIFO empty level
+*/
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GAHBCFG |= USB_OTG_GAHBCFG_GINT;
+
+	//RxFIFO non-empty (RXFLVL bit in OTG_FS_GINTSTS)	????
+
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GAHBCFG &= ~(USB_OTG_GAHBCFG_TXFELVL);	//half empty
+
+/*2. Program the following fields in the OTG_FS_GUSBCFG register:
+– HNP capable bit
+– SRP capable bit
+– FS timeout calibration field
+– USB turn-around time field
+*/
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GUSBCFG &= ~(USB_OTG_GUSBCFG_HNPCAP);	//No HNP
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GUSBCFG &= ~(USB_OTG_GUSBCFG_SRPCAP);	//No SRP
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GUSBCFG &= ~(USB_OTG_GUSBCFG_TOCAL);	//No Additional Timeout
+
+
+/*3. The software must unmask the following bits in the OTG_FS_GINTMSK register:
+- OTG interrupt mask
+- Mode mismatch interrupt mask
+*/
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK |= USB_OTG_GINTMSK_OTGINT;	//Unmask OTG Int
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK |= USB_OTG_GINTMSK_MMISM;		//Unmask MMIS Int
+
+/*4. The software can read the CMOD bit in OTG_FS_GINTSTS to determine whether the
+OTG_FS controller is operating in host or device mode.
+*/
+	if(HOST_MODE == (USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTSTS & USB_OTG_GINTSTS_CMOD_Msk))
+	{
+		USB_FS_Ptr->mode = HOST_MODE;
+	}
+	else if(DEVICE_MODE == (USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTSTS & USB_OTG_GINTSTS_CMOD_Msk))
+	{
+		USB_FS_Ptr->mode  = DEVICE_MODE;
+	}
+	else
+	{
+		//
+	}
+}
+
+static void Usb_FS_Device_Init(Usb_Handler* USB_FS_Ptr)
+{
+/*0. Restart the Phy Clock
+ *
+ */
+//	*(USB_FS_Ptr->USB_OTG_FS_PCGCCTL_Register) = 0UL;
+
+/*1. Program the following fields in the OTG_FS_DCFG register:
+– Device speed
+– Non-zero-length status OUT handshake
+*/
+	USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCFG |= USB_OTG_DCFG_DSPD;				//FullSpeed
+	USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCFG &= ~(USB_OTG_DCFG_NZLSOHSK);		//0
+
+/*1.1 Flush the RXFIFO */
+	//Wait for AHB Idle
+	while((USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL & USB_OTG_GRSTCTL_AHBIDL_Msk) != USB_OTG_GRSTCTL_AHBIDL);
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL |= USB_OTG_GRSTCTL_RXFFLSH;
+	while(USB_OTG_GRSTCTL_RXFFLSH == (USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL & USB_OTG_GRSTCTL_RXFFLSH_Msk));	//Self Cleaning Bit
+
+/*1.2 Flush the TXFIFO */
+	//Wait for AHB Idle
+	while((USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL & USB_OTG_GRSTCTL_AHBIDL_Msk) != USB_OTG_GRSTCTL_AHBIDL);
+	//set All TXFIFO No
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL |= (0x10 << USB_OTG_GRSTCTL_TXFNUM_Pos);
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL |= USB_OTG_GRSTCTL_TXFFLSH;
+	while(USB_OTG_GRSTCTL_TXFFLSH == (USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL & USB_OTG_GRSTCTL_TXFFLSH_Msk));	//Self Cleaning Bit
+
+/*1.5 The application must clear the OTG_FS_GINTSTS register at initialization before
+unmasking the interrupt bit to avoid any interrupts generated prior to initialization.
+ */
+	/* Unmask all Device Level Interrupts */
+	USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DIEPMSK = 0u;
+	USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DOEPMSK = 0u;
+	USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DAINTMSK = 0u;
+
+	/* Clear all Device Interrupt Status */
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPCTL = 0u;
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPTSIZ = 0u;
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPINT = 0x287Bu;
+
+	USB_FS_Ptr->INEP_Array[1].InRegAddr->DIEPCTL = 0u;
+	USB_FS_Ptr->INEP_Array[1].InRegAddr->DIEPTSIZ = 0u;
+	USB_FS_Ptr->INEP_Array[1].InRegAddr->DIEPINT = 0x287Bu;
+
+	USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPCTL = 0u;
+	USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPTSIZ = 0u;
+	USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPINT = 0x313Bu;
+
+	/* Disable all interrupts. */
+//	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK = 0u;
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTSTS = 0xF030FC0Au;
+
+
+/*2. Program the OTG_FS_GINTMSK register to unmask the following interrupts:
+– USB reset
+– Enumeration done
+– Early suspend
+– USB suspend
+– SOF
+*/
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK |= (USB_OTG_GINTMSK_USBRST | USB_OTG_GINTMSK_ENUMDNEM | USB_OTG_GINTMSK_ESUSPM |
+									USB_OTG_GINTMSK_USBSUSPM/* | USB_OTG_GINTMSK_SOFM*/);
+/* 2.5 Unmask Other needed Interrupts */
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK |= USB_OTG_GINTMSK_IEPINT;
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK |= USB_OTG_GINTMSK_OEPINT;
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK |= USB_OTG_GINTMSK_RXFLVLM;
+
+/*3. Program the VBUSBSEN bit in the OTG_FS_GCCFG register to enable VBUS sensing
+in “B” device mode and supply the 5 volts across the pull-up resistor on the DP line.
+*/
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GCCFG &= ~USB_OTG_GCCFG_NOVBUSSENS;
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GCCFG |= USB_OTG_GCCFG_VBUSBSEN | USB_OTG_GCCFG_PWRDWN;
+
+
+/*4. Wait for the USBRST interrupt in OTG_FS_GINTSTS. It indicates that a reset has been
+detected on the USB that lasts for about 10 ms on receiving this interrupt.
+*/
+
+	// At this point, all initialization required to receive SETUP packets is done.
+
+/*Wait for the ENUMDNE interrupt in OTG_FS_GINTSTS. This interrupt indicates the end of
+reset on the USB. On receiving this interrupt, the application must read the OTG_FS_DSTS
+register to determine the enumeration speed and perform the steps listed in Endpoint
+initialization on enumeration completion on page 1353.
+*/
+
+	/*At this point, the device is ready to receive SOF packets and is configured to perform control
+			transfers on control endpoint 0.*/
+}
+
+static void Usb_FS_EP_Activate(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP)
+{
+	Ep_No epNo = EP.num;
+	EpInOut epDir = EP.epDir;
+	uint16 packetSize = 0u;
+
+	if(epNo == 0u)
+	{
+		switch(EP.maxpacket)
+		{
+		case 64u:
+			packetSize = 0u;
+			break;
+		case 32u:
+			packetSize = 1u;
+			break;
+		case 16u:
+			packetSize = 2u;
+			break;
+		case 8u:
+			packetSize = 3u;
+			break;
+		default:
+			break;
+		}
+	}
+	else
+	{
+		packetSize = EP.maxpacket;
+	}
+
+	if(IN_DIR == epDir)
+	{
+		USB_FS_Ptr->INEP_Array[epNo].state = STATE_IDLE;
+
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DAINTMSK |= (((1 << epNo) << USB_OTG_DAINTMSK_IEPM_Pos) & USB_OTG_DAINTMSK_IEPM_Msk);
+		arrDbgFlw[idd++] = 89;
+		if((USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL & USB_OTG_DIEPCTL_USBAEP_Msk) == 0u)
+		{
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_MPSIZ_Msk);	//Clean First
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL |= ((packetSize << USB_OTG_DIEPCTL_MPSIZ_Pos) & USB_OTG_DIEPCTL_MPSIZ_Msk);
+
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL |= (USB_OTG_DIEPCTL_USBAEP);	//Active Endpoint
+
+			//Endpoint start data toggle (for interrupt and bulk endpoints)
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL |= USB_OTG_DIEPCTL_SD0PID_SEVNFRM;
+
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_EPTYP_Msk);	//Clean First
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL |= ((EP.type << USB_OTG_DIEPCTL_EPTYP_Pos) & USB_OTG_DIEPCTL_EPTYP_Msk);	//3: Interrupt
+
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_TXFNUM_Msk);	//Clean First
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL |= ((epNo << USB_OTG_DIEPCTL_TXFNUM_Pos) & USB_OTG_DIEPCTL_TXFNUM_Msk);	//1: FIFO#1
+		}
+	}
+	else if(OUT_DIR == epDir)
+	{
+		USB_FS_Ptr->OUTEP_Array[epNo].state = STATE_IDLE;
+
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DAINTMSK |= (((1 << epNo) << USB_OTG_DAINTMSK_OEPM_Pos) & USB_OTG_DAINTMSK_OEPM_Msk);
+
+		if((USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL & USB_OTG_DOEPCTL_USBAEP_Msk) == 0u)
+		{
+			USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL &= ~(USB_OTG_DIEPCTL_MPSIZ_Msk);	//Clean First
+			USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL |= ((packetSize << USB_OTG_DIEPCTL_MPSIZ_Pos) & USB_OTG_DIEPCTL_MPSIZ_Msk);
+
+			USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL |= (USB_OTG_DIEPCTL_USBAEP);	//Active Endpoint
+
+			//Endpoint start data toggle (for interrupt and bulk endpoints)
+			USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL |= USB_OTG_DOEPCTL_SD0PID_SEVNFRM;
+
+			USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL &= ~(USB_OTG_DIEPCTL_EPTYP_Msk);	//Clean First
+			USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL |= ((EP.type << USB_OTG_DIEPCTL_EPTYP_Pos) & USB_OTG_DIEPCTL_EPTYP_Msk);	//3: Interrupt
+		}
+	}
+	else
+	{	/*Do Nothing*/	}
+}
+
+static void Usb_FS_EP_Deactivate(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP)
+{
+	uint8 epNo = EP.num;
+	uint8 epDir = EP.epDir;
+/*1. In the endpoint to be deactivated, clear the USB active endpoint bit in the
+OTG_FS_DIEPCTLx register (for IN or bidirectional endpoints) or the
+OTG_FS_DOEPCTLx register (for OUT or bidirectional endpoints).
+*/
+
+	if(EP_IN == epDir)
+	{
+		USB_FS_Ptr->INEP_Array[epNo].state = STATE_NOTACTIVE;
+
+		if((USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL & USB_OTG_DIEPCTL_EPENA_Msk) == USB_OTG_DIEPCTL_EPENA)
+		{
+			USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL |= (USB_OTG_DIEPCTL_SNAK | USB_OTG_DIEPCTL_EPDIS);
+		}
+
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DAINTMSK &= ~((1 << epNo) << USB_OTG_DAINTMSK_IEPM_Pos);
+		USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_USBAEP | USB_OTG_DIEPCTL_MPSIZ |
+                												USB_OTG_DIEPCTL_TXFNUM | USB_OTG_DIEPCTL_SD0PID_SEVNFRM |
+																USB_OTG_DIEPCTL_EPTYP);
+	}
+	else if(EP_OUT == epDir)
+	{
+		USB_FS_Ptr->OUTEP_Array[epNo].state = STATE_NOTACTIVE;
+
+		if((USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL & USB_OTG_DOEPCTL_EPENA_Msk) == USB_OTG_DOEPCTL_EPENA)
+		{
+			USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL |= (USB_OTG_DOEPCTL_SNAK | USB_OTG_DOEPCTL_EPDIS);
+		}
+
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DAINTMSK &= ~((1 << epNo) << USB_OTG_DAINTMSK_OEPM_Pos);
+		USB_FS_Ptr->OUTEP_Array[epNo].OutRegAddr->DOEPCTL &= ~(USB_OTG_DOEPCTL_USBAEP | USB_OTG_DOEPCTL_MPSIZ |
+                												USB_OTG_DOEPCTL_SD0PID_SEVNFRM | USB_OTG_DOEPCTL_EPTYP);
+	}
+	else
+	{/* Do Nothing */}
+
+}
+
+uint8 debug_setCfg = 0;
+
+static void WriteError(Usb_Handler* USB_FS_Ptr)
+{
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPCTL |= USB_OTG_DIEPCTL_STALL;
+	USB_FS_Ptr->INEP_Array[0].OutRegAddr->DOEPCTL |= USB_OTG_DOEPCTL_STALL;
+}
+
+static void HandleSetUpPacket(Usb_Handler* USB_FS_Ptr)
+{
+	uint32 mem[2];
+	Helper_CopyByte(mem, USB_FS_Ptr->setupData, sizeof(mem));
+
+	uint32 recipient = (mem[0] & BM_REQUEST_TYPE_RECIPIENT_MASK) >> BM_REQUEST_TYPE_RECIPIENT_POS;
+	uint32 requestType = (mem[0] & BM_REQUEST_TYPE_TYPE_MASK) >> BM_REQUEST_TYPE_TYPE_POS;
+	uint32 requestDir =  (mem[0] & BM_REQUEST_TYPE_DIRECTION_MASK) >> BM_REQUEST_TYPE_DIRECTION_POS;
+	uint32 request = (mem[0] & B_REQUEST_MASK) >> B_REQUEST_POS;
+	uint32 value = (mem[0] & W_VALUE_MASK) >> W_VALUE_POS;
+	uint32 value_HB = (mem[0] & W_VALUE_HB) >> W_VALUE_HB_POS;
+	uint32 value_LB = (mem[0] & W_VALUE_LB) >> W_VALUE_LB_POS;
+
+	uint32 w_index = (mem[1] & W_INDEX_MASK) >> W_INDEX_POS;
+	uint32 w_index_epNo = (mem[1] & W_INDEX_EPNO) >> W_INDEX_EPNO_POS;
+	uint32 w_index_epDir = (mem[1] & W_INDEX_EPDIR) >> W_INDEX_EPDIR_POS;
+	uint32 w_length = (mem[1] & W_LENGTH_MASK) >> W_LENGTH_POS;
+
+	if(request == 9u)
+	{
+		debug_setCfg = 1;
+	}
+
+	if(STANDART == requestType)
+	{
+		if(DEVICE == recipient)
+		{
+			//Device Descryptor
+			switch(request)
+			{
+			case STD_GET_DESCRIPTOR:
+				if(DEV2HOST == requestDir)
+				{
+					//wValue field specifies the descriptor type in the high byte
+					uint32 descType = value_HB;
+					uint32 descIdx = value_LB;
+					switch(descType)
+					{
+						case DESC_DEVICE:
+						{arrDbgFlw[idd++] = 50;
+							//wIndex field specifier is reset to zero for other descriptors.
+							uint16 length = 0;
+							uint8* descAddr = GetFSDeviceDescriptor(&length);
+							uint16 len = MIN(length, w_length);
+							//Write Descriptor(desc)
+							Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], descAddr, len);
+							break;
+						}
+						case DESC_CONFIGURATION:
+						{arrDbgFlw[idd++] = 51;
+							//wIndex field specifier is reset to zero for other descriptors.
+							uint16 length = 0;
+							uint8* descAddr = GetFSConfigDescriptor(&length);
+							uint16 len = MIN(length, w_length);
+							//Write Descriptor
+							Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], descAddr, len);
+							break;
+						}
+						case DESC_STRING:
+							//wIndex field specifies the Language ID for string descriptors
+							switch(descIdx)
+							{
+							case USBD_IDX_LANGID_STR:
+							{arrDbgFlw[idd++] = 52;
+								uint16 length = 0;
+								uint8* langIdDescAddr = GetFSLangIdStringDescriptor(&length);
+								uint16 len = MIN(length, w_length);
+
+								//Write Descriptor
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], langIdDescAddr, len);
+							}
+								break;
+							case USBD_IDX_MFC_STR:
+							{arrDbgFlw[idd++] = 53;
+								uint16 length;
+								uint8* mfcIdDescAddr = GetFSMfcIdStringDescriptor(&length);
+								uint16 len = MIN(length, w_length);
+
+								//Write Descriptor
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], mfcIdDescAddr, len);
+							}
+								break;
+							case USBD_IDX_PRODUCT_STR:
+							{arrDbgFlw[idd++] = 54;
+								uint16 length;
+								uint8* pdcIdDescAddr = GetFSPdcIdStringDescriptor(&length);
+								uint16 len = MIN(length, w_length);
+
+								//Write Descriptor
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], pdcIdDescAddr, len);
+							}
+								break;
+							case USBD_IDX_SERIAL_STR:
+							{arrDbgFlw[idd++] = 55;
+								uint16 length;
+								uint8* serialDescAddr = GetFSSerialStringDescriptor(&length);
+								uint16 len = MIN(length, w_length);
+
+								//Write Descriptor
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], serialDescAddr, len);
+							}
+								break;
+							case USBD_IDX_CONFIG_STR:
+							{arrDbgFlw[idd++] = 56;
+								uint16 length;
+								uint8* cfgDescAddr = GetFSConfigStringDescriptor(&length);
+								uint16 len = MIN(length, w_length);
+
+								//Write Descriptor
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], cfgDescAddr, len);
+							}
+								break;
+							case USBD_IDX_INTERFACE_STR:
+							{arrDbgFlw[idd++] = 57;
+								uint16 length;
+								uint8* ifDescAddr = GetFSInterfaceStringDescriptor(&length);
+								uint16 len = MIN(length, w_length);
+
+								//Write Descriptor
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], ifDescAddr, len);
+							}
+								break;
+							default:
+								break;
+							}
+							break;
+						case DESC_INTERFACE:	//NA
+							//Request Error
+							break;
+						case DESC_ENDPOINT:	//NA
+							//Request Error
+							break;
+						case DESC_DEVICE_QUALIFIER:	//for USB_OTG_HS
+						{arrDbgFlw[idd++] = 58;
+							if(USB_FS_Ptr->FS == TRUE)
+							{
+								WriteError(USB_FS_Ptr);
+							}
+							else
+							{
+								uint16 length;
+								uint8* devQualDescAddr = GetFSDeviceQualifierDescriptor(&length);
+								uint16 len = MIN(length, w_length);
+
+								//Write Descriptor
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], devQualDescAddr, len);
+							}
+						}
+							break;
+						case DESC_OTHER_SPEED_CONFIGURATION://NA
+							//Request Error
+							break;
+						case DESC_INTERFACE_POWER1:	//NA
+							//Request Error
+							break;
+						default:
+							//Request Error
+							break;
+					}
+				}
+				break;
+			case STD_SET_ADDRESS:
+				if(HOST2DEV == requestDir)
+				{arrDbgFlw[idd++] = 49;
+					if(127 >= value && 0UL == w_index && 0UL == w_length)
+					{
+						if(DEF_STATE == USB_FS_Ptr->state)
+						{
+							if(value != 0UL)
+							{
+								USB_FS_Ptr->state = ADDR_STATE;
+								//write New Address to (DCFG-DAD)
+								USB_FS_Ptr->deviceAddress = value;
+								USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCFG &= ~(USB_OTG_DCFG_DAD_Msk);	//Clean First
+								USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCFG |= ((USB_FS_Ptr->deviceAddress) << USB_OTG_DCFG_DAD_Pos);
+
+								//Send STATUS OK
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], NULL, 0U);
+
+							}//else undefined response
+						}
+						else if(ADDR_STATE == USB_FS_Ptr->state)
+						{
+							if(value == 0UL)
+							{
+								USB_FS_Ptr->state = DEF_STATE;
+							}
+							else
+							{
+								//write New Address to (DCFG-DAD)
+								USB_FS_Ptr->deviceAddress = value;
+								USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCFG &= ~(USB_OTG_DCFG_DAD_Msk);	//Clean First
+								USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCFG |= ((USB_FS_Ptr->deviceAddress) << USB_OTG_DCFG_DAD_Pos);
+
+								//Send STATUS OK
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], NULL, 0U);
+							}
+						}
+						else if(CFG_STATE == USB_FS_Ptr->state)
+						{
+							//Not Specified Device Behavior
+						}
+						else
+						{	/*Do Nothing*/	}
+
+					}//else behavior of the device is not specified
+				}
+				break;
+			case STD_CLEAR_FEATURE:
+				if(HOST2DEV == requestDir)
+				{
+					//TBD
+				}
+				break;
+			case STD_GET_CONFIGURATION:
+				if(DEV2HOST == requestDir)
+				{
+					if(0x0UL == value && 0x0UL == w_index && 0x01UL == w_length)
+					{
+						if(DEF_STATE == USB_FS_Ptr->state)
+						{
+							//Not Specified Device Behavior
+						}
+						else if(ADDR_STATE == USB_FS_Ptr->state)
+						{
+							//The value zero must be returned.
+							uint8 conf = (uint8)0x00U;
+							//Write configValue
+							Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], &conf, sizeof(conf));
+						}
+						else if(CFG_STATE == USB_FS_Ptr->state)
+						{
+							//The non-zero bConfigurationValue of the current configuration must be returned.
+							uint8 conf = USB_FS_Ptr->CurrentConfigurationDescription->FSConfiguration.bConfigurationValue;
+							//Write configValue
+							Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], &conf, sizeof(conf));
+						}
+						else
+						{	/*Do Nothing*/	}
+					}
+					//else Not Specified Device Behavior
+				}
+				break;
+			case STD_GET_STATUS:
+				if(DEV2HOST == requestDir)
+				{
+					if(0x0UL == value && 0x0UL == w_index && 0x02UL == w_length)
+					{
+						if(DEF_STATE == USB_FS_Ptr->state)
+						{
+							//Not Specified Device Behavior
+						}
+						else if((ADDR_STATE == USB_FS_Ptr->state) || (CFG_STATE == USB_FS_Ptr->state))
+						{
+							uint16 status = 0;
+							if(FALSE != USB_FS_Ptr->selfPWD)
+							{
+								status |= (1 << 0);		//D0 bit of Device Status
+							}
+
+							if(FALSE != USB_FS_Ptr->remoteWU)
+							{
+								status |= (1 << 1);		//D1 bit of Device Status
+							}
+
+							//Write status
+							Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], (uint8*)&status, 1U);
+						}
+						else
+						{	/*Do Nothing*/	}
+					}//else behavior of the device is not specified
+				}
+				break;
+			case STD_SET_CONFIGURATION:
+				if(HOST2DEV == requestDir)
+				{arrDbgFlw[idd++]= 97;
+					if(0UL == w_index && 0UL == w_length && 0UL == value_HB)
+					{
+						if(DEF_STATE == USB_FS_Ptr->state)
+						{
+							//Not Specified Device Behavior
+						}
+						else if(ADDR_STATE == USB_FS_Ptr->state)
+						{
+							if(0UL != value_LB)
+							{
+								uint8 arrsize = sizeof(USB_FS_Ptr->ConfigurationDescriptorArray)/sizeof(USB_FS_Ptr->ConfigurationDescriptorArray[0]);
+								for(int i = 0; i < arrsize; ++i)
+								{
+									if(USB_FS_Ptr->ConfigurationDescriptorArray[i]->FSConfiguration.bConfigurationValue == value_LB)
+									{
+										USB_FS_Ptr->CurrentConfigurationDescription = USB_FS_Ptr->ConfigurationDescriptorArray[i];
+										/*DIEPCTLx/DOEPCTLx-USBAEP: After receiving the SetConfiguration and SetInterface commands,
+										the application must program endpoint registers accordingly and set this bit.*/
+										HandleSetConfig(USB_FS_Ptr);
+										//Send Status
+										Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], NULL, 0U);
+										USB_FS_Ptr->state = CFG_STATE;
+										/*After all required endpoints are configured; the application must program the core to
+										send a status IN packet.*/
+										break;
+									}
+								}
+								if(CFG_STATE != USB_FS_Ptr->state)
+								{
+									//Request Error
+								}
+							}
+						}
+						else if(CFG_STATE == USB_FS_Ptr->state)
+						{
+							if(0UL != value_LB)
+							{
+								uint8 arrsize = sizeof(USB_FS_Ptr->ConfigurationDescriptorArray)/sizeof(USB_FS_Ptr->ConfigurationDescriptorArray[0]);
+								for(int i = 0; i < arrsize; ++i)
+								{
+									if(USB_FS_Ptr->ConfigurationDescriptorArray[i]->FSConfiguration.bConfigurationValue == value_LB)
+									{
+										USB_FS_Ptr->CurrentConfigurationDescription = USB_FS_Ptr->ConfigurationDescriptorArray[i];
+										/*DIEPCTLx/DOEPCTLx-USBAEP: After receiving the SetConfiguration and SetInterface commands,
+										the application must program endpoint registers accordingly and set this bit.*/
+										HandleSetConfig(USB_FS_Ptr);
+										/*After all required endpoints are configured; the application must program the core to
+										send a status IN packet.*/
+										//Send Status
+										Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], NULL, 0U);
+										break;
+									}
+								}
+								if(CFG_STATE != USB_FS_Ptr->state)
+								{
+									//Request Error
+								}
+							}
+							else
+							{
+								USB_FS_Ptr->state = ADDR_STATE;
+							}
+						}
+						else
+						{	/*Do Nothing*/	}
+					}//else behavior of the device is not specified
+				}
+				break;
+			case STD_SET_DESCRIPTOR:
+				if(HOST2DEV == requestDir)
+				{
+					//TBD
+				}
+				break;
+			case STD_SET_FEATURE:
+				if(HOST2DEV == requestDir)
+				{
+					//TBD
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		else if(INTERFACE == recipient)
+		{
+			//Interface Descriptor
+			switch(request)
+			{
+			case STD_CLEAR_FEATURE:
+				if(HOST2DEV == requestDir)
+				{
+					//TBD
+				}
+				break;
+			case STD_GET_DESCRIPTOR:	//This is defined for Class Level Descriptors: ex. HID_Report
+				if(DEV2HOST == requestDir)
+				{
+					//wValue field specifies the descriptor type in the high byte
+					uint32 descType = value_HB;
+					uint32 descIndex = value_LB;
+					switch(descType)
+					{
+					case DESC_HID:				//NA
+						break;
+					case DESC_REPORT:
+						if(descIndex == 0UL && w_index == 0UL)	//wIndex field indicates the number of the HID Interface(we have only 1 interface)
+						{arrDbgFlw[idd++] = 99;
+							uint16 length = 0;
+							uint8* descAddr = GetFSReportDescriptor(&length);
+							uint16 len = MIN(length, w_length);
+
+							//Write Descriptor(desc)
+							Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], descAddr, len);
+						}
+						break;
+					case DESC_PHYSICALREPORT:	//NA
+						break;
+					}
+				}
+				break;
+			case STD_SET_DESCRIPTOR:	//Optional-Not Supported
+				if(HOST2DEV == requestDir)
+				{
+					//No Alternate Setting
+				}
+				break;
+			case STD_GET_INTERFACE:
+				if(DEV2HOST == requestDir)
+				{
+					//No Alternate Setting: Write Request Error
+				}
+				break;
+			case STD_GET_STATUS:
+				if(DEV2HOST == requestDir)
+				{
+					if(0x0UL == value && 0x02UL == w_length)
+					{
+						if(DEF_STATE == USB_FS_Ptr->state)
+						{
+							//Not Specified Device Behavior
+						}
+						else if((ADDR_STATE == USB_FS_Ptr->state) || (CFG_STATE == USB_FS_Ptr->state))
+						{
+							if(w_index > USB_FS_Ptr->interfaceCount)
+							{
+								//Request Error
+							}
+							else
+							{
+								uint16 status = 0;
+								//Write status
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], (uint8*)&status, 1U);
+							}
+						}
+						else
+						{	/*Do Nothing*/	}
+					}//else behavior of the device is not specified
+				}
+				break;
+			case STD_SET_FEATURE:
+				if(HOST2DEV == requestDir)
+				{
+					//TBD
+				}
+				break;
+			case STD_SET_INTERFACE:
+				if(HOST2DEV == requestDir)
+				{
+					//No Alternate Setting
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		else if(ENDPOINT == recipient)
+		{
+			//Endpoint Descryptor
+			switch(request)
+			{
+			case STD_CLEAR_FEATURE:
+				if(HOST2DEV == requestDir)
+				{
+					//TBD
+				}
+				break;
+			case STD_GET_STATUS:
+				if(DEV2HOST == requestDir)
+				{
+					if(0x0UL == value && 0x02UL == w_length)
+					{
+						if(DEF_STATE == USB_FS_Ptr->state)
+						{
+							//Not Specified Device Behavior
+						}
+						else if(ADDR_STATE == USB_FS_Ptr->state)
+						{
+							if(w_index_epNo != 0x00UL)
+							{
+								//Request Error
+							}
+							else
+							{
+								uint16 status = 0;
+								//Write status
+								Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], (uint8*)&status, 1U);
+							}
+						}
+						else if(CFG_STATE == USB_FS_Ptr->state)
+						{
+							uint8 sizeIn = sizeof(USB_FS_Ptr->INEP_Array)/sizeof(USB_FS_Ptr->INEP_Array[0]);
+							uint8 sizeOut = sizeof(USB_FS_Ptr->OUTEP_Array)/sizeof(USB_FS_Ptr->OUTEP_Array[0]);
+							if(w_index_epDir == 0x0UL)	//OUT EP
+							{
+								if(w_index_epNo > sizeOut)
+								{
+									//Request Error
+								}
+								else
+								{
+									uint16 status = 0;
+									//Write status
+									Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], (uint8*)&status, 1U);
+								}
+							}
+							else if(w_index_epDir == 0x1UL)	//IN EP
+							{
+								if(w_index_epNo > sizeIn)
+								{
+									//Request Error
+								}
+								else
+								{
+									uint16 status = 0;
+									//Write status
+									Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], (uint8*)&status, 1U);
+								}
+							}
+							else
+							{	/*Do Nothing*/	}
+						}
+						else
+						{	/*Do Nothing*/	}
+					}//else behavior of the device is not specified
+				}
+				break;
+			case STD_SET_FEATURE:
+				if(HOST2DEV == requestDir)
+				{
+					//TBD
+				}
+				break;
+			case STD_SYNCH_FRAME:
+				if(DEV2HOST == requestDir)
+				{
+					//TBD
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		else
+		{ /*Do Nothing*/ }
+	}
+	else if(CLASS == requestType)
+	{
+		if(INTERFACE == recipient)
+		{
+			switch(request)
+			{
+			case CLASS_GET_REPORT:
+				if(DEV2HOST == requestDir)
+				{
+					if(INPUT_REPORT == value_HB && 0U == value_LB && 0U == w_index)
+					{
+						Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], inputArray, sizeof(inputArray));
+					}
+				}
+				break;
+			case CLASS_GET_IDLE:
+				Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], &(USB_FS_Ptr->INEP_Array[1].idleRate), 1);
+				break;
+			case CLASS_GET_PROTOCOL:	//No Boot Supported
+				break;
+			case CLASS_SET_REPORT:		//NA
+			{
+				arrDbgFlw[idd++]= 100;
+				WriteError(USB_FS_Ptr);
+			}
+				break;
+			case CLASS_SET_IDLE:
+			{
+				arrDbgFlw[idd++]= 98;
+					USB_FS_Ptr->INEP_Array[1].idleRate = (uint8)value_HB;
+					Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0], NULL, 0u);	//Send Status
+			}
+				break;
+			case CLASS_SET_PROTOCOL:	//No Boot Supported
+				break;
+			default:
+				WriteError(USB_FS_Ptr);
+				break;
+			}
+		}//else Not Defined Behavior
+	}
+}
+
+uint32 dbgArrRead[100] = {0};
+
+static void ReadPacket(uint8* dst, uint8 epNo, uint32 length)
+{
+	uint32 i;
+	uint8* pDest = dst;
+	uint32 pData;
+	uint32 WLen = length >> 2;
+	uint32 remaining = length % 4;
+
+	static uint8 j = 0;
+	uint8* dbg_read = &(dbgArrRead[j]);
+
+  for (i = 0U; i < WLen; ++i)
+  {
+	  __UNALIGNED_UINT32_WRITE(pDest, DFIFOAddr(epNo));
+	  Helper_CopyByte(dbg_read, pDest, 4);
+	  dbg_read++; dbg_read++; dbg_read++; dbg_read++;
+	  pDest++;
+	  pDest++;
+	  pDest++;
+	  pDest++;
+  }
+
+  j+=2;
+
+  if(remaining != 0U)
+  {
+	  i = 0U;
+	  __UNALIGNED_UINT32_WRITE(&pData, DFIFOAddr(epNo));
+
+	  while(remaining != 0U)
+	  {
+		  *(uint8*)pDest = (uint8)(pData >> (8U * (uint8)(i)));
+		  ++i;
+		  pDest++;
+		  remaining--;
+	  }
+  }
+}
+
+uint32 arr_dbgArr[20];
+
+static void WritePacket(uint8* src, uint8 epNo, uint32 length)
+{
+	uint32 i;
+	uint8* pSrc = src;
+	uint32 WLen;
+	uint32* dbgAddFIFO;
+
+	WLen = ((uint32)length + 3U) / 4U;
+
+	for (i = 0U; i < WLen; ++i)
+	{
+	  DFIFOAddr(epNo) = __UNALIGNED_UINT32_READ(pSrc);
+	  dbgAddFIFO = &(DFIFOAddr(epNo));
+	  uint32 arr_dbg =  __UNALIGNED_UINT32_READ(pSrc);
+	  arr_dbgArr[i] = arr_dbg;
+	  pSrc++;
+	  pSrc++;
+	  pSrc++;
+	  pSrc++;
+	}
+}
+
+static void Usb_FS_Read(Usb_Handler* USB_FS_Ptr)
+{
+	//Mask RXFLVL
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK &= ~(USB_OTG_GINTMSK_RXFLVLM);
+
+	//Read Pop Register to Data be popped to FIFO RAM Address, this read clears the RXFLVL interrupt also
+	uint32 popReg = USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRXSTSP;
+
+	//Byte Count
+	uint32 byteCount = (popReg & USB_OTG_GRXSTSP_BCNT_Msk) >> USB_OTG_GRXSTSP_BCNT_Pos;
+	//Packet Status
+	uint32 sts = (popReg & USB_OTG_GRXSTSP_PKTSTS_Msk) >> USB_OTG_GRXSTSP_PKTSTS_Pos;
+	//Data PID
+	uint32 dataPid = (popReg & USB_OTG_GRXSTSP_DPID_Msk) >> USB_OTG_GRXSTSP_DPID_Pos;
+	//EP Num
+	uint32 epNum = (popReg & USB_OTG_GRXSTSP_EPNUM_Msk) >> USB_OTG_GRXSTSP_EPNUM_Pos;
+
+	if(OUT_NAK == sts && byteCount == 0x00UL)
+	{
+		//These data indicate that the global OUT NAK bit has taken effect.
+	}
+	else if(SETUP_DP_RCV == sts && byteCount == 0x08UL && epNum == 0x0UL && dataPid == DATA0)
+	{
+		//uint32* FifoAddr = DFIFOAddr(epNum);
+		ReadPacket(USB_FS_Ptr->setupData, epNum, 8);
+	}
+	else if(SETUP_TR_CMP == sts && byteCount == 0x00UL && epNum == 0x0UL)
+	{
+		/*These data indicate that the Setup stage for the specified endpoint has completed
+		and the Data stage has started. After this entry is popped from the receive FIFO,
+		the core asserts a Setup interrupt on the specified control OUT endpoint.*/
+		//SetUpRX_Completed = TRUE;
+	}
+	else if(OUT_DP_RCV == sts )
+	{
+		//Data OUT packet pattern
+		if(0UL != byteCount)
+		{
+			//uint32* FifoAddr = DFIFOAddr(epNum);
+			ReadPacket(USB_FS_Ptr->OUTEP_Array[epNum].xfer_buffer, epNum, byteCount);
+		}
+	}
+	else if(OUT_XFER_CMP == sts && byteCount == 0x00UL )
+	{
+		/*These data indicate that an OUT data transfer for the specified OUT endpoint has
+		completed. After this entry is popped from the receive FIFO, the core asserts a
+		Transfer Completed interrupt on the specified OUT endpoint.*/
+		//XFER_Completed_Out
+	}
+	else
+	{/*Do Nothing*/}
+
+	//Unmask RXFLVL
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK |= USB_OTG_GINTMSK_RXFLVLM;
+}
+
+static void Usb_FS_Write(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP, uint8* buffer, uint16 size)
+{
+	Ep_No epNo = EP.num;
+	EP_Typedef* ep;
+
+	if(EP_IN == EP.epDir)
+	{
+		ep = &(USB_FS_Ptr->INEP_Array[epNo]);
+
+		if(0U == size)
+		{
+			ep->InRegAddr->DIEPTSIZ &= ~(USB_OTG_DIEPTSIZ_PKTCNT_Msk);	//Clear First
+			ep->InRegAddr->DIEPTSIZ |= ((1 << USB_OTG_DIEPTSIZ_PKTCNT_Pos) & USB_OTG_DIEPTSIZ_PKTCNT_Msk);
+			ep->InRegAddr->DIEPTSIZ &= ~(USB_OTG_DIEPTSIZ_XFRSIZ_Msk);	//Clear First
+			ep->InRegAddr->DIEPTSIZ |= ((0 << USB_OTG_DIEPTSIZ_XFRSIZ_Pos) & USB_OTG_DIEPTSIZ_XFRSIZ_Msk);
+
+			//Enable EP and CNAK in OTG_FS_DIEPCTL0(EPENA bit is shown as read only by mistake I guess)
+			ep->InRegAddr->DIEPCTL |= (USB_OTG_DIEPCTL_EPENA_Msk | USB_OTG_DIEPCTL_CNAK_Msk);
+		}
+		else
+		{
+			//Modify PacketCount and TransferSize in OTG_FS_DIEPTSIZ0
+			uint32 maxPacketSize = ep->maxpacket;
+			uint32 pckCount = (size % maxPacketSize == 0) ? (size/maxPacketSize) : (size/maxPacketSize + 1);
+
+			ep->InRegAddr->DIEPTSIZ &= ~(USB_OTG_DIEPTSIZ_PKTCNT_Msk);	//Clear First
+			ep->InRegAddr->DIEPTSIZ |= ((pckCount << USB_OTG_DIEPTSIZ_PKTCNT_Pos) & USB_OTG_DIEPTSIZ_PKTCNT_Msk);
+			ep->InRegAddr->DIEPTSIZ &= ~(USB_OTG_DIEPTSIZ_XFRSIZ_Msk);	//Clear First
+			ep->InRegAddr->DIEPTSIZ |= ((size << USB_OTG_DIEPTSIZ_XFRSIZ_Pos) & USB_OTG_DIEPTSIZ_XFRSIZ_Msk);
+
+			ep->xfer_buffer = buffer;
+			ep->xfer_count = 0;
+			ep->xfer_length = size;
+
+			//Enable EP and CNAK in OTG_FS_DIEPCTL0(EPENA bit is shown as read only by mistake I guess)
+			ep->InRegAddr->DIEPCTL |= (USB_OTG_DIEPCTL_EPENA | USB_OTG_DIEPCTL_CNAK);
+
+			//Unmask TXFE interrupt
+			USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DIEPEMPMSK |= (1 << epNo);
+			//WritePacket operation will be done with TXFE interrupt
+		}
+	}
+	else	//EP_OUT
+	{
+		ep = &(USB_FS_Ptr->OUTEP_Array[epNo]);
+
+		ep->OutRegAddr->DOEPTSIZ &= ~USB_OTG_DOEPTSIZ_XFRSIZ;
+		ep->OutRegAddr->DOEPTSIZ &= ~USB_OTG_DOEPTSIZ_PKTCNT;
+
+		if(epNo == 0u)
+		{
+			if(ep->xfer_length > 0)
+			{
+				ep->xfer_length = ep->maxpacket;
+			}
+
+			ep->OutRegAddr->DOEPTSIZ |= ((ep->maxpacket << USB_OTG_DOEPTSIZ_XFRSIZ_Pos) & USB_OTG_DOEPTSIZ_XFRSIZ_Msk);
+			ep->OutRegAddr->DOEPTSIZ |= ((1 << USB_OTG_DOEPTSIZ_PKTCNT_Pos) & USB_OTG_DOEPTSIZ_PKTCNT_Msk);
+		}
+		else
+		{
+			if(ep->xfer_length == 0u)
+			{
+				ep->OutRegAddr->DOEPTSIZ |= ((ep->maxpacket << USB_OTG_DOEPTSIZ_XFRSIZ_Pos) & USB_OTG_DOEPTSIZ_XFRSIZ_Msk);
+				ep->OutRegAddr->DOEPTSIZ |= ((1 << USB_OTG_DOEPTSIZ_PKTCNT_Pos) & USB_OTG_DOEPTSIZ_PKTCNT_Msk);
+			}
+			else
+			{
+				uint32 pckCount = (ep->xfer_length + ep->maxpacket - 1u) / ep->maxpacket;
+				uint32 size = ep->maxpacket * pckCount;
+
+				ep->OutRegAddr->DOEPTSIZ |= ((size << USB_OTG_DOEPTSIZ_XFRSIZ_Pos) & USB_OTG_DOEPTSIZ_XFRSIZ_Msk);
+				ep->OutRegAddr->DOEPTSIZ |= ((pckCount << USB_OTG_DOEPTSIZ_PKTCNT_Pos) & USB_OTG_DOEPTSIZ_PKTCNT_Msk);
+			}
+		}
+
+		ep->OutRegAddr->DOEPCTL |= (USB_OTG_DOEPCTL_EPENA | USB_OTG_DOEPCTL_CNAK);
+
+	}
+}
+
+static uint8 findEPInOut(EpInOut InOut)
+{
+	uint8 epState = 0u;
+
+	if(EP_IN == InOut)
+	{
+		if((USB_OTG_DAINT_IEP0M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_IEP0M)) &&
+				(USB_OTG_DAINTMSK_IEP0M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_IEP0M)))
+		{
+			epState |= (1 << EP_0);
+		}
+		if((USB_OTG_DAINT_IEP1M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_IEP1M)) &&
+				(USB_OTG_DAINTMSK_IEP1M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_IEP1M)))
+		{
+			epState |= (1 << EP_1);
+		}
+		if((USB_OTG_DAINT_IEP2M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_IEP2M)) &&
+				(USB_OTG_DAINTMSK_IEP2M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_IEP2M)))
+		{
+			epState |= (1 << EP_2);
+		}
+		if((USB_OTG_DAINT_IEP3M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_IEP3M)) &&
+				(USB_OTG_DAINTMSK_IEP3M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_IEP3M)))
+		{
+			epState |= (1 << EP_3);
+		}
+	}
+	else if(EP_OUT == InOut)
+	{
+		if((USB_OTG_DAINT_OEP0M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_OEP0M)) &&
+				(USB_OTG_DAINTMSK_OEP0M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_OEP0M)))
+		{
+			epState |= (1 << EP_0);
+		}
+		else if((USB_OTG_DAINT_OEP1M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_OEP1M)) &&
+				(USB_OTG_DAINTMSK_OEP1M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_OEP1M)))
+		{
+			epState |= (1 << EP_1);
+		}
+		else if((USB_OTG_DAINT_OEP2M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_OEP2M)) &&
+				(USB_OTG_DAINTMSK_OEP2M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_OEP2M)))
+		{
+			epState |= (1 << EP_2);
+		}
+		else if((USB_OTG_DAINT_OEP3M == (USB_OTG_FS_Device->DAINT & USB_OTG_DAINT_OEP3M)) &&
+				(USB_OTG_DAINTMSK_OEP3M == (USB_OTG_FS_Device->DAINTMSK & USB_OTG_DAINTMSK_OEP3M)))
+		{
+			epState |= (1 << EP_3);
+		}
+	}
+	else
+	{ /*Do Nothing*/ }
+
+	return epState;
+}
+
+static void WriteTxFifo(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP)
+{
+	uint32 len;
+	uint32 Wlen;
+	uint8 epNo = EP.num;
+	EP_Typedef* ep = &(USB_FS_Ptr->INEP_Array[epNo]);
+
+	len = ep->xfer_length - ep->xfer_count;
+
+	if(len > ep->maxpacket)
+	{
+		len = ep->maxpacket;
+	}
+
+	Wlen = (len + 3)/4;
+
+	while(((USB_FS_Ptr->INEP_Array[epNo].InRegAddr->DTXFSTS & USB_OTG_DTXFSTS_INEPTFSAV_Msk) >= Wlen) &&
+		  (ep->xfer_count < ep->xfer_length) &&
+	      (ep->xfer_length != 0))
+	{
+		len = ep->xfer_length - ep->xfer_count;
+
+		if(len > ep->maxpacket)
+		{
+			len = ep->maxpacket;
+		}
+
+		Wlen = (len + 3)/4;
+
+		WritePacket(ep->xfer_buffer, epNo, len);
+		ep->xfer_count += len;
+		ep->xfer_buffer += len;
+	}
+
+	if(ep->xfer_length <= ep->xfer_count)
+	{
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DIEPEMPMSK &= ~(1 << epNo);
+	}
+}
+
+static void Handle_XferCompIn(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP)
+{
+	Ep_No epNo = EP.num;
+	EP_Typedef* ep = &(USB_FS_Ptr->INEP_Array[epNo]);
+	uint32 remLength = ep->xfer_length - ep->xfer_count;
+
+	if(epNo == 0u)
+	{
+		// Mask DIEPEMPMSK for this endpoint
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DIEPEMPMSK &= ~((1 << epNo) << USB_OTG_DIEPEMPMSK_INEPTXFEM_Pos);
+
+		if(remLength != 0u)	//Not all data send because no enough space in TXFIFO
+		{
+			Usb_FS_Write(USB_FS_Ptr, EP, ep->xfer_buffer, (uint16)remLength);
+		}
+		else	//Everything has transferred
+		{
+			if(((ep->xfer_length % ep->maxpacket) == 0u) && (ep->xfer_length > ep->maxpacket))	//Send ZLP if no short message
+			{
+				ep->xfer_length = 0u;
+				Usb_FS_Write(USB_FS_Ptr, EP, NULL, 0u);
+			}
+			else
+			{
+				//Stall EP
+				ep->InRegAddr->DIEPCTL |= USB_OTG_DIEPCTL_STALL;
+
+				//USBD_CtlReceiveStatus
+				Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->OUTEP_Array[0], NULL, 0u);
+			}
+		}
+	}
+	else
+	{
+		arrDbgFlw[idd++] = 45;
+		USB_FS_Ptr->INEP_Array[epNo].state = STATE_IDLE;
+	}
+}
+
+static void Handle_XferCompOut(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP)
+{
+	uint8 epNo = EP.num;
+
+	if((epNo == 0u) && (USB_FS_Ptr->OUTEP_Array[epNo].xfer_length == 0))
+	{
+		//ZLP received
+		USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPTSIZ |= ((1 << USB_OTG_DOEPTSIZ_PKTCNT_Pos) & USB_OTG_DOEPTSIZ_PKTCNT_Msk);
+		USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPTSIZ |= (((8u * 3u) << USB_OTG_DOEPTSIZ_XFRSIZ_Pos) & USB_OTG_DOEPTSIZ_XFRSIZ_Msk);
+		USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPTSIZ |= USB_OTG_DOEPTSIZ_STUPCNT;
+	}
+
+	//Send Status
+	Usb_FS_Write(USB_FS_Ptr, EP, NULL, 0u);
+}
+
+static void handleDInt(const EP_Typedef EP)
+{
+	if(EP_IN == EP.epDir)
+	{
+		if((USB_OTG_DIEPINT_XFRC == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_XFRC_Msk)) && (USB_OTG_DIEPMSK_XFRCM == (USB_OTG_FS_Device->DIEPMSK & USB_OTG_DIEPMSK_XFRCM_Msk)))
+		{
+			EP.InRegAddr->DIEPINT |= USB_OTG_DIEPINT_XFRC;		//Clean the Status(c_w1)
+			Handle_XferCompIn(&USB_FS, EP);
+			arrDbgFlw[idd++] = 4;
+		}
+		if((USB_OTG_DIEPINT_EPDISD == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_EPDISD_Msk)) && (USB_OTG_DIEPMSK_EPDM == (USB_OTG_FS_Device->DIEPMSK & USB_OTG_DIEPMSK_EPDM_Msk)))
+		{
+			//EPDISD ISR
+			EP.InRegAddr->DIEPINT |= USB_OTG_DIEPINT_EPDISD;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DIEPINT_TOC == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_TOC_Msk)) && (USB_OTG_DIEPMSK_TOM == (USB_OTG_FS_Device->DIEPMSK & USB_OTG_DIEPMSK_TOM_Msk)))
+		{
+			//TOC ISR
+			EP.InRegAddr->DIEPINT |= USB_OTG_DIEPINT_TOC;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DIEPINT_ITTXFE == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_ITTXFE_Msk)) && (USB_OTG_DIEPMSK_ITTXFEMSK == (USB_OTG_FS_Device->DIEPMSK & USB_OTG_DIEPMSK_ITTXFEMSK_Msk)))
+		{
+			//ITTXFE ISR
+			EP.InRegAddr->DIEPINT |= USB_OTG_DIEPINT_ITTXFE;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DIEPINT_INEPNM == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_INEPNM_Msk)) && (USB_OTG_DIEPMSK_INEPNMM == (USB_OTG_FS_Device->DIEPMSK & USB_OTG_DIEPMSK_INEPNMM_Msk)))
+		{
+			//INEPNM ISR
+			EP.InRegAddr->DIEPINT |= USB_OTG_DIEPINT_INEPNM;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DIEPINT_INEPNE == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_INEPNE_Msk)) && (USB_OTG_DIEPMSK_INEPNEM == (USB_OTG_FS_Device->DIEPMSK & USB_OTG_DIEPMSK_INEPNEM_Msk)))
+		{
+			//INEPNE ISR
+			EP.InRegAddr->DIEPINT |= USB_OTG_DIEPINT_INEPNE;		//Clean the Status(c_w1)
+		}
+		if(USB_OTG_DIEPINT_TXFE == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_TXFE_Msk))		/*Has a special Mask Register for every EPIn(OTG_FS_DIEPEMPMSK)*/
+		{
+			//TXFE ISR
+			if((EP_0 == EP.num) && ((USB_OTG_FS_Device->DIEPEMPMSK & (1 << USB_OTG_DIEPEMPMSK_INEPTXFEM_Pos)) != 0UL))
+			{
+				WriteTxFifo(&USB_FS, EP);
+				arrDbgFlw[idd++] = 5;
+			}
+			if((EP_1 == EP.num) && ((USB_OTG_FS_Device->DIEPEMPMSK & (2 << USB_OTG_DIEPEMPMSK_INEPTXFEM_Pos)) != 0UL))
+			{
+				WriteTxFifo(&USB_FS, EP);
+				arrDbgFlw[idd++] = 6;
+			}
+			if((EP_2 == EP.num) && ((USB_OTG_FS_Device->DIEPEMPMSK & (4 << USB_OTG_DIEPEMPMSK_INEPTXFEM_Pos)) != 0UL))
+			{
+				WriteTxFifo(&USB_FS, EP);
+			}
+			if((EP_3 == EP.num) && ((USB_OTG_FS_Device->DIEPEMPMSK & (8 << USB_OTG_DIEPEMPMSK_INEPTXFEM_Pos)) != 0UL))
+			{
+				WriteTxFifo(&USB_FS, EP);
+			}
+		}
+		//USB_OTG_DIEPINT_PKTDRPSTS doesn't generate an interrupt
+		if((USB_OTG_DIEPINT_NAK == (EP.InRegAddr->DIEPINT & USB_OTG_DIEPINT_NAK_Msk)) && (USB_OTG_DIEPMSK_NAKM == (USB_OTG_FS_Device->DIEPMSK & USB_OTG_DIEPMSK_NAKM_Msk)))
+		{
+			//NAK ISR
+			EP.InRegAddr->DIEPINT |= USB_OTG_DIEPINT_NAK;		//Clean the Status(c_w1)
+		}
+	}
+	else if(EP_OUT == EP.epDir)
+	{
+		if((USB_OTG_DOEPINT_XFRC == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_XFRC_Msk)) && (USB_OTG_DOEPMSK_XFRCM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_XFRCM_Msk)))
+		{
+			//XFRC ISR
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_XFRC;		//Clean the Status(c_w1)
+			//Handle_XferCompOut(&USB_FS, EP);
+			arrDbgFlw[idd++] = 2;
+		}
+		if((USB_OTG_DOEPINT_EPDISD == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_EPDISD_Msk)) && (USB_OTG_DOEPMSK_EPDM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_EPDM_Msk)))
+		{
+			//EPDISD ISR
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_EPDISD;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DOEPINT_STUP == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_STUP_Msk)) && (USB_OTG_DOEPMSK_STUPM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_STUPM_Msk)))
+		{
+			//STUP ISR
+			arrDbgFlw[idd++] = 3;
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_STUP;		//Clean the Status(c_w1)
+			HandleSetUpPacket(&USB_FS);
+		}
+		if((USB_OTG_DOEPINT_OTEPDIS == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_OTEPDIS_Msk)) && (USB_OTG_DOEPMSK_OTEPDM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_OTEPDM_Msk)))
+		{
+			//OTEPDIS ISR
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_OTEPDIS;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DOEPINT_OTEPSPR == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_OTEPSPR_Msk)) && (USB_OTG_DOEPMSK_OTEPSPRM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_OTEPSPRM_Msk)))
+		{
+			//OTEPSPR ISR
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_OTEPSPR;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DOEPINT_OUTPKTERR == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_OUTPKTERR_Msk)) && (USB_OTG_DOEPMSK_OPEM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_OPEM_Msk)))
+		{
+			//OUTPKTERR ISR
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_OUTPKTERR;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DOEPINT_BERR == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_BERR_Msk)) && (USB_OTG_DOEPMSK_BERRM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_BERRM_Msk)))
+		{
+			//BERR ISR
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_BERR;		//Clean the Status(c_w1)
+		}
+		if((USB_OTG_DOEPINT_NAK == (EP.OutRegAddr->DOEPINT & USB_OTG_DOEPINT_NAK_Msk)) && (USB_OTG_DOEPMSK_NAKM == (USB_OTG_FS_Device->DOEPMSK & USB_OTG_DOEPMSK_NAKM_Msk)))
+		{
+			//NAK ISR
+			EP.OutRegAddr->DOEPINT |= USB_OTG_DOEPINT_NAK;		//Clean the Status(c_w1)
+		}
+	}
+	else
+	{ /*Do Nothing*/ }
+}
+
+static void HandleResetInt(Usb_Handler* USB_FS_Ptr)
+{
+	/*0. Flush the TXFIFO */
+		//Wait for AHB Idle
+		while((USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL & USB_OTG_GRSTCTL_AHBIDL_Msk) != USB_OTG_GRSTCTL_AHBIDL);
+		//set All TXFIFO No
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL |= (0x10 << USB_OTG_GRSTCTL_TXFNUM_Pos);
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL |= USB_OTG_GRSTCTL_TXFFLSH;
+		while(USB_OTG_GRSTCTL_TXFFLSH == (USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRSTCTL & USB_OTG_GRSTCTL_TXFFLSH_Msk));	//Self Cleaning Bit
+
+	/*1. Set the NAK bit for all OUT endpoints
+	– SNAK = 1 in OTG_FS_DOEPCTLx (for all OUT endpoints)
+	*/
+			//Not For EP#0, Right????????
+		{
+			uint8 sizeOut = sizeof(USB_FS_Ptr->OUTEP_Array)/sizeof(USB_FS_Ptr->OUTEP_Array[0]);
+			for(int i=0; i<sizeOut; ++i)
+			{
+				USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL &= ~(USB_OTG_DOEPCTL_STALL);
+				USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL |= USB_OTG_DOEPCTL_SNAK;
+				USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPINT = 0x313Bu;
+			}
+
+			uint8 sizeIn = sizeof(USB_FS_Ptr->INEP_Array)/sizeof(USB_FS_Ptr->INEP_Array[0]);
+			for(int i=0; i<sizeIn; ++i)
+			{
+				USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_STALL);
+				USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPINT = 0x287Bu;
+			}
+		}
+
+		//Set Default Address to 0
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCFG &= ~USB_OTG_DCFG_DAD;
+
+	/*2. Unmask the following interrupt bits
+	– INEP0 = 1 in OTG_FS_DAINTMSK (control 0 IN endpoint)
+	– OUTEP0 = 1 in OTG_FS_DAINTMSK (control 0 OUT endpoint)
+	– STUP=1 in DOEPMSK
+	– XFRC = 1 in DOEPMSK
+	– XFRC = 1 in DIEPMSK
+	– TOC = 1 in DIEPMSK
+	*/
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DAINTMSK |= USB_OTG_DAINTMSK_IEP0M;
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DAINTMSK |= USB_OTG_DAINTMSK_OEP0M;
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DOEPMSK |= USB_OTG_DOEPMSK_STUPM;
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DOEPMSK |= USB_OTG_DOEPMSK_XFRCM;
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DIEPMSK |= USB_OTG_DIEPMSK_XFRCM;
+		USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DIEPMSK |= USB_OTG_DIEPMSK_TOM;
+
+	/*3. Set up the Data FIFO RAM for each of the FIFOs
+	– Program the OTG_FS_GRXFSIZ register, to be able to receive control OUT data
+	and setup data. If thresholding is not enabled, at a minimum, this must be equal to
+	1 max packet size of control endpoint 0 + 2 words (for the status of the control
+	OUT data packet) + 10 words (for setup packets).
+	*/
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRXFSIZ &= ~(USB_OTG_GRXFSIZ_RXFD_Msk);	//Clean First
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->GRXFSIZ |= ((0x80 << USB_OTG_GRXFSIZ_RXFD_Pos) & USB_OTG_GRXFSIZ_RXFD_Msk);	//512 Byte(128 Word)
+
+	/*– Program the OTG_FS_TX0FSIZ register (depending on the FIFO number chosen)
+	to be able to transmit control IN data. At a minimum, this must be equal to 1 max
+	packet size of control endpoint 0.
+	*/
+		//TBC: Config: OTG_FS_DIEPTXF0 and (OTG_FS_DIEPTXFx)
+		//OTG_FS_DIEPTXF0
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF0_HNPTXFSIZ &= ~(USB_OTG_TX0FD);	//Clean First
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF0_HNPTXFSIZ |= ((0x40 << USB_OTG_TX0FD_Pos) & USB_OTG_TX0FD_Msk);
+
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF0_HNPTXFSIZ &= ~(USB_OTG_TX0FSA);	//Clean First
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF0_HNPTXFSIZ |= ((0x80 << USB_OTG_TX0FSA_Pos) & USB_OTG_TX0FSA_Msk);	//RXFIFO finishes at: 0x80
+
+	/*4. Program the following fields in the endpoint-specific registers for control OUT endpoint
+	0 to receive a SETUP packet
+	– STUPCNT = 3 in OTG_FS_DOEPTSIZ0 (to receive up to 3 back-to-back SETUP
+	packets)
+	*/
+		USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPTSIZ |= USB_OTG_DOEPTSIZ_STUPCNT;
+		USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPTSIZ |= ((1 << USB_OTG_DOEPTSIZ_PKTCNT_Pos) & USB_OTG_DOEPTSIZ_PKTCNT_Msk);
+		USB_FS_Ptr->OUTEP_Array[0].OutRegAddr->DOEPTSIZ |= (((3u * 8u) << USB_OTG_DOEPTSIZ_XFRSIZ_Pos) & USB_OTG_DOEPTSIZ_XFRSIZ_Msk);
+
+		// At this point, all initialization required to receive SETUP packets is done.
+}
+
+static void HandleEnumDneInt(Usb_Handler* USB_FS_Ptr)
+{
+	//0. Activate Setup
+	USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCTL |= USB_OTG_DCTL_CGINAK;
+
+	/*Endpoint initialization on enumeration completion
+	1. On the Enumeration Done interrupt (ENUMDNE in OTG_FS_GINTSTS), read the
+	OTG_FS_DSTS register to determine the enumeration speed.
+	*/
+	if( USB_OTG_DSTS_ENUMSPD == (USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DSTS & USB_OTG_DSTS_ENUMSPD_Msk))
+	{
+		USB_FS_Ptr->FS = TRUE;
+		/* Set USB Turnaround time */
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->GUSBCFG |= ((0xD << USB_OTG_GUSBCFG_TRDT_Pos) & USB_OTG_GUSBCFG_TRDT_Msk);	//0xD for 16MHz AHB
+	}
+	else
+	{
+		//Wrong Config
+	}
+
+	/*2. Program the MPSIZ field in OTG_FS_DIEPCTL0 to set the maximum packet size. This
+	step configures control endpoint 0. The maximum packet size for a control endpoint
+	depends on the enumeration speed.
+	*/
+	//Max Packet Size: 64 Byte for INEndPoint#0
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_MPSIZ_Msk);	//Clean First
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPCTL |= (0 << USB_OTG_DIEPCTL_MPSIZ_Pos);	//00: 64 bytes
+	USB_FS.INEP_Array[0].maxpacket = 64U;
+
+	USB_FS_Ptr->USB_OTG_FS_DeviceRegister->DCTL |= USB_OTG_DCTL_CGINAK;
+
+	//2.5 Reset the EPs_ Deactivate EP_IN#1 and Activate EP#0
+	Usb_FS_EP_Deactivate(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[1]);
+
+	USB_FS_Ptr->OUTEP_Array[0].maxpacket = 64u;
+	Usb_FS_EP_Activate(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[0]);
+	Usb_FS_EP_Activate(USB_FS_Ptr, USB_FS_Ptr->OUTEP_Array[0]);
+
+	/*At this point, the device is ready to receive SOF packets and is configured to perform control
+	transfers on control endpoint 0.*/
+}
+
+static void HandleSetConfig(Usb_Handler* USB_FS_Ptr)
+{
+/*This section describes what the application must do when it receives a SetConfiguration or
+SetInterface command in a SETUP packet.*/
+
+/*1. When a SetConfiguration command is received, the application must program the
+endpoint registers to configure them with the characteristics of the valid endpoints in
+the new configuration.*/
+	/*Since we know we have 1 interface and 1 endpoint only, this part is designed to reach result directly,
+	for multiple interface and multiple EP conditions modify this part*/
+
+
+	//FSConfiguration-bmAttributes
+	uint8 bmAttr = USB_FS_Ptr->CurrentConfigurationDescription->FSConfiguration.bmAttributes;
+	if(TRUE == ((bmAttr & BP_MASK) >> BP_POS) && FALSE == ((bmAttr & SP_MASK) >> SP_POS))
+	{
+		USB_FS_Ptr->selfPWD = FALSE;
+	}
+	else if(FALSE == ((bmAttr & BP_MASK) >> BP_POS) && TRUE == ((bmAttr & SP_MASK) >> SP_POS))
+	{
+		USB_FS_Ptr->selfPWD = TRUE;
+	}
+	else
+	{
+		//Wrong Config
+	}
+
+	if(TRUE == ((bmAttr & RW_MASK) >> RW_POS))
+	{
+		USB_FS_Ptr->remoteWU = TRUE;
+	}
+	else
+	{
+		USB_FS_Ptr->remoteWU = FALSE;
+	}
+
+	//How many Interfaces?
+	//uint8 intCount = USB_FS_Ptr->CurrentConfigurationDescription->FSConfiguration.bNumInterfaces;
+
+	//How many EP for Interface
+	//uint8 epCount = USB_FS_Ptr->CurrentConfigurationDescription->FSInterface.bNumEndpoints;
+
+	//EndpointDescriptor-bEndpointAddress
+	uint8 epAddr = USB_FS_Ptr->CurrentConfigurationDescription->FSEndpoint.bEndpointAddress;
+	uint8 epNo = (epAddr & EP_NO_MASK) >> EP_NO_POS;
+	uint8 epDir = (epAddr & EP_DIR_MASK) >> EP_DIR_POS;
+
+	//EndpointDescriptor-bmAttributes
+	uint8 epAttr = USB_FS_Ptr->CurrentConfigurationDescription->FSEndpoint.bmAttributes;
+
+	//EndpointDescriptor-wMaxPacketSize
+	uint16 packetSize = (USB_FS_Ptr->CurrentConfigurationDescription->FSEndpoint.wMaxPacketSize[0] +
+						 USB_FS_Ptr->CurrentConfigurationDescription->FSEndpoint.wMaxPacketSize[1] * 256);
+
+	EP_Typedef* ep;
+
+	if(epDir == EP_IN)
+	{
+		ep = &(USB_FS_Ptr->INEP_Array[epNo]);
+	}
+	else	//EP_OUT
+	{
+		ep = &(USB_FS_Ptr->OUTEP_Array[epNo]);
+	}
+
+	ep->maxpacket = packetSize;
+	ep->type = epAttr;
+
+	if(EP_IN == epDir)
+	{
+		//Config: OTG_FS_DIEPTXFx
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF[epNo-1] &= ~(USB_OTG_DIEPTXF_INEPTXFD);	//Clean First
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF[epNo-1] |= ((0x80 << USB_OTG_DIEPTXF_INEPTXFD_Pos) & USB_OTG_DIEPTXF_INEPTXFD_Msk);
+
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF[epNo-1] &= ~(USB_OTG_DIEPTXF_INEPTXSA);	//Clean First
+		USB_FS_Ptr->USB_OTG_FS_CoreRegister->DIEPTXF[epNo-1] |= ((0xC0 << USB_OTG_DIEPTXF_INEPTXSA_Pos) & USB_OTG_DIEPTXF_INEPTXSA_Msk);	//TXFIFO#0 finishes at: 0x80 + 0x40 = C0
+	}
+
+	//Activate EP
+	arrDbgFlw[idd++] = 87;
+	Usb_FS_EP_Activate(USB_FS_Ptr, *ep);
+	arrDbgFlw[idd++] = 88;
+}
+
+static void Enter_CriticalRegion(void)
+{
+	__disable_irq();
+}
+
+static void Exit_CriticalRegion(void)
+{
+	__enable_irq();
+}
+
+void Usb_FS_Init(Usb_Handler* USB_FS_Ptr)
+{
+	//USB_Init_Cfg
+	Usb_FS_Msp_Init(USB_FS_Ptr);
+	//Disable All interrupts
+	__disable_irq();
+	Usb_FS_Core_Init(USB_FS_Ptr);
+	Usb_FS_Device_Init(USB_FS_Ptr);
+	/* Enable All Interrupts */
+	__enable_irq();
+}
+
+void Usb_FS_SendReport(Usb_Handler* USB_FS_Ptr, uint8* buffer, uint16 size)
+{
+	if(USB_FS_Ptr->state == CFG_STATE)
+	{arrDbgFlw[idd++] = 101;
+		if(USB_FS_Ptr->INEP_Array[1].state == STATE_IDLE)
+		{arrDbgFlw[idd++] = 102;
+			USB_FS_Ptr->INEP_Array[1].state = STATE_BUSY;
+			Enter_CriticalRegion();
+			Usb_FS_Write(USB_FS_Ptr, USB_FS_Ptr->INEP_Array[1], buffer, size);
+			Exit_CriticalRegion();
+			arrDbgFlw[idd++] = 103;
+		}
+	}
+}
+
+void USB_FS_IRQHandler(void)
+{
+	if((USB_OTG_GINTSTS_MMIS == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_MMIS_Msk)) &&
+			(USB_OTG_GINTMSK_MMISM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_MMISM_Msk)))
+	{
+		//MMIS ISR
+		USB_OTG_FS->GINTSTS |= USB_OTG_GINTSTS_MMIS;	////Clean the Status(c_w1)
+	}
+	if((USB_OTG_GINTSTS_OTGINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_OTGINT_Msk)) &&
+			(USB_OTG_GINTMSK_OTGINT == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_OTGINT_Msk)))
+	{
+		//Read GOTGINT Register to handle problem and clear status
+		USB_OTG_FS->GOTGINT |= USB_OTG_GOTGINT_SEDET | USB_OTG_GOTGINT_SRSSCHG | USB_OTG_GOTGINT_HNSSCHG | USB_OTG_GOTGINT_HNGDET |
+				USB_OTG_GOTGINT_ADTOCHG | USB_OTG_GOTGINT_DBCDNE;
+	}
+	if((USB_OTG_GINTSTS_SOF == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_SOF_Msk)) &&
+			(USB_OTG_GINTMSK_SOFM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_SOFM_Msk)))
+	{
+		//SOF ISR
+		USB_OTG_FS->GINTSTS |= USB_OTG_GINTSTS_SOF;	////Clean the Status(c_w1)
+	}
+	if((USB_OTG_GINTSTS_RXFLVL == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_RXFLVL_Msk)) &&
+			(USB_OTG_GINTMSK_RXFLVLM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_RXFLVLM_Msk)))
+	{
+		/*The FIFO status interrupts are read-only; once software reads from or writes to the FIFO
+		while servicing these interrupts, FIFO interrupt conditions are cleared automatically*/
+		arrDbgFlw[idd++] = 1;
+		Usb_FS_Read(&USB_FS);
+	}
+	if((USB_OTG_GINTSTS_NPTXFE == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_NPTXFE_Msk)) &&
+			(USB_OTG_GINTMSK_NPTXFEM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_NPTXFEM_Msk)))
+	{
+		/*The FIFO status interrupts are read-only; once software reads from or writes to the FIFO
+		while servicing these interrupts, FIFO interrupt conditions are cleared automatically*/
+		//Accessible in host mode only.
+	}
+	if((USB_OTG_GINTSTS_GINAKEFF == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_GINAKEFF)) &&
+			(USB_OTG_GINTMSK_GINAKEFFM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_GINAKEFFM_Msk)))
+	{
+		//WHO WILL HANDLE THIS??????
+		/*This bit can be cleared by
+		clearing the Clear global non-periodic IN NAK bit in the OTG_FS_DCTL register (CGINAK
+		bit in OTG_FS_DCTL).*/
+		//Only accessible in device mode.
+	}
+	if((USB_OTG_GINTSTS_BOUTNAKEFF == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_BOUTNAKEFF_Msk)) &&
+			(USB_OTG_GINTMSK_GONAKEFFM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_GONAKEFFM_Msk)))
+	{
+		//WHO WILL HANDLE THIS??????
+		/*This bit can be cleared
+		by writing the Clear global OUT NAK bit in the OTG_FS_DCTL register (CGONAK bit in
+		OTG_FS_DCTL).*/
+		//Only accessible in device mode.
+	}
+	if( ((USB_OTG_GINTSTS_ESUSP == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_ESUSP_Msk)) &&
+		 (USB_OTG_GINTMSK_ESUSPM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_ESUSPM_Msk))) 			||
+		((USB_OTG_GINTSTS_USBSUSP == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_USBSUSP_Msk)) &&
+		 (USB_OTG_GINTMSK_USBSUSPM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_USBSUSPM_Msk)))		||
+		((USB_OTG_GINTSTS_USBRST == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_USBRST_Msk)) &&
+		 (USB_OTG_GINTMSK_USBRST == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_USBRST_Msk)))			||
+		((USB_OTG_GINTSTS_ENUMDNE == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_ENUMDNE_Msk)) &&
+		 (USB_OTG_GINTMSK_ENUMDNEM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_ENUMDNEM_Msk)))		||
+		((USB_OTG_GINTSTS_ISOODRP == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_ISOODRP_Msk)) &&
+		 (USB_OTG_GINTMSK_ISOODRPM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_ISOODRPM_Msk)))		||
+		((USB_OTG_GINTSTS_EOPF == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_EOPF_Msk)) &&
+		 (USB_OTG_GINTMSK_EOPFM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_EOPFM_Msk)))
+	  )
+	{
+		if((USB_OTG_GINTSTS_ESUSP == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_ESUSP_Msk)) &&
+			(USB_OTG_GINTMSK_ESUSPM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_ESUSPM_Msk)))
+		{
+			//ESUSP ISR
+		}
+		if((USB_OTG_GINTSTS_USBSUSP == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_USBSUSP_Msk)) &&
+			(USB_OTG_GINTMSK_USBSUSPM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_USBSUSPM_Msk)))
+		{
+			//USBSUSP ISR
+		}
+		if((USB_OTG_GINTSTS_USBRST == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_USBRST_Msk)) &&
+			(USB_OTG_GINTMSK_USBRST == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_USBRST_Msk)))
+		{
+			//USBRST ISR
+			HandleResetInt(&USB_FS);
+			arrDbgFlw[idd++] = 7;
+		}
+		if((USB_OTG_GINTSTS_ENUMDNE == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_ENUMDNE_Msk)) &&
+			(USB_OTG_GINTMSK_ENUMDNEM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_ENUMDNEM_Msk)))
+		{
+			//ENUMDNE ISR
+			HandleEnumDneInt(&USB_FS);
+			arrDbgFlw[idd++] = 8;
+		}
+		if((USB_OTG_GINTSTS_ISOODRP == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_ISOODRP_Msk)) &&
+			(USB_OTG_GINTMSK_ISOODRPM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_ISOODRPM_Msk)))
+		{
+			//ISOODRP ISR
+		}
+		if((USB_OTG_GINTSTS_EOPF == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_EOPF_Msk)) &&
+			(USB_OTG_GINTMSK_EOPFM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_EOPFM_Msk)))
+		{
+			//EOPF ISR
+		}
+
+		USB_OTG_FS->GINTSTS |= (USB_OTG_GINTSTS_ESUSP | USB_OTG_GINTSTS_USBSUSP | USB_OTG_GINTSTS_USBRST | USB_OTG_GINTSTS_ENUMDNE |
+								USB_OTG_GINTSTS_ISOODRP | USB_OTG_GINTSTS_EOPF);
+		//Clean the Status(c_w1)_ Should be handled together since cleaning happens together
+	}
+	if((USB_OTG_GINTSTS_IEPINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_IEPINT_Msk)) &&
+			(USB_OTG_GINTMSK_IEPINT == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_IEPINT_Msk)))
+	{
+		uint8 epState = findEPInOut(EP_IN);
+		if(epState != 0U)
+		{
+			if((epState & (1 << EP_0)) != 0)
+			{
+				handleDInt(USB_FS.INEP_Array[0]);
+			}
+			if((epState & (1 << EP_1)) != 0)
+			{
+				handleDInt(USB_FS.INEP_Array[1]);
+			}
+			if((epState & (1 << EP_2)) != 0)
+			{
+				handleDInt(USB_FS.INEP_Array[2]);
+			}
+			if((epState & (1 << EP_3)) != 0)
+			{
+				handleDInt(USB_FS.INEP_Array[3]);
+			}
+		}
+	}
+	if((USB_OTG_GINTSTS_OEPINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_OEPINT_Msk)) &&
+			(USB_OTG_GINTMSK_OEPINT == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_OEPINT_Msk)))
+	{
+		uint8 epState = findEPInOut(EP_OUT);
+		if(epState != 0U)
+		{
+			if((epState & (1 << EP_0)) != 0)
+			{
+				handleDInt(USB_FS.OUTEP_Array[0]);
+			}
+			if((epState & (1 << EP_1)) != 0)
+			{
+				handleDInt(USB_FS.OUTEP_Array[1]);
+			}
+			if((epState & (1 << EP_2)) != 0)
+			{
+				handleDInt(USB_FS.OUTEP_Array[2]);
+			}
+			if((epState & (1 << EP_3)) != 0)
+			{
+				handleDInt(USB_FS.OUTEP_Array[3]);
+			}
+		}
+	}
+	if( ((USB_OTG_GINTSTS_IISOIXFR == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_IISOIXFR_Msk)) &&
+		 (USB_OTG_GINTMSK_IISOIXFRM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_IISOIXFRM_Msk))) ||
+		((USB_OTG_GINTSTS_PXFR_INCOMPISOOUT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_PXFR_INCOMPISOOUT_Msk)) &&
+		 (USB_OTG_GINTMSK_PXFRM_IISOOXFRM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_PXFRM_IISOOXFRM_Msk)))
+	  )
+	{
+		if((USB_OTG_GINTSTS_IISOIXFR == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_IISOIXFR_Msk)) &&
+				(USB_OTG_GINTMSK_IISOIXFRM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_IISOIXFRM_Msk)))
+		{
+			//IISOIXFR ISR
+		}
+		if((USB_OTG_GINTSTS_PXFR_INCOMPISOOUT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_PXFR_INCOMPISOOUT_Msk)) &&
+				(USB_OTG_GINTMSK_PXFRM_IISOOXFRM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_PXFRM_IISOOXFRM_Msk)))
+		{
+			//PXFR_INCOMPISOOUT ISR
+		}
+		USB_OTG_FS->GINTSTS |= USB_OTG_GINTSTS_IISOIXFR | USB_OTG_GINTSTS_PXFR_INCOMPISOOUT;	////Clean the Status(c_w1)
+	}
+	if((USB_OTG_GINTSTS_HPRTINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_HPRTINT_Msk)) &&
+			(USB_OTG_GINTMSK_PRTIM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_PRTIM_Msk)))
+	{
+		//WHO WILL HANDLE THIS??????
+		//Only accessible in host mode
+	}
+	if((USB_OTG_GINTSTS_HCINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_HCINT_Msk)) &&
+			(USB_OTG_GINTMSK_HCIM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_HCIM_Msk)))
+	{
+		//WHO WILL HANDLE THIS??????
+		//Only accessible in host mode.
+	}
+	if((USB_OTG_GINTSTS_PTXFE == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_PTXFE_Msk)) &&
+			(USB_OTG_GINTMSK_PTXFEM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_PTXFEM_Msk)))
+	{
+		//WHO WILL HANDLE THIS??????
+		//Only accessible in host mode
+	}
+	if( ((USB_OTG_GINTSTS_CIDSCHG == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_CIDSCHG_Msk)) &&
+			(USB_OTG_GINTMSK_CIDSCHGM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_CIDSCHGM_Msk))) ||
+		((USB_OTG_GINTSTS_DISCINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_DISCINT_Msk)) &&
+			(USB_OTG_GINTMSK_DISCINT == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_DISCINT_Msk)))   ||
+		((USB_OTG_GINTSTS_SRQINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_SRQINT_Msk)) &&
+			(USB_OTG_GINTMSK_SRQIM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_SRQIM_Msk)))		||
+		((USB_OTG_GINTSTS_WKUINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_WKUINT_Msk)) &&
+			(USB_OTG_GINTMSK_WUIM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_WUIM_Msk)))
+	  )
+	{
+		if((USB_OTG_GINTSTS_CIDSCHG == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_CIDSCHG_Msk)) &&
+				(USB_OTG_GINTMSK_CIDSCHGM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_CIDSCHGM_Msk)))
+		{
+			//CIDSCHG ISR
+		}
+		if((USB_OTG_GINTSTS_DISCINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_DISCINT_Msk)) &&
+				(USB_OTG_GINTMSK_DISCINT == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_DISCINT_Msk)))
+		{
+			//DISCINT ISR
+		}
+		if((USB_OTG_GINTSTS_SRQINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_SRQINT_Msk)) &&
+				(USB_OTG_GINTMSK_SRQIM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_SRQIM_Msk)))
+		{
+			//SRQINT ISR
+		}
+		if((USB_OTG_GINTSTS_WKUINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_WKUINT_Msk)) &&
+				(USB_OTG_GINTMSK_WUIM == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_WUIM_Msk)))
+		{
+			//WKUINT ISR
+		}
+		USB_OTG_FS->GINTSTS |= (USB_OTG_GINTSTS_CIDSCHG | USB_OTG_GINTSTS_DISCINT | USB_OTG_GINTSTS_SRQINT | USB_OTG_GINTSTS_WKUINT);	////Clean the Status(c_w1)
+	}
+}
+
+void Helper_CopyByte(void* dst, const void* src, uint32 length)
+{
+	uint8* dstLocal = dst;
+	const uint8* srcLocal = src;
+
+	  for (uint32 i = 0U; i < length; ++i)
+	  {
+		  *dstLocal++ = *srcLocal++;
+	  }
+}
+
+void Usb_FS_EP_ActivateAll(Usb_Handler* USB_FS_Ptr)
+{
+/*1. Program the characteristics of the required endpoint into the following fields of the
+OTG_FS_DIEPCTLx register (for IN or bidirectional endpoints) or the
+OTG_FS_DOEPCTLx register (for OUT or bidirectional endpoints).
+– Maximum packet size
+– USB active endpoint = 1
+– Endpoint start data toggle (for interrupt and bulk endpoints)
+– Endpoint type
+– TxFIFO number
+*/
+
+//IN Endpoint#0
+	//IN Endpoint#0 Maximum packet size was already in EP Init
+	//Endpoint#0 is always active
+	//Endpoint start data toggle (for interrupt and bulk endpoints)		?????
+	//Endpoint#0 EP Type is Control always
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_TXFNUM_Msk);	//Clean First
+	USB_FS_Ptr->INEP_Array[0].InRegAddr->DIEPCTL |= ((0 << USB_OTG_DIEPCTL_TXFNUM_Pos) & USB_OTG_DIEPCTL_TXFNUM_Msk);	//0: FIFO#0
+
+//OUT Endpoint#0
+	//Maximum packet size is the same as EPIn#0
+	//Endpoint#0 is always active
+	//Endpoint start data toggle (for interrupt and bulk endpoints) ?????
+	//Endpoint#0 EP Type is Control always
+	//No TXFNUM for OUT Endpoint#0
+
+//Other IN Endpoints
+	uint8 sizeIn = sizeof(USB_FS_Ptr->INEP_Array)/sizeof(USB_FS_Ptr->INEP_Array[0]);
+	for(uint8 i=1; i<sizeIn; ++i)
+	{
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_MPSIZ_Msk);	//Clean First
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL |= ((8 << USB_OTG_DIEPCTL_MPSIZ_Pos) & USB_OTG_DIEPCTL_MPSIZ_Msk);	//Max Packet Size: 8 Bytes
+
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL |= (USB_OTG_DIEPCTL_USBAEP);	//Active Endpoint
+
+		//Endpoint start data toggle (for interrupt and bulk endpoints) ?????
+
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_EPTYP_Msk);	//Clean First
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL |= ((3 << USB_OTG_DIEPCTL_EPTYP_Pos) & USB_OTG_DIEPCTL_EPTYP_Msk);	//3: Interrupt
+
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_TXFNUM_Msk);	//Clean First
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL |= ((i << USB_OTG_DIEPCTL_TXFNUM_Pos) & USB_OTG_DIEPCTL_TXFNUM_Msk);	//1: FIFO#1
+	}
+
+//Other OUT Endpoints
+	uint8 sizeOut = sizeof(USB_FS_Ptr->OUTEP_Array)/sizeof(USB_FS_Ptr->OUTEP_Array[0]);
+	for(uint8 i=1; i<sizeOut; ++i)
+	{
+		USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL &= ~(USB_OTG_DOEPCTL_MPSIZ_Msk);	//Clean First
+		USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL |= ((8 << USB_OTG_DOEPCTL_MPSIZ_Pos) & USB_OTG_DOEPCTL_MPSIZ_Msk);	//Max Packet Size: 8 Bytes
+
+		USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL |= (USB_OTG_DOEPCTL_USBAEP);	//Active Endpoint
+
+		//Endpoint start data toggle (for interrupt and bulk endpoints) ?????
+
+		USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL &= ~(USB_OTG_DOEPCTL_EPTYP_Msk);	//Clean First
+		USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL |= ((3 << USB_OTG_DOEPCTL_EPTYP_Pos) & USB_OTG_DOEPCTL_EPTYP_Msk);	//3: Interrupt
+	}
+}
+
+void Usb_FS_EP_DeactivateAll(Usb_Handler* USB_FS_Ptr)
+{
+/*1. In the endpoint to be deactivated, clear the USB active endpoint bit in the
+OTG_FS_DIEPCTLx register (for IN or bidirectional endpoints) or the
+OTG_FS_DOEPCTLx register (for OUT or bidirectional endpoints).
+*/
+	uint8 sizeIn = sizeof(USB_FS_Ptr->INEP_Array)/sizeof(USB_FS_Ptr->INEP_Array[0]);
+	for(uint8 i=1; i<sizeIn; ++i)
+	{
+		USB_FS_Ptr->INEP_Array[i].InRegAddr->DIEPCTL &= ~(USB_OTG_DIEPCTL_USBAEP);
+	}
+
+	uint8 sizeOut = sizeof(USB_FS_Ptr->OUTEP_Array)/sizeof(USB_FS_Ptr->OUTEP_Array[0]);
+	for(uint8 i=1; i<sizeOut; ++i)
+	{
+		USB_FS_Ptr->OUTEP_Array[i].OutRegAddr->DOEPCTL &= ~(USB_OTG_DOEPCTL_USBAEP);
+	}
+
+/*The application must meet the following conditions to set up the device core to handle
+traffic:
+NPTXFEM and RXFLVLM in the OTG_FS_GINTMSK register must be cleared.
+*/
+	//struct_USBGlobal->GINTMSK &= ~(USB_OTG_GINTMSK_NPTXFEM);	//Only accessible in Host mode
+	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK &= ~(USB_OTG_GINTMSK_RXFLVLM);
+}
+

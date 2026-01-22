@@ -1,0 +1,23 @@
+# ninja log v6
+910	2534	7869054698815754	CMakeFiles/KeyPad.dir/main.cpp.obj	6fcfd8c7370aee83
+906	2427	7869054698778211	CMakeFiles/KeyPad.dir/KeyPad_autogen/mocs_compilation.cpp.obj	4c478d1215674e22
+914	2775	7869054698862231	CMakeFiles/KeyPad.dir/mainwindow.cpp.obj	1f369e52f2887b30
+10	905	7869054698290424	C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/timestamp	602bfd96d7617120
+2775	2934	7869054717468784	KeyPad.exe	6b99ada0f05aa2d2
+10	905	7869054698290424	C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/mocs_compilation.cpp	602bfd96d7617120
+10	905	7869054698290424	KeyPad_autogen/mocs_compilation.cpp	602bfd96d7617120
+10	905	7869054698290424	KeyPad_autogen/timestamp	602bfd96d7617120
+19	421	7869055704706784	KeyPad_autogen/timestamp	602bfd96d7617120
+19	421	7869055704706784	KeyPad_autogen/mocs_compilation.cpp	602bfd96d7617120
+19	421	7869055704706784	C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/timestamp	602bfd96d7617120
+19	421	7869055704706784	C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/mocs_compilation.cpp	602bfd96d7617120
+422	1887	7869055705167980	CMakeFiles/KeyPad.dir/KeyPad_autogen/mocs_compilation.cpp.obj	4c478d1215674e22
+426	1890	7869055705208235	CMakeFiles/KeyPad.dir/main.cpp.obj	6fcfd8c7370aee83
+430	2181	7869055705250100	CMakeFiles/KeyPad.dir/mainwindow.cpp.obj	1f369e52f2887b30
+2181	2333	7869055722756834	KeyPad.exe	6b99ada0f05aa2d2
+10	122	7869058212441742	KeyPad_autogen/timestamp	602bfd96d7617120
+10	122	7869058212441742	KeyPad_autogen/mocs_compilation.cpp	602bfd96d7617120
+10	122	7869058212441742	C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/timestamp	602bfd96d7617120
+10	122	7869058212441742	C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/mocs_compilation.cpp	602bfd96d7617120
+123	1882	7869058213562066	CMakeFiles/KeyPad.dir/mainwindow.cpp.obj	1f369e52f2887b30
+1882	2039	7869058231166469	KeyPad.exe	6b99ada0f05aa2d2

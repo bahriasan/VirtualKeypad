@@ -161,7 +161,7 @@ typedef struct
 }Usb_Handler;
 
 void USB_FS_IRQHandler(void);
-void Usb_FS_Init(Usb_Handler* USB_FS_Ptr);
+void Usb_FS_Init(void);
 void Usb_FS_SendReport(Usb_Handler* USB_FS_Ptr, uint8* buffer, uint16 size);
 void Usb_FS_EP_ActivateAll(Usb_Handler* USB_FS);
 void Usb_FS_EP_DeactivateAll(Usb_Handler* USB_FS);

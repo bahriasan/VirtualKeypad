@@ -117,7 +117,18 @@ static void Gpio_ChannelEnable(GPIO_TypeDef* structGpio)
 	}
 }
 
+boolean Gpio_Read(uint8 pinNumber, GPIO_TypeDef* structGpio)
+{
+	boolean retVal = FALSE;
+	uint32 idr_reg = structGpio->IDR;
 
+	if(((idr_reg >> pinNumber) & 0x1ul) == 0x1ul)
+	{
+		retVal = TRUE;
+	}
+
+	return retVal;
+}
 
 
 

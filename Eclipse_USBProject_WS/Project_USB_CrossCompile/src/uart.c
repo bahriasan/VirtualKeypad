@@ -7,13 +7,17 @@
 
 #include "uart.h"
 #include "rcc.h"
+#include "gpio.h"
 
+char readData[32] = {0};
+uint8 DataReceived_flag;
 
 //Static Function Declarations
 
 static void Uart_ChannelEnable(USART_TypeDef* structUart);
 static void Uart_ChannelReset(USART_TypeDef* structUart);
 static void Uart_SetBaudrate(uint16 baudRate, USART_TypeDef* structUart);
+static void Uart_Msp_Init(uart_cfg configUart, USART_TypeDef* structUart);
 
 //Static Function Definitions
 
@@ -133,12 +137,33 @@ static void Uart_SetBaudrate(uint16 baudRate, USART_TypeDef* structUart)
 	structUart->BRR |= (mantissa << MANTISSA_BIT_POSITION);
 }
 
+static void Uart_Msp_Init(uart_cfg configUart, USART_TypeDef* structUart)
+{
+	//GPIO Init
+	gpio_cfg configGpio_PA0 = {PIN_0, GPIO_MODE_ALTERNATE, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_UP, AF7};		//USART2_CTS
+								//ACTIVE LOW SO SHOULD BE PULLED UP
+	gpio_cfg configGpio_PA1 = {PIN_1, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_LOW, PULL_UP, AF7};	//USART2_RTS
+								//ACTIVE LOW SO SHOULD BE PULLED UP
+	gpio_cfg configGpio_PA2 = {PIN_2, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_LOW, PULL_UP, AF7};	//USART2_TX
+								//SHOULD BE PULL_UP TO BE HIGH IN IDDLE, PUSH-PULL OR OPEN-DRAIN IS OK WHEN USED WITH PULL-UP
+	gpio_cfg configGpio_PA3 = {PIN_3, GPIO_MODE_ALTERNATE, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_DOWN, AF7};		//USART2_RX
+								//SHOULD BE PULL_UP TO BE HIGH IN IDDLE, PUSH-PULL WILL BE SELECTED AS RESET STATE FOR OUTPUT_TYPE_NA
+
+	Gpio_Init(configGpio_PA0, GPIOA);
+	Gpio_Init(configGpio_PA1, GPIOA);
+	Gpio_Init(configGpio_PA2, GPIOA);
+	Gpio_Init(configGpio_PA3, GPIOA);
+
+	//1. Enable Channel Clock
+	Uart_ChannelEnable(structUart);
+}
+
 //Global Function Definitions
 
 void Uart_Init(uart_cfg configUart, USART_TypeDef* structUart)
 {
-	//1. Enable Channel Clock
-	Uart_ChannelEnable(structUart);
+	//Uart Msp_Init
+	Uart_Msp_Init(configUart, structUart);
 
 	//0. Enable USART
 	structUart->CR1 |= (1 << USART_ENABLE_BIT_POSITION);
@@ -197,6 +222,8 @@ void Uart_Init(uart_cfg configUart, USART_TypeDef* structUart)
 	//8. Enable Transmit
 	structUart->CR1 |= (1 << TRANSMIT_ENABLE_BIT_POSITION);
 
+	// PA0: USART2_CTS, PA1: USART2_RTS, PA2: USART2_TX, PA3: USART2_RX, PA4: USART2_CK
+	Uart_EnableInterrupt(USART2, RXNE);
 }
 
 void Uart_Read(uint8* readData, USART_TypeDef* structUart)
@@ -279,7 +306,6 @@ void Uart_Write(uint8* writeDataBuffer, USART_TypeDef* structUart, uint32 size)
 	}
 }
 
-
 void Uart_Write_Inst(uint8* writeDataBuffer, USART_TypeDef* structUart, uint32 size)
 {
 	uint8 i = 0, j = 0, k = 0;
@@ -304,7 +330,7 @@ void Uart_Read_Inst(uint8* readDataBuffer, USART_TypeDef* structUart)
 {
 	static uint8 i = 0;
 
-	if((structUart->SR >> RXNE_BIT_POSITION) & 0x01 == 0x01)
+	if(((structUart->SR >> RXNE_BIT_POSITION) & 0x01) == 0x01)
 	{
 		*(readDataBuffer + i) = structUart->DR;
 		++i;
@@ -374,4 +400,58 @@ void Uart_EnableInterrupt(USART_TypeDef* structUart, Uart_interrupt eventFlag)
 	}
 }
 
+void Uart_IRQHandler(void)
+{
+	static uint8 index = 0;
+
+	//Check the source of the Interrupt
+
+	if((uint32)USART2->SR & SR_MASK(PE_BIT_POSITION))
+	{
+		//Handle PE
+	}
+	else if((uint32)USART2->SR & SR_MASK(FE_BIT_POSITION))
+	{
+		//Handle FE
+	}
+	else if((uint32)USART2->SR & SR_MASK(NF_BIT_POSITION))
+	{
+		//Handle NF
+	}
+	else if((uint32)USART2->SR & SR_MASK(ORE_BIT_POSITION))
+	{
+		//Handle ORE
+	}
+	else if((uint32)USART2->SR & SR_MASK(IDLE_BIT_POSITION))
+	{
+		//Handle IDLE
+	}
+	else if((uint32)USART2->SR & SR_MASK(RXNE_BIT_POSITION))
+	{
+		//Handle RXNE
+		Uart_Read((uint8*)readData + index , USART2);
+		index = (index + 1) % sizeof(readData); 	//ringbuffer
+		//DataReceived_flag = FALSE;
+	}
+	else if((uint32)USART2->SR & SR_MASK(TC_BIT_POSITION))
+	{
+		//Handle TC
+	}
+	else if((uint32)USART2->SR & SR_MASK(TXE_BIT_POSITION))
+	{
+		//Handle TXE
+	}
+	else if((uint32)USART2->SR & SR_MASK(LBD_BIT_POSITION))
+	{
+		//Handle LBD
+	}
+	else if((uint32)USART2->SR & SR_MASK(CTS_BIT_POSITION))
+	{
+		//Handle CTS
+	}
+	else
+	{
+		// do nothing
+	}
+}
 

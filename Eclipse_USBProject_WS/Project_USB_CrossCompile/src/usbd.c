@@ -49,7 +49,7 @@ FSConfigurationDescriptorType FSConfigurationDescriptor =
 	0x01,					//	uint8 bNumInterfaces;
 	0x01,					//	uint8 bConfigurationValue;
 	0x00,					//	uint8 iConfiguration;
-	SET_BM_ATTR(BP_NO,SP_YES,RW_NO),		//	uint8 bmAttributes;
+	SET_BM_ATTR(BP_YES,SP_YES,RW_YES),		//	uint8 bmAttributes;
 	0x32},					//	uint8 bMaxPower;
 	//FSInterface
 	{0x09,					//	uint8 bLength;

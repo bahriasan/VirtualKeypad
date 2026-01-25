@@ -14,82 +14,29 @@
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.global	DataReceived_flag
-  18              		.bss
-  21              	DataReceived_flag:
-  22 0000 00       		.space	1
-  23              		.global	readData
-  24 0001 000000   		.align	2
-  27              	readData:
-  28 0004 00000000 		.space	32
-  28      00000000 
-  28      00000000 
-  28      00000000 
-  28      00000000 
-  29              		.section	.rodata
-  30              		.align	2
-  31              	.LC0:
-  32 0000 00       		.byte	0
-  33 0001 00       		.byte	0
-  34 0002 00       		.byte	0
-  35 0003 00       		.byte	0
-  36 0004 01       		.byte	1
-  37 0005 01       		.byte	1
-  38 0006 0400     		.short	4
-  39 0008 6000     		.short	96
-  40 000a 0000     		.short	0
-  41 000c 0400     		.short	4
-  42 000e 0200     		.short	2
-  43              		.align	2
-  44              	.LC1:
-  45 0010 00       		.byte	0
-  46 0011 02       		.byte	2
-  47 0012 02       		.byte	2
-  48 0013 00       		.byte	0
-  49 0014 01       		.byte	1
-  50 0015 07       		.byte	7
-  51 0016 0000     		.align	2
-  52              	.LC2:
-  53 0018 01       		.byte	1
-  54 0019 02       		.byte	2
-  55 001a 00       		.byte	0
-  56 001b 00       		.byte	0
-  57 001c 01       		.byte	1
-  58 001d 07       		.byte	7
-  59 001e 0000     		.align	2
-  60              	.LC3:
-  61 0020 02       		.byte	2
-  62 0021 02       		.byte	2
-  63 0022 00       		.byte	0
-  64 0023 00       		.byte	0
-  65 0024 01       		.byte	1
-  66 0025 07       		.byte	7
-  67 0026 0000     		.align	2
-  68              	.LC4:
-  69 0028 03       		.byte	3
-  70 0029 02       		.byte	2
-  71 002a 02       		.byte	2
-  72 002b 00       		.byte	0
-  73 002c 02       		.byte	2
-  74 002d 07       		.byte	7
-  75 002e 0000     		.align	2
-  76              	.LC5:
-  77 0030 00       		.byte	0
-  78 0031 00       		.byte	0
-  79 0032 02       		.byte	2
-  80 0033 03       		.byte	3
-  81 0034 00       		.byte	0
-  82 0035 00       		.space	1
-  83 0036 8004     		.short	1152
-  84              		.text
-  85              		.align	1
-  86              		.global	main
-  87              		.syntax unified
-  88              		.thumb
-  89              		.thumb_func
-  91              	main:
-  92              	.LFB137:
-  93              		.file 1 "../src/main.c"
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 00       		.byte	0
+  21 0001 00       		.byte	0
+  22 0002 00       		.byte	0
+  23 0003 00       		.byte	0
+  24 0004 01       		.byte	1
+  25 0005 01       		.byte	1
+  26 0006 0400     		.short	4
+  27 0008 6000     		.short	96
+  28 000a 0000     		.short	0
+  29 000c 0400     		.short	4
+  30 000e 0200     		.short	2
+  31              		.text
+  32              		.align	1
+  33              		.global	main
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  38              	main:
+  39              	.LFB137:
+  40              		.file 1 "../src/main.c"
    1:../src/main.c **** /*
    2:../src/main.c ****  * This file is part of the µOS++ distribution.
    3:../src/main.c ****  *   (https://github.com/micro-os-plus)
@@ -124,622 +71,317 @@
   32:../src/main.c **** #include "cmsis_device.h"
   33:../src/main.c **** 
   34:../src/main.c **** #include "uart.h"
-  35:../src/main.c **** #include "gpio.h"
-  36:../src/main.c **** #include "SystemInit.h"
-  37:../src/main.c **** #include "usb.h"
+  35:../src/main.c **** #include "SystemInit.h"
+  36:../src/main.c **** #include "usb.h"
+  37:../src/main.c **** #include "App.h"
   38:../src/main.c **** 
   39:../src/main.c **** 
   40:../src/main.c **** /*Define local functions*/
-  41:../src/main.c **** static void delay(uint32 time);
+  41:../src/main.c **** static void delayMs(uint32 time);
   42:../src/main.c **** /***************************/
   43:../src/main.c **** 
   44:../src/main.c **** 
   45:../src/main.c **** /*Define Global Variables*/
-  46:../src/main.c **** //UART
-  47:../src/main.c **** uint8 DataReceived_flag;
-  48:../src/main.c **** char readData[32] = {0};
-  49:../src/main.c **** 
-  50:../src/main.c **** //USB
-  51:../src/main.c **** 
-  52:../src/main.c **** 
-  53:../src/main.c **** /***************************/
-  54:../src/main.c **** 
-  55:../src/main.c **** // ----------------------------------------------------------------------------
-  56:../src/main.c **** //
-  57:../src/main.c **** // Print a greeting message on the trace device and enter a loop
-  58:../src/main.c **** // to count seconds.
-  59:../src/main.c **** //
-  60:../src/main.c **** // Trace support is enabled by adding the TRACE macro definition.
-  61:../src/main.c **** // By default the trace messages are forwarded to the DEBUG output,
-  62:../src/main.c **** // but can be rerouted to any device or completely suppressed, by
-  63:../src/main.c **** // changing the definitions required in system/src/diag/trace-impl.c
-  64:../src/main.c **** // (currently OS_USE_TRACE_ITM, OS_USE_TRACE_SEMIHOSTING_DEBUG/_STDOUT).
-  65:../src/main.c **** //
-  66:../src/main.c **** // ----------------------------------------------------------------------------
-  67:../src/main.c **** 
-  68:../src/main.c **** // Sample pragmas to cope with warnings. Please note the related line at
-  69:../src/main.c **** // the end of this function, used to pop the compiler diagnostics status.
-  70:../src/main.c **** #pragma GCC diagnostic push
-  71:../src/main.c **** #pragma GCC diagnostic ignored "-Wunused-parameter"
-  72:../src/main.c **** #pragma GCC diagnostic ignored "-Wmissing-declarations"
-  73:../src/main.c **** #pragma GCC diagnostic ignored "-Wreturn-type"
-  74:../src/main.c **** 
-  75:../src/main.c **** int
-  76:../src/main.c **** main (int argc, char* argv[])
-  77:../src/main.c **** {
-  94              		.loc 1 77 1
-  95              		.cfi_startproc
-  96              		@ args = 0, pretend = 0, frame = 72
-  97              		@ frame_needed = 1, uses_anonymous_args = 0
-  98 0000 90B5     		push	{r4, r7, lr}
-  99              		.cfi_def_cfa_offset 12
- 100              		.cfi_offset 4, -12
- 101              		.cfi_offset 7, -8
- 102              		.cfi_offset 14, -4
- 103 0002 93B0     		sub	sp, sp, #76
- 104              		.cfi_def_cfa_offset 88
- 105 0004 00AF     		add	r7, sp, #0
- 106              		.cfi_def_cfa_register 7
- 107 0006 7860     		str	r0, [r7, #4]
- 108 0008 3960     		str	r1, [r7]
-  78:../src/main.c ****   // Normally at this stage most of the microcontroller subsystems, including
-  79:../src/main.c ****   // the clock, were initialised by the CMSIS SystemInit() function invoked
-  80:../src/main.c ****   // from the startup file, before calling main().
-  81:../src/main.c ****   // (see system/src/cortexm/initialize-hardware.c)
-  82:../src/main.c ****   // If further initialisations are required, customise __initialize_hardware()
-  83:../src/main.c ****   // or add the additional initialisation here, for example:
-  84:../src/main.c ****   //
-  85:../src/main.c ****   // HAL_Init();
-  86:../src/main.c **** 
-  87:../src/main.c ****   // In this sample the SystemInit() function is just a placeholder,
-  88:../src/main.c ****   // if you do not add the real one, the clock will remain configured with
-  89:../src/main.c ****   // the reset value, usually a relatively low speed RC clock (8-12MHz).
+  46:../src/main.c **** 
+  47:../src/main.c **** 
+  48:../src/main.c **** 
+  49:../src/main.c **** /***************************/
+  50:../src/main.c **** 
+  51:../src/main.c **** // ----------------------------------------------------------------------------
+  52:../src/main.c **** //
+  53:../src/main.c **** // Print a greeting message on the trace device and enter a loop
+  54:../src/main.c **** // to count seconds.
+  55:../src/main.c **** //
+  56:../src/main.c **** // Trace support is enabled by adding the TRACE macro definition.
+  57:../src/main.c **** // By default the trace messages are forwarded to the DEBUG output,
+  58:../src/main.c **** // but can be rerouted to any device or completely suppressed, by
+  59:../src/main.c **** // changing the definitions required in system/src/diag/trace-impl.c
+  60:../src/main.c **** // (currently OS_USE_TRACE_ITM, OS_USE_TRACE_SEMIHOSTING_DEBUG/_STDOUT).
+  61:../src/main.c **** //
+  62:../src/main.c **** // ----------------------------------------------------------------------------
+  63:../src/main.c **** 
+  64:../src/main.c **** // Sample pragmas to cope with warnings. Please note the related line at
+  65:../src/main.c **** // the end of this function, used to pop the compiler diagnostics status.
+  66:../src/main.c **** #pragma GCC diagnostic push
+  67:../src/main.c **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  68:../src/main.c **** #pragma GCC diagnostic ignored "-Wmissing-declarations"
+  69:../src/main.c **** #pragma GCC diagnostic ignored "-Wreturn-type"
+  70:../src/main.c **** 
+  71:../src/main.c **** int main (int argc, char* argv[])
+  72:../src/main.c **** {
+  41              		.loc 1 72 1
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 24
+  44              		@ frame_needed = 1, uses_anonymous_args = 0
+  45 0000 90B5     		push	{r4, r7, lr}
+  46              		.cfi_def_cfa_offset 12
+  47              		.cfi_offset 4, -12
+  48              		.cfi_offset 7, -8
+  49              		.cfi_offset 14, -4
+  50 0002 87B0     		sub	sp, sp, #28
+  51              		.cfi_def_cfa_offset 40
+  52 0004 00AF     		add	r7, sp, #0
+  53              		.cfi_def_cfa_register 7
+  54 0006 7860     		str	r0, [r7, #4]
+  55 0008 3960     		str	r1, [r7]
+  73:../src/main.c **** 	//SystemInit
+  74:../src/main.c **** 	system_cfg configSystem = {CLOCK_SOURCE_HSI, APB1_AHB_DIVIDER_NO, APB2_AHB_DIVIDER_NO, AHB_SYS_DIV
+  56              		.loc 1 74 13
+  57 000a 0D4B     		ldr	r3, .L3
+  58 000c 07F10804 		add	r4, r7, #8
+  59 0010 0FCB     		ldm	r3, {r0, r1, r2, r3}
+  60 0012 84E80F00 		stm	r4, {r0, r1, r2, r3}
+  75:../src/main.c **** 								PLL_USB, PLLSRC_HSE, 4U, 96U, 0U, 4U, 2U};
+  76:../src/main.c **** 	SystemClockConfig(configSystem);
+  61              		.loc 1 76 2
+  62 0016 07F10803 		add	r3, r7, #8
+  63 001a 0FCB     		ldm	r3, {r0, r1, r2, r3}
+  64 001c FFF7FEFF 		bl	SystemClockConfig
+  77:../src/main.c **** 
+  78:../src/main.c **** 	//UART Init
+  79:../src/main.c **** //	uart_cfg configUart = {STOPBIT_1, MBIT_8, PARITY_NO, RTS_CTS_ENABLE, OVER8_DIS, BAUDRATE_115_2K}
+  80:../src/main.c **** //	Uart_Init(configUart, USART2);
+  81:../src/main.c **** 
+  82:../src/main.c **** 	//USB Init
+  83:../src/main.c **** 	Usb_FS_Init();
+  65              		.loc 1 83 2
+  66 0020 FFF7FEFF 		bl	Usb_FS_Init
+  84:../src/main.c **** 
+  85:../src/main.c **** 	//External Input Config
+  86:../src/main.c **** //	Exti_Init();
+  87:../src/main.c **** 
+  88:../src/main.c **** 	//Input Init Config
+  89:../src/main.c **** 	Input_Init();
+  67              		.loc 1 89 2
+  68 0024 FFF7FEFF 		bl	Input_Init
+  69              	.L2:
   90:../src/main.c **** 
-  91:../src/main.c **** 	//SystemInit
-  92:../src/main.c **** 	system_cfg configSystem = {CLOCK_SOURCE_HSI, APB1_AHB_DIVIDER_NO, APB2_AHB_DIVIDER_NO, AHB_SYS_DIV
- 109              		.loc 1 92 13
- 110 000a 3F4B     		ldr	r3, .L3
- 111 000c 07F13804 		add	r4, r7, #56
- 112 0010 0FCB     		ldm	r3, {r0, r1, r2, r3}
- 113 0012 84E80F00 		stm	r4, {r0, r1, r2, r3}
-  93:../src/main.c **** 								PLL_USB, PLLSRC_HSE, 4U, 96U, 0U, 4U, 2U};
-  94:../src/main.c **** 	SystemClockConfig(configSystem);
- 114              		.loc 1 94 2
- 115 0016 07F13803 		add	r3, r7, #56
- 116 001a 0FCB     		ldm	r3, {r0, r1, r2, r3}
- 117 001c FFF7FEFF 		bl	SystemClockConfig
-  95:../src/main.c **** 
-  96:../src/main.c **** 	//GPIO Init
-  97:../src/main.c **** 	gpio_cfg configGpio_PA0 = {PIN_0, GPIO_MODE_ALTERNATE, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_UP, 
- 118              		.loc 1 97 11
- 119 0020 3A4A     		ldr	r2, .L3+4
- 120 0022 07F13003 		add	r3, r7, #48
- 121 0026 92E80300 		ldm	r2, {r0, r1}
- 122 002a 1860     		str	r0, [r3]
- 123 002c 0433     		adds	r3, r3, #4
- 124 002e 1980     		strh	r1, [r3]	@ movhi
-  98:../src/main.c **** 								//ACTIVE LOW SO SHOULD BE PULLED UP
-  99:../src/main.c **** 	gpio_cfg configGpio_PA1 = {PIN_1, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_LOW, PULL_UP
- 125              		.loc 1 99 11
- 126 0030 374A     		ldr	r2, .L3+8
- 127 0032 07F12803 		add	r3, r7, #40
- 128 0036 92E80300 		ldm	r2, {r0, r1}
- 129 003a 1860     		str	r0, [r3]
- 130 003c 0433     		adds	r3, r3, #4
- 131 003e 1980     		strh	r1, [r3]	@ movhi
- 100:../src/main.c **** 								//ACTIVE LOW SO SHOULD BE PULLED UP
- 101:../src/main.c **** 	gpio_cfg configGpio_PA2 = {PIN_2, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_LOW, PULL_UP
- 132              		.loc 1 101 11
- 133 0040 344A     		ldr	r2, .L3+12
- 134 0042 07F12003 		add	r3, r7, #32
- 135 0046 92E80300 		ldm	r2, {r0, r1}
- 136 004a 1860     		str	r0, [r3]
- 137 004c 0433     		adds	r3, r3, #4
- 138 004e 1980     		strh	r1, [r3]	@ movhi
- 102:../src/main.c **** 								//SHOULD BE PULL_UP TO BE HIGH IN IDDLE, PUSH-PULL OR OPEN-DRAIN IS OK WHEN USED WITH PULL-
- 103:../src/main.c **** 	gpio_cfg configGpio_PA3 = {PIN_3, GPIO_MODE_ALTERNATE, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_DOWN
- 139              		.loc 1 103 11
- 140 0050 314A     		ldr	r2, .L3+16
- 141 0052 07F11803 		add	r3, r7, #24
- 142 0056 92E80300 		ldm	r2, {r0, r1}
- 143 005a 1860     		str	r0, [r3]
- 144 005c 0433     		adds	r3, r3, #4
- 145 005e 1980     		strh	r1, [r3]	@ movhi
- 104:../src/main.c **** 								//SHOULD BE PULL_UP TO BE HIGH IN IDDLE, PUSH-PULL WILL BE SELECTED AS RESET STATE FOR OUTP
- 105:../src/main.c **** 
- 106:../src/main.c **** 	Gpio_Init(configGpio_PA0, GPIOA);
- 146              		.loc 1 106 2
- 147 0060 2E4A     		ldr	r2, .L3+20
- 148 0062 07F13003 		add	r3, r7, #48
- 149 0066 93E80300 		ldm	r3, {r0, r1}
- 150 006a FFF7FEFF 		bl	Gpio_Init
- 107:../src/main.c **** 	Gpio_Init(configGpio_PA1, GPIOA);
- 151              		.loc 1 107 2
- 152 006e 2B4A     		ldr	r2, .L3+20
- 153 0070 07F12803 		add	r3, r7, #40
- 154 0074 93E80300 		ldm	r3, {r0, r1}
- 155 0078 FFF7FEFF 		bl	Gpio_Init
- 108:../src/main.c **** 	Gpio_Init(configGpio_PA2, GPIOA);
- 156              		.loc 1 108 2
- 157 007c 274A     		ldr	r2, .L3+20
- 158 007e 07F12003 		add	r3, r7, #32
- 159 0082 93E80300 		ldm	r3, {r0, r1}
- 160 0086 FFF7FEFF 		bl	Gpio_Init
- 109:../src/main.c **** 	Gpio_Init(configGpio_PA3, GPIOA);
- 161              		.loc 1 109 2
- 162 008a 244A     		ldr	r2, .L3+20
- 163 008c 07F11803 		add	r3, r7, #24
- 164 0090 93E80300 		ldm	r3, {r0, r1}
- 165 0094 FFF7FEFF 		bl	Gpio_Init
+  91:../src/main.c **** 
+  92:../src/main.c **** 
+  93:../src/main.c ****   // Infinite loop
+  94:../src/main.c ****   while (1)
+  95:../src/main.c ****     {
+  96:../src/main.c **** //	  /*UART Test*/
+  97:../src/main.c **** //	  char readData[32] = {0};
+  98:../src/main.c **** //	  char writeData[] = "Hello World!";
+  99:../src/main.c **** //	  Uart_Read_Inst((uint8*)readData , USART2);
+ 100:../src/main.c **** //	  Uart_Read((uint8*)readData , USART2);
+ 101:../src/main.c **** //	  Uart_Write(writeData, USART2, sizeof(writeData));
+ 102:../src/main.c **** //	  Uart_Write_Inst(writeData, USART2, sizeof(writeData));
+ 103:../src/main.c **** //	  delay(10000);//delay for Write process
+ 104:../src/main.c **** 
+ 105:../src/main.c **** 	  InputPolling();
+  70              		.loc 1 105 4 discriminator 1
+  71 0028 FFF7FEFF 		bl	InputPolling
+ 106:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, USB_buffer, sizeof(USB_buffer));
+  72              		.loc 1 106 4 discriminator 1
+  73 002c 0822     		movs	r2, #8
+  74 002e 0549     		ldr	r1, .L3+4
+  75 0030 0548     		ldr	r0, .L3+8
+  76 0032 FFF7FEFF 		bl	Usb_FS_SendReport
+ 107:../src/main.c **** 	  delayMs(200);
+  77              		.loc 1 107 4 discriminator 1
+  78 0036 C820     		movs	r0, #200
+  79 0038 00F014F8 		bl	delayMs
+ 105:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, USB_buffer, sizeof(USB_buffer));
+  80              		.loc 1 105 4 discriminator 1
+  81 003c F4E7     		b	.L2
+  82              	.L4:
+  83 003e 00BF     		.align	2
+  84              	.L3:
+  85 0040 00000000 		.word	.LC0
+  86 0044 00000000 		.word	USB_buffer
+  87 0048 00000000 		.word	USB_FS
+  88              		.cfi_endproc
+  89              	.LFE137:
+  91              		.align	1
+  92              		.global	OTG_FS_IRQHandler
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  97              	OTG_FS_IRQHandler:
+  98              	.LFB138:
+ 108:../src/main.c ****     }
+ 109:../src/main.c **** }
  110:../src/main.c **** 
  111:../src/main.c **** 
- 112:../src/main.c **** 	//UART Init
- 113:../src/main.c **** 	uart_cfg configUart = {STOPBIT_1, MBIT_8, PARITY_NO, RTS_CTS_ENABLE, OVER8_DIS, BAUDRATE_115_2K};
- 166              		.loc 1 113 11
- 167 0098 214A     		ldr	r2, .L3+24
- 168 009a 07F11003 		add	r3, r7, #16
- 169 009e 92E80300 		ldm	r2, {r0, r1}
- 170 00a2 83E80300 		stm	r3, {r0, r1}
- 114:../src/main.c **** 	Uart_Init(configUart, USART2);
- 171              		.loc 1 114 2
- 172 00a6 1F4A     		ldr	r2, .L3+28
- 173 00a8 07F11003 		add	r3, r7, #16
- 174 00ac 93E80300 		ldm	r3, {r0, r1}
- 175 00b0 FFF7FEFF 		bl	Uart_Init
- 115:../src/main.c **** 	// PA0: USART2_CTS, PA1: USART2_RTS, PA2: USART2_TX, PA3: USART2_RX, PA4: USART2_CK
- 116:../src/main.c **** 	Uart_EnableInterrupt(USART2, RXNE);
- 176              		.loc 1 116 2
- 177 00b4 0321     		movs	r1, #3
- 178 00b6 1B48     		ldr	r0, .L3+28
- 179 00b8 FFF7FEFF 		bl	Uart_EnableInterrupt
- 117:../src/main.c **** 
+ 112:../src/main.c **** 
+ 113:../src/main.c **** 
+ 114:../src/main.c **** void OTG_FS_IRQHandler(void)
+ 115:../src/main.c **** {
+  99              		.loc 1 115 1
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 1, uses_anonymous_args = 0
+ 103 004c 80B5     		push	{r7, lr}
+ 104              		.cfi_def_cfa_offset 8
+ 105              		.cfi_offset 7, -8
+ 106              		.cfi_offset 14, -4
+ 107 004e 00AF     		add	r7, sp, #0
+ 108              		.cfi_def_cfa_register 7
+ 116:../src/main.c **** 	USB_FS_IRQHandler();
+ 109              		.loc 1 116 2
+ 110 0050 FFF7FEFF 		bl	USB_FS_IRQHandler
+ 117:../src/main.c **** }
+ 111              		.loc 1 117 1
+ 112 0054 00BF     		nop
+ 113 0056 80BD     		pop	{r7, pc}
+ 114              		.cfi_endproc
+ 115              	.LFE138:
+ 117              		.align	1
+ 118              		.global	USART2_IRQHandler
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 123              	USART2_IRQHandler:
+ 124              	.LFB139:
  118:../src/main.c **** 
- 119:../src/main.c **** 	Usb_FS_Init(&USB_FS);
- 180              		.loc 1 119 2
- 181 00bc 1A48     		ldr	r0, .L3+32
- 182 00be FFF7FEFF 		bl	Usb_FS_Init
- 120:../src/main.c **** 	uint8 buffer[8] = {0};
- 183              		.loc 1 120 8
- 184 00c2 0023     		movs	r3, #0
- 185 00c4 BB60     		str	r3, [r7, #8]
- 186 00c6 0023     		movs	r3, #0
- 187 00c8 FB60     		str	r3, [r7, #12]
- 188              	.L2:
- 121:../src/main.c **** 
- 122:../src/main.c ****   // Infinite loop
- 123:../src/main.c ****   while (1)
- 124:../src/main.c ****     {
- 125:../src/main.c **** //	  /*UART Test*/
- 126:../src/main.c **** //	  char readData[32] = {0};
- 127:../src/main.c **** //	  char writeData[] = "Hello World!";
- 128:../src/main.c **** //	  Uart_Read_Inst((uint8*)readData , USART2);
- 129:../src/main.c **** //	  Uart_Read((uint8*)readData , USART2);
- 130:../src/main.c **** //	  Uart_Write(writeData, USART2, sizeof(writeData));
- 131:../src/main.c **** //	  Uart_Write_Inst(writeData, USART2, sizeof(writeData));
- 132:../src/main.c **** //	  delay(10000);//delay for Write process
- 133:../src/main.c **** 
- 134:../src/main.c **** 	  buffer[0] = 0;
- 189              		.loc 1 134 14 discriminator 1
- 190 00ca 0023     		movs	r3, #0
- 191 00cc 3B72     		strb	r3, [r7, #8]
- 135:../src/main.c **** 	  buffer[2] = 7;
- 192              		.loc 1 135 14 discriminator 1
- 193 00ce 0723     		movs	r3, #7
- 194 00d0 BB72     		strb	r3, [r7, #10]
- 136:../src/main.c **** 
- 137:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, buffer, 8);
- 195              		.loc 1 137 4 discriminator 1
- 196 00d2 07F10803 		add	r3, r7, #8
- 197 00d6 0822     		movs	r2, #8
- 198 00d8 1946     		mov	r1, r3
- 199 00da 1348     		ldr	r0, .L3+32
- 200 00dc FFF7FEFF 		bl	Usb_FS_SendReport
- 138:../src/main.c **** 
- 139:../src/main.c **** 	  delay(10);
- 201              		.loc 1 139 4 discriminator 1
- 202 00e0 0A20     		movs	r0, #10
- 203 00e2 00F07FF8 		bl	delay
- 140:../src/main.c **** 
- 141:../src/main.c **** 	  buffer[0] = 0;
- 204              		.loc 1 141 14 discriminator 1
- 205 00e6 0023     		movs	r3, #0
- 206 00e8 3B72     		strb	r3, [r7, #8]
- 142:../src/main.c **** 	  buffer[2] = 0;
- 207              		.loc 1 142 14 discriminator 1
- 208 00ea 0023     		movs	r3, #0
- 209 00ec BB72     		strb	r3, [r7, #10]
- 143:../src/main.c **** 
- 144:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, buffer, 8);
- 210              		.loc 1 144 4 discriminator 1
- 211 00ee 07F10803 		add	r3, r7, #8
- 212 00f2 0822     		movs	r2, #8
- 213 00f4 1946     		mov	r1, r3
- 214 00f6 0C48     		ldr	r0, .L3+32
- 215 00f8 FFF7FEFF 		bl	Usb_FS_SendReport
- 145:../src/main.c **** 
- 146:../src/main.c **** 	  delay(2000);
- 216              		.loc 1 146 4 discriminator 1
- 217 00fc 4FF4FA60 		mov	r0, #2000
- 218 0100 00F070F8 		bl	delay
- 134:../src/main.c **** 	  buffer[2] = 7;
- 219              		.loc 1 134 14 discriminator 1
- 220 0104 E1E7     		b	.L2
- 221              	.L4:
- 222 0106 00BF     		.align	2
- 223              	.L3:
- 224 0108 00000000 		.word	.LC0
- 225 010c 10000000 		.word	.LC1
- 226 0110 18000000 		.word	.LC2
- 227 0114 20000000 		.word	.LC3
- 228 0118 28000000 		.word	.LC4
- 229 011c 00000240 		.word	1073872896
- 230 0120 30000000 		.word	.LC5
- 231 0124 00440040 		.word	1073759232
- 232 0128 00000000 		.word	USB_FS
- 233              		.cfi_endproc
- 234              	.LFE137:
- 236              		.align	1
- 237              		.global	OTG_FS_IRQHandler
- 238              		.syntax unified
- 239              		.thumb
- 240              		.thumb_func
- 242              	OTG_FS_IRQHandler:
- 243              	.LFB138:
- 147:../src/main.c ****     }
- 148:../src/main.c **** }
- 149:../src/main.c **** 
- 150:../src/main.c **** 
- 151:../src/main.c **** void OTG_FS_IRQHandler(void)
- 152:../src/main.c **** {
- 244              		.loc 1 152 1
- 245              		.cfi_startproc
- 246              		@ args = 0, pretend = 0, frame = 0
- 247              		@ frame_needed = 1, uses_anonymous_args = 0
- 248 012c 80B5     		push	{r7, lr}
- 249              		.cfi_def_cfa_offset 8
- 250              		.cfi_offset 7, -8
- 251              		.cfi_offset 14, -4
- 252 012e 00AF     		add	r7, sp, #0
- 253              		.cfi_def_cfa_register 7
- 153:../src/main.c **** 	USB_FS_IRQHandler();
- 254              		.loc 1 153 2
- 255 0130 FFF7FEFF 		bl	USB_FS_IRQHandler
- 154:../src/main.c **** }
- 256              		.loc 1 154 1
- 257 0134 00BF     		nop
- 258 0136 80BD     		pop	{r7, pc}
- 259              		.cfi_endproc
- 260              	.LFE138:
- 262              		.align	1
- 263              		.global	USART2_IRQHandler
- 264              		.syntax unified
- 265              		.thumb
- 266              		.thumb_func
- 268              	USART2_IRQHandler:
- 269              	.LFB139:
- 155:../src/main.c **** 
- 156:../src/main.c **** 
- 157:../src/main.c **** void USART2_IRQHandler(void)
- 158:../src/main.c **** {
- 270              		.loc 1 158 1
- 271              		.cfi_startproc
- 272              		@ args = 0, pretend = 0, frame = 0
- 273              		@ frame_needed = 1, uses_anonymous_args = 0
- 274 0138 80B5     		push	{r7, lr}
- 275              		.cfi_def_cfa_offset 8
- 276              		.cfi_offset 7, -8
- 277              		.cfi_offset 14, -4
- 278 013a 00AF     		add	r7, sp, #0
- 279              		.cfi_def_cfa_register 7
- 159:../src/main.c **** 	static uint8 index = 0;
- 160:../src/main.c **** 
- 161:../src/main.c **** 	//Check the source of the Interrupt
- 162:../src/main.c **** 
- 163:../src/main.c **** 	if((uint32)USART2->SR & SR_MASK(PE_BIT_POSITION))
- 280              		.loc 1 163 19
- 281 013c 264B     		ldr	r3, .L10
- 282 013e 1B68     		ldr	r3, [r3]
- 283              		.loc 1 163 24
- 284 0140 03F00103 		and	r3, r3, #1
- 285              		.loc 1 163 4
- 286 0144 002B     		cmp	r3, #0
- 287 0146 44D1     		bne	.L9
- 164:../src/main.c **** 	{
- 165:../src/main.c **** 		//Handle PE
- 166:../src/main.c **** 	}
- 167:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(FE_BIT_POSITION))
- 288              		.loc 1 167 24
- 289 0148 234B     		ldr	r3, .L10
- 290 014a 1B68     		ldr	r3, [r3]
- 291              		.loc 1 167 29
- 292 014c 03F00203 		and	r3, r3, #2
- 293              		.loc 1 167 9
- 294 0150 002B     		cmp	r3, #0
- 295 0152 3ED1     		bne	.L9
- 168:../src/main.c **** 	{
- 169:../src/main.c **** 		//Handle FE
- 170:../src/main.c **** 	}
- 171:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(NF_BIT_POSITION))
- 296              		.loc 1 171 24
- 297 0154 204B     		ldr	r3, .L10
- 298 0156 1B68     		ldr	r3, [r3]
- 299              		.loc 1 171 29
- 300 0158 03F00403 		and	r3, r3, #4
- 301              		.loc 1 171 9
- 302 015c 002B     		cmp	r3, #0
- 303 015e 38D1     		bne	.L9
- 172:../src/main.c **** 	{
- 173:../src/main.c **** 		//Handle NF
- 174:../src/main.c **** 	}
- 175:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(ORE_BIT_POSITION))
- 304              		.loc 1 175 24
- 305 0160 1D4B     		ldr	r3, .L10
- 306 0162 1B68     		ldr	r3, [r3]
- 307              		.loc 1 175 29
- 308 0164 03F00803 		and	r3, r3, #8
- 309              		.loc 1 175 9
- 310 0168 002B     		cmp	r3, #0
- 311 016a 32D1     		bne	.L9
- 176:../src/main.c **** 	{
- 177:../src/main.c **** 		//Handle ORE
- 178:../src/main.c **** 	}
- 179:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(IDLE_BIT_POSITION))
- 312              		.loc 1 179 24
- 313 016c 1A4B     		ldr	r3, .L10
- 314 016e 1B68     		ldr	r3, [r3]
- 315              		.loc 1 179 29
- 316 0170 03F01003 		and	r3, r3, #16
- 317              		.loc 1 179 9
- 318 0174 002B     		cmp	r3, #0
- 319 0176 2CD1     		bne	.L9
- 180:../src/main.c **** 	{
- 181:../src/main.c **** 		//Handle IDLE
- 182:../src/main.c **** 	}
- 183:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(RXNE_BIT_POSITION))
- 320              		.loc 1 183 24
- 321 0178 174B     		ldr	r3, .L10
- 322 017a 1B68     		ldr	r3, [r3]
- 323              		.loc 1 183 29
- 324 017c 03F02003 		and	r3, r3, #32
- 325              		.loc 1 183 9
- 326 0180 002B     		cmp	r3, #0
- 327 0182 12D0     		beq	.L8
- 184:../src/main.c **** 	{
- 185:../src/main.c **** 		//Handle RXNE
- 186:../src/main.c **** 		Uart_Read((uint8*)readData + index , USART2);
- 328              		.loc 1 186 3
- 329 0184 154B     		ldr	r3, .L10+4
- 330 0186 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 331 0188 1A46     		mov	r2, r3
- 332 018a 154B     		ldr	r3, .L10+8
- 333 018c 1344     		add	r3, r3, r2
- 334 018e 1249     		ldr	r1, .L10
- 335 0190 1846     		mov	r0, r3
- 336 0192 FFF7FEFF 		bl	Uart_Read
- 187:../src/main.c **** 		index = (index + 1) % sizeof(readData); 	//ringbuffer
- 337              		.loc 1 187 18
- 338 0196 114B     		ldr	r3, .L10+4
- 339 0198 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 340 019a 0133     		adds	r3, r3, #1
- 341 019c DBB2     		uxtb	r3, r3
- 342              		.loc 1 187 23
- 343 019e 03F01F03 		and	r3, r3, #31
- 344 01a2 DAB2     		uxtb	r2, r3
- 345              		.loc 1 187 9
- 346 01a4 0D4B     		ldr	r3, .L10+4
- 347 01a6 1A70     		strb	r2, [r3]
- 188:../src/main.c **** 		//DataReceived_flag = FALSE;
- 189:../src/main.c **** 	}
- 190:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(TC_BIT_POSITION))
- 191:../src/main.c **** 	{
- 192:../src/main.c **** 		//Handle TC
- 193:../src/main.c **** 	}
- 194:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(TXE_BIT_POSITION))
- 195:../src/main.c **** 	{
- 196:../src/main.c **** 		//Handle TXE
- 197:../src/main.c **** 	}
- 198:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(LBD_BIT_POSITION))
- 199:../src/main.c **** 	{
- 200:../src/main.c **** 		//Handle LBD
- 201:../src/main.c **** 	}
- 202:../src/main.c **** 	else if((uint32)USART2->SR & SR_MASK(CTS_BIT_POSITION))
- 203:../src/main.c **** 	{
- 204:../src/main.c **** 		//Handle CTS
- 205:../src/main.c **** 	}
- 206:../src/main.c **** 	else
- 207:../src/main.c **** 	{
- 208:../src/main.c **** 		// do nothing
- 209:../src/main.c **** 	}
- 210:../src/main.c **** }
- 348              		.loc 1 210 1
- 349 01a8 13E0     		b	.L9
- 350              	.L8:
- 190:../src/main.c **** 	{
- 351              		.loc 1 190 24
- 352 01aa 0B4B     		ldr	r3, .L10
- 353 01ac 1B68     		ldr	r3, [r3]
- 190:../src/main.c **** 	{
- 354              		.loc 1 190 29
- 355 01ae 03F04003 		and	r3, r3, #64
- 190:../src/main.c **** 	{
- 356              		.loc 1 190 9
- 357 01b2 002B     		cmp	r3, #0
- 358 01b4 0DD1     		bne	.L9
- 194:../src/main.c **** 	{
- 359              		.loc 1 194 24
- 360 01b6 084B     		ldr	r3, .L10
- 361 01b8 1B68     		ldr	r3, [r3]
- 194:../src/main.c **** 	{
- 362              		.loc 1 194 29
- 363 01ba 03F08003 		and	r3, r3, #128
- 194:../src/main.c **** 	{
- 364              		.loc 1 194 9
- 365 01be 002B     		cmp	r3, #0
- 366 01c0 07D1     		bne	.L9
- 198:../src/main.c **** 	{
- 367              		.loc 1 198 24
- 368 01c2 054B     		ldr	r3, .L10
- 369 01c4 1B68     		ldr	r3, [r3]
- 198:../src/main.c **** 	{
- 370              		.loc 1 198 29
- 371 01c6 03F48073 		and	r3, r3, #256
- 198:../src/main.c **** 	{
- 372              		.loc 1 198 9
- 373 01ca 002B     		cmp	r3, #0
- 374 01cc 01D1     		bne	.L9
- 202:../src/main.c **** 	{
- 375              		.loc 1 202 24
- 376 01ce 024B     		ldr	r3, .L10
- 377 01d0 1B68     		ldr	r3, [r3]
- 378              	.L9:
- 379              		.loc 1 210 1
- 380 01d2 00BF     		nop
- 381 01d4 80BD     		pop	{r7, pc}
- 382              	.L11:
- 383 01d6 00BF     		.align	2
- 384              	.L10:
- 385 01d8 00440040 		.word	1073759232
- 386 01dc 24000000 		.word	index.0
- 387 01e0 00000000 		.word	readData
- 388              		.cfi_endproc
- 389              	.LFE139:
- 391              		.align	1
- 392              		.syntax unified
- 393              		.thumb
- 394              		.thumb_func
- 396              	delay:
- 397              	.LFB140:
- 211:../src/main.c **** 
- 212:../src/main.c **** 
- 213:../src/main.c **** void delay(uint32 time)
- 214:../src/main.c **** {
- 398              		.loc 1 214 1
- 399              		.cfi_startproc
- 400              		@ args = 0, pretend = 0, frame = 24
- 401              		@ frame_needed = 1, uses_anonymous_args = 0
- 402              		@ link register save eliminated.
- 403 01e4 80B4     		push	{r7}
- 404              		.cfi_def_cfa_offset 4
- 405              		.cfi_offset 7, -4
- 406 01e6 87B0     		sub	sp, sp, #28
- 407              		.cfi_def_cfa_offset 32
- 408 01e8 00AF     		add	r7, sp, #0
- 409              		.cfi_def_cfa_register 7
- 410 01ea 7860     		str	r0, [r7, #4]
- 215:../src/main.c **** 	uint32 index_1, index_2;
- 216:../src/main.c **** 	uint32 base = 250;
- 411              		.loc 1 216 9
- 412 01ec FA23     		movs	r3, #250
- 413 01ee BB60     		str	r3, [r7, #8]
- 414              	.LBB2:
- 217:../src/main.c **** 
- 218:../src/main.c **** 	for(int i = 0; i<base; ++i)
- 415              		.loc 1 218 10
- 416 01f0 0023     		movs	r3, #0
- 417 01f2 FB60     		str	r3, [r7, #12]
- 418              		.loc 1 218 2
- 419 01f4 15E0     		b	.L13
- 420              	.L18:
- 219:../src/main.c **** 	{
- 220:../src/main.c **** 		for(index_1=0; index_1<time; ++index_1)
- 421              		.loc 1 220 14
- 422 01f6 0023     		movs	r3, #0
- 423 01f8 7B61     		str	r3, [r7, #20]
- 424              		.loc 1 220 3
- 425 01fa 0BE0     		b	.L14
- 426              	.L17:
- 221:../src/main.c **** 		{
- 222:../src/main.c **** 			for(index_2=0; index_2<sizeof(index_2); ++index_2)
- 427              		.loc 1 222 15
- 428 01fc 0023     		movs	r3, #0
- 429 01fe 3B61     		str	r3, [r7, #16]
- 430              		.loc 1 222 4
- 431 0200 02E0     		b	.L15
- 432              	.L16:
- 433              		.loc 1 222 44 discriminator 3
- 434 0202 3B69     		ldr	r3, [r7, #16]
- 435 0204 0133     		adds	r3, r3, #1
- 436 0206 3B61     		str	r3, [r7, #16]
- 437              	.L15:
- 438              		.loc 1 222 4 discriminator 1
- 439 0208 3B69     		ldr	r3, [r7, #16]
- 440 020a 032B     		cmp	r3, #3
- 441 020c F9D9     		bls	.L16
- 220:../src/main.c **** 		{
- 442              		.loc 1 220 32 discriminator 2
- 443 020e 7B69     		ldr	r3, [r7, #20]
- 444 0210 0133     		adds	r3, r3, #1
- 445 0212 7B61     		str	r3, [r7, #20]
- 446              	.L14:
- 220:../src/main.c **** 		{
- 447              		.loc 1 220 3 discriminator 1
- 448 0214 7A69     		ldr	r2, [r7, #20]
- 449 0216 7B68     		ldr	r3, [r7, #4]
- 450 0218 9A42     		cmp	r2, r3
- 451 021a EFD3     		bcc	.L17
- 218:../src/main.c **** 	{
- 452              		.loc 1 218 25 discriminator 2
- 453 021c FB68     		ldr	r3, [r7, #12]
- 454 021e 0133     		adds	r3, r3, #1
- 455 0220 FB60     		str	r3, [r7, #12]
- 456              	.L13:
- 218:../src/main.c **** 	{
- 457              		.loc 1 218 18 discriminator 1
- 458 0222 FB68     		ldr	r3, [r7, #12]
- 218:../src/main.c **** 	{
- 459              		.loc 1 218 2 discriminator 1
- 460 0224 BA68     		ldr	r2, [r7, #8]
- 461 0226 9A42     		cmp	r2, r3
- 462 0228 E5D8     		bhi	.L18
- 463              	.LBE2:
- 223:../src/main.c **** 			{}
- 224:../src/main.c **** 		}
- 225:../src/main.c **** 	}
- 226:../src/main.c **** }
- 464              		.loc 1 226 1
- 465 022a 00BF     		nop
- 466 022c 00BF     		nop
- 467 022e 1C37     		adds	r7, r7, #28
- 468              		.cfi_def_cfa_offset 4
- 469 0230 BD46     		mov	sp, r7
- 470              		.cfi_def_cfa_register 13
- 471              		@ sp needed
- 472 0232 80BC     		pop	{r7}
- 473              		.cfi_restore 7
- 474              		.cfi_def_cfa_offset 0
- 475 0234 7047     		bx	lr
- 476              		.cfi_endproc
- 477              	.LFE140:
- 479              		.bss
- 480              	index.0:
- 481 0024 00       		.space	1
- 483              		.text
- 484              	.Letext0:
- 485              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 486              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 487              		.file 4 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\system\\include\\cmsis/stm
- 488              		.file 5 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/types.h"
- 489              		.file 6 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/uart.h"
- 490              		.file 7 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/gpio.h"
- 491              		.file 8 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/SystemInit.h"
- 492              		.file 9 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/usbd.h"
- 493              		.file 10 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/usb.h"
+ 119:../src/main.c **** void USART2_IRQHandler(void)
+ 120:../src/main.c **** {
+ 125              		.loc 1 120 1
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 1, uses_anonymous_args = 0
+ 129 0058 80B5     		push	{r7, lr}
+ 130              		.cfi_def_cfa_offset 8
+ 131              		.cfi_offset 7, -8
+ 132              		.cfi_offset 14, -4
+ 133 005a 00AF     		add	r7, sp, #0
+ 134              		.cfi_def_cfa_register 7
+ 121:../src/main.c **** 	Uart_IRQHandler();
+ 135              		.loc 1 121 2
+ 136 005c FFF7FEFF 		bl	Uart_IRQHandler
+ 122:../src/main.c **** }
+ 137              		.loc 1 122 1
+ 138 0060 00BF     		nop
+ 139 0062 80BD     		pop	{r7, pc}
+ 140              		.cfi_endproc
+ 141              	.LFE139:
+ 143              		.align	1
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 148              	delayMs:
+ 149              	.LFB140:
+ 123:../src/main.c **** 
+ 124:../src/main.c **** void delayMs(uint32 time)
+ 125:../src/main.c **** {
+ 150              		.loc 1 125 1
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 24
+ 153              		@ frame_needed = 1, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 155 0064 80B4     		push	{r7}
+ 156              		.cfi_def_cfa_offset 4
+ 157              		.cfi_offset 7, -4
+ 158 0066 87B0     		sub	sp, sp, #28
+ 159              		.cfi_def_cfa_offset 32
+ 160 0068 00AF     		add	r7, sp, #0
+ 161              		.cfi_def_cfa_register 7
+ 162 006a 7860     		str	r0, [r7, #4]
+ 126:../src/main.c **** 	uint32 index_1, index_2;
+ 127:../src/main.c **** 	uint32 base = 250;
+ 163              		.loc 1 127 9
+ 164 006c FA23     		movs	r3, #250
+ 165 006e BB60     		str	r3, [r7, #8]
+ 166              	.LBB2:
+ 128:../src/main.c **** 
+ 129:../src/main.c **** 	for(int i = 0; i<base; ++i)
+ 167              		.loc 1 129 10
+ 168 0070 0023     		movs	r3, #0
+ 169 0072 FB60     		str	r3, [r7, #12]
+ 170              		.loc 1 129 2
+ 171 0074 15E0     		b	.L8
+ 172              	.L13:
+ 130:../src/main.c **** 	{
+ 131:../src/main.c **** 		for(index_1=0; index_1<time; ++index_1)
+ 173              		.loc 1 131 14
+ 174 0076 0023     		movs	r3, #0
+ 175 0078 7B61     		str	r3, [r7, #20]
+ 176              		.loc 1 131 3
+ 177 007a 0BE0     		b	.L9
+ 178              	.L12:
+ 132:../src/main.c **** 		{
+ 133:../src/main.c **** 			for(index_2=0; index_2<sizeof(index_2); ++index_2)
+ 179              		.loc 1 133 15
+ 180 007c 0023     		movs	r3, #0
+ 181 007e 3B61     		str	r3, [r7, #16]
+ 182              		.loc 1 133 4
+ 183 0080 02E0     		b	.L10
+ 184              	.L11:
+ 185              		.loc 1 133 44 discriminator 3
+ 186 0082 3B69     		ldr	r3, [r7, #16]
+ 187 0084 0133     		adds	r3, r3, #1
+ 188 0086 3B61     		str	r3, [r7, #16]
+ 189              	.L10:
+ 190              		.loc 1 133 4 discriminator 1
+ 191 0088 3B69     		ldr	r3, [r7, #16]
+ 192 008a 032B     		cmp	r3, #3
+ 193 008c F9D9     		bls	.L11
+ 131:../src/main.c **** 		{
+ 194              		.loc 1 131 32 discriminator 2
+ 195 008e 7B69     		ldr	r3, [r7, #20]
+ 196 0090 0133     		adds	r3, r3, #1
+ 197 0092 7B61     		str	r3, [r7, #20]
+ 198              	.L9:
+ 131:../src/main.c **** 		{
+ 199              		.loc 1 131 3 discriminator 1
+ 200 0094 7A69     		ldr	r2, [r7, #20]
+ 201 0096 7B68     		ldr	r3, [r7, #4]
+ 202 0098 9A42     		cmp	r2, r3
+ 203 009a EFD3     		bcc	.L12
+ 129:../src/main.c **** 	{
+ 204              		.loc 1 129 25 discriminator 2
+ 205 009c FB68     		ldr	r3, [r7, #12]
+ 206 009e 0133     		adds	r3, r3, #1
+ 207 00a0 FB60     		str	r3, [r7, #12]
+ 208              	.L8:
+ 129:../src/main.c **** 	{
+ 209              		.loc 1 129 18 discriminator 1
+ 210 00a2 FB68     		ldr	r3, [r7, #12]
+ 129:../src/main.c **** 	{
+ 211              		.loc 1 129 2 discriminator 1
+ 212 00a4 BA68     		ldr	r2, [r7, #8]
+ 213 00a6 9A42     		cmp	r2, r3
+ 214 00a8 E5D8     		bhi	.L13
+ 215              	.LBE2:
+ 134:../src/main.c **** 			{}
+ 135:../src/main.c **** 		}
+ 136:../src/main.c **** 	}
+ 137:../src/main.c **** }
+ 216              		.loc 1 137 1
+ 217 00aa 00BF     		nop
+ 218 00ac 00BF     		nop
+ 219 00ae 1C37     		adds	r7, r7, #28
+ 220              		.cfi_def_cfa_offset 4
+ 221 00b0 BD46     		mov	sp, r7
+ 222              		.cfi_def_cfa_register 13
+ 223              		@ sp needed
+ 224 00b2 80BC     		pop	{r7}
+ 225              		.cfi_restore 7
+ 226              		.cfi_def_cfa_offset 0
+ 227 00b4 7047     		bx	lr
+ 228              		.cfi_endproc
+ 229              	.LFE140:
+ 231              	.Letext0:
+ 232              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 233              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 234              		.file 4 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 235              		.file 5 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 236              		.file 6 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 237              		.file 7 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 238              		.file 8 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 239              		.file 9 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:21     .bss:00000000 DataReceived_flag
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:22     .bss:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:27     .bss:00000004 readData
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:30     .rodata:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:85     .text:00000000 $t
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:91     .text:00000000 main
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:396    .text:000001e4 delay
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:224    .text:00000108 $d
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:236    .text:0000012c $t
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:242    .text:0000012c OTG_FS_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:268    .text:00000138 USART2_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:385    .text:000001d8 $d
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:480    .bss:00000024 index.0
-C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:391    .text:000001e4 $t
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:18     .rodata:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:32     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:38     .text:00000000 main
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:148    .text:00000064 delayMs
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:85     .text:00000040 $d
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:91     .text:0000004c $t
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:97     .text:0000004c OTG_FS_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\ccCxOLWc.s:123    .text:00000058 USART2_IRQHandler
                            .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
                            .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
                            .group:00000000 wm4.newlib.h.18.1c9fedb6b3cd797cff253cc0fd593ef2
@@ -780,19 +422,20 @@ C:\Users\bahri\AppData\Local\Temp\ccEbnFWb.s:391    .text:000001e4 $t
                            .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
                            .group:00000000 wm4.types.h.12.bce82e9f7fdaaedfc4e7f8871bae11e3
                            .group:00000000 wm4.uart.h.20.084eeaaa3a349f245ba87602851525a8
-                           .group:00000000 wm4.gpio.h.17.09b9729e79873f95fb70fa283a88068f
                            .group:00000000 wm4.SystemInit.h.5.20c4b263e99965427f2e2ddfcfbaedc4
                            .group:00000000 wm4.usbd_hid.h.7.d508b76133adf5de59433dc08ce685e3
                            .group:00000000 wm4.usbd.h.13.78f2dd1d26d9f2ade632afe693706437
                            .group:00000000 wm4.usb.h.10.9715aac2f9eb2fefa36cd7c5a840ba96
+                           .group:00000000 wm4.gpio.h.18.77da79a3ceda5540898855cda93efab2
+                           .group:00000000 wm4.App.h.14.b13d3e5b35b965049e918280c19b81ab
 
 UNDEFINED SYMBOLS
 SystemClockConfig
-Gpio_Init
-Uart_Init
-Uart_EnableInterrupt
 Usb_FS_Init
+Input_Init
+InputPolling
 Usb_FS_SendReport
+USB_buffer
 USB_FS
 USB_FS_IRQHandler
-Uart_Read
+Uart_IRQHandler

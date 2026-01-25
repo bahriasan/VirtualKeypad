@@ -186,7 +186,6 @@ unmasking the interrupt bit to avoid any interrupts generated prior to initializ
 //	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTMSK = 0u;
 	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GINTSTS = 0xF030FC0Au;
 
-
 /*2. Program the OTG_FS_GINTMSK register to unmask the following interrupts:
 – USB reset
 – Enumeration done
@@ -206,22 +205,6 @@ in “B” device mode and supply the 5 volts across the pull-up resistor on the
 */
 	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GCCFG &= ~USB_OTG_GCCFG_NOVBUSSENS;
 	USB_FS_Ptr->USB_OTG_FS_CoreRegister->GCCFG |= USB_OTG_GCCFG_VBUSBSEN | USB_OTG_GCCFG_PWRDWN;
-
-
-/*4. Wait for the USBRST interrupt in OTG_FS_GINTSTS. It indicates that a reset has been
-detected on the USB that lasts for about 10 ms on receiving this interrupt.
-*/
-
-	// At this point, all initialization required to receive SETUP packets is done.
-
-/*Wait for the ENUMDNE interrupt in OTG_FS_GINTSTS. This interrupt indicates the end of
-reset on the USB. On receiving this interrupt, the application must read the OTG_FS_DSTS
-register to determine the enumeration speed and perform the steps listed in Endpoint
-initialization on enumeration completion on page 1353.
-*/
-
-	/*At this point, the device is ready to receive SOF packets and is configured to perform control
-			transfers on control endpoint 0.*/
 }
 
 static void Usb_FS_EP_Activate(Usb_Handler* USB_FS_Ptr, const EP_Typedef EP)
@@ -1622,14 +1605,14 @@ static void Exit_CriticalRegion(void)
 	__enable_irq();
 }
 
-void Usb_FS_Init(Usb_Handler* USB_FS_Ptr)
+void Usb_FS_Init(void)
 {
 	//USB_Init_Cfg
-	Usb_FS_Msp_Init(USB_FS_Ptr);
+	Usb_FS_Msp_Init(&USB_FS);
 	//Disable All interrupts
 	__disable_irq();
-	Usb_FS_Core_Init(USB_FS_Ptr);
-	Usb_FS_Device_Init(USB_FS_Ptr);
+	Usb_FS_Core_Init(&USB_FS);
+	Usb_FS_Device_Init(&USB_FS);
 	/* Enable All Interrupts */
 	__enable_irq();
 }
@@ -1660,6 +1643,12 @@ void USB_FS_IRQHandler(void)
 	if((USB_OTG_GINTSTS_OTGINT == (USB_OTG_FS->GINTSTS & USB_OTG_GINTSTS_OTGINT_Msk)) &&
 			(USB_OTG_GINTMSK_OTGINT == (USB_OTG_FS->GINTMSK & USB_OTG_GINTMSK_OTGINT_Msk)))
 	{
+		if((USB_OTG_FS->GOTGINT &= USB_OTG_GOTGINT_SEDET_Msk) == USB_OTG_GOTGINT_SEDET)
+		{
+			Usb_FS_EP_Deactivate(&USB_FS, USB_FS.INEP_Array[1]);
+			USB_FS.state = DEF_STATE;
+		}
+
 		//Read GOTGINT Register to handle problem and clear status
 		USB_OTG_FS->GOTGINT |= USB_OTG_GOTGINT_SEDET | USB_OTG_GOTGINT_SRSSCHG | USB_OTG_GOTGINT_HNSSCHG | USB_OTG_GOTGINT_HNGDET |
 				USB_OTG_GOTGINT_ADTOCHG | USB_OTG_GOTGINT_DBCDNE;

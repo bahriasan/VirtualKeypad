@@ -133,6 +133,7 @@ void Uart_Write(uint8* writeDataBuffer, USART_TypeDef* structUart, uint32 size);
 void Uart_Write_Inst(uint8* writeDataBuffer, USART_TypeDef* structUart, uint32 size);
 void Uart_Read_Inst(uint8* readDataBuffer, USART_TypeDef* structUart);
 void Uart_EnableInterrupt(USART_TypeDef* structUart, Uart_interrupt eventFlag);
+void Uart_IRQHandler(void);
 
 
 #endif

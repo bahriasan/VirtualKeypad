@@ -662,18 +662,90 @@
  505 02b4 00200240 		.word	1073881088
  506              		.cfi_endproc
  507              	.LFE138:
- 509              	.Letext0:
- 510              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 511              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 512              		.file 4 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\system\\include\\cmsis/stm
- 513              		.file 5 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/types.h"
- 514              		.file 6 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/gpio.h"
+ 509              		.align	1
+ 510              		.global	Gpio_Read
+ 511              		.syntax unified
+ 512              		.thumb
+ 513              		.thumb_func
+ 515              	Gpio_Read:
+ 516              	.LFB139:
+ 119:../src/gpio.c **** 
+ 120:../src/gpio.c **** boolean Gpio_Read(uint8 pinNumber, GPIO_TypeDef* structGpio)
+ 121:../src/gpio.c **** {
+ 517              		.loc 1 121 1
+ 518              		.cfi_startproc
+ 519              		@ args = 0, pretend = 0, frame = 16
+ 520              		@ frame_needed = 1, uses_anonymous_args = 0
+ 521              		@ link register save eliminated.
+ 522 02b8 80B4     		push	{r7}
+ 523              		.cfi_def_cfa_offset 4
+ 524              		.cfi_offset 7, -4
+ 525 02ba 85B0     		sub	sp, sp, #20
+ 526              		.cfi_def_cfa_offset 24
+ 527 02bc 00AF     		add	r7, sp, #0
+ 528              		.cfi_def_cfa_register 7
+ 529 02be 0346     		mov	r3, r0
+ 530 02c0 3960     		str	r1, [r7]
+ 531 02c2 FB71     		strb	r3, [r7, #7]
+ 122:../src/gpio.c **** 	boolean retVal = FALSE;
+ 532              		.loc 1 122 10
+ 533 02c4 0023     		movs	r3, #0
+ 534 02c6 FB73     		strb	r3, [r7, #15]
+ 123:../src/gpio.c **** 	uint32 idr_reg = structGpio->IDR;
+ 535              		.loc 1 123 9
+ 536 02c8 3B68     		ldr	r3, [r7]
+ 537 02ca 1B69     		ldr	r3, [r3, #16]
+ 538 02cc BB60     		str	r3, [r7, #8]
+ 124:../src/gpio.c **** 
+ 125:../src/gpio.c **** 	if(((idr_reg >> pinNumber) & 0x1ul) == 0x1ul)
+ 539              		.loc 1 125 15
+ 540 02ce FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 541 02d0 BA68     		ldr	r2, [r7, #8]
+ 542 02d2 22FA03F3 		lsr	r3, r2, r3
+ 543              		.loc 1 125 29
+ 544 02d6 03F00103 		and	r3, r3, #1
+ 545              		.loc 1 125 4
+ 546 02da 002B     		cmp	r3, #0
+ 547 02dc 01D0     		beq	.L21
+ 126:../src/gpio.c **** 	{
+ 127:../src/gpio.c **** 		retVal = TRUE;
+ 548              		.loc 1 127 10
+ 549 02de 0123     		movs	r3, #1
+ 550 02e0 FB73     		strb	r3, [r7, #15]
+ 551              	.L21:
+ 128:../src/gpio.c **** 	}
+ 129:../src/gpio.c **** 
+ 130:../src/gpio.c **** 	return retVal;
+ 552              		.loc 1 130 9
+ 553 02e2 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 131:../src/gpio.c **** }
+ 554              		.loc 1 131 1
+ 555 02e4 1846     		mov	r0, r3
+ 556 02e6 1437     		adds	r7, r7, #20
+ 557              		.cfi_def_cfa_offset 4
+ 558 02e8 BD46     		mov	sp, r7
+ 559              		.cfi_def_cfa_register 13
+ 560              		@ sp needed
+ 561 02ea 80BC     		pop	{r7}
+ 562              		.cfi_restore 7
+ 563              		.cfi_def_cfa_offset 0
+ 564 02ec 7047     		bx	lr
+ 565              		.cfi_endproc
+ 566              	.LFE139:
+ 568              	.Letext0:
+ 569              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 570              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 571              		.file 4 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 572              		.file 5 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 573              		.file 6 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio.c
-C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:17     .text:00000000 $t
-C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:23     .text:00000000 Gpio_Init
-C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:289    .text:0000014c Gpio_ChannelEnable
-C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:496    .text:00000290 $d
+C:\Users\bahri\AppData\Local\Temp\cc45DRMP.s:17     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\cc45DRMP.s:23     .text:00000000 Gpio_Init
+C:\Users\bahri\AppData\Local\Temp\cc45DRMP.s:289    .text:0000014c Gpio_ChannelEnable
+C:\Users\bahri\AppData\Local\Temp\cc45DRMP.s:496    .text:00000290 $d
+C:\Users\bahri\AppData\Local\Temp\cc45DRMP.s:509    .text:000002b8 $t
+C:\Users\bahri\AppData\Local\Temp\cc45DRMP.s:515    .text:000002b8 Gpio_Read
                            .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
                            .group:00000000 wm4.stm32f407xx.h.34.dfd2ea1697b5c77f46734fce8e0379c1
                            .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
@@ -707,6 +779,6 @@ C:\Users\bahri\AppData\Local\Temp\ccWofuko.s:496    .text:00000290 $d
                            .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
                            .group:00000000 wm4.stdio.h.81.2a55589bfa3ee24eeb84e3c79458e4a9
                            .group:00000000 wm4.types.h.12.bce82e9f7fdaaedfc4e7f8871bae11e3
-                           .group:00000000 wm4.gpio.h.17.09b9729e79873f95fb70fa283a88068f
+                           .group:00000000 wm4.gpio.h.18.77da79a3ceda5540898855cda93efab2
 
 NO UNDEFINED SYMBOLS

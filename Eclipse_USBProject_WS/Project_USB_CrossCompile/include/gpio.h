@@ -13,6 +13,7 @@ typedef struct
 }gpio_cfg;
 
 void Gpio_Init(gpio_cfg configGpio, GPIO_TypeDef* structGpio);
+boolean Gpio_Read(uint8 pinNumber, GPIO_TypeDef* structGpio);
 
 #define PIN_0		0
 #define PIN_1		1

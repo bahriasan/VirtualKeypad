@@ -47,7 +47,7 @@
   46 0024 01       		.byte	1
   47 0025 01       		.byte	1
   48 0026 00       		.byte	0
-  49 0027 40       		.byte	64
+  49 0027 E0       		.byte	-32
   50 0028 32       		.byte	50
   51 0029 09       		.byte	9
   52 002a 04       		.byte	4
@@ -138,7 +138,7 @@
   49:../src/usbd.c **** 	0x01,					//	uint8 bNumInterfaces;
   50:../src/usbd.c **** 	0x01,					//	uint8 bConfigurationValue;
   51:../src/usbd.c **** 	0x00,					//	uint8 iConfiguration;
-  52:../src/usbd.c **** 	SET_BM_ATTR(BP_NO,SP_YES,RW_NO),		//	uint8 bmAttributes;
+  52:../src/usbd.c **** 	SET_BM_ATTR(BP_YES,SP_YES,RW_YES),		//	uint8 bmAttributes;
   53:../src/usbd.c **** 	0x32},					//	uint8 bMaxPower;
   54:../src/usbd.c **** 	//FSInterface
   55:../src/usbd.c **** 	{0x09,					//	uint8 bLength;
@@ -1111,52 +1111,52 @@
  895              	.Letext0:
  896              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
  897              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 898              		.file 4 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/types.h"
- 899              		.file 5 "C:\\Users\\bahri\\eclipse-workspace\\Project_USB_CrossCompile\\include/usbd.h"
+ 898              		.file 4 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
+ 899              		.file 5 "C:\\Users\\bahri\\Y_GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompil
 DEFINED SYMBOLS
                             *ABS*:00000000 usbd.c
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:22     .bss:00000000 USB_StringUnicode
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:19     .bss:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:29     .data:00000000 FSDeviceDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:26     .data:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:36     .data:00000014 FSDeviceQualifierDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:42     .data:00000020 FSConfigurationDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:77     .data:00000044 FSConfigurationDescriptorArray
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:83     .data:00000048 FSLangIdStringDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:86     .text:00000000 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:91     .text:00000000 GetLen
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:147    .text:0000002c GetString
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:275    .text:000000ca IntToUnicode
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:389    .text:00000146 GetSerial
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:471    .text:000001a8 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:477    .text:000001b4 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:483    .text:000001b4 GetFSDeviceDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:518    .text:000001d0 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:522    .text:000001d4 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:528    .text:000001d4 GetFSDeviceQualifierDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:563    .text:000001f0 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:567    .text:000001f4 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:573    .text:000001f4 GetFSConfigDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:608    .text:00000210 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:612    .text:00000214 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:618    .text:00000214 GetFSLangIdStringDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:653    .text:00000230 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:658    .rodata:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:662    .text:00000234 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:668    .text:00000234 GetFSMfcIdStringDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:701    .text:00000250 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:711    .text:00000258 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:717    .text:00000258 GetFSPdcIdStringDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:750    .text:00000274 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:755    .text:0000027c $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:761    .text:0000027c GetFSSerialStringDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:793    .text:00000298 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:802    .text:0000029c $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:808    .text:0000029c GetFSConfigStringDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:841    .text:000002b8 $d
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:851    .text:000002c0 $t
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:857    .text:000002c0 GetFSInterfaceStringDescriptor
-C:\Users\bahri\AppData\Local\Temp\ccJe6YBc.s:890    .text:000002dc $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:22     .bss:00000000 USB_StringUnicode
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:19     .bss:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:29     .data:00000000 FSDeviceDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:26     .data:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:36     .data:00000014 FSDeviceQualifierDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:42     .data:00000020 FSConfigurationDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:77     .data:00000044 FSConfigurationDescriptorArray
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:83     .data:00000048 FSLangIdStringDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:86     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:91     .text:00000000 GetLen
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:147    .text:0000002c GetString
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:275    .text:000000ca IntToUnicode
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:389    .text:00000146 GetSerial
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:471    .text:000001a8 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:477    .text:000001b4 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:483    .text:000001b4 GetFSDeviceDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:518    .text:000001d0 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:522    .text:000001d4 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:528    .text:000001d4 GetFSDeviceQualifierDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:563    .text:000001f0 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:567    .text:000001f4 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:573    .text:000001f4 GetFSConfigDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:608    .text:00000210 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:612    .text:00000214 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:618    .text:00000214 GetFSLangIdStringDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:653    .text:00000230 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:658    .rodata:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:662    .text:00000234 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:668    .text:00000234 GetFSMfcIdStringDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:701    .text:00000250 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:711    .text:00000258 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:717    .text:00000258 GetFSPdcIdStringDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:750    .text:00000274 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:755    .text:0000027c $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:761    .text:0000027c GetFSSerialStringDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:793    .text:00000298 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:802    .text:0000029c $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:808    .text:0000029c GetFSConfigStringDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:841    .text:000002b8 $d
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:851    .text:000002c0 $t
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:857    .text:000002c0 GetFSInterfaceStringDescriptor
+C:\Users\bahri\AppData\Local\Temp\cchUBBEy.s:890    .text:000002dc $d
                            .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
                            .group:00000000 wm4.stm32f407xx.h.34.dfd2ea1697b5c77f46734fce8e0379c1
                            .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c

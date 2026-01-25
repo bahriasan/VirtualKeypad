@@ -1,0 +1,350 @@
+/*
+ * App.c
+ *
+ *  Created on: 22 Oca 2026
+ *      Author: bahri
+ */
+
+/*
+ * INCLUDED FILES
+ */
+#include "App.h"
+
+/*
+ * GLOBAL VARIABLES
+ */
+boolean InputArray[16] = {0};
+
+uint8 USB_buffer[8] = {0};
+
+exti_t Exti_Array[EXTI_ARRAY_SIZE] =
+{
+		{ PIN0, GPIOB, FALLING_EDGE},
+		{ PIN1, GPIOB, FALLING_EDGE},
+		{ PIN2, GPIOB, FALLING_EDGE},
+		{ PIN3, GPIOB, FALLING_EDGE},
+		{ PIN4, GPIOB, FALLING_EDGE},
+		{ PIN5, GPIOB, FALLING_EDGE},
+		{ PIN6, GPIOB, FALLING_EDGE},
+		{ PIN7, GPIOB, FALLING_EDGE},
+		{ PIN8, GPIOB, FALLING_EDGE},
+		{ PIN9, GPIOB, FALLING_EDGE},
+		{ PIN10, GPIOB, FALLING_EDGE},
+		{ PIN11, GPIOB, FALLING_EDGE},
+		{ PIN12, GPIOB, FALLING_EDGE},
+		{ PIN13, GPIOB, FALLING_EDGE},
+		{ PIN14, GPIOB, FALLING_EDGE},
+		{ PIN15, GPIOB, FALLING_EDGE}
+};
+
+input_type Input_Array[INPUT_ARRAY_SIZE] =
+{
+		{ PIN1, GPIOC, KEY_Q }, 	{ PIN3, GPIOC, KEY_W }, 	{ PIN2, GPIOC, KEY_E },		{ PIN1, GPIOA, KEY_R },
+		{ PIN0, GPIOA, KEY_T }, 	{ PIN3, GPIOA, KEY_Y }, 	{ PIN2, GPIOA, KEY_U },		{ PIN5, GPIOA, KEY_I },
+		{ PIN4, GPIOA, KEY_O }, 	{ PIN7, GPIOA, KEY_P }, 	{ PIN6, GPIOA, KEY_A },		{ PIN5, GPIOC, KEY_S },
+		{ PIN4, GPIOC, KEY_D }, 	{ PIN1, GPIOB, KEY_F }, 	{ PIN0, GPIOB, KEY_G },		{ PIN2, GPIOB, KEY_H },
+		{ PIN7, GPIOE, KEY_J }, 	{ PIN8, GPIOE, KEY_K }, 	{ PIN9, GPIOE, KEY_L },		{ PIN9, GPIOE, KEY_Z },
+		{ PIN10, GPIOE, KEY_X }, 	{ PIN11, GPIOE, KEY_C }, 	{ PIN12, GPIOE, KEY_V },	{ PIN13, GPIOE, KEY_B },
+		{ PIN14, GPIOE, KEY_N }, 	{ PIN15, GPIOE, KEY_M }, 	{ PIN10, GPIOB, KEY_1 },	{ PIN11, GPIOB, KEY_2 },
+		{ PIN12, GPIOB, KEY_3 }, 	{ PIN13, GPIOB, KEY_4 }, 	{ PIN14, GPIOB, KEY_5 },	{ PIN15, GPIOB, KEY_6 },
+		{ PIN8, GPIOD, KEY_7 }, 	{ PIN9, GPIOD, KEY_8 }, 	{ PIN10, GPIOD, KEY_9 },	{ PIN11, GPIOD, KEY_0 }
+};
+
+
+/*
+ * LOCAL FUNCTION DECLARATIONS
+ */
+static void Enable_Exti_Interrupt(void);
+static Std_ReturnType findEmptyPos(uint8* pos);
+static Std_ReturnType findExistingPos(uint8* pos, KeyCode_type key);
+
+/*
+ * LOCAL FUNCTION DEFINITIONS
+ */
+static void Enable_Exti_Interrupt(void)
+{
+	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+	{
+		switch(Exti_Array[i].pinNumber)
+		{
+		case PIN0:
+			NVIC_SetPriority(EXTI0_IRQn, 0);
+			NVIC_EnableIRQ(EXTI0_IRQn);
+			break;
+		case PIN1:
+			NVIC_SetPriority(EXTI1_IRQn, 0);
+			NVIC_EnableIRQ(EXTI1_IRQn);
+			break;
+		case PIN2:
+			NVIC_SetPriority(EXTI2_IRQn, 0);
+			NVIC_EnableIRQ(EXTI2_IRQn);
+			break;
+		case PIN3:
+			NVIC_SetPriority(EXTI3_IRQn, 0);
+			NVIC_EnableIRQ(EXTI3_IRQn);
+			break;
+		case PIN4:
+			NVIC_SetPriority(EXTI4_IRQn, 0);
+			NVIC_EnableIRQ(EXTI4_IRQn);
+			break;
+		case PIN5:
+		case PIN6:
+		case PIN7:
+		case PIN8:
+		case PIN9:
+			NVIC_SetPriority(EXTI9_5_IRQn , 0);
+			NVIC_EnableIRQ(EXTI9_5_IRQn );
+			break;
+		case PIN10:
+		case PIN11:
+		case PIN12:
+		case PIN13:
+		case PIN14:
+		case PIN15:
+			NVIC_SetPriority(EXTI15_10_IRQn , 0);
+			NVIC_EnableIRQ(EXTI15_10_IRQn );
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+static Std_ReturnType findEmptyPos(uint8* pos)
+{
+	for(uint8 i=2; i<8; ++i)
+	{
+		if(USB_buffer[i] == 0u)
+		{
+			*pos = i;
+			return E_OK;
+		}
+	}
+	return E_NOT_OK;
+}
+
+static Std_ReturnType findExistingPos(uint8* pos, KeyCode_type key)
+{
+	for(uint8 i=2; i<8; ++i)
+	{
+		if(USB_buffer[i] == key)
+		{
+			*pos = i;
+			return E_OK;
+		}
+	}
+	return E_NOT_OK;
+}
+
+
+/*
+ * GLOBAL FUNCTION DEFINITIONS
+ */
+void Exti_Init(void)
+{
+	//1. Enable Related Pins
+	gpio_cfg configGpio = {PIN_0, GPIO_MODE_INPUT, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_UP, 0};
+
+	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+	{
+		configGpio.pinNumber = Exti_Array[i].pinNumber;
+		Gpio_Init(configGpio, Exti_Array[i].gpioPort);
+	}
+
+
+	//2. Connect EXTI#0 to GPIO_PB0
+	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+	{
+		uint8 pinPos = (i%4)*4;
+
+		if(GPIOA == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PA << pinPos;
+		}
+		else if(GPIOB == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PB << pinPos;
+		}
+		else if(GPIOC == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PC << pinPos;
+		}
+		else if(GPIOD == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PD << pinPos;
+		}
+		else if(GPIOE == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PE << pinPos;
+		}
+		else if(GPIOF == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PF << pinPos;
+		}
+		else if(GPIOG == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PG << pinPos;
+		}
+		else if(GPIOH == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PH << pinPos;
+		}
+		else if(GPIOI == Exti_Array[i].gpioPort)
+		{
+			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PI << pinPos;
+		}
+		else
+		{ /* Do Nothing */ }
+	}
+
+
+	//3. Config and Enable Interrupt Registers
+	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+	{
+		if(FALLING_EDGE == Exti_Array[i].intType)
+		{
+			EXTI->FTSR |= 1 << Exti_Array[i].pinNumber;
+		}
+
+		if(RISING_EDGE == Exti_Array[i].intType)
+		{
+			EXTI->RTSR |= 1 << Exti_Array[i].pinNumber;
+		}
+
+		EXTI->IMR |= 1 << Exti_Array[i].pinNumber;
+	}
+
+
+	//4. Interrupt Enable
+	Enable_Exti_Interrupt();
+}
+
+void Input_Init(void)
+{
+	//1. Enable Related Pins
+	gpio_cfg configGpio = {PIN_0, GPIO_MODE_INPUT, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_DOWN, 0};
+
+	for(uint8 i=0; i<INPUT_ARRAY_SIZE; ++i)
+	{
+		configGpio.pinNumber = Input_Array[i].pinNumber;
+		Gpio_Init(configGpio, Input_Array[i].gpioPort);
+	}
+}
+
+void InputPolling(void)
+{
+	for(int i=0; i<INPUT_ARRAY_SIZE; ++i)
+	{
+		uint8 pos;
+		if(TRUE == Gpio_Read(Input_Array[i].pinNumber, Input_Array[i].gpioPort))
+		{
+			if(E_NOT_OK == findExistingPos(&pos, Input_Array[i].keyCode))	//if not already written
+			{
+				if(E_OK == findEmptyPos(&pos))	//find an empty position
+				{
+					USB_buffer[pos] = Input_Array[i].keyCode;
+				}//else Out of Limits
+			}//else already written
+		}
+		else if(FALSE == Gpio_Read(Input_Array[i].pinNumber, Input_Array[i].gpioPort))
+		{
+			if(E_OK == findExistingPos(&pos, Input_Array[i].keyCode))
+			{
+				USB_buffer[pos] = (uint8)0u;
+			}
+		}
+	}
+}
+
+void EXTI0_IRQHandler(void)
+{
+	InputArray[0] = TRUE;
+	EXTI->PR |=  EXTI_PR_PR0;
+}
+
+void EXTI1_IRQHandler(void)
+{
+	InputArray[1] = TRUE;
+	EXTI->PR |=  EXTI_PR_PR1;
+}
+
+void EXTI2_IRQHandler(void)
+{
+	InputArray[2] = TRUE;
+	EXTI->PR |=  EXTI_PR_PR2;
+}
+
+void EXTI3_IRQHandler(void)
+{
+	InputArray[3] = TRUE;
+	EXTI->PR |=  EXTI_PR_PR3;
+}
+
+void EXTI4_IRQHandler(void)
+{
+	InputArray[4] = TRUE;
+	EXTI->PR |=  EXTI_PR_PR4;
+}
+
+void EXTI9_5_IRQHandler(void)
+{
+	if(EXTI_PR_PR5 == (EXTI->PR & EXTI_PR_PR5))
+	{
+		InputArray[5] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR5;
+	}
+	if(EXTI_PR_PR6 == (EXTI->PR & EXTI_PR_PR6))
+	{
+		InputArray[6] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR6;
+	}
+	if(EXTI_PR_PR7 == (EXTI->PR & EXTI_PR_PR7))
+	{
+		InputArray[7] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR7;
+	}
+	if(EXTI_PR_PR8 == (EXTI->PR & EXTI_PR_PR8))
+	{
+		InputArray[8] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR8;
+	}
+	if(EXTI_PR_PR9 == (EXTI->PR & EXTI_PR_PR9))
+	{
+		InputArray[9] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR9;
+	}
+}
+
+void EXTI15_10_IRQHandler(void)
+{
+	if(EXTI_PR_PR10 == (EXTI->PR & EXTI_PR_PR10))
+	{
+		InputArray[10] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR10;
+	}
+	if(EXTI_PR_PR11 == (EXTI->PR & EXTI_PR_PR11))
+	{
+		InputArray[11] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR11;
+	}
+	if(EXTI_PR_PR12 == (EXTI->PR & EXTI_PR_PR12))
+	{
+		InputArray[12] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR12;
+	}
+	if(EXTI_PR_PR13 == (EXTI->PR & EXTI_PR_PR13))
+	{
+		InputArray[13] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR13;
+	}
+	if(EXTI_PR_PR14 == (EXTI->PR & EXTI_PR_PR14))
+	{
+		InputArray[14] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR14;
+	}
+	if(EXTI_PR_PR15 == (EXTI->PR & EXTI_PR_PR15))
+	{
+		InputArray[15] = TRUE;
+		EXTI->PR |=  EXTI_PR_PR15;
+	}
+}

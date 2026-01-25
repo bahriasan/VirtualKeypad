@@ -32,22 +32,18 @@
 #include "cmsis_device.h"
 
 #include "uart.h"
-#include "gpio.h"
 #include "SystemInit.h"
 #include "usb.h"
+#include "App.h"
 
 
 /*Define local functions*/
-static void delay(uint32 time);
+static void delayMs(uint32 time);
 /***************************/
 
 
 /*Define Global Variables*/
-//UART
-uint8 DataReceived_flag;
-char readData[32] = {0};
 
-//USB
 
 
 /***************************/
@@ -72,52 +68,27 @@ char readData[32] = {0};
 #pragma GCC diagnostic ignored "-Wmissing-declarations"
 #pragma GCC diagnostic ignored "-Wreturn-type"
 
-int
-main (int argc, char* argv[])
+int main (int argc, char* argv[])
 {
-  // Normally at this stage most of the microcontroller subsystems, including
-  // the clock, were initialised by the CMSIS SystemInit() function invoked
-  // from the startup file, before calling main().
-  // (see system/src/cortexm/initialize-hardware.c)
-  // If further initialisations are required, customise __initialize_hardware()
-  // or add the additional initialisation here, for example:
-  //
-  // HAL_Init();
-
-  // In this sample the SystemInit() function is just a placeholder,
-  // if you do not add the real one, the clock will remain configured with
-  // the reset value, usually a relatively low speed RC clock (8-12MHz).
-
 	//SystemInit
 	system_cfg configSystem = {CLOCK_SOURCE_HSI, APB1_AHB_DIVIDER_NO, APB2_AHB_DIVIDER_NO, AHB_SYS_DIVIDER_NO,
 								PLL_USB, PLLSRC_HSE, 4U, 96U, 0U, 4U, 2U};
 	SystemClockConfig(configSystem);
 
-	//GPIO Init
-	gpio_cfg configGpio_PA0 = {PIN_0, GPIO_MODE_ALTERNATE, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_UP, AF7};		//USART2_CTS
-								//ACTIVE LOW SO SHOULD BE PULLED UP
-	gpio_cfg configGpio_PA1 = {PIN_1, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_LOW, PULL_UP, AF7};	//USART2_RTS
-								//ACTIVE LOW SO SHOULD BE PULLED UP
-	gpio_cfg configGpio_PA2 = {PIN_2, GPIO_MODE_ALTERNATE, OUTPUT_PUSH_PULL, OUTPUT_SPEED_LOW, PULL_UP, AF7};	//USART2_TX
-								//SHOULD BE PULL_UP TO BE HIGH IN IDDLE, PUSH-PULL OR OPEN-DRAIN IS OK WHEN USED WITH PULL-UP
-	gpio_cfg configGpio_PA3 = {PIN_3, GPIO_MODE_ALTERNATE, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_DOWN, AF7};		//USART2_RX
-								//SHOULD BE PULL_UP TO BE HIGH IN IDDLE, PUSH-PULL WILL BE SELECTED AS RESET STATE FOR OUTPUT_TYPE_NA
-
-	Gpio_Init(configGpio_PA0, GPIOA);
-	Gpio_Init(configGpio_PA1, GPIOA);
-	Gpio_Init(configGpio_PA2, GPIOA);
-	Gpio_Init(configGpio_PA3, GPIOA);
-
-
 	//UART Init
-	uart_cfg configUart = {STOPBIT_1, MBIT_8, PARITY_NO, RTS_CTS_ENABLE, OVER8_DIS, BAUDRATE_115_2K};
-	Uart_Init(configUart, USART2);
-	// PA0: USART2_CTS, PA1: USART2_RTS, PA2: USART2_TX, PA3: USART2_RX, PA4: USART2_CK
-	Uart_EnableInterrupt(USART2, RXNE);
+//	uart_cfg configUart = {STOPBIT_1, MBIT_8, PARITY_NO, RTS_CTS_ENABLE, OVER8_DIS, BAUDRATE_115_2K};
+//	Uart_Init(configUart, USART2);
+
+	//USB Init
+	Usb_FS_Init();
+
+	//External Input Config
+//	Exti_Init();
+
+	//Input Init Config
+	Input_Init();
 
 
-	Usb_FS_Init(&USB_FS);
-	uint8 buffer[8] = {0};
 
   // Infinite loop
   while (1)
@@ -131,21 +102,13 @@ main (int argc, char* argv[])
 //	  Uart_Write_Inst(writeData, USART2, sizeof(writeData));
 //	  delay(10000);//delay for Write process
 
-	  buffer[0] = 0;
-	  buffer[2] = 7;
-
-	  Usb_FS_SendReport(&USB_FS, buffer, 8);
-
-	  delay(10);
-
-	  buffer[0] = 0;
-	  buffer[2] = 0;
-
-	  Usb_FS_SendReport(&USB_FS, buffer, 8);
-
-	  delay(2000);
+	  InputPolling();
+	  Usb_FS_SendReport(&USB_FS, USB_buffer, sizeof(USB_buffer));
+	  delayMs(200);
     }
 }
+
+
 
 
 void OTG_FS_IRQHandler(void)
@@ -153,64 +116,12 @@ void OTG_FS_IRQHandler(void)
 	USB_FS_IRQHandler();
 }
 
-
 void USART2_IRQHandler(void)
 {
-	static uint8 index = 0;
-
-	//Check the source of the Interrupt
-
-	if((uint32)USART2->SR & SR_MASK(PE_BIT_POSITION))
-	{
-		//Handle PE
-	}
-	else if((uint32)USART2->SR & SR_MASK(FE_BIT_POSITION))
-	{
-		//Handle FE
-	}
-	else if((uint32)USART2->SR & SR_MASK(NF_BIT_POSITION))
-	{
-		//Handle NF
-	}
-	else if((uint32)USART2->SR & SR_MASK(ORE_BIT_POSITION))
-	{
-		//Handle ORE
-	}
-	else if((uint32)USART2->SR & SR_MASK(IDLE_BIT_POSITION))
-	{
-		//Handle IDLE
-	}
-	else if((uint32)USART2->SR & SR_MASK(RXNE_BIT_POSITION))
-	{
-		//Handle RXNE
-		Uart_Read((uint8*)readData + index , USART2);
-		index = (index + 1) % sizeof(readData); 	//ringbuffer
-		//DataReceived_flag = FALSE;
-	}
-	else if((uint32)USART2->SR & SR_MASK(TC_BIT_POSITION))
-	{
-		//Handle TC
-	}
-	else if((uint32)USART2->SR & SR_MASK(TXE_BIT_POSITION))
-	{
-		//Handle TXE
-	}
-	else if((uint32)USART2->SR & SR_MASK(LBD_BIT_POSITION))
-	{
-		//Handle LBD
-	}
-	else if((uint32)USART2->SR & SR_MASK(CTS_BIT_POSITION))
-	{
-		//Handle CTS
-	}
-	else
-	{
-		// do nothing
-	}
+	Uart_IRQHandler();
 }
 
-
-void delay(uint32 time)
+void delayMs(uint32 time)
 {
 	uint32 index_1, index_2;
 	uint32 base = 250;

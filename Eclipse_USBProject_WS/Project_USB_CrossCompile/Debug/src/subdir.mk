@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/App.c \
 ../src/SystemInit.c \
 ../src/gpio.c \
 ../src/main.c \
@@ -14,6 +15,7 @@ C_SRCS += \
 ../src/usbd_hid.c 
 
 C_DEPS += \
+./src/App.d \
 ./src/SystemInit.d \
 ./src/gpio.d \
 ./src/main.d \
@@ -24,6 +26,7 @@ C_DEPS += \
 ./src/usbd_hid.d 
 
 OBJS += \
+./src/App.o \
 ./src/SystemInit.o \
 ./src/gpio.o \
 ./src/main.o \
@@ -38,7 +41,7 @@ OBJS += \
 src/%.o: ../src/%.c src/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'
-	arm-none-eabi-gcc -std=c11 -DSTM32F407xx -DDEBUG -DTRACE -I"C:\Users\bahri\eclipse-workspace\Project_USB_CrossCompile\include" -I"C:\Users\bahri\eclipse-workspace\Project_USB_CrossCompile\system\include" -I"C:\Users\bahri\eclipse-workspace\Project_USB_CrossCompile\system\include\cmsis" -O0 -g3 -Wall -c -fmessage-length=0 -mthumb -mcpu=cortex-m4 -Wa,-adhlns="$@.lst" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -std=c11 -DSTM32F407xx -DDEBUG -DTRACE -I"C:\Users\bahri\Y_GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\include" -I"C:\Users\bahri\Y_GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include" -I"C:\Users\bahri\Y_GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include\cmsis" -O0 -g3 -Wall -c -fmessage-length=0 -mthumb -mcpu=cortex-m4 -Wa,-adhlns="$@.lst" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -46,7 +49,7 @@ src/%.o: ../src/%.c src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/SystemInit.d ./src/SystemInit.o ./src/gpio.d ./src/gpio.o ./src/main.d ./src/main.o ./src/rcc.d ./src/rcc.o ./src/uart.d ./src/uart.o ./src/usb.d ./src/usb.o ./src/usbd.d ./src/usbd.o ./src/usbd_hid.d ./src/usbd_hid.o
+	-$(RM) ./src/App.d ./src/App.o ./src/SystemInit.d ./src/SystemInit.o ./src/gpio.d ./src/gpio.o ./src/main.d ./src/main.o ./src/rcc.d ./src/rcc.o ./src/uart.d ./src/uart.o ./src/usb.d ./src/usb.o ./src/usbd.d ./src/usbd.o ./src/usbd_hid.d ./src/usbd_hid.o
 
 .PHONY: clean-src
 

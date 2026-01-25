@@ -41,7 +41,7 @@ OBJS += \
 src/%.o: ../src/%.c src/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'
-	arm-none-eabi-gcc -std=c11 -DSTM32F407xx -DDEBUG -DTRACE -I"C:\Users\bahri\Y_GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\include" -I"C:\Users\bahri\Y_GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include" -I"C:\Users\bahri\Y_GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include\cmsis" -O0 -g3 -Wall -c -fmessage-length=0 -mthumb -mcpu=cortex-m4 -Wa,-adhlns="$@.lst" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -std=c11 -DSTM32F407xx -DDEBUG -DTRACE -I"C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\include" -I"C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include" -I"C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include\cmsis" -O0 -g3 -Wall -c -fmessage-length=0 -mthumb -mcpu=cortex-m4 -Wa,-adhlns="$@.lst" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

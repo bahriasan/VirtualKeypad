@@ -1,0 +1,8 @@
+00:34:30 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+make all 
+make[1]: `main-build' için hiçbir þey yapýlmadý.
+arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
+' '
+
+00:34:31 Build Finished. 0 errors, 0 warnings. (took 583ms)
+

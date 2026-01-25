@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ui.externaltools.ProgramLaunchConfigurationType">
+    <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
+    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe"/>
+    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-f board/stm32f4discovery.cfg&#13;&#10;-c &quot;init; reset halt&quot;&#13;&#10;-c &quot;flash write_image erase Project_USB_CrossCompile.elf&quot;&#13;&#10;-c &quot;reset run; shutdown&quot;"/>
+    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:/Project_USB_CrossCompile/Debug}"/>
+</launchConfiguration>

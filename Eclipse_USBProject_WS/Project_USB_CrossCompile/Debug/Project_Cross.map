@@ -974,16 +974,16 @@ LOAD linker stubs
  .comment       0x00000049       0x4a ./src/usbd.o
  .comment       0x00000049       0x4a ./src/usbd_hid.o
 
-.debug_info     0x00000000     0x5ba4
- .debug_info    0x00000000      0xd80 ./src/App.o
- .debug_info    0x00000d80      0x345 ./src/SystemInit.o
- .debug_info    0x000010c5      0x44d ./src/gpio.o
- .debug_info    0x00001512      0xb18 ./src/main.o
- .debug_info    0x0000202a      0x369 ./src/rcc.o
- .debug_info    0x00002393      0xdec ./src/uart.o
- .debug_info    0x0000317f     0x2276 ./src/usb.o
- .debug_info    0x000053f5      0x6c1 ./src/usbd.o
- .debug_info    0x00005ab6       0xee ./src/usbd_hid.o
+.debug_info     0x00000000     0x5c34
+ .debug_info    0x00000000      0xe10 ./src/App.o
+ .debug_info    0x00000e10      0x345 ./src/SystemInit.o
+ .debug_info    0x00001155      0x44d ./src/gpio.o
+ .debug_info    0x000015a2      0xb18 ./src/main.o
+ .debug_info    0x000020ba      0x369 ./src/rcc.o
+ .debug_info    0x00002423      0xdec ./src/uart.o
+ .debug_info    0x0000320f     0x2276 ./src/usb.o
+ .debug_info    0x00005485      0x6c1 ./src/usbd.o
+ .debug_info    0x00005b46       0xee ./src/usbd_hid.o
 
 .debug_abbrev   0x00000000      0xf2a
  .debug_abbrev  0x00000000      0x24f ./src/App.o
@@ -1073,24 +1073,24 @@ LOAD linker stubs
  .debug_line    0x0000467e      0x5aa ./src/usbd.o
  .debug_line    0x00004c28      0x34e ./src/usbd_hid.o
 
-.debug_str      0x00000000    0x8f00c
- .debug_str     0x00000000    0x8b6b4 ./src/App.o
-                              0x8b8ef (size before relaxing)
- .debug_str     0x0008b6b4      0x4a8 ./src/SystemInit.o
+.debug_str      0x00000000    0x8f0c3
+ .debug_str     0x00000000    0x8b76b ./src/App.o
+                              0x8b9a6 (size before relaxing)
+ .debug_str     0x0008b76b      0x4a8 ./src/SystemInit.o
                               0x8b17d (size before relaxing)
- .debug_str     0x0008bb5c       0x56 ./src/gpio.o
+ .debug_str     0x0008bc13       0x56 ./src/gpio.o
                               0x8b0e5 (size before relaxing)
- .debug_str     0x0008bbb2     0x2b87 ./src/main.o
+ .debug_str     0x0008bc69     0x2b87 ./src/main.o
                               0x8deda (size before relaxing)
- .debug_str     0x0008e739       0x64 ./src/rcc.o
+ .debug_str     0x0008e7f0       0x64 ./src/rcc.o
                               0x8b142 (size before relaxing)
- .debug_str     0x0008e79d      0x1d0 ./src/uart.o
+ .debug_str     0x0008e854      0x1d0 ./src/uart.o
                               0x8c122 (size before relaxing)
- .debug_str     0x0008e96d      0x4e0 ./src/usb.o
+ .debug_str     0x0008ea24      0x4e0 ./src/usb.o
                               0x8d92c (size before relaxing)
- .debug_str     0x0008ee4d      0x197 ./src/usbd.o
+ .debug_str     0x0008ef04      0x197 ./src/usbd.o
                               0x8bbe3 (size before relaxing)
- .debug_str     0x0008efe4       0x28 ./src/usbd_hid.o
+ .debug_str     0x0008f09b       0x28 ./src/usbd_hid.o
                                0x6eb3 (size before relaxing)
 
 .debug_frame    0x00000000      0xcb4

@@ -2082,191 +2082,136 @@
  260 00c0 01       		.byte	1
  261 00c1 000000   		.space	3
  262 00c4 00080240 		.word	1073874944
- 263 00c8 14       		.byte	20
+ 263 00c8 3A       		.byte	58
  264 00c9 000000   		.space	3
  265 00cc 03       		.byte	3
  266 00cd 000000   		.space	3
  267 00d0 00080240 		.word	1073874944
- 268 00d4 1A       		.byte	26
+ 268 00d4 3B       		.byte	59
  269 00d5 000000   		.space	3
  270 00d8 02       		.byte	2
  271 00d9 000000   		.space	3
  272 00dc 00080240 		.word	1073874944
- 273 00e0 08       		.byte	8
+ 273 00e0 3C       		.byte	60
  274 00e1 000000   		.space	3
  275 00e4 01       		.byte	1
  276 00e5 000000   		.space	3
  277 00e8 00000240 		.word	1073872896
- 278 00ec 15       		.byte	21
+ 278 00ec 3D       		.byte	61
  279 00ed 000000   		.space	3
  280 00f0 00       		.byte	0
  281 00f1 000000   		.space	3
  282 00f4 00000240 		.word	1073872896
- 283 00f8 17       		.byte	23
+ 283 00f8 3E       		.byte	62
  284 00f9 000000   		.space	3
  285 00fc 03       		.byte	3
  286 00fd 000000   		.space	3
  287 0100 00000240 		.word	1073872896
- 288 0104 1C       		.byte	28
+ 288 0104 3F       		.byte	63
  289 0105 000000   		.space	3
  290 0108 02       		.byte	2
  291 0109 000000   		.space	3
  292 010c 00000240 		.word	1073872896
- 293 0110 18       		.byte	24
+ 293 0110 40       		.byte	64
  294 0111 000000   		.space	3
  295 0114 05       		.byte	5
  296 0115 000000   		.space	3
  297 0118 00000240 		.word	1073872896
- 298 011c 0C       		.byte	12
+ 298 011c 41       		.byte	65
  299 011d 000000   		.space	3
  300 0120 04       		.byte	4
  301 0121 000000   		.space	3
  302 0124 00000240 		.word	1073872896
- 303 0128 12       		.byte	18
+ 303 0128 42       		.byte	66
  304 0129 000000   		.space	3
  305 012c 07       		.byte	7
  306 012d 000000   		.space	3
  307 0130 00000240 		.word	1073872896
- 308 0134 13       		.byte	19
+ 308 0134 43       		.byte	67
  309 0135 000000   		.space	3
  310 0138 06       		.byte	6
  311 0139 000000   		.space	3
  312 013c 00000240 		.word	1073872896
- 313 0140 04       		.byte	4
+ 313 0140 44       		.byte	68
  314 0141 000000   		.space	3
  315 0144 05       		.byte	5
  316 0145 000000   		.space	3
  317 0148 00080240 		.word	1073874944
- 318 014c 16       		.byte	22
+ 318 014c 45       		.byte	69
  319 014d 000000   		.space	3
  320 0150 04       		.byte	4
  321 0151 000000   		.space	3
  322 0154 00080240 		.word	1073874944
- 323 0158 07       		.byte	7
+ 323 0158 68       		.byte	104
  324 0159 000000   		.space	3
  325 015c 01       		.byte	1
  326 015d 000000   		.space	3
  327 0160 00040240 		.word	1073873920
- 328 0164 09       		.byte	9
+ 328 0164 69       		.byte	105
  329 0165 000000   		.space	3
  330 0168 00       		.byte	0
  331 0169 000000   		.space	3
  332 016c 00040240 		.word	1073873920
- 333 0170 0A       		.byte	10
+ 333 0170 6A       		.byte	106
  334 0171 000000   		.space	3
  335 0174 02       		.byte	2
  336 0175 000000   		.space	3
  337 0178 00040240 		.word	1073873920
- 338 017c 0B       		.byte	11
+ 338 017c 6B       		.byte	107
  339 017d 000000   		.space	3
  340 0180 07       		.byte	7
  341 0181 000000   		.space	3
  342 0184 00100240 		.word	1073876992
- 343 0188 0D       		.byte	13
+ 343 0188 6C       		.byte	108
  344 0189 000000   		.space	3
  345 018c 08       		.byte	8
  346 018d 000000   		.space	3
  347 0190 00100240 		.word	1073876992
- 348 0194 0E       		.byte	14
+ 348 0194 6D       		.byte	109
  349 0195 000000   		.space	3
  350 0198 09       		.byte	9
  351 0199 000000   		.space	3
  352 019c 00100240 		.word	1073876992
- 353 01a0 0F       		.byte	15
+ 353 01a0 6E       		.byte	110
  354 01a1 000000   		.space	3
  355 01a4 09       		.byte	9
  356 01a5 000000   		.space	3
  357 01a8 00100240 		.word	1073876992
- 358 01ac 1D       		.byte	29
+ 358 01ac 6F       		.byte	111
  359 01ad 000000   		.space	3
  360 01b0 0A       		.byte	10
  361 01b1 000000   		.space	3
  362 01b4 00100240 		.word	1073876992
- 363 01b8 1B       		.byte	27
+ 363 01b8 70       		.byte	112
  364 01b9 000000   		.space	3
  365 01bc 0B       		.byte	11
  366 01bd 000000   		.space	3
  367 01c0 00100240 		.word	1073876992
- 368 01c4 06       		.byte	6
+ 368 01c4 71       		.byte	113
  369 01c5 000000   		.space	3
  370 01c8 0C       		.byte	12
  371 01c9 000000   		.space	3
  372 01cc 00100240 		.word	1073876992
- 373 01d0 19       		.byte	25
+ 373 01d0 72       		.byte	114
  374 01d1 000000   		.space	3
  375 01d4 0D       		.byte	13
  376 01d5 000000   		.space	3
  377 01d8 00100240 		.word	1073876992
- 378 01dc 05       		.byte	5
+ 378 01dc 73       		.byte	115
  379 01dd 000000   		.space	3
- 380 01e0 0E       		.byte	14
- 381 01e1 000000   		.space	3
- 382 01e4 00100240 		.word	1073876992
- 383 01e8 11       		.byte	17
- 384 01e9 000000   		.space	3
- 385 01ec 0F       		.byte	15
- 386 01ed 000000   		.space	3
- 387 01f0 00100240 		.word	1073876992
- 388 01f4 10       		.byte	16
- 389 01f5 000000   		.space	3
- 390 01f8 0A       		.byte	10
- 391 01f9 000000   		.space	3
- 392 01fc 00040240 		.word	1073873920
- 393 0200 1E       		.byte	30
- 394 0201 000000   		.space	3
- 395 0204 0B       		.byte	11
- 396 0205 000000   		.space	3
- 397 0208 00040240 		.word	1073873920
- 398 020c 1F       		.byte	31
- 399 020d 000000   		.space	3
- 400 0210 0C       		.byte	12
- 401 0211 000000   		.space	3
- 402 0214 00040240 		.word	1073873920
- 403 0218 20       		.byte	32
- 404 0219 000000   		.space	3
- 405 021c 0D       		.byte	13
- 406 021d 000000   		.space	3
- 407 0220 00040240 		.word	1073873920
- 408 0224 21       		.byte	33
- 409 0225 000000   		.space	3
- 410 0228 0E       		.byte	14
- 411 0229 000000   		.space	3
- 412 022c 00040240 		.word	1073873920
- 413 0230 22       		.byte	34
- 414 0231 000000   		.space	3
- 415 0234 0F       		.byte	15
- 416 0235 000000   		.space	3
- 417 0238 00040240 		.word	1073873920
- 418 023c 23       		.byte	35
- 419 023d 000000   		.space	3
- 420 0240 08       		.byte	8
- 421 0241 000000   		.space	3
- 422 0244 000C0240 		.word	1073875968
- 423 0248 24       		.byte	36
- 424 0249 000000   		.space	3
- 425 024c 09       		.byte	9
- 426 024d 000000   		.space	3
- 427 0250 000C0240 		.word	1073875968
- 428 0254 25       		.byte	37
- 429 0255 000000   		.space	3
- 430 0258 0A       		.byte	10
- 431 0259 000000   		.space	3
- 432 025c 000C0240 		.word	1073875968
- 433 0260 26       		.byte	38
- 434 0261 000000   		.space	3
- 435 0264 0B       		.byte	11
- 436 0265 000000   		.space	3
- 437 0268 000C0240 		.word	1073875968
- 438 026c 27       		.byte	39
- 439 026d 000000   		.space	3
- 440              		.text
- 441              		.align	1
- 442              		.syntax unified
- 443              		.thumb
- 444              		.thumb_func
- 446              	Enable_Exti_Interrupt:
- 447              	.LFB137:
- 448              		.file 2 "../src/App.c"
+ 380 01e0 00000000 		.space	144
+ 380      00000000 
+ 380      00000000 
+ 380      00000000 
+ 380      00000000 
+ 381              		.text
+ 382              		.align	1
+ 383              		.syntax unified
+ 384              		.thumb
+ 385              		.thumb_func
+ 387              	Enable_Exti_Interrupt:
+ 388              	.LFB137:
+ 389              		.file 2 "../src/App.c"
    1:../src/App.c  **** /*
    2:../src/App.c  ****  * App.c
    3:../src/App.c  ****  *
@@ -2308,1985 +2253,1988 @@
   39:../src/App.c  **** 
   40:../src/App.c  **** input_type Input_Array[INPUT_ARRAY_SIZE] =
   41:../src/App.c  **** {
-  42:../src/App.c  **** 		{ PIN1, GPIOC, KEY_Q }, 	{ PIN3, GPIOC, KEY_W }, 	{ PIN2, GPIOC, KEY_E },		{ PIN1, GPIOA, KEY_R }
-  43:../src/App.c  **** 		{ PIN0, GPIOA, KEY_T }, 	{ PIN3, GPIOA, KEY_Y }, 	{ PIN2, GPIOA, KEY_U },		{ PIN5, GPIOA, KEY_I }
-  44:../src/App.c  **** 		{ PIN4, GPIOA, KEY_O }, 	{ PIN7, GPIOA, KEY_P }, 	{ PIN6, GPIOA, KEY_A },		{ PIN5, GPIOC, KEY_S }
-  45:../src/App.c  **** 		{ PIN4, GPIOC, KEY_D }, 	{ PIN1, GPIOB, KEY_F }, 	{ PIN0, GPIOB, KEY_G },		{ PIN2, GPIOB, KEY_H }
-  46:../src/App.c  **** 		{ PIN7, GPIOE, KEY_J }, 	{ PIN8, GPIOE, KEY_K }, 	{ PIN9, GPIOE, KEY_L },		{ PIN9, GPIOE, KEY_Z }
-  47:../src/App.c  **** 		{ PIN10, GPIOE, KEY_X }, 	{ PIN11, GPIOE, KEY_C }, 	{ PIN12, GPIOE, KEY_V },	{ PIN13, GPIOE, KEY_
-  48:../src/App.c  **** 		{ PIN14, GPIOE, KEY_N }, 	{ PIN15, GPIOE, KEY_M }, 	{ PIN10, GPIOB, KEY_1 },	{ PIN11, GPIOB, KEY_
-  49:../src/App.c  **** 		{ PIN12, GPIOB, KEY_3 }, 	{ PIN13, GPIOB, KEY_4 }, 	{ PIN14, GPIOB, KEY_5 },	{ PIN15, GPIOB, KEY_
-  50:../src/App.c  **** 		{ PIN8, GPIOD, KEY_7 }, 	{ PIN9, GPIOD, KEY_8 }, 	{ PIN10, GPIOD, KEY_9 },	{ PIN11, GPIOD, KEY_0 
-  51:../src/App.c  **** };
-  52:../src/App.c  **** 
-  53:../src/App.c  **** 
-  54:../src/App.c  **** /*
-  55:../src/App.c  ****  * LOCAL FUNCTION DECLARATIONS
-  56:../src/App.c  ****  */
-  57:../src/App.c  **** static void Enable_Exti_Interrupt(void);
-  58:../src/App.c  **** static Std_ReturnType findEmptyPos(uint8* pos);
-  59:../src/App.c  **** static Std_ReturnType findExistingPos(uint8* pos, KeyCode_type key);
-  60:../src/App.c  **** 
-  61:../src/App.c  **** /*
-  62:../src/App.c  ****  * LOCAL FUNCTION DEFINITIONS
-  63:../src/App.c  ****  */
-  64:../src/App.c  **** static void Enable_Exti_Interrupt(void)
-  65:../src/App.c  **** {
- 449              		.loc 2 65 1
- 450              		.cfi_startproc
- 451              		@ args = 0, pretend = 0, frame = 8
- 452              		@ frame_needed = 1, uses_anonymous_args = 0
- 453 008c 80B5     		push	{r7, lr}
- 454              		.cfi_def_cfa_offset 8
- 455              		.cfi_offset 7, -8
- 456              		.cfi_offset 14, -4
- 457 008e 82B0     		sub	sp, sp, #8
- 458              		.cfi_def_cfa_offset 16
- 459 0090 00AF     		add	r7, sp, #0
- 460              		.cfi_def_cfa_register 7
- 461              	.LBB2:
-  66:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
- 462              		.loc 2 66 12
- 463 0092 0023     		movs	r3, #0
- 464 0094 FB71     		strb	r3, [r7, #7]
- 465              		.loc 2 66 2
- 466 0096 69E0     		b	.L13
- 467              	.L24:
-  67:../src/App.c  **** 	{
-  68:../src/App.c  **** 		switch(Exti_Array[i].pinNumber)
- 468              		.loc 2 68 23
- 469 0098 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
- 470 009a 3849     		ldr	r1, .L26
- 471 009c 1346     		mov	r3, r2
- 472 009e 5B00     		lsls	r3, r3, #1
- 473 00a0 1344     		add	r3, r3, r2
- 474 00a2 9B00     		lsls	r3, r3, #2
- 475 00a4 0B44     		add	r3, r3, r1
- 476 00a6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 477              		.loc 2 68 3
- 478 00a8 0F2B     		cmp	r3, #15
- 479 00aa 5BD8     		bhi	.L25
- 480 00ac 01A2     		adr	r2, .L16
- 481 00ae 52F823F0 		ldr	pc, [r2, r3, lsl #2]
- 482 00b2 00BF     		.p2align 2
- 483              	.L16:
- 484 00b4 F5000000 		.word	.L22+1
- 485 00b8 05010000 		.word	.L21+1
- 486 00bc 15010000 		.word	.L20+1
- 487 00c0 25010000 		.word	.L19+1
- 488 00c4 35010000 		.word	.L18+1
- 489 00c8 45010000 		.word	.L17+1
- 490 00cc 45010000 		.word	.L17+1
- 491 00d0 45010000 		.word	.L17+1
- 492 00d4 45010000 		.word	.L17+1
- 493 00d8 45010000 		.word	.L17+1
- 494 00dc 55010000 		.word	.L15+1
- 495 00e0 55010000 		.word	.L15+1
- 496 00e4 55010000 		.word	.L15+1
- 497 00e8 55010000 		.word	.L15+1
- 498 00ec 55010000 		.word	.L15+1
- 499 00f0 55010000 		.word	.L15+1
- 500              		.p2align 1
- 501              	.L22:
-  69:../src/App.c  **** 		{
-  70:../src/App.c  **** 		case PIN0:
-  71:../src/App.c  **** 			NVIC_SetPriority(EXTI0_IRQn, 0);
- 502              		.loc 2 71 4
- 503 00f4 0021     		movs	r1, #0
- 504 00f6 0620     		movs	r0, #6
- 505 00f8 FFF79EFF 		bl	__NVIC_SetPriority
-  72:../src/App.c  **** 			NVIC_EnableIRQ(EXTI0_IRQn);
- 506              		.loc 2 72 4
- 507 00fc 0620     		movs	r0, #6
- 508 00fe FFF77FFF 		bl	__NVIC_EnableIRQ
-  73:../src/App.c  **** 			break;
- 509              		.loc 2 73 4
- 510 0102 30E0     		b	.L23
- 511              	.L21:
-  74:../src/App.c  **** 		case PIN1:
-  75:../src/App.c  **** 			NVIC_SetPriority(EXTI1_IRQn, 0);
- 512              		.loc 2 75 4
- 513 0104 0021     		movs	r1, #0
- 514 0106 0720     		movs	r0, #7
- 515 0108 FFF796FF 		bl	__NVIC_SetPriority
-  76:../src/App.c  **** 			NVIC_EnableIRQ(EXTI1_IRQn);
- 516              		.loc 2 76 4
- 517 010c 0720     		movs	r0, #7
- 518 010e FFF777FF 		bl	__NVIC_EnableIRQ
-  77:../src/App.c  **** 			break;
- 519              		.loc 2 77 4
- 520 0112 28E0     		b	.L23
- 521              	.L20:
-  78:../src/App.c  **** 		case PIN2:
-  79:../src/App.c  **** 			NVIC_SetPriority(EXTI2_IRQn, 0);
- 522              		.loc 2 79 4
- 523 0114 0021     		movs	r1, #0
- 524 0116 0820     		movs	r0, #8
- 525 0118 FFF78EFF 		bl	__NVIC_SetPriority
-  80:../src/App.c  **** 			NVIC_EnableIRQ(EXTI2_IRQn);
- 526              		.loc 2 80 4
- 527 011c 0820     		movs	r0, #8
- 528 011e FFF76FFF 		bl	__NVIC_EnableIRQ
-  81:../src/App.c  **** 			break;
- 529              		.loc 2 81 4
- 530 0122 20E0     		b	.L23
- 531              	.L19:
-  82:../src/App.c  **** 		case PIN3:
-  83:../src/App.c  **** 			NVIC_SetPriority(EXTI3_IRQn, 0);
- 532              		.loc 2 83 4
- 533 0124 0021     		movs	r1, #0
- 534 0126 0920     		movs	r0, #9
- 535 0128 FFF786FF 		bl	__NVIC_SetPriority
-  84:../src/App.c  **** 			NVIC_EnableIRQ(EXTI3_IRQn);
- 536              		.loc 2 84 4
- 537 012c 0920     		movs	r0, #9
- 538 012e FFF767FF 		bl	__NVIC_EnableIRQ
-  85:../src/App.c  **** 			break;
- 539              		.loc 2 85 4
- 540 0132 18E0     		b	.L23
- 541              	.L18:
-  86:../src/App.c  **** 		case PIN4:
-  87:../src/App.c  **** 			NVIC_SetPriority(EXTI4_IRQn, 0);
- 542              		.loc 2 87 4
- 543 0134 0021     		movs	r1, #0
- 544 0136 0A20     		movs	r0, #10
- 545 0138 FFF77EFF 		bl	__NVIC_SetPriority
-  88:../src/App.c  **** 			NVIC_EnableIRQ(EXTI4_IRQn);
- 546              		.loc 2 88 4
- 547 013c 0A20     		movs	r0, #10
- 548 013e FFF75FFF 		bl	__NVIC_EnableIRQ
-  89:../src/App.c  **** 			break;
- 549              		.loc 2 89 4
- 550 0142 10E0     		b	.L23
- 551              	.L17:
-  90:../src/App.c  **** 		case PIN5:
-  91:../src/App.c  **** 		case PIN6:
-  92:../src/App.c  **** 		case PIN7:
-  93:../src/App.c  **** 		case PIN8:
-  94:../src/App.c  **** 		case PIN9:
-  95:../src/App.c  **** 			NVIC_SetPriority(EXTI9_5_IRQn , 0);
- 552              		.loc 2 95 4
- 553 0144 0021     		movs	r1, #0
- 554 0146 1720     		movs	r0, #23
- 555 0148 FFF776FF 		bl	__NVIC_SetPriority
-  96:../src/App.c  **** 			NVIC_EnableIRQ(EXTI9_5_IRQn );
- 556              		.loc 2 96 4
- 557 014c 1720     		movs	r0, #23
- 558 014e FFF757FF 		bl	__NVIC_EnableIRQ
-  97:../src/App.c  **** 			break;
- 559              		.loc 2 97 4
- 560 0152 08E0     		b	.L23
- 561              	.L15:
-  98:../src/App.c  **** 		case PIN10:
-  99:../src/App.c  **** 		case PIN11:
- 100:../src/App.c  **** 		case PIN12:
- 101:../src/App.c  **** 		case PIN13:
- 102:../src/App.c  **** 		case PIN14:
- 103:../src/App.c  **** 		case PIN15:
- 104:../src/App.c  **** 			NVIC_SetPriority(EXTI15_10_IRQn , 0);
- 562              		.loc 2 104 4
- 563 0154 0021     		movs	r1, #0
- 564 0156 2820     		movs	r0, #40
- 565 0158 FFF76EFF 		bl	__NVIC_SetPriority
- 105:../src/App.c  **** 			NVIC_EnableIRQ(EXTI15_10_IRQn );
- 566              		.loc 2 105 4
- 567 015c 2820     		movs	r0, #40
- 568 015e FFF74FFF 		bl	__NVIC_EnableIRQ
- 106:../src/App.c  **** 			break;
- 569              		.loc 2 106 4
- 570 0162 00E0     		b	.L23
- 571              	.L25:
- 107:../src/App.c  **** 		default:
- 108:../src/App.c  **** 			break;
- 572              		.loc 2 108 4
- 573 0164 00BF     		nop
- 574              	.L23:
-  66:../src/App.c  **** 	{
- 575              		.loc 2 66 36 discriminator 2
- 576 0166 FB79     		ldrb	r3, [r7, #7]
- 577 0168 0133     		adds	r3, r3, #1
- 578 016a FB71     		strb	r3, [r7, #7]
- 579              	.L13:
-  66:../src/App.c  **** 	{
- 580              		.loc 2 66 2 discriminator 1
- 581 016c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 582 016e 0F2B     		cmp	r3, #15
- 583 0170 92D9     		bls	.L24
- 584              	.LBE2:
- 109:../src/App.c  **** 		}
- 110:../src/App.c  **** 	}
- 111:../src/App.c  **** }
- 585              		.loc 2 111 1
- 586 0172 00BF     		nop
- 587 0174 00BF     		nop
- 588 0176 0837     		adds	r7, r7, #8
- 589              		.cfi_def_cfa_offset 8
- 590 0178 BD46     		mov	sp, r7
- 591              		.cfi_def_cfa_register 13
- 592              		@ sp needed
- 593 017a 80BD     		pop	{r7, pc}
- 594              	.L27:
- 595              		.align	2
- 596              	.L26:
- 597 017c 00000000 		.word	Exti_Array
- 598              		.cfi_endproc
- 599              	.LFE137:
- 601              		.align	1
- 602              		.syntax unified
- 603              		.thumb
- 604              		.thumb_func
- 606              	findEmptyPos:
- 607              	.LFB138:
- 112:../src/App.c  **** 
- 113:../src/App.c  **** static Std_ReturnType findEmptyPos(uint8* pos)
- 114:../src/App.c  **** {
- 608              		.loc 2 114 1
- 609              		.cfi_startproc
- 610              		@ args = 0, pretend = 0, frame = 16
- 611              		@ frame_needed = 1, uses_anonymous_args = 0
- 612              		@ link register save eliminated.
- 613 0180 80B4     		push	{r7}
- 614              		.cfi_def_cfa_offset 4
- 615              		.cfi_offset 7, -4
- 616 0182 85B0     		sub	sp, sp, #20
- 617              		.cfi_def_cfa_offset 24
- 618 0184 00AF     		add	r7, sp, #0
- 619              		.cfi_def_cfa_register 7
- 620 0186 7860     		str	r0, [r7, #4]
- 621              	.LBB3:
- 115:../src/App.c  **** 	for(uint8 i=2; i<8; ++i)
- 622              		.loc 2 115 12
- 623 0188 0223     		movs	r3, #2
- 624 018a FB73     		strb	r3, [r7, #15]
- 625              		.loc 2 115 2
- 626 018c 0CE0     		b	.L29
- 627              	.L32:
- 116:../src/App.c  **** 	{
- 117:../src/App.c  **** 		if(USB_buffer[i] == 0u)
- 628              		.loc 2 117 16
- 629 018e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 630 0190 0A4A     		ldr	r2, .L33
- 631 0192 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 632              		.loc 2 117 5
- 633 0194 002B     		cmp	r3, #0
- 634 0196 04D1     		bne	.L30
- 118:../src/App.c  **** 		{
- 119:../src/App.c  **** 			*pos = i;
- 635              		.loc 2 119 9
- 636 0198 7B68     		ldr	r3, [r7, #4]
- 637 019a FA7B     		ldrb	r2, [r7, #15]
- 638 019c 1A70     		strb	r2, [r3]
- 120:../src/App.c  **** 			return E_OK;
- 639              		.loc 2 120 11
- 640 019e 0023     		movs	r3, #0
- 641 01a0 06E0     		b	.L31
- 642              	.L30:
- 115:../src/App.c  **** 	{
- 643              		.loc 2 115 22 discriminator 2
- 644 01a2 FB7B     		ldrb	r3, [r7, #15]
- 645 01a4 0133     		adds	r3, r3, #1
- 646 01a6 FB73     		strb	r3, [r7, #15]
- 647              	.L29:
- 115:../src/App.c  **** 	{
- 648              		.loc 2 115 2 discriminator 1
- 649 01a8 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 650 01aa 072B     		cmp	r3, #7
- 651 01ac EFD9     		bls	.L32
- 652              	.LBE3:
- 121:../src/App.c  **** 		}
- 122:../src/App.c  **** 	}
- 123:../src/App.c  **** 	return E_NOT_OK;
- 653              		.loc 2 123 9
- 654 01ae 0123     		movs	r3, #1
- 655              	.L31:
- 124:../src/App.c  **** }
- 656              		.loc 2 124 1
- 657 01b0 1846     		mov	r0, r3
- 658 01b2 1437     		adds	r7, r7, #20
- 659              		.cfi_def_cfa_offset 4
- 660 01b4 BD46     		mov	sp, r7
- 661              		.cfi_def_cfa_register 13
- 662              		@ sp needed
- 663 01b6 80BC     		pop	{r7}
- 664              		.cfi_restore 7
- 665              		.cfi_def_cfa_offset 0
- 666 01b8 7047     		bx	lr
- 667              	.L34:
- 668 01ba 00BF     		.align	2
- 669              	.L33:
- 670 01bc 00000000 		.word	USB_buffer
- 671              		.cfi_endproc
- 672              	.LFE138:
- 674              		.align	1
- 675              		.syntax unified
- 676              		.thumb
- 677              		.thumb_func
- 679              	findExistingPos:
- 680              	.LFB139:
- 125:../src/App.c  **** 
- 126:../src/App.c  **** static Std_ReturnType findExistingPos(uint8* pos, KeyCode_type key)
- 127:../src/App.c  **** {
- 681              		.loc 2 127 1
- 682              		.cfi_startproc
- 683              		@ args = 0, pretend = 0, frame = 16
- 684              		@ frame_needed = 1, uses_anonymous_args = 0
- 685              		@ link register save eliminated.
- 686 01c0 80B4     		push	{r7}
- 687              		.cfi_def_cfa_offset 4
- 688              		.cfi_offset 7, -4
- 689 01c2 85B0     		sub	sp, sp, #20
- 690              		.cfi_def_cfa_offset 24
- 691 01c4 00AF     		add	r7, sp, #0
- 692              		.cfi_def_cfa_register 7
- 693 01c6 7860     		str	r0, [r7, #4]
- 694 01c8 0B46     		mov	r3, r1
- 695 01ca FB70     		strb	r3, [r7, #3]
- 696              	.LBB4:
- 128:../src/App.c  **** 	for(uint8 i=2; i<8; ++i)
- 697              		.loc 2 128 12
- 698 01cc 0223     		movs	r3, #2
- 699 01ce FB73     		strb	r3, [r7, #15]
- 700              		.loc 2 128 2
- 701 01d0 0DE0     		b	.L36
- 702              	.L39:
- 129:../src/App.c  **** 	{
- 130:../src/App.c  **** 		if(USB_buffer[i] == key)
- 703              		.loc 2 130 16
- 704 01d2 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 705 01d4 0A4A     		ldr	r2, .L40
- 706 01d6 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 707              		.loc 2 130 5
- 708 01d8 FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
- 709 01da 9A42     		cmp	r2, r3
- 710 01dc 04D1     		bne	.L37
- 131:../src/App.c  **** 		{
- 132:../src/App.c  **** 			*pos = i;
- 711              		.loc 2 132 9
- 712 01de 7B68     		ldr	r3, [r7, #4]
- 713 01e0 FA7B     		ldrb	r2, [r7, #15]
- 714 01e2 1A70     		strb	r2, [r3]
- 133:../src/App.c  **** 			return E_OK;
- 715              		.loc 2 133 11
- 716 01e4 0023     		movs	r3, #0
- 717 01e6 06E0     		b	.L38
- 718              	.L37:
- 128:../src/App.c  **** 	{
- 719              		.loc 2 128 22 discriminator 2
- 720 01e8 FB7B     		ldrb	r3, [r7, #15]
- 721 01ea 0133     		adds	r3, r3, #1
- 722 01ec FB73     		strb	r3, [r7, #15]
- 723              	.L36:
- 128:../src/App.c  **** 	{
- 724              		.loc 2 128 2 discriminator 1
- 725 01ee FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 726 01f0 072B     		cmp	r3, #7
- 727 01f2 EED9     		bls	.L39
- 728              	.LBE4:
- 134:../src/App.c  **** 		}
- 135:../src/App.c  **** 	}
- 136:../src/App.c  **** 	return E_NOT_OK;
- 729              		.loc 2 136 9
- 730 01f4 0123     		movs	r3, #1
- 731              	.L38:
- 137:../src/App.c  **** }
- 732              		.loc 2 137 1
- 733 01f6 1846     		mov	r0, r3
- 734 01f8 1437     		adds	r7, r7, #20
- 735              		.cfi_def_cfa_offset 4
- 736 01fa BD46     		mov	sp, r7
- 737              		.cfi_def_cfa_register 13
- 738              		@ sp needed
- 739 01fc 80BC     		pop	{r7}
- 740              		.cfi_restore 7
- 741              		.cfi_def_cfa_offset 0
- 742 01fe 7047     		bx	lr
- 743              	.L41:
- 744              		.align	2
- 745              	.L40:
- 746 0200 00000000 		.word	USB_buffer
- 747              		.cfi_endproc
- 748              	.LFE139:
- 750              		.section	.rodata
- 751              		.align	2
- 752              	.LC0:
- 753 0000 00       		.byte	0
- 754 0001 00       		.byte	0
- 755 0002 02       		.byte	2
- 756 0003 00       		.byte	0
- 757 0004 01       		.byte	1
- 758 0005 00       		.byte	0
- 759              		.text
- 760              		.align	1
- 761              		.global	Exti_Init
- 762              		.syntax unified
- 763              		.thumb
- 764              		.thumb_func
- 766              	Exti_Init:
- 767              	.LFB140:
- 138:../src/App.c  **** 
- 139:../src/App.c  **** 
- 140:../src/App.c  **** /*
- 141:../src/App.c  ****  * GLOBAL FUNCTION DEFINITIONS
- 142:../src/App.c  ****  */
- 143:../src/App.c  **** void Exti_Init(void)
- 144:../src/App.c  **** {
- 768              		.loc 2 144 1
- 769              		.cfi_startproc
- 770              		@ args = 0, pretend = 0, frame = 16
- 771              		@ frame_needed = 1, uses_anonymous_args = 0
- 772 0204 90B5     		push	{r4, r7, lr}
- 773              		.cfi_def_cfa_offset 12
- 774              		.cfi_offset 4, -12
- 775              		.cfi_offset 7, -8
- 776              		.cfi_offset 14, -4
- 777 0206 85B0     		sub	sp, sp, #20
- 778              		.cfi_def_cfa_offset 32
- 779 0208 00AF     		add	r7, sp, #0
- 780              		.cfi_def_cfa_register 7
- 145:../src/App.c  **** 	//1. Enable Related Pins
- 146:../src/App.c  **** 	gpio_cfg configGpio = {PIN_0, GPIO_MODE_INPUT, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_UP, 0};
- 781              		.loc 2 146 11
- 782 020a A24A     		ldr	r2, .L60
- 783 020c 3B1D     		adds	r3, r7, #4
- 784 020e 92E80300 		ldm	r2, {r0, r1}
- 785 0212 1860     		str	r0, [r3]
- 786 0214 0433     		adds	r3, r3, #4
- 787 0216 1980     		strh	r1, [r3]	@ movhi
- 788              	.LBB5:
- 147:../src/App.c  **** 
- 148:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
- 789              		.loc 2 148 12
- 790 0218 0023     		movs	r3, #0
- 791 021a FB73     		strb	r3, [r7, #15]
- 792              		.loc 2 148 2
- 793 021c 1AE0     		b	.L43
- 794              	.L44:
- 149:../src/App.c  **** 	{
- 150:../src/App.c  **** 		configGpio.pinNumber = Exti_Array[i].pinNumber;
- 795              		.loc 2 150 39 discriminator 3
- 796 021e FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
- 797 0220 9D49     		ldr	r1, .L60+4
- 798 0222 1346     		mov	r3, r2
- 799 0224 5B00     		lsls	r3, r3, #1
- 800 0226 1344     		add	r3, r3, r2
- 801 0228 9B00     		lsls	r3, r3, #2
- 802 022a 0B44     		add	r3, r3, r1
- 803 022c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 804              		.loc 2 150 24 discriminator 3
- 805 022e 3B71     		strb	r3, [r7, #4]
- 151:../src/App.c  **** 		Gpio_Init(configGpio, Exti_Array[i].gpioPort);
- 806              		.loc 2 151 3 discriminator 3
- 807 0230 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
- 808 0232 9949     		ldr	r1, .L60+4
- 809 0234 1346     		mov	r3, r2
- 810 0236 5B00     		lsls	r3, r3, #1
- 811 0238 1344     		add	r3, r3, r2
- 812 023a 9B00     		lsls	r3, r3, #2
- 813 023c 0B44     		add	r3, r3, r1
- 814 023e 0433     		adds	r3, r3, #4
- 815 0240 1B68     		ldr	r3, [r3]
- 816 0242 1A46     		mov	r2, r3
- 817 0244 3B1D     		adds	r3, r7, #4
- 818 0246 93E80300 		ldm	r3, {r0, r1}
- 819 024a FFF7FEFF 		bl	Gpio_Init
- 148:../src/App.c  **** 	{
- 820              		.loc 2 148 36 discriminator 3
- 821 024e FB7B     		ldrb	r3, [r7, #15]
- 822 0250 0133     		adds	r3, r3, #1
- 823 0252 FB73     		strb	r3, [r7, #15]
- 824              	.L43:
- 148:../src/App.c  **** 	{
- 825              		.loc 2 148 2 discriminator 1
- 826 0254 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 827 0256 0F2B     		cmp	r3, #15
- 828 0258 E1D9     		bls	.L44
- 829              	.LBE5:
- 830              	.LBB6:
- 152:../src/App.c  **** 	}
- 153:../src/App.c  **** 
- 154:../src/App.c  **** 
- 155:../src/App.c  **** 	//2. Connect EXTI#0 to GPIO_PB0
- 156:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
- 831              		.loc 2 156 12
- 832 025a 0023     		movs	r3, #0
- 833 025c BB73     		strb	r3, [r7, #14]
- 834              		.loc 2 156 2
- 835 025e 11E1     		b	.L45
- 836              	.L55:
- 837              	.LBB7:
- 157:../src/App.c  **** 	{
- 158:../src/App.c  **** 		uint8 pinPos = (i%4)*4;
- 838              		.loc 2 158 9
- 839 0260 BB7B     		ldrb	r3, [r7, #14]
- 840 0262 03F00303 		and	r3, r3, #3
- 841 0266 DBB2     		uxtb	r3, r3
- 842 0268 9B00     		lsls	r3, r3, #2
- 843 026a 3B73     		strb	r3, [r7, #12]
- 159:../src/App.c  **** 
- 160:../src/App.c  **** 		if(GPIOA == Exti_Array[i].gpioPort)
- 844              		.loc 2 160 28
- 845 026c BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 846 026e 8A49     		ldr	r1, .L60+4
- 847 0270 1346     		mov	r3, r2
- 848 0272 5B00     		lsls	r3, r3, #1
- 849 0274 1344     		add	r3, r3, r2
- 850 0276 9B00     		lsls	r3, r3, #2
- 851 0278 0B44     		add	r3, r3, r1
- 852 027a 0433     		adds	r3, r3, #4
- 853 027c 1B68     		ldr	r3, [r3]
- 854              		.loc 2 160 5
- 855 027e 874A     		ldr	r2, .L60+8
- 856 0280 9342     		cmp	r3, r2
- 857 0282 0DD1     		bne	.L46
- 161:../src/App.c  **** 		{
- 162:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PA << pinPos;
- 858              		.loc 2 162 24
- 859 0284 864A     		ldr	r2, .L60+12
- 860 0286 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 861 0288 9B08     		lsrs	r3, r3, #2
- 862 028a DBB2     		uxtb	r3, r3
- 863 028c 1C46     		mov	r4, r3
- 864 028e 8449     		ldr	r1, .L60+12
- 865 0290 1846     		mov	r0, r3
- 866 0292 A31C     		adds	r3, r4, #2
- 867 0294 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 868 0298 831C     		adds	r3, r0, #2
- 869 029a 41F82320 		str	r2, [r1, r3, lsl #2]
- 870 029e EEE0     		b	.L47
- 871              	.L46:
- 163:../src/App.c  **** 		}
- 164:../src/App.c  **** 		else if(GPIOB == Exti_Array[i].gpioPort)
- 872              		.loc 2 164 33
- 873 02a0 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 874 02a2 7D49     		ldr	r1, .L60+4
- 875 02a4 1346     		mov	r3, r2
- 876 02a6 5B00     		lsls	r3, r3, #1
- 877 02a8 1344     		add	r3, r3, r2
- 878 02aa 9B00     		lsls	r3, r3, #2
- 879 02ac 0B44     		add	r3, r3, r1
- 880 02ae 0433     		adds	r3, r3, #4
- 881 02b0 1B68     		ldr	r3, [r3]
- 882              		.loc 2 164 10
- 883 02b2 7C4A     		ldr	r2, .L60+16
- 884 02b4 9342     		cmp	r3, r2
- 885 02b6 11D1     		bne	.L48
- 165:../src/App.c  **** 		{
- 166:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PB << pinPos;
- 886              		.loc 2 166 24
- 887 02b8 794A     		ldr	r2, .L60+12
- 888 02ba BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 889 02bc 9B08     		lsrs	r3, r3, #2
- 890 02be D8B2     		uxtb	r0, r3
- 891 02c0 0346     		mov	r3, r0
- 892 02c2 0233     		adds	r3, r3, #2
- 893 02c4 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 894              		.loc 2 166 51
- 895 02c8 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 896 02ca 0121     		movs	r1, #1
- 897 02cc 01FA03F3 		lsl	r3, r1, r3
- 898              		.loc 2 166 24
- 899 02d0 7349     		ldr	r1, .L60+12
- 900 02d2 1A43     		orrs	r2, r2, r3
- 901 02d4 831C     		adds	r3, r0, #2
- 902 02d6 41F82320 		str	r2, [r1, r3, lsl #2]
- 903 02da D0E0     		b	.L47
- 904              	.L48:
- 167:../src/App.c  **** 		}
- 168:../src/App.c  **** 		else if(GPIOC == Exti_Array[i].gpioPort)
- 905              		.loc 2 168 33
- 906 02dc BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 907 02de 6E49     		ldr	r1, .L60+4
- 908 02e0 1346     		mov	r3, r2
- 909 02e2 5B00     		lsls	r3, r3, #1
- 910 02e4 1344     		add	r3, r3, r2
- 911 02e6 9B00     		lsls	r3, r3, #2
- 912 02e8 0B44     		add	r3, r3, r1
- 913 02ea 0433     		adds	r3, r3, #4
- 914 02ec 1B68     		ldr	r3, [r3]
- 915              		.loc 2 168 10
- 916 02ee 6E4A     		ldr	r2, .L60+20
- 917 02f0 9342     		cmp	r3, r2
- 918 02f2 11D1     		bne	.L49
- 169:../src/App.c  **** 		{
- 170:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PC << pinPos;
- 919              		.loc 2 170 24
- 920 02f4 6A4A     		ldr	r2, .L60+12
- 921 02f6 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 922 02f8 9B08     		lsrs	r3, r3, #2
- 923 02fa D8B2     		uxtb	r0, r3
- 924 02fc 0346     		mov	r3, r0
- 925 02fe 0233     		adds	r3, r3, #2
- 926 0300 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 927              		.loc 2 170 51
- 928 0304 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 929 0306 0221     		movs	r1, #2
- 930 0308 01FA03F3 		lsl	r3, r1, r3
- 931              		.loc 2 170 24
- 932 030c 6449     		ldr	r1, .L60+12
- 933 030e 1A43     		orrs	r2, r2, r3
- 934 0310 831C     		adds	r3, r0, #2
- 935 0312 41F82320 		str	r2, [r1, r3, lsl #2]
- 936 0316 B2E0     		b	.L47
- 937              	.L49:
- 171:../src/App.c  **** 		}
- 172:../src/App.c  **** 		else if(GPIOD == Exti_Array[i].gpioPort)
- 938              		.loc 2 172 33
- 939 0318 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 940 031a 5F49     		ldr	r1, .L60+4
- 941 031c 1346     		mov	r3, r2
- 942 031e 5B00     		lsls	r3, r3, #1
- 943 0320 1344     		add	r3, r3, r2
- 944 0322 9B00     		lsls	r3, r3, #2
- 945 0324 0B44     		add	r3, r3, r1
- 946 0326 0433     		adds	r3, r3, #4
- 947 0328 1B68     		ldr	r3, [r3]
- 948              		.loc 2 172 10
- 949 032a 604A     		ldr	r2, .L60+24
- 950 032c 9342     		cmp	r3, r2
- 951 032e 11D1     		bne	.L50
- 173:../src/App.c  **** 		{
- 174:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PD << pinPos;
- 952              		.loc 2 174 24
- 953 0330 5B4A     		ldr	r2, .L60+12
- 954 0332 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 955 0334 9B08     		lsrs	r3, r3, #2
- 956 0336 D8B2     		uxtb	r0, r3
- 957 0338 0346     		mov	r3, r0
- 958 033a 0233     		adds	r3, r3, #2
- 959 033c 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 960              		.loc 2 174 51
- 961 0340 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 962 0342 0321     		movs	r1, #3
- 963 0344 01FA03F3 		lsl	r3, r1, r3
- 964              		.loc 2 174 24
- 965 0348 5549     		ldr	r1, .L60+12
- 966 034a 1A43     		orrs	r2, r2, r3
- 967 034c 831C     		adds	r3, r0, #2
- 968 034e 41F82320 		str	r2, [r1, r3, lsl #2]
- 969 0352 94E0     		b	.L47
- 970              	.L50:
- 175:../src/App.c  **** 		}
- 176:../src/App.c  **** 		else if(GPIOE == Exti_Array[i].gpioPort)
- 971              		.loc 2 176 33
- 972 0354 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 973 0356 5049     		ldr	r1, .L60+4
- 974 0358 1346     		mov	r3, r2
- 975 035a 5B00     		lsls	r3, r3, #1
- 976 035c 1344     		add	r3, r3, r2
- 977 035e 9B00     		lsls	r3, r3, #2
- 978 0360 0B44     		add	r3, r3, r1
- 979 0362 0433     		adds	r3, r3, #4
- 980 0364 1B68     		ldr	r3, [r3]
- 981              		.loc 2 176 10
- 982 0366 524A     		ldr	r2, .L60+28
- 983 0368 9342     		cmp	r3, r2
- 984 036a 11D1     		bne	.L51
- 177:../src/App.c  **** 		{
- 178:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PE << pinPos;
- 985              		.loc 2 178 24
- 986 036c 4C4A     		ldr	r2, .L60+12
- 987 036e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 988 0370 9B08     		lsrs	r3, r3, #2
- 989 0372 D8B2     		uxtb	r0, r3
- 990 0374 0346     		mov	r3, r0
- 991 0376 0233     		adds	r3, r3, #2
- 992 0378 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 993              		.loc 2 178 51
- 994 037c 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 995 037e 0421     		movs	r1, #4
- 996 0380 01FA03F3 		lsl	r3, r1, r3
- 997              		.loc 2 178 24
- 998 0384 4649     		ldr	r1, .L60+12
- 999 0386 1A43     		orrs	r2, r2, r3
- 1000 0388 831C     		adds	r3, r0, #2
- 1001 038a 41F82320 		str	r2, [r1, r3, lsl #2]
- 1002 038e 76E0     		b	.L47
- 1003              	.L51:
- 179:../src/App.c  **** 		}
- 180:../src/App.c  **** 		else if(GPIOF == Exti_Array[i].gpioPort)
- 1004              		.loc 2 180 33
- 1005 0390 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 1006 0392 4149     		ldr	r1, .L60+4
- 1007 0394 1346     		mov	r3, r2
- 1008 0396 5B00     		lsls	r3, r3, #1
- 1009 0398 1344     		add	r3, r3, r2
- 1010 039a 9B00     		lsls	r3, r3, #2
- 1011 039c 0B44     		add	r3, r3, r1
- 1012 039e 0433     		adds	r3, r3, #4
- 1013 03a0 1B68     		ldr	r3, [r3]
- 1014              		.loc 2 180 10
- 1015 03a2 444A     		ldr	r2, .L60+32
- 1016 03a4 9342     		cmp	r3, r2
- 1017 03a6 11D1     		bne	.L52
- 181:../src/App.c  **** 		{
- 182:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PF << pinPos;
- 1018              		.loc 2 182 24
- 1019 03a8 3D4A     		ldr	r2, .L60+12
- 1020 03aa BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 1021 03ac 9B08     		lsrs	r3, r3, #2
- 1022 03ae D8B2     		uxtb	r0, r3
- 1023 03b0 0346     		mov	r3, r0
- 1024 03b2 0233     		adds	r3, r3, #2
- 1025 03b4 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 1026              		.loc 2 182 51
- 1027 03b8 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 1028 03ba 0521     		movs	r1, #5
- 1029 03bc 01FA03F3 		lsl	r3, r1, r3
- 1030              		.loc 2 182 24
- 1031 03c0 3749     		ldr	r1, .L60+12
- 1032 03c2 1A43     		orrs	r2, r2, r3
- 1033 03c4 831C     		adds	r3, r0, #2
- 1034 03c6 41F82320 		str	r2, [r1, r3, lsl #2]
- 1035 03ca 58E0     		b	.L47
- 1036              	.L52:
- 183:../src/App.c  **** 		}
- 184:../src/App.c  **** 		else if(GPIOG == Exti_Array[i].gpioPort)
- 1037              		.loc 2 184 33
- 1038 03cc BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 1039 03ce 3249     		ldr	r1, .L60+4
- 1040 03d0 1346     		mov	r3, r2
- 1041 03d2 5B00     		lsls	r3, r3, #1
- 1042 03d4 1344     		add	r3, r3, r2
- 1043 03d6 9B00     		lsls	r3, r3, #2
- 1044 03d8 0B44     		add	r3, r3, r1
- 1045 03da 0433     		adds	r3, r3, #4
- 1046 03dc 1B68     		ldr	r3, [r3]
- 1047              		.loc 2 184 10
- 1048 03de 364A     		ldr	r2, .L60+36
- 1049 03e0 9342     		cmp	r3, r2
- 1050 03e2 11D1     		bne	.L53
- 185:../src/App.c  **** 		{
- 186:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PG << pinPos;
- 1051              		.loc 2 186 24
- 1052 03e4 2E4A     		ldr	r2, .L60+12
- 1053 03e6 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 1054 03e8 9B08     		lsrs	r3, r3, #2
- 1055 03ea D8B2     		uxtb	r0, r3
- 1056 03ec 0346     		mov	r3, r0
- 1057 03ee 0233     		adds	r3, r3, #2
- 1058 03f0 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 1059              		.loc 2 186 51
- 1060 03f4 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 1061 03f6 0621     		movs	r1, #6
- 1062 03f8 01FA03F3 		lsl	r3, r1, r3
- 1063              		.loc 2 186 24
- 1064 03fc 2849     		ldr	r1, .L60+12
- 1065 03fe 1A43     		orrs	r2, r2, r3
- 1066 0400 831C     		adds	r3, r0, #2
- 1067 0402 41F82320 		str	r2, [r1, r3, lsl #2]
- 1068 0406 3AE0     		b	.L47
- 1069              	.L53:
- 187:../src/App.c  **** 		}
- 188:../src/App.c  **** 		else if(GPIOH == Exti_Array[i].gpioPort)
- 1070              		.loc 2 188 33
- 1071 0408 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 1072 040a 2349     		ldr	r1, .L60+4
- 1073 040c 1346     		mov	r3, r2
- 1074 040e 5B00     		lsls	r3, r3, #1
- 1075 0410 1344     		add	r3, r3, r2
- 1076 0412 9B00     		lsls	r3, r3, #2
- 1077 0414 0B44     		add	r3, r3, r1
- 1078 0416 0433     		adds	r3, r3, #4
- 1079 0418 1B68     		ldr	r3, [r3]
- 1080              		.loc 2 188 10
- 1081 041a 284A     		ldr	r2, .L60+40
- 1082 041c 9342     		cmp	r3, r2
- 1083 041e 11D1     		bne	.L54
- 189:../src/App.c  **** 		{
- 190:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PH << pinPos;
- 1084              		.loc 2 190 24
- 1085 0420 1F4A     		ldr	r2, .L60+12
- 1086 0422 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 1087 0424 9B08     		lsrs	r3, r3, #2
- 1088 0426 D8B2     		uxtb	r0, r3
- 1089 0428 0346     		mov	r3, r0
- 1090 042a 0233     		adds	r3, r3, #2
- 1091 042c 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 1092              		.loc 2 190 51
- 1093 0430 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 1094 0432 0721     		movs	r1, #7
- 1095 0434 01FA03F3 		lsl	r3, r1, r3
- 1096              		.loc 2 190 24
- 1097 0438 1949     		ldr	r1, .L60+12
- 1098 043a 1A43     		orrs	r2, r2, r3
- 1099 043c 831C     		adds	r3, r0, #2
- 1100 043e 41F82320 		str	r2, [r1, r3, lsl #2]
- 1101 0442 1CE0     		b	.L47
- 1102              	.L54:
- 191:../src/App.c  **** 		}
- 192:../src/App.c  **** 		else if(GPIOI == Exti_Array[i].gpioPort)
- 1103              		.loc 2 192 33
- 1104 0444 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
- 1105 0446 1449     		ldr	r1, .L60+4
- 1106 0448 1346     		mov	r3, r2
- 1107 044a 5B00     		lsls	r3, r3, #1
- 1108 044c 1344     		add	r3, r3, r2
- 1109 044e 9B00     		lsls	r3, r3, #2
- 1110 0450 0B44     		add	r3, r3, r1
- 1111 0452 0433     		adds	r3, r3, #4
- 1112 0454 1B68     		ldr	r3, [r3]
- 1113              		.loc 2 192 10
- 1114 0456 1A4A     		ldr	r2, .L60+44
- 1115 0458 9342     		cmp	r3, r2
- 1116 045a 10D1     		bne	.L47
- 193:../src/App.c  **** 		{
- 194:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PI << pinPos;
- 1117              		.loc 2 194 24
- 1118 045c 104A     		ldr	r2, .L60+12
- 1119 045e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 1120 0460 9B08     		lsrs	r3, r3, #2
- 1121 0462 D8B2     		uxtb	r0, r3
- 1122 0464 0346     		mov	r3, r0
- 1123 0466 0233     		adds	r3, r3, #2
- 1124 0468 52F82320 		ldr	r2, [r2, r3, lsl #2]
- 1125              		.loc 2 194 51
- 1126 046c 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 1127 046e 0821     		movs	r1, #8
- 1128 0470 01FA03F3 		lsl	r3, r1, r3
- 1129              		.loc 2 194 24
- 1130 0474 0A49     		ldr	r1, .L60+12
- 1131 0476 1A43     		orrs	r2, r2, r3
- 1132 0478 831C     		adds	r3, r0, #2
- 1133 047a 41F82320 		str	r2, [r1, r3, lsl #2]
- 1134              	.L47:
- 1135              	.LBE7:
- 156:../src/App.c  **** 	{
- 1136              		.loc 2 156 36 discriminator 2
- 1137 047e BB7B     		ldrb	r3, [r7, #14]
- 1138 0480 0133     		adds	r3, r3, #1
- 1139 0482 BB73     		strb	r3, [r7, #14]
- 1140              	.L45:
- 156:../src/App.c  **** 	{
- 1141              		.loc 2 156 2 discriminator 1
- 1142 0484 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 1143 0486 0F2B     		cmp	r3, #15
- 1144 0488 7FF6EAAE 		bls	.L55
- 1145              	.LBE6:
- 1146              	.LBB8:
- 195:../src/App.c  **** 		}
- 196:../src/App.c  **** 		else
- 197:../src/App.c  **** 		{ /* Do Nothing */ }
- 198:../src/App.c  **** 	}
- 199:../src/App.c  **** 
- 200:../src/App.c  **** 
- 201:../src/App.c  **** 	//3. Config and Enable Interrupt Registers
- 202:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
- 1147              		.loc 2 202 12
- 1148 048c 0023     		movs	r3, #0
- 1149 048e 7B73     		strb	r3, [r7, #13]
- 1150              		.loc 2 202 2
- 1151 0490 61E0     		b	.L56
- 1152              	.L61:
- 1153 0492 00BF     		.align	2
- 1154              	.L60:
- 1155 0494 00000000 		.word	.LC0
- 1156 0498 00000000 		.word	Exti_Array
- 1157 049c 00000240 		.word	1073872896
- 1158 04a0 00380140 		.word	1073821696
- 1159 04a4 00040240 		.word	1073873920
- 1160 04a8 00080240 		.word	1073874944
- 1161 04ac 000C0240 		.word	1073875968
- 1162 04b0 00100240 		.word	1073876992
- 1163 04b4 00140240 		.word	1073878016
- 1164 04b8 00180240 		.word	1073879040
- 1165 04bc 001C0240 		.word	1073880064
- 1166 04c0 00200240 		.word	1073881088
- 1167              	.L59:
- 203:../src/App.c  **** 	{
- 204:../src/App.c  **** 		if(FALLING_EDGE == Exti_Array[i].intType)
- 1168              		.loc 2 204 35
- 1169 04c4 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
- 1170 04c6 2849     		ldr	r1, .L62
- 1171 04c8 1346     		mov	r3, r2
- 1172 04ca 5B00     		lsls	r3, r3, #1
- 1173 04cc 1344     		add	r3, r3, r2
- 1174 04ce 9B00     		lsls	r3, r3, #2
- 1175 04d0 0B44     		add	r3, r3, r1
- 1176 04d2 0833     		adds	r3, r3, #8
- 1177 04d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1178              		.loc 2 204 5
- 1179 04d6 002B     		cmp	r3, #0
- 1180 04d8 0FD1     		bne	.L57
- 205:../src/App.c  **** 		{
- 206:../src/App.c  **** 			EXTI->FTSR |= 1 << Exti_Array[i].pinNumber;
- 1181              		.loc 2 206 15
- 1182 04da 244B     		ldr	r3, .L62+4
- 1183 04dc D968     		ldr	r1, [r3, #12]
- 1184              		.loc 2 206 36
- 1185 04de 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
- 1186 04e0 2148     		ldr	r0, .L62
- 1187 04e2 1346     		mov	r3, r2
- 1188 04e4 5B00     		lsls	r3, r3, #1
- 1189 04e6 1344     		add	r3, r3, r2
- 1190 04e8 9B00     		lsls	r3, r3, #2
- 1191 04ea 0344     		add	r3, r3, r0
- 1192 04ec 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1193 04ee 1A46     		mov	r2, r3
- 1194              		.loc 2 206 20
- 1195 04f0 0123     		movs	r3, #1
- 1196 04f2 9340     		lsls	r3, r3, r2
- 1197              		.loc 2 206 15
- 1198 04f4 1D4A     		ldr	r2, .L62+4
- 1199 04f6 0B43     		orrs	r3, r3, r1
- 1200 04f8 D360     		str	r3, [r2, #12]
- 1201              	.L57:
- 207:../src/App.c  **** 		}
- 208:../src/App.c  **** 
- 209:../src/App.c  **** 		if(RISING_EDGE == Exti_Array[i].intType)
- 1202              		.loc 2 209 34
- 1203 04fa 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
- 1204 04fc 1A49     		ldr	r1, .L62
- 1205 04fe 1346     		mov	r3, r2
- 1206 0500 5B00     		lsls	r3, r3, #1
- 1207 0502 1344     		add	r3, r3, r2
- 1208 0504 9B00     		lsls	r3, r3, #2
- 1209 0506 0B44     		add	r3, r3, r1
- 1210 0508 0833     		adds	r3, r3, #8
- 1211 050a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1212              		.loc 2 209 5
- 1213 050c 012B     		cmp	r3, #1
- 1214 050e 0FD1     		bne	.L58
- 210:../src/App.c  **** 		{
- 211:../src/App.c  **** 			EXTI->RTSR |= 1 << Exti_Array[i].pinNumber;
- 1215              		.loc 2 211 15
- 1216 0510 164B     		ldr	r3, .L62+4
- 1217 0512 9968     		ldr	r1, [r3, #8]
- 1218              		.loc 2 211 36
- 1219 0514 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
- 1220 0516 1448     		ldr	r0, .L62
- 1221 0518 1346     		mov	r3, r2
- 1222 051a 5B00     		lsls	r3, r3, #1
- 1223 051c 1344     		add	r3, r3, r2
- 1224 051e 9B00     		lsls	r3, r3, #2
- 1225 0520 0344     		add	r3, r3, r0
- 1226 0522 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1227 0524 1A46     		mov	r2, r3
- 1228              		.loc 2 211 20
- 1229 0526 0123     		movs	r3, #1
- 1230 0528 9340     		lsls	r3, r3, r2
- 1231              		.loc 2 211 15
- 1232 052a 104A     		ldr	r2, .L62+4
- 1233 052c 0B43     		orrs	r3, r3, r1
- 1234 052e 9360     		str	r3, [r2, #8]
- 1235              	.L58:
- 212:../src/App.c  **** 		}
- 213:../src/App.c  **** 
- 214:../src/App.c  **** 		EXTI->IMR |= 1 << Exti_Array[i].pinNumber;
- 1236              		.loc 2 214 13 discriminator 2
- 1237 0530 0E4B     		ldr	r3, .L62+4
- 1238 0532 1968     		ldr	r1, [r3]
- 1239              		.loc 2 214 34 discriminator 2
- 1240 0534 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
- 1241 0536 0C48     		ldr	r0, .L62
- 1242 0538 1346     		mov	r3, r2
- 1243 053a 5B00     		lsls	r3, r3, #1
- 1244 053c 1344     		add	r3, r3, r2
- 1245 053e 9B00     		lsls	r3, r3, #2
- 1246 0540 0344     		add	r3, r3, r0
- 1247 0542 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1248 0544 1A46     		mov	r2, r3
- 1249              		.loc 2 214 18 discriminator 2
- 1250 0546 0123     		movs	r3, #1
- 1251 0548 9340     		lsls	r3, r3, r2
- 1252              		.loc 2 214 13 discriminator 2
- 1253 054a 084A     		ldr	r2, .L62+4
- 1254 054c 0B43     		orrs	r3, r3, r1
- 1255 054e 1360     		str	r3, [r2]
- 202:../src/App.c  **** 	{
- 1256              		.loc 2 202 36 discriminator 2
- 1257 0550 7B7B     		ldrb	r3, [r7, #13]
- 1258 0552 0133     		adds	r3, r3, #1
- 1259 0554 7B73     		strb	r3, [r7, #13]
- 1260              	.L56:
- 202:../src/App.c  **** 	{
- 1261              		.loc 2 202 2 discriminator 1
- 1262 0556 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
- 1263 0558 0F2B     		cmp	r3, #15
- 1264 055a B3D9     		bls	.L59
- 1265              	.LBE8:
- 215:../src/App.c  **** 	}
+  42:../src/App.c  **** 	{ PIN1, GPIOC, KEY_F1 /*KEY_Q*/ }, 	  { PIN3, GPIOC, KEY_F2 /*KEY_W*/ }, 	{ PIN2, GPIOC, KEY_F3 /*
+  43:../src/App.c  **** 	{ PIN1, GPIOA, KEY_F4 /*KEY_R*/ },    { PIN0, GPIOA, KEY_F5 /*KEY_T*/ }, 	{ PIN3, GPIOA, KEY_F6 /*
+  44:../src/App.c  **** 	{ PIN2, GPIOA, KEY_F7 /*KEY_U*/ },	  { PIN5, GPIOA, KEY_F8 /*KEY_I*/ },	{ PIN4, GPIOA, KEY_F9 /*KE
+  45:../src/App.c  **** 	{ PIN7, GPIOA, KEY_F10 /*KEY_P*/ },   { PIN6, GPIOA, KEY_F11 /*KEY_A*/ },	{ PIN5, GPIOC, KEY_F12 /
+  46:../src/App.c  **** 	{ PIN4, GPIOC, KEY_F13 /*KEY_D*/ },   { PIN1, GPIOB, KEY_F14 /*KEY_F*/ }, 	{ PIN0, GPIOB, KEY_F15 
+  47:../src/App.c  **** 	{ PIN2, GPIOB, KEY_F16 /*KEY_H*/ },   { PIN7, GPIOE, KEY_F17 /*KEY_J*/ }, 	{ PIN8, GPIOE, KEY_F18 
+  48:../src/App.c  **** 	{ PIN9, GPIOE, KEY_F19 /*KEY_L*/ },	  { PIN9, GPIOE, KEY_F20 /*KEY_Z*/ },   { PIN10, GPIOE, KEY_F2
+  49:../src/App.c  **** 	{ PIN11, GPIOE, KEY_F22 /*KEY_C*/ },  { PIN12, GPIOE, KEY_F23 /*KEY_V*/ },	{ PIN13, GPIOE, KEY_F24
+  50:../src/App.c  **** //	{ PIN14, GPIOE, KEY_F25 /*KEY_N*/ },  { PIN15, GPIOE, KEY_F26 /*KEY_M*/ }, 	{ PIN10, GPIOB, KEY_
+  51:../src/App.c  **** //	{ PIN11, GPIOB, KEY_F28 /*KEY_2*/ },  { PIN12, GPIOB, KEY_F29 /*KEY_3*/ }, 	{ PIN13, GPIOB, KEY_
+  52:../src/App.c  **** //	{ PIN14, GPIOB, KEY_F31 /*KEY_5*/ },  { PIN15, GPIOB, KEY_F32 /*KEY_6*/ },  { PIN8, GPIOD, KEY_F
+  53:../src/App.c  **** //	{ PIN9, GPIOD, KEY_F34 /*KEY_8*/ },   { PIN10, GPIOD, KEY_F35 /*KEY_9*/ },	{ PIN11, GPIOD, KEY_F
+  54:../src/App.c  **** };
+  55:../src/App.c  **** 
+  56:../src/App.c  **** 
+  57:../src/App.c  **** /*
+  58:../src/App.c  ****  * LOCAL FUNCTION DECLARATIONS
+  59:../src/App.c  ****  */
+  60:../src/App.c  **** static void Enable_Exti_Interrupt(void);
+  61:../src/App.c  **** static Std_ReturnType findEmptyPos(uint8* pos);
+  62:../src/App.c  **** static Std_ReturnType findExistingPos(uint8* pos, KeyCode_type key);
+  63:../src/App.c  **** 
+  64:../src/App.c  **** /*
+  65:../src/App.c  ****  * LOCAL FUNCTION DEFINITIONS
+  66:../src/App.c  ****  */
+  67:../src/App.c  **** static void Enable_Exti_Interrupt(void)
+  68:../src/App.c  **** {
+ 390              		.loc 2 68 1
+ 391              		.cfi_startproc
+ 392              		@ args = 0, pretend = 0, frame = 8
+ 393              		@ frame_needed = 1, uses_anonymous_args = 0
+ 394 008c 80B5     		push	{r7, lr}
+ 395              		.cfi_def_cfa_offset 8
+ 396              		.cfi_offset 7, -8
+ 397              		.cfi_offset 14, -4
+ 398 008e 82B0     		sub	sp, sp, #8
+ 399              		.cfi_def_cfa_offset 16
+ 400 0090 00AF     		add	r7, sp, #0
+ 401              		.cfi_def_cfa_register 7
+ 402              	.LBB2:
+  69:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+ 403              		.loc 2 69 12
+ 404 0092 0023     		movs	r3, #0
+ 405 0094 FB71     		strb	r3, [r7, #7]
+ 406              		.loc 2 69 2
+ 407 0096 69E0     		b	.L13
+ 408              	.L24:
+  70:../src/App.c  **** 	{
+  71:../src/App.c  **** 		switch(Exti_Array[i].pinNumber)
+ 409              		.loc 2 71 23
+ 410 0098 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 411 009a 3849     		ldr	r1, .L26
+ 412 009c 1346     		mov	r3, r2
+ 413 009e 5B00     		lsls	r3, r3, #1
+ 414 00a0 1344     		add	r3, r3, r2
+ 415 00a2 9B00     		lsls	r3, r3, #2
+ 416 00a4 0B44     		add	r3, r3, r1
+ 417 00a6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 418              		.loc 2 71 3
+ 419 00a8 0F2B     		cmp	r3, #15
+ 420 00aa 5BD8     		bhi	.L25
+ 421 00ac 01A2     		adr	r2, .L16
+ 422 00ae 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 423 00b2 00BF     		.p2align 2
+ 424              	.L16:
+ 425 00b4 F5000000 		.word	.L22+1
+ 426 00b8 05010000 		.word	.L21+1
+ 427 00bc 15010000 		.word	.L20+1
+ 428 00c0 25010000 		.word	.L19+1
+ 429 00c4 35010000 		.word	.L18+1
+ 430 00c8 45010000 		.word	.L17+1
+ 431 00cc 45010000 		.word	.L17+1
+ 432 00d0 45010000 		.word	.L17+1
+ 433 00d4 45010000 		.word	.L17+1
+ 434 00d8 45010000 		.word	.L17+1
+ 435 00dc 55010000 		.word	.L15+1
+ 436 00e0 55010000 		.word	.L15+1
+ 437 00e4 55010000 		.word	.L15+1
+ 438 00e8 55010000 		.word	.L15+1
+ 439 00ec 55010000 		.word	.L15+1
+ 440 00f0 55010000 		.word	.L15+1
+ 441              		.p2align 1
+ 442              	.L22:
+  72:../src/App.c  **** 		{
+  73:../src/App.c  **** 		case PIN0:
+  74:../src/App.c  **** 			NVIC_SetPriority(EXTI0_IRQn, 0);
+ 443              		.loc 2 74 4
+ 444 00f4 0021     		movs	r1, #0
+ 445 00f6 0620     		movs	r0, #6
+ 446 00f8 FFF79EFF 		bl	__NVIC_SetPriority
+  75:../src/App.c  **** 			NVIC_EnableIRQ(EXTI0_IRQn);
+ 447              		.loc 2 75 4
+ 448 00fc 0620     		movs	r0, #6
+ 449 00fe FFF77FFF 		bl	__NVIC_EnableIRQ
+  76:../src/App.c  **** 			break;
+ 450              		.loc 2 76 4
+ 451 0102 30E0     		b	.L23
+ 452              	.L21:
+  77:../src/App.c  **** 		case PIN1:
+  78:../src/App.c  **** 			NVIC_SetPriority(EXTI1_IRQn, 0);
+ 453              		.loc 2 78 4
+ 454 0104 0021     		movs	r1, #0
+ 455 0106 0720     		movs	r0, #7
+ 456 0108 FFF796FF 		bl	__NVIC_SetPriority
+  79:../src/App.c  **** 			NVIC_EnableIRQ(EXTI1_IRQn);
+ 457              		.loc 2 79 4
+ 458 010c 0720     		movs	r0, #7
+ 459 010e FFF777FF 		bl	__NVIC_EnableIRQ
+  80:../src/App.c  **** 			break;
+ 460              		.loc 2 80 4
+ 461 0112 28E0     		b	.L23
+ 462              	.L20:
+  81:../src/App.c  **** 		case PIN2:
+  82:../src/App.c  **** 			NVIC_SetPriority(EXTI2_IRQn, 0);
+ 463              		.loc 2 82 4
+ 464 0114 0021     		movs	r1, #0
+ 465 0116 0820     		movs	r0, #8
+ 466 0118 FFF78EFF 		bl	__NVIC_SetPriority
+  83:../src/App.c  **** 			NVIC_EnableIRQ(EXTI2_IRQn);
+ 467              		.loc 2 83 4
+ 468 011c 0820     		movs	r0, #8
+ 469 011e FFF76FFF 		bl	__NVIC_EnableIRQ
+  84:../src/App.c  **** 			break;
+ 470              		.loc 2 84 4
+ 471 0122 20E0     		b	.L23
+ 472              	.L19:
+  85:../src/App.c  **** 		case PIN3:
+  86:../src/App.c  **** 			NVIC_SetPriority(EXTI3_IRQn, 0);
+ 473              		.loc 2 86 4
+ 474 0124 0021     		movs	r1, #0
+ 475 0126 0920     		movs	r0, #9
+ 476 0128 FFF786FF 		bl	__NVIC_SetPriority
+  87:../src/App.c  **** 			NVIC_EnableIRQ(EXTI3_IRQn);
+ 477              		.loc 2 87 4
+ 478 012c 0920     		movs	r0, #9
+ 479 012e FFF767FF 		bl	__NVIC_EnableIRQ
+  88:../src/App.c  **** 			break;
+ 480              		.loc 2 88 4
+ 481 0132 18E0     		b	.L23
+ 482              	.L18:
+  89:../src/App.c  **** 		case PIN4:
+  90:../src/App.c  **** 			NVIC_SetPriority(EXTI4_IRQn, 0);
+ 483              		.loc 2 90 4
+ 484 0134 0021     		movs	r1, #0
+ 485 0136 0A20     		movs	r0, #10
+ 486 0138 FFF77EFF 		bl	__NVIC_SetPriority
+  91:../src/App.c  **** 			NVIC_EnableIRQ(EXTI4_IRQn);
+ 487              		.loc 2 91 4
+ 488 013c 0A20     		movs	r0, #10
+ 489 013e FFF75FFF 		bl	__NVIC_EnableIRQ
+  92:../src/App.c  **** 			break;
+ 490              		.loc 2 92 4
+ 491 0142 10E0     		b	.L23
+ 492              	.L17:
+  93:../src/App.c  **** 		case PIN5:
+  94:../src/App.c  **** 		case PIN6:
+  95:../src/App.c  **** 		case PIN7:
+  96:../src/App.c  **** 		case PIN8:
+  97:../src/App.c  **** 		case PIN9:
+  98:../src/App.c  **** 			NVIC_SetPriority(EXTI9_5_IRQn , 0);
+ 493              		.loc 2 98 4
+ 494 0144 0021     		movs	r1, #0
+ 495 0146 1720     		movs	r0, #23
+ 496 0148 FFF776FF 		bl	__NVIC_SetPriority
+  99:../src/App.c  **** 			NVIC_EnableIRQ(EXTI9_5_IRQn );
+ 497              		.loc 2 99 4
+ 498 014c 1720     		movs	r0, #23
+ 499 014e FFF757FF 		bl	__NVIC_EnableIRQ
+ 100:../src/App.c  **** 			break;
+ 500              		.loc 2 100 4
+ 501 0152 08E0     		b	.L23
+ 502              	.L15:
+ 101:../src/App.c  **** 		case PIN10:
+ 102:../src/App.c  **** 		case PIN11:
+ 103:../src/App.c  **** 		case PIN12:
+ 104:../src/App.c  **** 		case PIN13:
+ 105:../src/App.c  **** 		case PIN14:
+ 106:../src/App.c  **** 		case PIN15:
+ 107:../src/App.c  **** 			NVIC_SetPriority(EXTI15_10_IRQn , 0);
+ 503              		.loc 2 107 4
+ 504 0154 0021     		movs	r1, #0
+ 505 0156 2820     		movs	r0, #40
+ 506 0158 FFF76EFF 		bl	__NVIC_SetPriority
+ 108:../src/App.c  **** 			NVIC_EnableIRQ(EXTI15_10_IRQn );
+ 507              		.loc 2 108 4
+ 508 015c 2820     		movs	r0, #40
+ 509 015e FFF74FFF 		bl	__NVIC_EnableIRQ
+ 109:../src/App.c  **** 			break;
+ 510              		.loc 2 109 4
+ 511 0162 00E0     		b	.L23
+ 512              	.L25:
+ 110:../src/App.c  **** 		default:
+ 111:../src/App.c  **** 			break;
+ 513              		.loc 2 111 4
+ 514 0164 00BF     		nop
+ 515              	.L23:
+  69:../src/App.c  **** 	{
+ 516              		.loc 2 69 36 discriminator 2
+ 517 0166 FB79     		ldrb	r3, [r7, #7]
+ 518 0168 0133     		adds	r3, r3, #1
+ 519 016a FB71     		strb	r3, [r7, #7]
+ 520              	.L13:
+  69:../src/App.c  **** 	{
+ 521              		.loc 2 69 2 discriminator 1
+ 522 016c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 523 016e 0F2B     		cmp	r3, #15
+ 524 0170 92D9     		bls	.L24
+ 525              	.LBE2:
+ 112:../src/App.c  **** 		}
+ 113:../src/App.c  **** 	}
+ 114:../src/App.c  **** }
+ 526              		.loc 2 114 1
+ 527 0172 00BF     		nop
+ 528 0174 00BF     		nop
+ 529 0176 0837     		adds	r7, r7, #8
+ 530              		.cfi_def_cfa_offset 8
+ 531 0178 BD46     		mov	sp, r7
+ 532              		.cfi_def_cfa_register 13
+ 533              		@ sp needed
+ 534 017a 80BD     		pop	{r7, pc}
+ 535              	.L27:
+ 536              		.align	2
+ 537              	.L26:
+ 538 017c 00000000 		.word	Exti_Array
+ 539              		.cfi_endproc
+ 540              	.LFE137:
+ 542              		.align	1
+ 543              		.syntax unified
+ 544              		.thumb
+ 545              		.thumb_func
+ 547              	findEmptyPos:
+ 548              	.LFB138:
+ 115:../src/App.c  **** 
+ 116:../src/App.c  **** static Std_ReturnType findEmptyPos(uint8* pos)
+ 117:../src/App.c  **** {
+ 549              		.loc 2 117 1
+ 550              		.cfi_startproc
+ 551              		@ args = 0, pretend = 0, frame = 16
+ 552              		@ frame_needed = 1, uses_anonymous_args = 0
+ 553              		@ link register save eliminated.
+ 554 0180 80B4     		push	{r7}
+ 555              		.cfi_def_cfa_offset 4
+ 556              		.cfi_offset 7, -4
+ 557 0182 85B0     		sub	sp, sp, #20
+ 558              		.cfi_def_cfa_offset 24
+ 559 0184 00AF     		add	r7, sp, #0
+ 560              		.cfi_def_cfa_register 7
+ 561 0186 7860     		str	r0, [r7, #4]
+ 562              	.LBB3:
+ 118:../src/App.c  **** 	for(uint8 i=2; i<8; ++i)
+ 563              		.loc 2 118 12
+ 564 0188 0223     		movs	r3, #2
+ 565 018a FB73     		strb	r3, [r7, #15]
+ 566              		.loc 2 118 2
+ 567 018c 0CE0     		b	.L29
+ 568              	.L32:
+ 119:../src/App.c  **** 	{
+ 120:../src/App.c  **** 		if(USB_buffer[i] == 0u)
+ 569              		.loc 2 120 16
+ 570 018e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 571 0190 0A4A     		ldr	r2, .L33
+ 572 0192 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 573              		.loc 2 120 5
+ 574 0194 002B     		cmp	r3, #0
+ 575 0196 04D1     		bne	.L30
+ 121:../src/App.c  **** 		{
+ 122:../src/App.c  **** 			*pos = i;
+ 576              		.loc 2 122 9
+ 577 0198 7B68     		ldr	r3, [r7, #4]
+ 578 019a FA7B     		ldrb	r2, [r7, #15]
+ 579 019c 1A70     		strb	r2, [r3]
+ 123:../src/App.c  **** 			return E_OK;
+ 580              		.loc 2 123 11
+ 581 019e 0023     		movs	r3, #0
+ 582 01a0 06E0     		b	.L31
+ 583              	.L30:
+ 118:../src/App.c  **** 	{
+ 584              		.loc 2 118 22 discriminator 2
+ 585 01a2 FB7B     		ldrb	r3, [r7, #15]
+ 586 01a4 0133     		adds	r3, r3, #1
+ 587 01a6 FB73     		strb	r3, [r7, #15]
+ 588              	.L29:
+ 118:../src/App.c  **** 	{
+ 589              		.loc 2 118 2 discriminator 1
+ 590 01a8 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 591 01aa 072B     		cmp	r3, #7
+ 592 01ac EFD9     		bls	.L32
+ 593              	.LBE3:
+ 124:../src/App.c  **** 		}
+ 125:../src/App.c  **** 	}
+ 126:../src/App.c  **** 	return E_NOT_OK;
+ 594              		.loc 2 126 9
+ 595 01ae 0123     		movs	r3, #1
+ 596              	.L31:
+ 127:../src/App.c  **** }
+ 597              		.loc 2 127 1
+ 598 01b0 1846     		mov	r0, r3
+ 599 01b2 1437     		adds	r7, r7, #20
+ 600              		.cfi_def_cfa_offset 4
+ 601 01b4 BD46     		mov	sp, r7
+ 602              		.cfi_def_cfa_register 13
+ 603              		@ sp needed
+ 604 01b6 80BC     		pop	{r7}
+ 605              		.cfi_restore 7
+ 606              		.cfi_def_cfa_offset 0
+ 607 01b8 7047     		bx	lr
+ 608              	.L34:
+ 609 01ba 00BF     		.align	2
+ 610              	.L33:
+ 611 01bc 00000000 		.word	USB_buffer
+ 612              		.cfi_endproc
+ 613              	.LFE138:
+ 615              		.align	1
+ 616              		.syntax unified
+ 617              		.thumb
+ 618              		.thumb_func
+ 620              	findExistingPos:
+ 621              	.LFB139:
+ 128:../src/App.c  **** 
+ 129:../src/App.c  **** static Std_ReturnType findExistingPos(uint8* pos, KeyCode_type key)
+ 130:../src/App.c  **** {
+ 622              		.loc 2 130 1
+ 623              		.cfi_startproc
+ 624              		@ args = 0, pretend = 0, frame = 16
+ 625              		@ frame_needed = 1, uses_anonymous_args = 0
+ 626              		@ link register save eliminated.
+ 627 01c0 80B4     		push	{r7}
+ 628              		.cfi_def_cfa_offset 4
+ 629              		.cfi_offset 7, -4
+ 630 01c2 85B0     		sub	sp, sp, #20
+ 631              		.cfi_def_cfa_offset 24
+ 632 01c4 00AF     		add	r7, sp, #0
+ 633              		.cfi_def_cfa_register 7
+ 634 01c6 7860     		str	r0, [r7, #4]
+ 635 01c8 0B46     		mov	r3, r1
+ 636 01ca FB70     		strb	r3, [r7, #3]
+ 637              	.LBB4:
+ 131:../src/App.c  **** 	for(uint8 i=2; i<8; ++i)
+ 638              		.loc 2 131 12
+ 639 01cc 0223     		movs	r3, #2
+ 640 01ce FB73     		strb	r3, [r7, #15]
+ 641              		.loc 2 131 2
+ 642 01d0 0DE0     		b	.L36
+ 643              	.L39:
+ 132:../src/App.c  **** 	{
+ 133:../src/App.c  **** 		if(USB_buffer[i] == key)
+ 644              		.loc 2 133 16
+ 645 01d2 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 646 01d4 0A4A     		ldr	r2, .L40
+ 647 01d6 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 648              		.loc 2 133 5
+ 649 01d8 FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
+ 650 01da 9A42     		cmp	r2, r3
+ 651 01dc 04D1     		bne	.L37
+ 134:../src/App.c  **** 		{
+ 135:../src/App.c  **** 			*pos = i;
+ 652              		.loc 2 135 9
+ 653 01de 7B68     		ldr	r3, [r7, #4]
+ 654 01e0 FA7B     		ldrb	r2, [r7, #15]
+ 655 01e2 1A70     		strb	r2, [r3]
+ 136:../src/App.c  **** 			return E_OK;
+ 656              		.loc 2 136 11
+ 657 01e4 0023     		movs	r3, #0
+ 658 01e6 06E0     		b	.L38
+ 659              	.L37:
+ 131:../src/App.c  **** 	{
+ 660              		.loc 2 131 22 discriminator 2
+ 661 01e8 FB7B     		ldrb	r3, [r7, #15]
+ 662 01ea 0133     		adds	r3, r3, #1
+ 663 01ec FB73     		strb	r3, [r7, #15]
+ 664              	.L36:
+ 131:../src/App.c  **** 	{
+ 665              		.loc 2 131 2 discriminator 1
+ 666 01ee FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 667 01f0 072B     		cmp	r3, #7
+ 668 01f2 EED9     		bls	.L39
+ 669              	.LBE4:
+ 137:../src/App.c  **** 		}
+ 138:../src/App.c  **** 	}
+ 139:../src/App.c  **** 	return E_NOT_OK;
+ 670              		.loc 2 139 9
+ 671 01f4 0123     		movs	r3, #1
+ 672              	.L38:
+ 140:../src/App.c  **** }
+ 673              		.loc 2 140 1
+ 674 01f6 1846     		mov	r0, r3
+ 675 01f8 1437     		adds	r7, r7, #20
+ 676              		.cfi_def_cfa_offset 4
+ 677 01fa BD46     		mov	sp, r7
+ 678              		.cfi_def_cfa_register 13
+ 679              		@ sp needed
+ 680 01fc 80BC     		pop	{r7}
+ 681              		.cfi_restore 7
+ 682              		.cfi_def_cfa_offset 0
+ 683 01fe 7047     		bx	lr
+ 684              	.L41:
+ 685              		.align	2
+ 686              	.L40:
+ 687 0200 00000000 		.word	USB_buffer
+ 688              		.cfi_endproc
+ 689              	.LFE139:
+ 691              		.section	.rodata
+ 692              		.align	2
+ 693              	.LC0:
+ 694 0000 00       		.byte	0
+ 695 0001 00       		.byte	0
+ 696 0002 02       		.byte	2
+ 697 0003 00       		.byte	0
+ 698 0004 01       		.byte	1
+ 699 0005 00       		.byte	0
+ 700              		.text
+ 701              		.align	1
+ 702              		.global	Exti_Init
+ 703              		.syntax unified
+ 704              		.thumb
+ 705              		.thumb_func
+ 707              	Exti_Init:
+ 708              	.LFB140:
+ 141:../src/App.c  **** 
+ 142:../src/App.c  **** 
+ 143:../src/App.c  **** /*
+ 144:../src/App.c  ****  * GLOBAL FUNCTION DEFINITIONS
+ 145:../src/App.c  ****  */
+ 146:../src/App.c  **** void Exti_Init(void)
+ 147:../src/App.c  **** {
+ 709              		.loc 2 147 1
+ 710              		.cfi_startproc
+ 711              		@ args = 0, pretend = 0, frame = 16
+ 712              		@ frame_needed = 1, uses_anonymous_args = 0
+ 713 0204 90B5     		push	{r4, r7, lr}
+ 714              		.cfi_def_cfa_offset 12
+ 715              		.cfi_offset 4, -12
+ 716              		.cfi_offset 7, -8
+ 717              		.cfi_offset 14, -4
+ 718 0206 85B0     		sub	sp, sp, #20
+ 719              		.cfi_def_cfa_offset 32
+ 720 0208 00AF     		add	r7, sp, #0
+ 721              		.cfi_def_cfa_register 7
+ 148:../src/App.c  **** 	//1. Enable Related Pins
+ 149:../src/App.c  **** 	gpio_cfg configGpio = {PIN_0, GPIO_MODE_INPUT, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_UP, 0};
+ 722              		.loc 2 149 11
+ 723 020a A24A     		ldr	r2, .L60
+ 724 020c 3B1D     		adds	r3, r7, #4
+ 725 020e 92E80300 		ldm	r2, {r0, r1}
+ 726 0212 1860     		str	r0, [r3]
+ 727 0214 0433     		adds	r3, r3, #4
+ 728 0216 1980     		strh	r1, [r3]	@ movhi
+ 729              	.LBB5:
+ 150:../src/App.c  **** 
+ 151:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+ 730              		.loc 2 151 12
+ 731 0218 0023     		movs	r3, #0
+ 732 021a FB73     		strb	r3, [r7, #15]
+ 733              		.loc 2 151 2
+ 734 021c 1AE0     		b	.L43
+ 735              	.L44:
+ 152:../src/App.c  **** 	{
+ 153:../src/App.c  **** 		configGpio.pinNumber = Exti_Array[i].pinNumber;
+ 736              		.loc 2 153 39 discriminator 3
+ 737 021e FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 738 0220 9D49     		ldr	r1, .L60+4
+ 739 0222 1346     		mov	r3, r2
+ 740 0224 5B00     		lsls	r3, r3, #1
+ 741 0226 1344     		add	r3, r3, r2
+ 742 0228 9B00     		lsls	r3, r3, #2
+ 743 022a 0B44     		add	r3, r3, r1
+ 744 022c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 745              		.loc 2 153 24 discriminator 3
+ 746 022e 3B71     		strb	r3, [r7, #4]
+ 154:../src/App.c  **** 		Gpio_Init(configGpio, Exti_Array[i].gpioPort);
+ 747              		.loc 2 154 3 discriminator 3
+ 748 0230 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 749 0232 9949     		ldr	r1, .L60+4
+ 750 0234 1346     		mov	r3, r2
+ 751 0236 5B00     		lsls	r3, r3, #1
+ 752 0238 1344     		add	r3, r3, r2
+ 753 023a 9B00     		lsls	r3, r3, #2
+ 754 023c 0B44     		add	r3, r3, r1
+ 755 023e 0433     		adds	r3, r3, #4
+ 756 0240 1B68     		ldr	r3, [r3]
+ 757 0242 1A46     		mov	r2, r3
+ 758 0244 3B1D     		adds	r3, r7, #4
+ 759 0246 93E80300 		ldm	r3, {r0, r1}
+ 760 024a FFF7FEFF 		bl	Gpio_Init
+ 151:../src/App.c  **** 	{
+ 761              		.loc 2 151 36 discriminator 3
+ 762 024e FB7B     		ldrb	r3, [r7, #15]
+ 763 0250 0133     		adds	r3, r3, #1
+ 764 0252 FB73     		strb	r3, [r7, #15]
+ 765              	.L43:
+ 151:../src/App.c  **** 	{
+ 766              		.loc 2 151 2 discriminator 1
+ 767 0254 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 768 0256 0F2B     		cmp	r3, #15
+ 769 0258 E1D9     		bls	.L44
+ 770              	.LBE5:
+ 771              	.LBB6:
+ 155:../src/App.c  **** 	}
+ 156:../src/App.c  **** 
+ 157:../src/App.c  **** 
+ 158:../src/App.c  **** 	//2. Connect EXTI#0 to GPIO_PB0
+ 159:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+ 772              		.loc 2 159 12
+ 773 025a 0023     		movs	r3, #0
+ 774 025c BB73     		strb	r3, [r7, #14]
+ 775              		.loc 2 159 2
+ 776 025e 11E1     		b	.L45
+ 777              	.L55:
+ 778              	.LBB7:
+ 160:../src/App.c  **** 	{
+ 161:../src/App.c  **** 		uint8 pinPos = (i%4)*4;
+ 779              		.loc 2 161 9
+ 780 0260 BB7B     		ldrb	r3, [r7, #14]
+ 781 0262 03F00303 		and	r3, r3, #3
+ 782 0266 DBB2     		uxtb	r3, r3
+ 783 0268 9B00     		lsls	r3, r3, #2
+ 784 026a 3B73     		strb	r3, [r7, #12]
+ 162:../src/App.c  **** 
+ 163:../src/App.c  **** 		if(GPIOA == Exti_Array[i].gpioPort)
+ 785              		.loc 2 163 28
+ 786 026c BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 787 026e 8A49     		ldr	r1, .L60+4
+ 788 0270 1346     		mov	r3, r2
+ 789 0272 5B00     		lsls	r3, r3, #1
+ 790 0274 1344     		add	r3, r3, r2
+ 791 0276 9B00     		lsls	r3, r3, #2
+ 792 0278 0B44     		add	r3, r3, r1
+ 793 027a 0433     		adds	r3, r3, #4
+ 794 027c 1B68     		ldr	r3, [r3]
+ 795              		.loc 2 163 5
+ 796 027e 874A     		ldr	r2, .L60+8
+ 797 0280 9342     		cmp	r3, r2
+ 798 0282 0DD1     		bne	.L46
+ 164:../src/App.c  **** 		{
+ 165:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PA << pinPos;
+ 799              		.loc 2 165 24
+ 800 0284 864A     		ldr	r2, .L60+12
+ 801 0286 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 802 0288 9B08     		lsrs	r3, r3, #2
+ 803 028a DBB2     		uxtb	r3, r3
+ 804 028c 1C46     		mov	r4, r3
+ 805 028e 8449     		ldr	r1, .L60+12
+ 806 0290 1846     		mov	r0, r3
+ 807 0292 A31C     		adds	r3, r4, #2
+ 808 0294 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 809 0298 831C     		adds	r3, r0, #2
+ 810 029a 41F82320 		str	r2, [r1, r3, lsl #2]
+ 811 029e EEE0     		b	.L47
+ 812              	.L46:
+ 166:../src/App.c  **** 		}
+ 167:../src/App.c  **** 		else if(GPIOB == Exti_Array[i].gpioPort)
+ 813              		.loc 2 167 33
+ 814 02a0 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 815 02a2 7D49     		ldr	r1, .L60+4
+ 816 02a4 1346     		mov	r3, r2
+ 817 02a6 5B00     		lsls	r3, r3, #1
+ 818 02a8 1344     		add	r3, r3, r2
+ 819 02aa 9B00     		lsls	r3, r3, #2
+ 820 02ac 0B44     		add	r3, r3, r1
+ 821 02ae 0433     		adds	r3, r3, #4
+ 822 02b0 1B68     		ldr	r3, [r3]
+ 823              		.loc 2 167 10
+ 824 02b2 7C4A     		ldr	r2, .L60+16
+ 825 02b4 9342     		cmp	r3, r2
+ 826 02b6 11D1     		bne	.L48
+ 168:../src/App.c  **** 		{
+ 169:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PB << pinPos;
+ 827              		.loc 2 169 24
+ 828 02b8 794A     		ldr	r2, .L60+12
+ 829 02ba BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 830 02bc 9B08     		lsrs	r3, r3, #2
+ 831 02be D8B2     		uxtb	r0, r3
+ 832 02c0 0346     		mov	r3, r0
+ 833 02c2 0233     		adds	r3, r3, #2
+ 834 02c4 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 835              		.loc 2 169 51
+ 836 02c8 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 837 02ca 0121     		movs	r1, #1
+ 838 02cc 01FA03F3 		lsl	r3, r1, r3
+ 839              		.loc 2 169 24
+ 840 02d0 7349     		ldr	r1, .L60+12
+ 841 02d2 1A43     		orrs	r2, r2, r3
+ 842 02d4 831C     		adds	r3, r0, #2
+ 843 02d6 41F82320 		str	r2, [r1, r3, lsl #2]
+ 844 02da D0E0     		b	.L47
+ 845              	.L48:
+ 170:../src/App.c  **** 		}
+ 171:../src/App.c  **** 		else if(GPIOC == Exti_Array[i].gpioPort)
+ 846              		.loc 2 171 33
+ 847 02dc BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 848 02de 6E49     		ldr	r1, .L60+4
+ 849 02e0 1346     		mov	r3, r2
+ 850 02e2 5B00     		lsls	r3, r3, #1
+ 851 02e4 1344     		add	r3, r3, r2
+ 852 02e6 9B00     		lsls	r3, r3, #2
+ 853 02e8 0B44     		add	r3, r3, r1
+ 854 02ea 0433     		adds	r3, r3, #4
+ 855 02ec 1B68     		ldr	r3, [r3]
+ 856              		.loc 2 171 10
+ 857 02ee 6E4A     		ldr	r2, .L60+20
+ 858 02f0 9342     		cmp	r3, r2
+ 859 02f2 11D1     		bne	.L49
+ 172:../src/App.c  **** 		{
+ 173:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PC << pinPos;
+ 860              		.loc 2 173 24
+ 861 02f4 6A4A     		ldr	r2, .L60+12
+ 862 02f6 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 863 02f8 9B08     		lsrs	r3, r3, #2
+ 864 02fa D8B2     		uxtb	r0, r3
+ 865 02fc 0346     		mov	r3, r0
+ 866 02fe 0233     		adds	r3, r3, #2
+ 867 0300 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 868              		.loc 2 173 51
+ 869 0304 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 870 0306 0221     		movs	r1, #2
+ 871 0308 01FA03F3 		lsl	r3, r1, r3
+ 872              		.loc 2 173 24
+ 873 030c 6449     		ldr	r1, .L60+12
+ 874 030e 1A43     		orrs	r2, r2, r3
+ 875 0310 831C     		adds	r3, r0, #2
+ 876 0312 41F82320 		str	r2, [r1, r3, lsl #2]
+ 877 0316 B2E0     		b	.L47
+ 878              	.L49:
+ 174:../src/App.c  **** 		}
+ 175:../src/App.c  **** 		else if(GPIOD == Exti_Array[i].gpioPort)
+ 879              		.loc 2 175 33
+ 880 0318 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 881 031a 5F49     		ldr	r1, .L60+4
+ 882 031c 1346     		mov	r3, r2
+ 883 031e 5B00     		lsls	r3, r3, #1
+ 884 0320 1344     		add	r3, r3, r2
+ 885 0322 9B00     		lsls	r3, r3, #2
+ 886 0324 0B44     		add	r3, r3, r1
+ 887 0326 0433     		adds	r3, r3, #4
+ 888 0328 1B68     		ldr	r3, [r3]
+ 889              		.loc 2 175 10
+ 890 032a 604A     		ldr	r2, .L60+24
+ 891 032c 9342     		cmp	r3, r2
+ 892 032e 11D1     		bne	.L50
+ 176:../src/App.c  **** 		{
+ 177:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PD << pinPos;
+ 893              		.loc 2 177 24
+ 894 0330 5B4A     		ldr	r2, .L60+12
+ 895 0332 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 896 0334 9B08     		lsrs	r3, r3, #2
+ 897 0336 D8B2     		uxtb	r0, r3
+ 898 0338 0346     		mov	r3, r0
+ 899 033a 0233     		adds	r3, r3, #2
+ 900 033c 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 901              		.loc 2 177 51
+ 902 0340 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 903 0342 0321     		movs	r1, #3
+ 904 0344 01FA03F3 		lsl	r3, r1, r3
+ 905              		.loc 2 177 24
+ 906 0348 5549     		ldr	r1, .L60+12
+ 907 034a 1A43     		orrs	r2, r2, r3
+ 908 034c 831C     		adds	r3, r0, #2
+ 909 034e 41F82320 		str	r2, [r1, r3, lsl #2]
+ 910 0352 94E0     		b	.L47
+ 911              	.L50:
+ 178:../src/App.c  **** 		}
+ 179:../src/App.c  **** 		else if(GPIOE == Exti_Array[i].gpioPort)
+ 912              		.loc 2 179 33
+ 913 0354 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 914 0356 5049     		ldr	r1, .L60+4
+ 915 0358 1346     		mov	r3, r2
+ 916 035a 5B00     		lsls	r3, r3, #1
+ 917 035c 1344     		add	r3, r3, r2
+ 918 035e 9B00     		lsls	r3, r3, #2
+ 919 0360 0B44     		add	r3, r3, r1
+ 920 0362 0433     		adds	r3, r3, #4
+ 921 0364 1B68     		ldr	r3, [r3]
+ 922              		.loc 2 179 10
+ 923 0366 524A     		ldr	r2, .L60+28
+ 924 0368 9342     		cmp	r3, r2
+ 925 036a 11D1     		bne	.L51
+ 180:../src/App.c  **** 		{
+ 181:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PE << pinPos;
+ 926              		.loc 2 181 24
+ 927 036c 4C4A     		ldr	r2, .L60+12
+ 928 036e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 929 0370 9B08     		lsrs	r3, r3, #2
+ 930 0372 D8B2     		uxtb	r0, r3
+ 931 0374 0346     		mov	r3, r0
+ 932 0376 0233     		adds	r3, r3, #2
+ 933 0378 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 934              		.loc 2 181 51
+ 935 037c 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 936 037e 0421     		movs	r1, #4
+ 937 0380 01FA03F3 		lsl	r3, r1, r3
+ 938              		.loc 2 181 24
+ 939 0384 4649     		ldr	r1, .L60+12
+ 940 0386 1A43     		orrs	r2, r2, r3
+ 941 0388 831C     		adds	r3, r0, #2
+ 942 038a 41F82320 		str	r2, [r1, r3, lsl #2]
+ 943 038e 76E0     		b	.L47
+ 944              	.L51:
+ 182:../src/App.c  **** 		}
+ 183:../src/App.c  **** 		else if(GPIOF == Exti_Array[i].gpioPort)
+ 945              		.loc 2 183 33
+ 946 0390 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 947 0392 4149     		ldr	r1, .L60+4
+ 948 0394 1346     		mov	r3, r2
+ 949 0396 5B00     		lsls	r3, r3, #1
+ 950 0398 1344     		add	r3, r3, r2
+ 951 039a 9B00     		lsls	r3, r3, #2
+ 952 039c 0B44     		add	r3, r3, r1
+ 953 039e 0433     		adds	r3, r3, #4
+ 954 03a0 1B68     		ldr	r3, [r3]
+ 955              		.loc 2 183 10
+ 956 03a2 444A     		ldr	r2, .L60+32
+ 957 03a4 9342     		cmp	r3, r2
+ 958 03a6 11D1     		bne	.L52
+ 184:../src/App.c  **** 		{
+ 185:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PF << pinPos;
+ 959              		.loc 2 185 24
+ 960 03a8 3D4A     		ldr	r2, .L60+12
+ 961 03aa BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 962 03ac 9B08     		lsrs	r3, r3, #2
+ 963 03ae D8B2     		uxtb	r0, r3
+ 964 03b0 0346     		mov	r3, r0
+ 965 03b2 0233     		adds	r3, r3, #2
+ 966 03b4 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 967              		.loc 2 185 51
+ 968 03b8 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 969 03ba 0521     		movs	r1, #5
+ 970 03bc 01FA03F3 		lsl	r3, r1, r3
+ 971              		.loc 2 185 24
+ 972 03c0 3749     		ldr	r1, .L60+12
+ 973 03c2 1A43     		orrs	r2, r2, r3
+ 974 03c4 831C     		adds	r3, r0, #2
+ 975 03c6 41F82320 		str	r2, [r1, r3, lsl #2]
+ 976 03ca 58E0     		b	.L47
+ 977              	.L52:
+ 186:../src/App.c  **** 		}
+ 187:../src/App.c  **** 		else if(GPIOG == Exti_Array[i].gpioPort)
+ 978              		.loc 2 187 33
+ 979 03cc BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 980 03ce 3249     		ldr	r1, .L60+4
+ 981 03d0 1346     		mov	r3, r2
+ 982 03d2 5B00     		lsls	r3, r3, #1
+ 983 03d4 1344     		add	r3, r3, r2
+ 984 03d6 9B00     		lsls	r3, r3, #2
+ 985 03d8 0B44     		add	r3, r3, r1
+ 986 03da 0433     		adds	r3, r3, #4
+ 987 03dc 1B68     		ldr	r3, [r3]
+ 988              		.loc 2 187 10
+ 989 03de 364A     		ldr	r2, .L60+36
+ 990 03e0 9342     		cmp	r3, r2
+ 991 03e2 11D1     		bne	.L53
+ 188:../src/App.c  **** 		{
+ 189:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PG << pinPos;
+ 992              		.loc 2 189 24
+ 993 03e4 2E4A     		ldr	r2, .L60+12
+ 994 03e6 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 995 03e8 9B08     		lsrs	r3, r3, #2
+ 996 03ea D8B2     		uxtb	r0, r3
+ 997 03ec 0346     		mov	r3, r0
+ 998 03ee 0233     		adds	r3, r3, #2
+ 999 03f0 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 1000              		.loc 2 189 51
+ 1001 03f4 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1002 03f6 0621     		movs	r1, #6
+ 1003 03f8 01FA03F3 		lsl	r3, r1, r3
+ 1004              		.loc 2 189 24
+ 1005 03fc 2849     		ldr	r1, .L60+12
+ 1006 03fe 1A43     		orrs	r2, r2, r3
+ 1007 0400 831C     		adds	r3, r0, #2
+ 1008 0402 41F82320 		str	r2, [r1, r3, lsl #2]
+ 1009 0406 3AE0     		b	.L47
+ 1010              	.L53:
+ 190:../src/App.c  **** 		}
+ 191:../src/App.c  **** 		else if(GPIOH == Exti_Array[i].gpioPort)
+ 1011              		.loc 2 191 33
+ 1012 0408 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 1013 040a 2349     		ldr	r1, .L60+4
+ 1014 040c 1346     		mov	r3, r2
+ 1015 040e 5B00     		lsls	r3, r3, #1
+ 1016 0410 1344     		add	r3, r3, r2
+ 1017 0412 9B00     		lsls	r3, r3, #2
+ 1018 0414 0B44     		add	r3, r3, r1
+ 1019 0416 0433     		adds	r3, r3, #4
+ 1020 0418 1B68     		ldr	r3, [r3]
+ 1021              		.loc 2 191 10
+ 1022 041a 284A     		ldr	r2, .L60+40
+ 1023 041c 9342     		cmp	r3, r2
+ 1024 041e 11D1     		bne	.L54
+ 192:../src/App.c  **** 		{
+ 193:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PH << pinPos;
+ 1025              		.loc 2 193 24
+ 1026 0420 1F4A     		ldr	r2, .L60+12
+ 1027 0422 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 1028 0424 9B08     		lsrs	r3, r3, #2
+ 1029 0426 D8B2     		uxtb	r0, r3
+ 1030 0428 0346     		mov	r3, r0
+ 1031 042a 0233     		adds	r3, r3, #2
+ 1032 042c 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 1033              		.loc 2 193 51
+ 1034 0430 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1035 0432 0721     		movs	r1, #7
+ 1036 0434 01FA03F3 		lsl	r3, r1, r3
+ 1037              		.loc 2 193 24
+ 1038 0438 1949     		ldr	r1, .L60+12
+ 1039 043a 1A43     		orrs	r2, r2, r3
+ 1040 043c 831C     		adds	r3, r0, #2
+ 1041 043e 41F82320 		str	r2, [r1, r3, lsl #2]
+ 1042 0442 1CE0     		b	.L47
+ 1043              	.L54:
+ 194:../src/App.c  **** 		}
+ 195:../src/App.c  **** 		else if(GPIOI == Exti_Array[i].gpioPort)
+ 1044              		.loc 2 195 33
+ 1045 0444 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 1046 0446 1449     		ldr	r1, .L60+4
+ 1047 0448 1346     		mov	r3, r2
+ 1048 044a 5B00     		lsls	r3, r3, #1
+ 1049 044c 1344     		add	r3, r3, r2
+ 1050 044e 9B00     		lsls	r3, r3, #2
+ 1051 0450 0B44     		add	r3, r3, r1
+ 1052 0452 0433     		adds	r3, r3, #4
+ 1053 0454 1B68     		ldr	r3, [r3]
+ 1054              		.loc 2 195 10
+ 1055 0456 1A4A     		ldr	r2, .L60+44
+ 1056 0458 9342     		cmp	r3, r2
+ 1057 045a 10D1     		bne	.L47
+ 196:../src/App.c  **** 		{
+ 197:../src/App.c  **** 			SYSCFG->EXTICR[i/4] |= SYSCFG_EXTICR1_EXTI0_PI << pinPos;
+ 1058              		.loc 2 197 24
+ 1059 045c 104A     		ldr	r2, .L60+12
+ 1060 045e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 1061 0460 9B08     		lsrs	r3, r3, #2
+ 1062 0462 D8B2     		uxtb	r0, r3
+ 1063 0464 0346     		mov	r3, r0
+ 1064 0466 0233     		adds	r3, r3, #2
+ 1065 0468 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 1066              		.loc 2 197 51
+ 1067 046c 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1068 046e 0821     		movs	r1, #8
+ 1069 0470 01FA03F3 		lsl	r3, r1, r3
+ 1070              		.loc 2 197 24
+ 1071 0474 0A49     		ldr	r1, .L60+12
+ 1072 0476 1A43     		orrs	r2, r2, r3
+ 1073 0478 831C     		adds	r3, r0, #2
+ 1074 047a 41F82320 		str	r2, [r1, r3, lsl #2]
+ 1075              	.L47:
+ 1076              	.LBE7:
+ 159:../src/App.c  **** 	{
+ 1077              		.loc 2 159 36 discriminator 2
+ 1078 047e BB7B     		ldrb	r3, [r7, #14]
+ 1079 0480 0133     		adds	r3, r3, #1
+ 1080 0482 BB73     		strb	r3, [r7, #14]
+ 1081              	.L45:
+ 159:../src/App.c  **** 	{
+ 1082              		.loc 2 159 2 discriminator 1
+ 1083 0484 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 1084 0486 0F2B     		cmp	r3, #15
+ 1085 0488 7FF6EAAE 		bls	.L55
+ 1086              	.LBE6:
+ 1087              	.LBB8:
+ 198:../src/App.c  **** 		}
+ 199:../src/App.c  **** 		else
+ 200:../src/App.c  **** 		{ /* Do Nothing */ }
+ 201:../src/App.c  **** 	}
+ 202:../src/App.c  **** 
+ 203:../src/App.c  **** 
+ 204:../src/App.c  **** 	//3. Config and Enable Interrupt Registers
+ 205:../src/App.c  **** 	for(uint8 i=0; i<EXTI_ARRAY_SIZE; ++i)
+ 1088              		.loc 2 205 12
+ 1089 048c 0023     		movs	r3, #0
+ 1090 048e 7B73     		strb	r3, [r7, #13]
+ 1091              		.loc 2 205 2
+ 1092 0490 61E0     		b	.L56
+ 1093              	.L61:
+ 1094 0492 00BF     		.align	2
+ 1095              	.L60:
+ 1096 0494 00000000 		.word	.LC0
+ 1097 0498 00000000 		.word	Exti_Array
+ 1098 049c 00000240 		.word	1073872896
+ 1099 04a0 00380140 		.word	1073821696
+ 1100 04a4 00040240 		.word	1073873920
+ 1101 04a8 00080240 		.word	1073874944
+ 1102 04ac 000C0240 		.word	1073875968
+ 1103 04b0 00100240 		.word	1073876992
+ 1104 04b4 00140240 		.word	1073878016
+ 1105 04b8 00180240 		.word	1073879040
+ 1106 04bc 001C0240 		.word	1073880064
+ 1107 04c0 00200240 		.word	1073881088
+ 1108              	.L59:
+ 206:../src/App.c  **** 	{
+ 207:../src/App.c  **** 		if(FALLING_EDGE == Exti_Array[i].intType)
+ 1109              		.loc 2 207 35
+ 1110 04c4 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 1111 04c6 2849     		ldr	r1, .L62
+ 1112 04c8 1346     		mov	r3, r2
+ 1113 04ca 5B00     		lsls	r3, r3, #1
+ 1114 04cc 1344     		add	r3, r3, r2
+ 1115 04ce 9B00     		lsls	r3, r3, #2
+ 1116 04d0 0B44     		add	r3, r3, r1
+ 1117 04d2 0833     		adds	r3, r3, #8
+ 1118 04d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1119              		.loc 2 207 5
+ 1120 04d6 002B     		cmp	r3, #0
+ 1121 04d8 0FD1     		bne	.L57
+ 208:../src/App.c  **** 		{
+ 209:../src/App.c  **** 			EXTI->FTSR |= 1 << Exti_Array[i].pinNumber;
+ 1122              		.loc 2 209 15
+ 1123 04da 244B     		ldr	r3, .L62+4
+ 1124 04dc D968     		ldr	r1, [r3, #12]
+ 1125              		.loc 2 209 36
+ 1126 04de 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 1127 04e0 2148     		ldr	r0, .L62
+ 1128 04e2 1346     		mov	r3, r2
+ 1129 04e4 5B00     		lsls	r3, r3, #1
+ 1130 04e6 1344     		add	r3, r3, r2
+ 1131 04e8 9B00     		lsls	r3, r3, #2
+ 1132 04ea 0344     		add	r3, r3, r0
+ 1133 04ec 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1134 04ee 1A46     		mov	r2, r3
+ 1135              		.loc 2 209 20
+ 1136 04f0 0123     		movs	r3, #1
+ 1137 04f2 9340     		lsls	r3, r3, r2
+ 1138              		.loc 2 209 15
+ 1139 04f4 1D4A     		ldr	r2, .L62+4
+ 1140 04f6 0B43     		orrs	r3, r3, r1
+ 1141 04f8 D360     		str	r3, [r2, #12]
+ 1142              	.L57:
+ 210:../src/App.c  **** 		}
+ 211:../src/App.c  **** 
+ 212:../src/App.c  **** 		if(RISING_EDGE == Exti_Array[i].intType)
+ 1143              		.loc 2 212 34
+ 1144 04fa 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 1145 04fc 1A49     		ldr	r1, .L62
+ 1146 04fe 1346     		mov	r3, r2
+ 1147 0500 5B00     		lsls	r3, r3, #1
+ 1148 0502 1344     		add	r3, r3, r2
+ 1149 0504 9B00     		lsls	r3, r3, #2
+ 1150 0506 0B44     		add	r3, r3, r1
+ 1151 0508 0833     		adds	r3, r3, #8
+ 1152 050a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1153              		.loc 2 212 5
+ 1154 050c 012B     		cmp	r3, #1
+ 1155 050e 0FD1     		bne	.L58
+ 213:../src/App.c  **** 		{
+ 214:../src/App.c  **** 			EXTI->RTSR |= 1 << Exti_Array[i].pinNumber;
+ 1156              		.loc 2 214 15
+ 1157 0510 164B     		ldr	r3, .L62+4
+ 1158 0512 9968     		ldr	r1, [r3, #8]
+ 1159              		.loc 2 214 36
+ 1160 0514 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 1161 0516 1448     		ldr	r0, .L62
+ 1162 0518 1346     		mov	r3, r2
+ 1163 051a 5B00     		lsls	r3, r3, #1
+ 1164 051c 1344     		add	r3, r3, r2
+ 1165 051e 9B00     		lsls	r3, r3, #2
+ 1166 0520 0344     		add	r3, r3, r0
+ 1167 0522 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1168 0524 1A46     		mov	r2, r3
+ 1169              		.loc 2 214 20
+ 1170 0526 0123     		movs	r3, #1
+ 1171 0528 9340     		lsls	r3, r3, r2
+ 1172              		.loc 2 214 15
+ 1173 052a 104A     		ldr	r2, .L62+4
+ 1174 052c 0B43     		orrs	r3, r3, r1
+ 1175 052e 9360     		str	r3, [r2, #8]
+ 1176              	.L58:
+ 215:../src/App.c  **** 		}
  216:../src/App.c  **** 
- 217:../src/App.c  **** 
- 218:../src/App.c  **** 	//4. Interrupt Enable
- 219:../src/App.c  **** 	Enable_Exti_Interrupt();
- 1266              		.loc 2 219 2
- 1267 055c FFF796FD 		bl	Enable_Exti_Interrupt
- 220:../src/App.c  **** }
- 1268              		.loc 2 220 1
- 1269 0560 00BF     		nop
- 1270 0562 1437     		adds	r7, r7, #20
- 1271              		.cfi_def_cfa_offset 12
- 1272 0564 BD46     		mov	sp, r7
- 1273              		.cfi_def_cfa_register 13
- 1274              		@ sp needed
- 1275 0566 90BD     		pop	{r4, r7, pc}
- 1276              	.L63:
- 1277              		.align	2
- 1278              	.L62:
- 1279 0568 00000000 		.word	Exti_Array
- 1280 056c 003C0140 		.word	1073822720
- 1281              		.cfi_endproc
- 1282              	.LFE140:
- 1284              		.section	.rodata
- 1285 0006 0000     		.align	2
- 1286              	.LC1:
- 1287 0008 00       		.byte	0
- 1288 0009 00       		.byte	0
- 1289 000a 02       		.byte	2
- 1290 000b 00       		.byte	0
- 1291 000c 02       		.byte	2
- 1292 000d 00       		.byte	0
- 1293              		.text
- 1294              		.align	1
- 1295              		.global	Input_Init
- 1296              		.syntax unified
- 1297              		.thumb
- 1298              		.thumb_func
- 1300              	Input_Init:
- 1301              	.LFB141:
- 221:../src/App.c  **** 
- 222:../src/App.c  **** void Input_Init(void)
- 223:../src/App.c  **** {
- 1302              		.loc 2 223 1
- 1303              		.cfi_startproc
- 1304              		@ args = 0, pretend = 0, frame = 8
- 1305              		@ frame_needed = 1, uses_anonymous_args = 0
- 1306 0570 80B5     		push	{r7, lr}
- 1307              		.cfi_def_cfa_offset 8
- 1308              		.cfi_offset 7, -8
- 1309              		.cfi_offset 14, -4
- 1310 0572 82B0     		sub	sp, sp, #8
- 1311              		.cfi_def_cfa_offset 16
- 1312 0574 00AF     		add	r7, sp, #0
- 1313              		.cfi_def_cfa_register 7
- 224:../src/App.c  **** 	//1. Enable Related Pins
- 225:../src/App.c  **** 	gpio_cfg configGpio = {PIN_0, GPIO_MODE_INPUT, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_DOWN, 0};
- 1314              		.loc 2 225 11
- 1315 0576 164A     		ldr	r2, .L67
- 1316 0578 3B46     		mov	r3, r7
- 1317 057a 92E80300 		ldm	r2, {r0, r1}
- 1318 057e 1860     		str	r0, [r3]
- 1319 0580 0433     		adds	r3, r3, #4
- 1320 0582 1980     		strh	r1, [r3]	@ movhi
- 1321              	.LBB9:
- 226:../src/App.c  **** 
- 227:../src/App.c  **** 	for(uint8 i=0; i<INPUT_ARRAY_SIZE; ++i)
- 1322              		.loc 2 227 12
- 1323 0584 0023     		movs	r3, #0
- 1324 0586 FB71     		strb	r3, [r7, #7]
- 1325              		.loc 2 227 2
- 1326 0588 1AE0     		b	.L65
- 1327              	.L66:
- 228:../src/App.c  **** 	{
- 229:../src/App.c  **** 		configGpio.pinNumber = Input_Array[i].pinNumber;
- 1328              		.loc 2 229 40 discriminator 3
- 1329 058a FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
- 1330 058c 1149     		ldr	r1, .L67+4
- 1331 058e 1346     		mov	r3, r2
- 1332 0590 5B00     		lsls	r3, r3, #1
- 1333 0592 1344     		add	r3, r3, r2
- 1334 0594 9B00     		lsls	r3, r3, #2
- 1335 0596 0B44     		add	r3, r3, r1
- 1336 0598 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1337              		.loc 2 229 24 discriminator 3
- 1338 059a 3B70     		strb	r3, [r7]
- 230:../src/App.c  **** 		Gpio_Init(configGpio, Input_Array[i].gpioPort);
- 1339              		.loc 2 230 3 discriminator 3
- 1340 059c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
- 1341 059e 0D49     		ldr	r1, .L67+4
- 1342 05a0 1346     		mov	r3, r2
- 1343 05a2 5B00     		lsls	r3, r3, #1
- 1344 05a4 1344     		add	r3, r3, r2
- 1345 05a6 9B00     		lsls	r3, r3, #2
- 1346 05a8 0B44     		add	r3, r3, r1
- 1347 05aa 0433     		adds	r3, r3, #4
- 1348 05ac 1B68     		ldr	r3, [r3]
- 1349 05ae 1A46     		mov	r2, r3
- 1350 05b0 3B46     		mov	r3, r7
- 1351 05b2 93E80300 		ldm	r3, {r0, r1}
- 1352 05b6 FFF7FEFF 		bl	Gpio_Init
- 227:../src/App.c  **** 	{
- 1353              		.loc 2 227 37 discriminator 3
- 1354 05ba FB79     		ldrb	r3, [r7, #7]
- 1355 05bc 0133     		adds	r3, r3, #1
- 1356 05be FB71     		strb	r3, [r7, #7]
- 1357              	.L65:
- 227:../src/App.c  **** 	{
- 1358              		.loc 2 227 2 discriminator 1
- 1359 05c0 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 1360 05c2 232B     		cmp	r3, #35
- 1361 05c4 E1D9     		bls	.L66
- 1362              	.LBE9:
- 231:../src/App.c  **** 	}
- 232:../src/App.c  **** }
- 1363              		.loc 2 232 1
- 1364 05c6 00BF     		nop
- 1365 05c8 00BF     		nop
- 1366 05ca 0837     		adds	r7, r7, #8
- 1367              		.cfi_def_cfa_offset 8
- 1368 05cc BD46     		mov	sp, r7
- 1369              		.cfi_def_cfa_register 13
- 1370              		@ sp needed
- 1371 05ce 80BD     		pop	{r7, pc}
- 1372              	.L68:
- 1373              		.align	2
- 1374              	.L67:
- 1375 05d0 08000000 		.word	.LC1
- 1376 05d4 00000000 		.word	Input_Array
- 1377              		.cfi_endproc
- 1378              	.LFE141:
- 1380              		.align	1
- 1381              		.global	InputPolling
- 1382              		.syntax unified
- 1383              		.thumb
- 1384              		.thumb_func
- 1386              	InputPolling:
- 1387              	.LFB142:
- 233:../src/App.c  **** 
- 234:../src/App.c  **** void InputPolling(void)
- 235:../src/App.c  **** {
- 1388              		.loc 2 235 1
- 1389              		.cfi_startproc
- 1390              		@ args = 0, pretend = 0, frame = 8
- 1391              		@ frame_needed = 1, uses_anonymous_args = 0
- 1392 05d8 80B5     		push	{r7, lr}
- 1393              		.cfi_def_cfa_offset 8
- 1394              		.cfi_offset 7, -8
- 1395              		.cfi_offset 14, -4
- 1396 05da 82B0     		sub	sp, sp, #8
- 1397              		.cfi_def_cfa_offset 16
- 1398 05dc 00AF     		add	r7, sp, #0
- 1399              		.cfi_def_cfa_register 7
- 1400              	.LBB10:
- 236:../src/App.c  **** 	for(int i=0; i<INPUT_ARRAY_SIZE; ++i)
- 1401              		.loc 2 236 10
- 1402 05de 0023     		movs	r3, #0
- 1403 05e0 7B60     		str	r3, [r7, #4]
- 1404              		.loc 2 236 2
- 1405 05e2 6CE0     		b	.L70
- 1406              	.L73:
- 1407              	.LBB11:
- 237:../src/App.c  **** 	{
- 238:../src/App.c  **** 		uint8 pos;
- 239:../src/App.c  **** 		if(TRUE == Gpio_Read(Input_Array[i].pinNumber, Input_Array[i].gpioPort))
- 1408              		.loc 2 239 38
- 1409 05e4 3A49     		ldr	r1, .L74
- 1410 05e6 7A68     		ldr	r2, [r7, #4]
- 1411 05e8 1346     		mov	r3, r2
- 1412 05ea 5B00     		lsls	r3, r3, #1
- 1413 05ec 1344     		add	r3, r3, r2
- 1414 05ee 9B00     		lsls	r3, r3, #2
- 1415 05f0 0B44     		add	r3, r3, r1
- 1416 05f2 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 1417              		.loc 2 239 14
- 1418 05f4 3649     		ldr	r1, .L74
- 1419 05f6 7A68     		ldr	r2, [r7, #4]
- 1420 05f8 1346     		mov	r3, r2
- 1421 05fa 5B00     		lsls	r3, r3, #1
- 1422 05fc 1344     		add	r3, r3, r2
- 1423 05fe 9B00     		lsls	r3, r3, #2
- 1424 0600 0B44     		add	r3, r3, r1
- 1425 0602 0433     		adds	r3, r3, #4
- 1426 0604 1B68     		ldr	r3, [r3]
- 1427 0606 1946     		mov	r1, r3
- 1428 0608 FFF7FEFF 		bl	Gpio_Read
- 1429 060c 0346     		mov	r3, r0
- 1430              		.loc 2 239 5
- 1431 060e 012B     		cmp	r3, #1
- 1432 0610 25D1     		bne	.L71
- 240:../src/App.c  **** 		{
- 241:../src/App.c  **** 			if(E_NOT_OK == findExistingPos(&pos, Input_Array[i].keyCode))	//if not already written
- 1433              		.loc 2 241 19
- 1434 0612 2F49     		ldr	r1, .L74
- 1435 0614 7A68     		ldr	r2, [r7, #4]
- 1436 0616 1346     		mov	r3, r2
- 1437 0618 5B00     		lsls	r3, r3, #1
- 1438 061a 1344     		add	r3, r3, r2
- 1439 061c 9B00     		lsls	r3, r3, #2
- 1440 061e 0B44     		add	r3, r3, r1
- 1441 0620 0833     		adds	r3, r3, #8
- 1442 0622 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 1443 0624 FB1C     		adds	r3, r7, #3
- 1444 0626 1146     		mov	r1, r2
- 1445 0628 1846     		mov	r0, r3
- 1446 062a FFF7C9FD 		bl	findExistingPos
- 1447 062e 0346     		mov	r3, r0
- 1448              		.loc 2 241 6
- 1449 0630 012B     		cmp	r3, #1
- 1450 0632 41D1     		bne	.L72
- 242:../src/App.c  **** 			{
- 243:../src/App.c  **** 				if(E_OK == findEmptyPos(&pos))	//find an empty position
- 1451              		.loc 2 243 16
- 1452 0634 FB1C     		adds	r3, r7, #3
- 1453 0636 1846     		mov	r0, r3
- 1454 0638 FFF7A2FD 		bl	findEmptyPos
- 1455 063c 0346     		mov	r3, r0
- 1456              		.loc 2 243 7
- 1457 063e 002B     		cmp	r3, #0
- 1458 0640 3AD1     		bne	.L72
- 244:../src/App.c  **** 				{
- 245:../src/App.c  **** 					USB_buffer[pos] = Input_Array[i].keyCode;
- 1459              		.loc 2 245 16
- 1460 0642 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
- 1461 0644 1846     		mov	r0, r3
- 1462              		.loc 2 245 38
- 1463 0646 2249     		ldr	r1, .L74
- 1464 0648 7A68     		ldr	r2, [r7, #4]
- 1465 064a 1346     		mov	r3, r2
- 1466 064c 5B00     		lsls	r3, r3, #1
- 1467 064e 1344     		add	r3, r3, r2
- 1468 0650 9B00     		lsls	r3, r3, #2
- 1469 0652 0B44     		add	r3, r3, r1
- 1470 0654 0833     		adds	r3, r3, #8
- 1471 0656 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 1472              		.loc 2 245 22
- 1473 0658 1E4B     		ldr	r3, .L74+4
- 1474 065a 1A54     		strb	r2, [r3, r0]
- 1475 065c 2CE0     		b	.L72
- 1476              	.L71:
- 246:../src/App.c  **** 				}//else Out of Limits
- 247:../src/App.c  **** 			}//else already written
- 248:../src/App.c  **** 		}
- 249:../src/App.c  **** 		else if(FALSE == Gpio_Read(Input_Array[i].pinNumber, Input_Array[i].gpioPort))
- 1477              		.loc 2 249 44
- 1478 065e 1C49     		ldr	r1, .L74
- 1479 0660 7A68     		ldr	r2, [r7, #4]
- 1480 0662 1346     		mov	r3, r2
- 1481 0664 5B00     		lsls	r3, r3, #1
- 1482 0666 1344     		add	r3, r3, r2
- 1483 0668 9B00     		lsls	r3, r3, #2
- 1484 066a 0B44     		add	r3, r3, r1
- 1485 066c 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 1486              		.loc 2 249 20
- 1487 066e 1849     		ldr	r1, .L74
- 1488 0670 7A68     		ldr	r2, [r7, #4]
- 1489 0672 1346     		mov	r3, r2
- 1490 0674 5B00     		lsls	r3, r3, #1
- 1491 0676 1344     		add	r3, r3, r2
- 1492 0678 9B00     		lsls	r3, r3, #2
- 1493 067a 0B44     		add	r3, r3, r1
- 1494 067c 0433     		adds	r3, r3, #4
- 1495 067e 1B68     		ldr	r3, [r3]
- 1496 0680 1946     		mov	r1, r3
- 1497 0682 FFF7FEFF 		bl	Gpio_Read
- 1498 0686 0346     		mov	r3, r0
- 1499              		.loc 2 249 10
- 1500 0688 002B     		cmp	r3, #0
- 1501 068a 15D1     		bne	.L72
- 250:../src/App.c  **** 		{
- 251:../src/App.c  **** 			if(E_OK == findExistingPos(&pos, Input_Array[i].keyCode))
- 1502              		.loc 2 251 15
- 1503 068c 1049     		ldr	r1, .L74
- 1504 068e 7A68     		ldr	r2, [r7, #4]
- 1505 0690 1346     		mov	r3, r2
- 1506 0692 5B00     		lsls	r3, r3, #1
- 1507 0694 1344     		add	r3, r3, r2
- 1508 0696 9B00     		lsls	r3, r3, #2
- 1509 0698 0B44     		add	r3, r3, r1
- 1510 069a 0833     		adds	r3, r3, #8
- 1511 069c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 1512 069e FB1C     		adds	r3, r7, #3
- 1513 06a0 1146     		mov	r1, r2
- 1514 06a2 1846     		mov	r0, r3
- 1515 06a4 FFF78CFD 		bl	findExistingPos
- 1516 06a8 0346     		mov	r3, r0
- 1517              		.loc 2 251 6
- 1518 06aa 002B     		cmp	r3, #0
- 1519 06ac 04D1     		bne	.L72
- 252:../src/App.c  **** 			{
- 253:../src/App.c  **** 				USB_buffer[pos] = (uint8)0u;
- 1520              		.loc 2 253 15
- 1521 06ae FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
- 1522 06b0 1A46     		mov	r2, r3
- 1523              		.loc 2 253 21
- 1524 06b2 084B     		ldr	r3, .L74+4
- 1525 06b4 0021     		movs	r1, #0
- 1526 06b6 9954     		strb	r1, [r3, r2]
- 1527              	.L72:
- 1528              	.LBE11:
- 236:../src/App.c  **** 	{
- 1529              		.loc 2 236 35 discriminator 1
- 1530 06b8 7B68     		ldr	r3, [r7, #4]
- 1531 06ba 0133     		adds	r3, r3, #1
- 1532 06bc 7B60     		str	r3, [r7, #4]
- 1533              	.L70:
- 236:../src/App.c  **** 	{
- 1534              		.loc 2 236 16 discriminator 2
- 1535 06be 7B68     		ldr	r3, [r7, #4]
- 236:../src/App.c  **** 	{
- 1536              		.loc 2 236 2 discriminator 2
- 1537 06c0 232B     		cmp	r3, #35
- 1538 06c2 8FD9     		bls	.L73
- 1539              	.LBE10:
- 254:../src/App.c  **** 			}
- 255:../src/App.c  **** 		}
- 256:../src/App.c  **** 	}
- 257:../src/App.c  **** }
- 1540              		.loc 2 257 1
- 1541 06c4 00BF     		nop
- 1542 06c6 00BF     		nop
- 1543 06c8 0837     		adds	r7, r7, #8
- 1544              		.cfi_def_cfa_offset 8
- 1545 06ca BD46     		mov	sp, r7
- 1546              		.cfi_def_cfa_register 13
- 1547              		@ sp needed
- 1548 06cc 80BD     		pop	{r7, pc}
- 1549              	.L75:
- 1550 06ce 00BF     		.align	2
- 1551              	.L74:
- 1552 06d0 00000000 		.word	Input_Array
- 1553 06d4 00000000 		.word	USB_buffer
- 1554              		.cfi_endproc
- 1555              	.LFE142:
- 1557              		.align	1
- 1558              		.global	EXTI0_IRQHandler
- 1559              		.syntax unified
- 1560              		.thumb
- 1561              		.thumb_func
- 1563              	EXTI0_IRQHandler:
- 1564              	.LFB143:
- 258:../src/App.c  **** 
- 259:../src/App.c  **** void EXTI0_IRQHandler(void)
- 260:../src/App.c  **** {
- 1565              		.loc 2 260 1
- 1566              		.cfi_startproc
- 1567              		@ args = 0, pretend = 0, frame = 0
- 1568              		@ frame_needed = 1, uses_anonymous_args = 0
- 1569              		@ link register save eliminated.
- 1570 06d8 80B4     		push	{r7}
- 1571              		.cfi_def_cfa_offset 4
- 1572              		.cfi_offset 7, -4
- 1573 06da 00AF     		add	r7, sp, #0
- 1574              		.cfi_def_cfa_register 7
- 261:../src/App.c  **** 	InputArray[0] = TRUE;
- 1575              		.loc 2 261 16
- 1576 06dc 064B     		ldr	r3, .L77
- 1577 06de 0122     		movs	r2, #1
- 1578 06e0 1A70     		strb	r2, [r3]
- 262:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR0;
- 1579              		.loc 2 262 11
- 1580 06e2 064B     		ldr	r3, .L77+4
- 1581 06e4 5B69     		ldr	r3, [r3, #20]
- 1582 06e6 054A     		ldr	r2, .L77+4
- 1583 06e8 43F00103 		orr	r3, r3, #1
- 1584 06ec 5361     		str	r3, [r2, #20]
- 263:../src/App.c  **** }
- 1585              		.loc 2 263 1
- 1586 06ee 00BF     		nop
- 1587 06f0 BD46     		mov	sp, r7
- 1588              		.cfi_def_cfa_register 13
- 1589              		@ sp needed
- 1590 06f2 80BC     		pop	{r7}
- 1591              		.cfi_restore 7
- 1592              		.cfi_def_cfa_offset 0
- 1593 06f4 7047     		bx	lr
- 1594              	.L78:
- 1595 06f6 00BF     		.align	2
- 1596              	.L77:
- 1597 06f8 00000000 		.word	InputArray
- 1598 06fc 003C0140 		.word	1073822720
- 1599              		.cfi_endproc
- 1600              	.LFE143:
- 1602              		.align	1
- 1603              		.global	EXTI1_IRQHandler
- 1604              		.syntax unified
- 1605              		.thumb
- 1606              		.thumb_func
- 1608              	EXTI1_IRQHandler:
- 1609              	.LFB144:
- 264:../src/App.c  **** 
- 265:../src/App.c  **** void EXTI1_IRQHandler(void)
- 266:../src/App.c  **** {
- 1610              		.loc 2 266 1
- 1611              		.cfi_startproc
- 1612              		@ args = 0, pretend = 0, frame = 0
- 1613              		@ frame_needed = 1, uses_anonymous_args = 0
- 1614              		@ link register save eliminated.
- 1615 0700 80B4     		push	{r7}
- 1616              		.cfi_def_cfa_offset 4
- 1617              		.cfi_offset 7, -4
- 1618 0702 00AF     		add	r7, sp, #0
- 1619              		.cfi_def_cfa_register 7
- 267:../src/App.c  **** 	InputArray[1] = TRUE;
- 1620              		.loc 2 267 16
- 1621 0704 064B     		ldr	r3, .L80
- 1622 0706 0122     		movs	r2, #1
- 1623 0708 5A70     		strb	r2, [r3, #1]
- 268:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR1;
- 1624              		.loc 2 268 11
- 1625 070a 064B     		ldr	r3, .L80+4
- 1626 070c 5B69     		ldr	r3, [r3, #20]
- 1627 070e 054A     		ldr	r2, .L80+4
- 1628 0710 43F00203 		orr	r3, r3, #2
- 1629 0714 5361     		str	r3, [r2, #20]
- 269:../src/App.c  **** }
- 1630              		.loc 2 269 1
- 1631 0716 00BF     		nop
- 1632 0718 BD46     		mov	sp, r7
- 1633              		.cfi_def_cfa_register 13
- 1634              		@ sp needed
- 1635 071a 80BC     		pop	{r7}
- 1636              		.cfi_restore 7
- 1637              		.cfi_def_cfa_offset 0
- 1638 071c 7047     		bx	lr
- 1639              	.L81:
- 1640 071e 00BF     		.align	2
- 1641              	.L80:
- 1642 0720 00000000 		.word	InputArray
- 1643 0724 003C0140 		.word	1073822720
- 1644              		.cfi_endproc
- 1645              	.LFE144:
- 1647              		.align	1
- 1648              		.global	EXTI2_IRQHandler
- 1649              		.syntax unified
- 1650              		.thumb
- 1651              		.thumb_func
- 1653              	EXTI2_IRQHandler:
- 1654              	.LFB145:
- 270:../src/App.c  **** 
- 271:../src/App.c  **** void EXTI2_IRQHandler(void)
- 272:../src/App.c  **** {
- 1655              		.loc 2 272 1
- 1656              		.cfi_startproc
- 1657              		@ args = 0, pretend = 0, frame = 0
- 1658              		@ frame_needed = 1, uses_anonymous_args = 0
- 1659              		@ link register save eliminated.
- 1660 0728 80B4     		push	{r7}
- 1661              		.cfi_def_cfa_offset 4
- 1662              		.cfi_offset 7, -4
- 1663 072a 00AF     		add	r7, sp, #0
- 1664              		.cfi_def_cfa_register 7
- 273:../src/App.c  **** 	InputArray[2] = TRUE;
- 1665              		.loc 2 273 16
- 1666 072c 064B     		ldr	r3, .L83
- 1667 072e 0122     		movs	r2, #1
- 1668 0730 9A70     		strb	r2, [r3, #2]
- 274:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR2;
- 1669              		.loc 2 274 11
- 1670 0732 064B     		ldr	r3, .L83+4
- 1671 0734 5B69     		ldr	r3, [r3, #20]
- 1672 0736 054A     		ldr	r2, .L83+4
- 1673 0738 43F00403 		orr	r3, r3, #4
- 1674 073c 5361     		str	r3, [r2, #20]
- 275:../src/App.c  **** }
- 1675              		.loc 2 275 1
- 1676 073e 00BF     		nop
- 1677 0740 BD46     		mov	sp, r7
- 1678              		.cfi_def_cfa_register 13
- 1679              		@ sp needed
- 1680 0742 80BC     		pop	{r7}
- 1681              		.cfi_restore 7
- 1682              		.cfi_def_cfa_offset 0
- 1683 0744 7047     		bx	lr
- 1684              	.L84:
- 1685 0746 00BF     		.align	2
- 1686              	.L83:
- 1687 0748 00000000 		.word	InputArray
- 1688 074c 003C0140 		.word	1073822720
- 1689              		.cfi_endproc
- 1690              	.LFE145:
- 1692              		.align	1
- 1693              		.global	EXTI3_IRQHandler
- 1694              		.syntax unified
- 1695              		.thumb
- 1696              		.thumb_func
- 1698              	EXTI3_IRQHandler:
- 1699              	.LFB146:
- 276:../src/App.c  **** 
- 277:../src/App.c  **** void EXTI3_IRQHandler(void)
- 278:../src/App.c  **** {
- 1700              		.loc 2 278 1
- 1701              		.cfi_startproc
- 1702              		@ args = 0, pretend = 0, frame = 0
- 1703              		@ frame_needed = 1, uses_anonymous_args = 0
- 1704              		@ link register save eliminated.
- 1705 0750 80B4     		push	{r7}
- 1706              		.cfi_def_cfa_offset 4
- 1707              		.cfi_offset 7, -4
- 1708 0752 00AF     		add	r7, sp, #0
- 1709              		.cfi_def_cfa_register 7
- 279:../src/App.c  **** 	InputArray[3] = TRUE;
- 1710              		.loc 2 279 16
- 1711 0754 064B     		ldr	r3, .L86
- 1712 0756 0122     		movs	r2, #1
- 1713 0758 DA70     		strb	r2, [r3, #3]
- 280:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR3;
- 1714              		.loc 2 280 11
- 1715 075a 064B     		ldr	r3, .L86+4
- 1716 075c 5B69     		ldr	r3, [r3, #20]
- 1717 075e 054A     		ldr	r2, .L86+4
- 1718 0760 43F00803 		orr	r3, r3, #8
- 1719 0764 5361     		str	r3, [r2, #20]
- 281:../src/App.c  **** }
- 1720              		.loc 2 281 1
- 1721 0766 00BF     		nop
- 1722 0768 BD46     		mov	sp, r7
- 1723              		.cfi_def_cfa_register 13
- 1724              		@ sp needed
- 1725 076a 80BC     		pop	{r7}
- 1726              		.cfi_restore 7
- 1727              		.cfi_def_cfa_offset 0
- 1728 076c 7047     		bx	lr
- 1729              	.L87:
- 1730 076e 00BF     		.align	2
- 1731              	.L86:
- 1732 0770 00000000 		.word	InputArray
- 1733 0774 003C0140 		.word	1073822720
- 1734              		.cfi_endproc
- 1735              	.LFE146:
- 1737              		.align	1
- 1738              		.global	EXTI4_IRQHandler
- 1739              		.syntax unified
- 1740              		.thumb
- 1741              		.thumb_func
- 1743              	EXTI4_IRQHandler:
- 1744              	.LFB147:
- 282:../src/App.c  **** 
- 283:../src/App.c  **** void EXTI4_IRQHandler(void)
- 284:../src/App.c  **** {
- 1745              		.loc 2 284 1
- 1746              		.cfi_startproc
- 1747              		@ args = 0, pretend = 0, frame = 0
- 1748              		@ frame_needed = 1, uses_anonymous_args = 0
- 1749              		@ link register save eliminated.
- 1750 0778 80B4     		push	{r7}
- 1751              		.cfi_def_cfa_offset 4
- 1752              		.cfi_offset 7, -4
- 1753 077a 00AF     		add	r7, sp, #0
- 1754              		.cfi_def_cfa_register 7
- 285:../src/App.c  **** 	InputArray[4] = TRUE;
- 1755              		.loc 2 285 16
- 1756 077c 064B     		ldr	r3, .L89
- 1757 077e 0122     		movs	r2, #1
- 1758 0780 1A71     		strb	r2, [r3, #4]
- 286:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR4;
- 1759              		.loc 2 286 11
- 1760 0782 064B     		ldr	r3, .L89+4
- 1761 0784 5B69     		ldr	r3, [r3, #20]
- 1762 0786 054A     		ldr	r2, .L89+4
- 1763 0788 43F01003 		orr	r3, r3, #16
- 1764 078c 5361     		str	r3, [r2, #20]
- 287:../src/App.c  **** }
- 1765              		.loc 2 287 1
- 1766 078e 00BF     		nop
- 1767 0790 BD46     		mov	sp, r7
- 1768              		.cfi_def_cfa_register 13
- 1769              		@ sp needed
- 1770 0792 80BC     		pop	{r7}
- 1771              		.cfi_restore 7
- 1772              		.cfi_def_cfa_offset 0
- 1773 0794 7047     		bx	lr
- 1774              	.L90:
- 1775 0796 00BF     		.align	2
- 1776              	.L89:
- 1777 0798 00000000 		.word	InputArray
- 1778 079c 003C0140 		.word	1073822720
- 1779              		.cfi_endproc
- 1780              	.LFE147:
- 1782              		.align	1
- 1783              		.global	EXTI9_5_IRQHandler
- 1784              		.syntax unified
- 1785              		.thumb
- 1786              		.thumb_func
- 1788              	EXTI9_5_IRQHandler:
- 1789              	.LFB148:
- 288:../src/App.c  **** 
- 289:../src/App.c  **** void EXTI9_5_IRQHandler(void)
- 290:../src/App.c  **** {
- 1790              		.loc 2 290 1
- 1791              		.cfi_startproc
- 1792              		@ args = 0, pretend = 0, frame = 0
- 1793              		@ frame_needed = 1, uses_anonymous_args = 0
- 1794              		@ link register save eliminated.
- 1795 07a0 80B4     		push	{r7}
- 1796              		.cfi_def_cfa_offset 4
- 1797              		.cfi_offset 7, -4
- 1798 07a2 00AF     		add	r7, sp, #0
- 1799              		.cfi_def_cfa_register 7
- 291:../src/App.c  **** 	if(EXTI_PR_PR5 == (EXTI->PR & EXTI_PR_PR5))
- 1800              		.loc 2 291 25
- 1801 07a4 284B     		ldr	r3, .L98
- 1802 07a6 5B69     		ldr	r3, [r3, #20]
- 1803              		.loc 2 291 30
- 1804 07a8 03F02003 		and	r3, r3, #32
- 1805              		.loc 2 291 4
- 1806 07ac 202B     		cmp	r3, #32
- 1807 07ae 08D1     		bne	.L92
- 292:../src/App.c  **** 	{
- 293:../src/App.c  **** 		InputArray[5] = TRUE;
- 1808              		.loc 2 293 17
- 1809 07b0 264B     		ldr	r3, .L98+4
- 1810 07b2 0122     		movs	r2, #1
- 1811 07b4 5A71     		strb	r2, [r3, #5]
- 294:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR5;
- 1812              		.loc 2 294 12
- 1813 07b6 244B     		ldr	r3, .L98
- 1814 07b8 5B69     		ldr	r3, [r3, #20]
- 1815 07ba 234A     		ldr	r2, .L98
- 1816 07bc 43F02003 		orr	r3, r3, #32
- 1817 07c0 5361     		str	r3, [r2, #20]
- 1818              	.L92:
- 295:../src/App.c  **** 	}
- 296:../src/App.c  **** 	if(EXTI_PR_PR6 == (EXTI->PR & EXTI_PR_PR6))
- 1819              		.loc 2 296 25
- 1820 07c2 214B     		ldr	r3, .L98
- 1821 07c4 5B69     		ldr	r3, [r3, #20]
- 1822              		.loc 2 296 30
- 1823 07c6 03F04003 		and	r3, r3, #64
- 1824              		.loc 2 296 4
- 1825 07ca 402B     		cmp	r3, #64
- 1826 07cc 08D1     		bne	.L93
- 297:../src/App.c  **** 	{
- 298:../src/App.c  **** 		InputArray[6] = TRUE;
- 1827              		.loc 2 298 17
- 1828 07ce 1F4B     		ldr	r3, .L98+4
- 1829 07d0 0122     		movs	r2, #1
- 1830 07d2 9A71     		strb	r2, [r3, #6]
- 299:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR6;
- 1831              		.loc 2 299 12
- 1832 07d4 1C4B     		ldr	r3, .L98
- 1833 07d6 5B69     		ldr	r3, [r3, #20]
- 1834 07d8 1B4A     		ldr	r2, .L98
- 1835 07da 43F04003 		orr	r3, r3, #64
- 1836 07de 5361     		str	r3, [r2, #20]
- 1837              	.L93:
- 300:../src/App.c  **** 	}
- 301:../src/App.c  **** 	if(EXTI_PR_PR7 == (EXTI->PR & EXTI_PR_PR7))
- 1838              		.loc 2 301 25
- 1839 07e0 194B     		ldr	r3, .L98
- 1840 07e2 5B69     		ldr	r3, [r3, #20]
- 1841              		.loc 2 301 30
- 1842 07e4 03F08003 		and	r3, r3, #128
- 1843              		.loc 2 301 4
- 1844 07e8 802B     		cmp	r3, #128
- 1845 07ea 08D1     		bne	.L94
- 302:../src/App.c  **** 	{
- 303:../src/App.c  **** 		InputArray[7] = TRUE;
- 1846              		.loc 2 303 17
- 1847 07ec 174B     		ldr	r3, .L98+4
- 1848 07ee 0122     		movs	r2, #1
- 1849 07f0 DA71     		strb	r2, [r3, #7]
- 304:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR7;
- 1850              		.loc 2 304 12
- 1851 07f2 154B     		ldr	r3, .L98
- 1852 07f4 5B69     		ldr	r3, [r3, #20]
- 1853 07f6 144A     		ldr	r2, .L98
- 1854 07f8 43F08003 		orr	r3, r3, #128
- 1855 07fc 5361     		str	r3, [r2, #20]
- 1856              	.L94:
- 305:../src/App.c  **** 	}
- 306:../src/App.c  **** 	if(EXTI_PR_PR8 == (EXTI->PR & EXTI_PR_PR8))
- 1857              		.loc 2 306 25
- 1858 07fe 124B     		ldr	r3, .L98
- 1859 0800 5B69     		ldr	r3, [r3, #20]
- 1860              		.loc 2 306 30
- 1861 0802 03F48073 		and	r3, r3, #256
- 1862              		.loc 2 306 4
- 1863 0806 B3F5807F 		cmp	r3, #256
- 1864 080a 08D1     		bne	.L95
- 307:../src/App.c  **** 	{
- 308:../src/App.c  **** 		InputArray[8] = TRUE;
- 1865              		.loc 2 308 17
- 1866 080c 0F4B     		ldr	r3, .L98+4
- 1867 080e 0122     		movs	r2, #1
- 1868 0810 1A72     		strb	r2, [r3, #8]
- 309:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR8;
- 1869              		.loc 2 309 12
- 1870 0812 0D4B     		ldr	r3, .L98
- 1871 0814 5B69     		ldr	r3, [r3, #20]
- 1872 0816 0C4A     		ldr	r2, .L98
- 1873 0818 43F48073 		orr	r3, r3, #256
- 1874 081c 5361     		str	r3, [r2, #20]
- 1875              	.L95:
- 310:../src/App.c  **** 	}
- 311:../src/App.c  **** 	if(EXTI_PR_PR9 == (EXTI->PR & EXTI_PR_PR9))
- 1876              		.loc 2 311 25
- 1877 081e 0A4B     		ldr	r3, .L98
- 1878 0820 5B69     		ldr	r3, [r3, #20]
- 1879              		.loc 2 311 30
- 1880 0822 03F40073 		and	r3, r3, #512
- 1881              		.loc 2 311 4
- 1882 0826 B3F5007F 		cmp	r3, #512
- 1883 082a 08D1     		bne	.L97
- 312:../src/App.c  **** 	{
- 313:../src/App.c  **** 		InputArray[9] = TRUE;
- 1884              		.loc 2 313 17
- 1885 082c 074B     		ldr	r3, .L98+4
- 1886 082e 0122     		movs	r2, #1
- 1887 0830 5A72     		strb	r2, [r3, #9]
- 314:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR9;
- 1888              		.loc 2 314 12
- 1889 0832 054B     		ldr	r3, .L98
- 1890 0834 5B69     		ldr	r3, [r3, #20]
- 1891 0836 044A     		ldr	r2, .L98
- 1892 0838 43F40073 		orr	r3, r3, #512
- 1893 083c 5361     		str	r3, [r2, #20]
- 1894              	.L97:
- 315:../src/App.c  **** 	}
- 316:../src/App.c  **** }
- 1895              		.loc 2 316 1
- 1896 083e 00BF     		nop
- 1897 0840 BD46     		mov	sp, r7
- 1898              		.cfi_def_cfa_register 13
- 1899              		@ sp needed
- 1900 0842 80BC     		pop	{r7}
- 1901              		.cfi_restore 7
- 1902              		.cfi_def_cfa_offset 0
- 1903 0844 7047     		bx	lr
- 1904              	.L99:
- 1905 0846 00BF     		.align	2
- 1906              	.L98:
- 1907 0848 003C0140 		.word	1073822720
- 1908 084c 00000000 		.word	InputArray
- 1909              		.cfi_endproc
- 1910              	.LFE148:
- 1912              		.align	1
- 1913              		.global	EXTI15_10_IRQHandler
- 1914              		.syntax unified
- 1915              		.thumb
- 1916              		.thumb_func
- 1918              	EXTI15_10_IRQHandler:
- 1919              	.LFB149:
- 317:../src/App.c  **** 
- 318:../src/App.c  **** void EXTI15_10_IRQHandler(void)
- 319:../src/App.c  **** {
- 1920              		.loc 2 319 1
- 1921              		.cfi_startproc
- 1922              		@ args = 0, pretend = 0, frame = 0
- 1923              		@ frame_needed = 1, uses_anonymous_args = 0
- 1924              		@ link register save eliminated.
- 1925 0850 80B4     		push	{r7}
- 1926              		.cfi_def_cfa_offset 4
- 1927              		.cfi_offset 7, -4
- 1928 0852 00AF     		add	r7, sp, #0
- 1929              		.cfi_def_cfa_register 7
- 320:../src/App.c  **** 	if(EXTI_PR_PR10 == (EXTI->PR & EXTI_PR_PR10))
- 1930              		.loc 2 320 26
- 1931 0854 314B     		ldr	r3, .L108
- 1932 0856 5B69     		ldr	r3, [r3, #20]
- 1933              		.loc 2 320 31
- 1934 0858 03F48063 		and	r3, r3, #1024
- 1935              		.loc 2 320 4
- 1936 085c B3F5806F 		cmp	r3, #1024
- 1937 0860 08D1     		bne	.L101
- 321:../src/App.c  **** 	{
- 322:../src/App.c  **** 		InputArray[10] = TRUE;
- 1938              		.loc 2 322 18
- 1939 0862 2F4B     		ldr	r3, .L108+4
- 1940 0864 0122     		movs	r2, #1
- 1941 0866 9A72     		strb	r2, [r3, #10]
- 323:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR10;
- 1942              		.loc 2 323 12
- 1943 0868 2C4B     		ldr	r3, .L108
- 1944 086a 5B69     		ldr	r3, [r3, #20]
- 1945 086c 2B4A     		ldr	r2, .L108
- 1946 086e 43F48063 		orr	r3, r3, #1024
- 1947 0872 5361     		str	r3, [r2, #20]
- 1948              	.L101:
- 324:../src/App.c  **** 	}
- 325:../src/App.c  **** 	if(EXTI_PR_PR11 == (EXTI->PR & EXTI_PR_PR11))
- 1949              		.loc 2 325 26
- 1950 0874 294B     		ldr	r3, .L108
- 1951 0876 5B69     		ldr	r3, [r3, #20]
- 1952              		.loc 2 325 31
- 1953 0878 03F40063 		and	r3, r3, #2048
- 1954              		.loc 2 325 4
- 1955 087c B3F5006F 		cmp	r3, #2048
- 1956 0880 08D1     		bne	.L102
- 326:../src/App.c  **** 	{
- 327:../src/App.c  **** 		InputArray[11] = TRUE;
- 1957              		.loc 2 327 18
- 1958 0882 274B     		ldr	r3, .L108+4
- 1959 0884 0122     		movs	r2, #1
- 1960 0886 DA72     		strb	r2, [r3, #11]
- 328:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR11;
- 1961              		.loc 2 328 12
- 1962 0888 244B     		ldr	r3, .L108
- 1963 088a 5B69     		ldr	r3, [r3, #20]
- 1964 088c 234A     		ldr	r2, .L108
- 1965 088e 43F40063 		orr	r3, r3, #2048
- 1966 0892 5361     		str	r3, [r2, #20]
- 1967              	.L102:
- 329:../src/App.c  **** 	}
- 330:../src/App.c  **** 	if(EXTI_PR_PR12 == (EXTI->PR & EXTI_PR_PR12))
- 1968              		.loc 2 330 26
- 1969 0894 214B     		ldr	r3, .L108
- 1970 0896 5B69     		ldr	r3, [r3, #20]
- 1971              		.loc 2 330 31
- 1972 0898 03F48053 		and	r3, r3, #4096
- 1973              		.loc 2 330 4
- 1974 089c B3F5805F 		cmp	r3, #4096
- 1975 08a0 08D1     		bne	.L103
- 331:../src/App.c  **** 	{
- 332:../src/App.c  **** 		InputArray[12] = TRUE;
- 1976              		.loc 2 332 18
- 1977 08a2 1F4B     		ldr	r3, .L108+4
- 1978 08a4 0122     		movs	r2, #1
- 1979 08a6 1A73     		strb	r2, [r3, #12]
- 333:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR12;
- 1980              		.loc 2 333 12
- 1981 08a8 1C4B     		ldr	r3, .L108
- 1982 08aa 5B69     		ldr	r3, [r3, #20]
- 1983 08ac 1B4A     		ldr	r2, .L108
- 1984 08ae 43F48053 		orr	r3, r3, #4096
- 1985 08b2 5361     		str	r3, [r2, #20]
- 1986              	.L103:
- 334:../src/App.c  **** 	}
- 335:../src/App.c  **** 	if(EXTI_PR_PR13 == (EXTI->PR & EXTI_PR_PR13))
- 1987              		.loc 2 335 26
- 1988 08b4 194B     		ldr	r3, .L108
- 1989 08b6 5B69     		ldr	r3, [r3, #20]
- 1990              		.loc 2 335 31
- 1991 08b8 03F40053 		and	r3, r3, #8192
- 1992              		.loc 2 335 4
- 1993 08bc B3F5005F 		cmp	r3, #8192
- 1994 08c0 08D1     		bne	.L104
- 336:../src/App.c  **** 	{
- 337:../src/App.c  **** 		InputArray[13] = TRUE;
- 1995              		.loc 2 337 18
- 1996 08c2 174B     		ldr	r3, .L108+4
- 1997 08c4 0122     		movs	r2, #1
- 1998 08c6 5A73     		strb	r2, [r3, #13]
- 338:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR13;
- 1999              		.loc 2 338 12
- 2000 08c8 144B     		ldr	r3, .L108
- 2001 08ca 5B69     		ldr	r3, [r3, #20]
- 2002 08cc 134A     		ldr	r2, .L108
- 2003 08ce 43F40053 		orr	r3, r3, #8192
- 2004 08d2 5361     		str	r3, [r2, #20]
- 2005              	.L104:
- 339:../src/App.c  **** 	}
- 340:../src/App.c  **** 	if(EXTI_PR_PR14 == (EXTI->PR & EXTI_PR_PR14))
- 2006              		.loc 2 340 26
- 2007 08d4 114B     		ldr	r3, .L108
- 2008 08d6 5B69     		ldr	r3, [r3, #20]
- 2009              		.loc 2 340 31
- 2010 08d8 03F48043 		and	r3, r3, #16384
- 2011              		.loc 2 340 4
- 2012 08dc B3F5804F 		cmp	r3, #16384
- 2013 08e0 08D1     		bne	.L105
- 341:../src/App.c  **** 	{
- 342:../src/App.c  **** 		InputArray[14] = TRUE;
- 2014              		.loc 2 342 18
- 2015 08e2 0F4B     		ldr	r3, .L108+4
- 2016 08e4 0122     		movs	r2, #1
- 2017 08e6 9A73     		strb	r2, [r3, #14]
- 343:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR14;
- 2018              		.loc 2 343 12
- 2019 08e8 0C4B     		ldr	r3, .L108
- 2020 08ea 5B69     		ldr	r3, [r3, #20]
- 2021 08ec 0B4A     		ldr	r2, .L108
- 2022 08ee 43F48043 		orr	r3, r3, #16384
- 2023 08f2 5361     		str	r3, [r2, #20]
- 2024              	.L105:
- 344:../src/App.c  **** 	}
- 345:../src/App.c  **** 	if(EXTI_PR_PR15 == (EXTI->PR & EXTI_PR_PR15))
- 2025              		.loc 2 345 26
- 2026 08f4 094B     		ldr	r3, .L108
- 2027 08f6 5B69     		ldr	r3, [r3, #20]
- 2028              		.loc 2 345 31
- 2029 08f8 03F40043 		and	r3, r3, #32768
- 2030              		.loc 2 345 4
- 2031 08fc B3F5004F 		cmp	r3, #32768
- 2032 0900 08D1     		bne	.L107
- 346:../src/App.c  **** 	{
- 347:../src/App.c  **** 		InputArray[15] = TRUE;
- 2033              		.loc 2 347 18
- 2034 0902 074B     		ldr	r3, .L108+4
- 2035 0904 0122     		movs	r2, #1
- 2036 0906 DA73     		strb	r2, [r3, #15]
- 348:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR15;
- 2037              		.loc 2 348 12
- 2038 0908 044B     		ldr	r3, .L108
- 2039 090a 5B69     		ldr	r3, [r3, #20]
- 2040 090c 034A     		ldr	r2, .L108
- 2041 090e 43F40043 		orr	r3, r3, #32768
- 2042 0912 5361     		str	r3, [r2, #20]
- 2043              	.L107:
- 349:../src/App.c  **** 	}
- 350:../src/App.c  **** }
- 2044              		.loc 2 350 1
- 2045 0914 00BF     		nop
- 2046 0916 BD46     		mov	sp, r7
- 2047              		.cfi_def_cfa_register 13
- 2048              		@ sp needed
- 2049 0918 80BC     		pop	{r7}
- 2050              		.cfi_restore 7
- 2051              		.cfi_def_cfa_offset 0
- 2052 091a 7047     		bx	lr
- 2053              	.L109:
- 2054              		.align	2
- 2055              	.L108:
- 2056 091c 003C0140 		.word	1073822720
- 2057 0920 00000000 		.word	InputArray
- 2058              		.cfi_endproc
- 2059              	.LFE149:
- 2061              	.Letext0:
- 2062              		.file 3 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
- 2063              		.file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 2064              		.file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 2065              		.file 6 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
- 2066              		.file 7 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
- 2067              		.file 8 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
- 2068              		.file 9 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
+ 217:../src/App.c  **** 		EXTI->IMR |= 1 << Exti_Array[i].pinNumber;
+ 1177              		.loc 2 217 13 discriminator 2
+ 1178 0530 0E4B     		ldr	r3, .L62+4
+ 1179 0532 1968     		ldr	r1, [r3]
+ 1180              		.loc 2 217 34 discriminator 2
+ 1181 0534 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 1182 0536 0C48     		ldr	r0, .L62
+ 1183 0538 1346     		mov	r3, r2
+ 1184 053a 5B00     		lsls	r3, r3, #1
+ 1185 053c 1344     		add	r3, r3, r2
+ 1186 053e 9B00     		lsls	r3, r3, #2
+ 1187 0540 0344     		add	r3, r3, r0
+ 1188 0542 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1189 0544 1A46     		mov	r2, r3
+ 1190              		.loc 2 217 18 discriminator 2
+ 1191 0546 0123     		movs	r3, #1
+ 1192 0548 9340     		lsls	r3, r3, r2
+ 1193              		.loc 2 217 13 discriminator 2
+ 1194 054a 084A     		ldr	r2, .L62+4
+ 1195 054c 0B43     		orrs	r3, r3, r1
+ 1196 054e 1360     		str	r3, [r2]
+ 205:../src/App.c  **** 	{
+ 1197              		.loc 2 205 36 discriminator 2
+ 1198 0550 7B7B     		ldrb	r3, [r7, #13]
+ 1199 0552 0133     		adds	r3, r3, #1
+ 1200 0554 7B73     		strb	r3, [r7, #13]
+ 1201              	.L56:
+ 205:../src/App.c  **** 	{
+ 1202              		.loc 2 205 2 discriminator 1
+ 1203 0556 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 1204 0558 0F2B     		cmp	r3, #15
+ 1205 055a B3D9     		bls	.L59
+ 1206              	.LBE8:
+ 218:../src/App.c  **** 	}
+ 219:../src/App.c  **** 
+ 220:../src/App.c  **** 
+ 221:../src/App.c  **** 	//4. Interrupt Enable
+ 222:../src/App.c  **** 	Enable_Exti_Interrupt();
+ 1207              		.loc 2 222 2
+ 1208 055c FFF796FD 		bl	Enable_Exti_Interrupt
+ 223:../src/App.c  **** }
+ 1209              		.loc 2 223 1
+ 1210 0560 00BF     		nop
+ 1211 0562 1437     		adds	r7, r7, #20
+ 1212              		.cfi_def_cfa_offset 12
+ 1213 0564 BD46     		mov	sp, r7
+ 1214              		.cfi_def_cfa_register 13
+ 1215              		@ sp needed
+ 1216 0566 90BD     		pop	{r4, r7, pc}
+ 1217              	.L63:
+ 1218              		.align	2
+ 1219              	.L62:
+ 1220 0568 00000000 		.word	Exti_Array
+ 1221 056c 003C0140 		.word	1073822720
+ 1222              		.cfi_endproc
+ 1223              	.LFE140:
+ 1225              		.section	.rodata
+ 1226 0006 0000     		.align	2
+ 1227              	.LC1:
+ 1228 0008 00       		.byte	0
+ 1229 0009 00       		.byte	0
+ 1230 000a 02       		.byte	2
+ 1231 000b 00       		.byte	0
+ 1232 000c 02       		.byte	2
+ 1233 000d 00       		.byte	0
+ 1234              		.text
+ 1235              		.align	1
+ 1236              		.global	Input_Init
+ 1237              		.syntax unified
+ 1238              		.thumb
+ 1239              		.thumb_func
+ 1241              	Input_Init:
+ 1242              	.LFB141:
+ 224:../src/App.c  **** 
+ 225:../src/App.c  **** void Input_Init(void)
+ 226:../src/App.c  **** {
+ 1243              		.loc 2 226 1
+ 1244              		.cfi_startproc
+ 1245              		@ args = 0, pretend = 0, frame = 8
+ 1246              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1247 0570 80B5     		push	{r7, lr}
+ 1248              		.cfi_def_cfa_offset 8
+ 1249              		.cfi_offset 7, -8
+ 1250              		.cfi_offset 14, -4
+ 1251 0572 82B0     		sub	sp, sp, #8
+ 1252              		.cfi_def_cfa_offset 16
+ 1253 0574 00AF     		add	r7, sp, #0
+ 1254              		.cfi_def_cfa_register 7
+ 227:../src/App.c  **** 	//1. Enable Related Pins
+ 228:../src/App.c  **** 	gpio_cfg configGpio = {PIN_0, GPIO_MODE_INPUT, OUTPUT_TYPE_NA, OUTPUT_SPEED_LOW, PULL_DOWN, 0};
+ 1255              		.loc 2 228 11
+ 1256 0576 164A     		ldr	r2, .L67
+ 1257 0578 3B46     		mov	r3, r7
+ 1258 057a 92E80300 		ldm	r2, {r0, r1}
+ 1259 057e 1860     		str	r0, [r3]
+ 1260 0580 0433     		adds	r3, r3, #4
+ 1261 0582 1980     		strh	r1, [r3]	@ movhi
+ 1262              	.LBB9:
+ 229:../src/App.c  **** 
+ 230:../src/App.c  **** 	for(uint8 i=0; i<INPUT_ARRAY_SIZE; ++i)
+ 1263              		.loc 2 230 12
+ 1264 0584 0023     		movs	r3, #0
+ 1265 0586 FB71     		strb	r3, [r7, #7]
+ 1266              		.loc 2 230 2
+ 1267 0588 1AE0     		b	.L65
+ 1268              	.L66:
+ 231:../src/App.c  **** 	{
+ 232:../src/App.c  **** 		configGpio.pinNumber = Input_Array[i].pinNumber;
+ 1269              		.loc 2 232 40 discriminator 3
+ 1270 058a FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 1271 058c 1149     		ldr	r1, .L67+4
+ 1272 058e 1346     		mov	r3, r2
+ 1273 0590 5B00     		lsls	r3, r3, #1
+ 1274 0592 1344     		add	r3, r3, r2
+ 1275 0594 9B00     		lsls	r3, r3, #2
+ 1276 0596 0B44     		add	r3, r3, r1
+ 1277 0598 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1278              		.loc 2 232 24 discriminator 3
+ 1279 059a 3B70     		strb	r3, [r7]
+ 233:../src/App.c  **** 		Gpio_Init(configGpio, Input_Array[i].gpioPort);
+ 1280              		.loc 2 233 3 discriminator 3
+ 1281 059c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 1282 059e 0D49     		ldr	r1, .L67+4
+ 1283 05a0 1346     		mov	r3, r2
+ 1284 05a2 5B00     		lsls	r3, r3, #1
+ 1285 05a4 1344     		add	r3, r3, r2
+ 1286 05a6 9B00     		lsls	r3, r3, #2
+ 1287 05a8 0B44     		add	r3, r3, r1
+ 1288 05aa 0433     		adds	r3, r3, #4
+ 1289 05ac 1B68     		ldr	r3, [r3]
+ 1290 05ae 1A46     		mov	r2, r3
+ 1291 05b0 3B46     		mov	r3, r7
+ 1292 05b2 93E80300 		ldm	r3, {r0, r1}
+ 1293 05b6 FFF7FEFF 		bl	Gpio_Init
+ 230:../src/App.c  **** 	{
+ 1294              		.loc 2 230 37 discriminator 3
+ 1295 05ba FB79     		ldrb	r3, [r7, #7]
+ 1296 05bc 0133     		adds	r3, r3, #1
+ 1297 05be FB71     		strb	r3, [r7, #7]
+ 1298              	.L65:
+ 230:../src/App.c  **** 	{
+ 1299              		.loc 2 230 2 discriminator 1
+ 1300 05c0 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1301 05c2 232B     		cmp	r3, #35
+ 1302 05c4 E1D9     		bls	.L66
+ 1303              	.LBE9:
+ 234:../src/App.c  **** 	}
+ 235:../src/App.c  **** }
+ 1304              		.loc 2 235 1
+ 1305 05c6 00BF     		nop
+ 1306 05c8 00BF     		nop
+ 1307 05ca 0837     		adds	r7, r7, #8
+ 1308              		.cfi_def_cfa_offset 8
+ 1309 05cc BD46     		mov	sp, r7
+ 1310              		.cfi_def_cfa_register 13
+ 1311              		@ sp needed
+ 1312 05ce 80BD     		pop	{r7, pc}
+ 1313              	.L68:
+ 1314              		.align	2
+ 1315              	.L67:
+ 1316 05d0 08000000 		.word	.LC1
+ 1317 05d4 00000000 		.word	Input_Array
+ 1318              		.cfi_endproc
+ 1319              	.LFE141:
+ 1321              		.align	1
+ 1322              		.global	InputPolling
+ 1323              		.syntax unified
+ 1324              		.thumb
+ 1325              		.thumb_func
+ 1327              	InputPolling:
+ 1328              	.LFB142:
+ 236:../src/App.c  **** 
+ 237:../src/App.c  **** void InputPolling(void)
+ 238:../src/App.c  **** {
+ 1329              		.loc 2 238 1
+ 1330              		.cfi_startproc
+ 1331              		@ args = 0, pretend = 0, frame = 8
+ 1332              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1333 05d8 80B5     		push	{r7, lr}
+ 1334              		.cfi_def_cfa_offset 8
+ 1335              		.cfi_offset 7, -8
+ 1336              		.cfi_offset 14, -4
+ 1337 05da 82B0     		sub	sp, sp, #8
+ 1338              		.cfi_def_cfa_offset 16
+ 1339 05dc 00AF     		add	r7, sp, #0
+ 1340              		.cfi_def_cfa_register 7
+ 1341              	.LBB10:
+ 239:../src/App.c  **** 	for(int i=0; i<INPUT_ARRAY_SIZE; ++i)
+ 1342              		.loc 2 239 10
+ 1343 05de 0023     		movs	r3, #0
+ 1344 05e0 7B60     		str	r3, [r7, #4]
+ 1345              		.loc 2 239 2
+ 1346 05e2 6CE0     		b	.L70
+ 1347              	.L73:
+ 1348              	.LBB11:
+ 240:../src/App.c  **** 	{
+ 241:../src/App.c  **** 		uint8 pos;
+ 242:../src/App.c  **** 		if(TRUE == Gpio_Read(Input_Array[i].pinNumber, Input_Array[i].gpioPort))
+ 1349              		.loc 2 242 38
+ 1350 05e4 3A49     		ldr	r1, .L74
+ 1351 05e6 7A68     		ldr	r2, [r7, #4]
+ 1352 05e8 1346     		mov	r3, r2
+ 1353 05ea 5B00     		lsls	r3, r3, #1
+ 1354 05ec 1344     		add	r3, r3, r2
+ 1355 05ee 9B00     		lsls	r3, r3, #2
+ 1356 05f0 0B44     		add	r3, r3, r1
+ 1357 05f2 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 1358              		.loc 2 242 14
+ 1359 05f4 3649     		ldr	r1, .L74
+ 1360 05f6 7A68     		ldr	r2, [r7, #4]
+ 1361 05f8 1346     		mov	r3, r2
+ 1362 05fa 5B00     		lsls	r3, r3, #1
+ 1363 05fc 1344     		add	r3, r3, r2
+ 1364 05fe 9B00     		lsls	r3, r3, #2
+ 1365 0600 0B44     		add	r3, r3, r1
+ 1366 0602 0433     		adds	r3, r3, #4
+ 1367 0604 1B68     		ldr	r3, [r3]
+ 1368 0606 1946     		mov	r1, r3
+ 1369 0608 FFF7FEFF 		bl	Gpio_Read
+ 1370 060c 0346     		mov	r3, r0
+ 1371              		.loc 2 242 5
+ 1372 060e 012B     		cmp	r3, #1
+ 1373 0610 25D1     		bne	.L71
+ 243:../src/App.c  **** 		{
+ 244:../src/App.c  **** 			if(E_NOT_OK == findExistingPos(&pos, Input_Array[i].keyCode))	//if not already written
+ 1374              		.loc 2 244 19
+ 1375 0612 2F49     		ldr	r1, .L74
+ 1376 0614 7A68     		ldr	r2, [r7, #4]
+ 1377 0616 1346     		mov	r3, r2
+ 1378 0618 5B00     		lsls	r3, r3, #1
+ 1379 061a 1344     		add	r3, r3, r2
+ 1380 061c 9B00     		lsls	r3, r3, #2
+ 1381 061e 0B44     		add	r3, r3, r1
+ 1382 0620 0833     		adds	r3, r3, #8
+ 1383 0622 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1384 0624 FB1C     		adds	r3, r7, #3
+ 1385 0626 1146     		mov	r1, r2
+ 1386 0628 1846     		mov	r0, r3
+ 1387 062a FFF7C9FD 		bl	findExistingPos
+ 1388 062e 0346     		mov	r3, r0
+ 1389              		.loc 2 244 6
+ 1390 0630 012B     		cmp	r3, #1
+ 1391 0632 41D1     		bne	.L72
+ 245:../src/App.c  **** 			{
+ 246:../src/App.c  **** 				if(E_OK == findEmptyPos(&pos))	//find an empty position
+ 1392              		.loc 2 246 16
+ 1393 0634 FB1C     		adds	r3, r7, #3
+ 1394 0636 1846     		mov	r0, r3
+ 1395 0638 FFF7A2FD 		bl	findEmptyPos
+ 1396 063c 0346     		mov	r3, r0
+ 1397              		.loc 2 246 7
+ 1398 063e 002B     		cmp	r3, #0
+ 1399 0640 3AD1     		bne	.L72
+ 247:../src/App.c  **** 				{
+ 248:../src/App.c  **** 					USB_buffer[pos] = Input_Array[i].keyCode;
+ 1400              		.loc 2 248 16
+ 1401 0642 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 1402 0644 1846     		mov	r0, r3
+ 1403              		.loc 2 248 38
+ 1404 0646 2249     		ldr	r1, .L74
+ 1405 0648 7A68     		ldr	r2, [r7, #4]
+ 1406 064a 1346     		mov	r3, r2
+ 1407 064c 5B00     		lsls	r3, r3, #1
+ 1408 064e 1344     		add	r3, r3, r2
+ 1409 0650 9B00     		lsls	r3, r3, #2
+ 1410 0652 0B44     		add	r3, r3, r1
+ 1411 0654 0833     		adds	r3, r3, #8
+ 1412 0656 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1413              		.loc 2 248 22
+ 1414 0658 1E4B     		ldr	r3, .L74+4
+ 1415 065a 1A54     		strb	r2, [r3, r0]
+ 1416 065c 2CE0     		b	.L72
+ 1417              	.L71:
+ 249:../src/App.c  **** 				}//else Out of Limits
+ 250:../src/App.c  **** 			}//else already written
+ 251:../src/App.c  **** 		}
+ 252:../src/App.c  **** 		else if(FALSE == Gpio_Read(Input_Array[i].pinNumber, Input_Array[i].gpioPort))
+ 1418              		.loc 2 252 44
+ 1419 065e 1C49     		ldr	r1, .L74
+ 1420 0660 7A68     		ldr	r2, [r7, #4]
+ 1421 0662 1346     		mov	r3, r2
+ 1422 0664 5B00     		lsls	r3, r3, #1
+ 1423 0666 1344     		add	r3, r3, r2
+ 1424 0668 9B00     		lsls	r3, r3, #2
+ 1425 066a 0B44     		add	r3, r3, r1
+ 1426 066c 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 1427              		.loc 2 252 20
+ 1428 066e 1849     		ldr	r1, .L74
+ 1429 0670 7A68     		ldr	r2, [r7, #4]
+ 1430 0672 1346     		mov	r3, r2
+ 1431 0674 5B00     		lsls	r3, r3, #1
+ 1432 0676 1344     		add	r3, r3, r2
+ 1433 0678 9B00     		lsls	r3, r3, #2
+ 1434 067a 0B44     		add	r3, r3, r1
+ 1435 067c 0433     		adds	r3, r3, #4
+ 1436 067e 1B68     		ldr	r3, [r3]
+ 1437 0680 1946     		mov	r1, r3
+ 1438 0682 FFF7FEFF 		bl	Gpio_Read
+ 1439 0686 0346     		mov	r3, r0
+ 1440              		.loc 2 252 10
+ 1441 0688 002B     		cmp	r3, #0
+ 1442 068a 15D1     		bne	.L72
+ 253:../src/App.c  **** 		{
+ 254:../src/App.c  **** 			if(E_OK == findExistingPos(&pos, Input_Array[i].keyCode))
+ 1443              		.loc 2 254 15
+ 1444 068c 1049     		ldr	r1, .L74
+ 1445 068e 7A68     		ldr	r2, [r7, #4]
+ 1446 0690 1346     		mov	r3, r2
+ 1447 0692 5B00     		lsls	r3, r3, #1
+ 1448 0694 1344     		add	r3, r3, r2
+ 1449 0696 9B00     		lsls	r3, r3, #2
+ 1450 0698 0B44     		add	r3, r3, r1
+ 1451 069a 0833     		adds	r3, r3, #8
+ 1452 069c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1453 069e FB1C     		adds	r3, r7, #3
+ 1454 06a0 1146     		mov	r1, r2
+ 1455 06a2 1846     		mov	r0, r3
+ 1456 06a4 FFF78CFD 		bl	findExistingPos
+ 1457 06a8 0346     		mov	r3, r0
+ 1458              		.loc 2 254 6
+ 1459 06aa 002B     		cmp	r3, #0
+ 1460 06ac 04D1     		bne	.L72
+ 255:../src/App.c  **** 			{
+ 256:../src/App.c  **** 				USB_buffer[pos] = (uint8)0u;
+ 1461              		.loc 2 256 15
+ 1462 06ae FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 1463 06b0 1A46     		mov	r2, r3
+ 1464              		.loc 2 256 21
+ 1465 06b2 084B     		ldr	r3, .L74+4
+ 1466 06b4 0021     		movs	r1, #0
+ 1467 06b6 9954     		strb	r1, [r3, r2]
+ 1468              	.L72:
+ 1469              	.LBE11:
+ 239:../src/App.c  **** 	{
+ 1470              		.loc 2 239 35 discriminator 1
+ 1471 06b8 7B68     		ldr	r3, [r7, #4]
+ 1472 06ba 0133     		adds	r3, r3, #1
+ 1473 06bc 7B60     		str	r3, [r7, #4]
+ 1474              	.L70:
+ 239:../src/App.c  **** 	{
+ 1475              		.loc 2 239 16 discriminator 2
+ 1476 06be 7B68     		ldr	r3, [r7, #4]
+ 239:../src/App.c  **** 	{
+ 1477              		.loc 2 239 2 discriminator 2
+ 1478 06c0 232B     		cmp	r3, #35
+ 1479 06c2 8FD9     		bls	.L73
+ 1480              	.LBE10:
+ 257:../src/App.c  **** 			}
+ 258:../src/App.c  **** 		}
+ 259:../src/App.c  **** 	}
+ 260:../src/App.c  **** }
+ 1481              		.loc 2 260 1
+ 1482 06c4 00BF     		nop
+ 1483 06c6 00BF     		nop
+ 1484 06c8 0837     		adds	r7, r7, #8
+ 1485              		.cfi_def_cfa_offset 8
+ 1486 06ca BD46     		mov	sp, r7
+ 1487              		.cfi_def_cfa_register 13
+ 1488              		@ sp needed
+ 1489 06cc 80BD     		pop	{r7, pc}
+ 1490              	.L75:
+ 1491 06ce 00BF     		.align	2
+ 1492              	.L74:
+ 1493 06d0 00000000 		.word	Input_Array
+ 1494 06d4 00000000 		.word	USB_buffer
+ 1495              		.cfi_endproc
+ 1496              	.LFE142:
+ 1498              		.align	1
+ 1499              		.global	EXTI0_IRQHandler
+ 1500              		.syntax unified
+ 1501              		.thumb
+ 1502              		.thumb_func
+ 1504              	EXTI0_IRQHandler:
+ 1505              	.LFB143:
+ 261:../src/App.c  **** 
+ 262:../src/App.c  **** void EXTI0_IRQHandler(void)
+ 263:../src/App.c  **** {
+ 1506              		.loc 2 263 1
+ 1507              		.cfi_startproc
+ 1508              		@ args = 0, pretend = 0, frame = 0
+ 1509              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1510              		@ link register save eliminated.
+ 1511 06d8 80B4     		push	{r7}
+ 1512              		.cfi_def_cfa_offset 4
+ 1513              		.cfi_offset 7, -4
+ 1514 06da 00AF     		add	r7, sp, #0
+ 1515              		.cfi_def_cfa_register 7
+ 264:../src/App.c  **** 	InputArray[0] = TRUE;
+ 1516              		.loc 2 264 16
+ 1517 06dc 064B     		ldr	r3, .L77
+ 1518 06de 0122     		movs	r2, #1
+ 1519 06e0 1A70     		strb	r2, [r3]
+ 265:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR0;
+ 1520              		.loc 2 265 11
+ 1521 06e2 064B     		ldr	r3, .L77+4
+ 1522 06e4 5B69     		ldr	r3, [r3, #20]
+ 1523 06e6 054A     		ldr	r2, .L77+4
+ 1524 06e8 43F00103 		orr	r3, r3, #1
+ 1525 06ec 5361     		str	r3, [r2, #20]
+ 266:../src/App.c  **** }
+ 1526              		.loc 2 266 1
+ 1527 06ee 00BF     		nop
+ 1528 06f0 BD46     		mov	sp, r7
+ 1529              		.cfi_def_cfa_register 13
+ 1530              		@ sp needed
+ 1531 06f2 80BC     		pop	{r7}
+ 1532              		.cfi_restore 7
+ 1533              		.cfi_def_cfa_offset 0
+ 1534 06f4 7047     		bx	lr
+ 1535              	.L78:
+ 1536 06f6 00BF     		.align	2
+ 1537              	.L77:
+ 1538 06f8 00000000 		.word	InputArray
+ 1539 06fc 003C0140 		.word	1073822720
+ 1540              		.cfi_endproc
+ 1541              	.LFE143:
+ 1543              		.align	1
+ 1544              		.global	EXTI1_IRQHandler
+ 1545              		.syntax unified
+ 1546              		.thumb
+ 1547              		.thumb_func
+ 1549              	EXTI1_IRQHandler:
+ 1550              	.LFB144:
+ 267:../src/App.c  **** 
+ 268:../src/App.c  **** void EXTI1_IRQHandler(void)
+ 269:../src/App.c  **** {
+ 1551              		.loc 2 269 1
+ 1552              		.cfi_startproc
+ 1553              		@ args = 0, pretend = 0, frame = 0
+ 1554              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1555              		@ link register save eliminated.
+ 1556 0700 80B4     		push	{r7}
+ 1557              		.cfi_def_cfa_offset 4
+ 1558              		.cfi_offset 7, -4
+ 1559 0702 00AF     		add	r7, sp, #0
+ 1560              		.cfi_def_cfa_register 7
+ 270:../src/App.c  **** 	InputArray[1] = TRUE;
+ 1561              		.loc 2 270 16
+ 1562 0704 064B     		ldr	r3, .L80
+ 1563 0706 0122     		movs	r2, #1
+ 1564 0708 5A70     		strb	r2, [r3, #1]
+ 271:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR1;
+ 1565              		.loc 2 271 11
+ 1566 070a 064B     		ldr	r3, .L80+4
+ 1567 070c 5B69     		ldr	r3, [r3, #20]
+ 1568 070e 054A     		ldr	r2, .L80+4
+ 1569 0710 43F00203 		orr	r3, r3, #2
+ 1570 0714 5361     		str	r3, [r2, #20]
+ 272:../src/App.c  **** }
+ 1571              		.loc 2 272 1
+ 1572 0716 00BF     		nop
+ 1573 0718 BD46     		mov	sp, r7
+ 1574              		.cfi_def_cfa_register 13
+ 1575              		@ sp needed
+ 1576 071a 80BC     		pop	{r7}
+ 1577              		.cfi_restore 7
+ 1578              		.cfi_def_cfa_offset 0
+ 1579 071c 7047     		bx	lr
+ 1580              	.L81:
+ 1581 071e 00BF     		.align	2
+ 1582              	.L80:
+ 1583 0720 00000000 		.word	InputArray
+ 1584 0724 003C0140 		.word	1073822720
+ 1585              		.cfi_endproc
+ 1586              	.LFE144:
+ 1588              		.align	1
+ 1589              		.global	EXTI2_IRQHandler
+ 1590              		.syntax unified
+ 1591              		.thumb
+ 1592              		.thumb_func
+ 1594              	EXTI2_IRQHandler:
+ 1595              	.LFB145:
+ 273:../src/App.c  **** 
+ 274:../src/App.c  **** void EXTI2_IRQHandler(void)
+ 275:../src/App.c  **** {
+ 1596              		.loc 2 275 1
+ 1597              		.cfi_startproc
+ 1598              		@ args = 0, pretend = 0, frame = 0
+ 1599              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1600              		@ link register save eliminated.
+ 1601 0728 80B4     		push	{r7}
+ 1602              		.cfi_def_cfa_offset 4
+ 1603              		.cfi_offset 7, -4
+ 1604 072a 00AF     		add	r7, sp, #0
+ 1605              		.cfi_def_cfa_register 7
+ 276:../src/App.c  **** 	InputArray[2] = TRUE;
+ 1606              		.loc 2 276 16
+ 1607 072c 064B     		ldr	r3, .L83
+ 1608 072e 0122     		movs	r2, #1
+ 1609 0730 9A70     		strb	r2, [r3, #2]
+ 277:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR2;
+ 1610              		.loc 2 277 11
+ 1611 0732 064B     		ldr	r3, .L83+4
+ 1612 0734 5B69     		ldr	r3, [r3, #20]
+ 1613 0736 054A     		ldr	r2, .L83+4
+ 1614 0738 43F00403 		orr	r3, r3, #4
+ 1615 073c 5361     		str	r3, [r2, #20]
+ 278:../src/App.c  **** }
+ 1616              		.loc 2 278 1
+ 1617 073e 00BF     		nop
+ 1618 0740 BD46     		mov	sp, r7
+ 1619              		.cfi_def_cfa_register 13
+ 1620              		@ sp needed
+ 1621 0742 80BC     		pop	{r7}
+ 1622              		.cfi_restore 7
+ 1623              		.cfi_def_cfa_offset 0
+ 1624 0744 7047     		bx	lr
+ 1625              	.L84:
+ 1626 0746 00BF     		.align	2
+ 1627              	.L83:
+ 1628 0748 00000000 		.word	InputArray
+ 1629 074c 003C0140 		.word	1073822720
+ 1630              		.cfi_endproc
+ 1631              	.LFE145:
+ 1633              		.align	1
+ 1634              		.global	EXTI3_IRQHandler
+ 1635              		.syntax unified
+ 1636              		.thumb
+ 1637              		.thumb_func
+ 1639              	EXTI3_IRQHandler:
+ 1640              	.LFB146:
+ 279:../src/App.c  **** 
+ 280:../src/App.c  **** void EXTI3_IRQHandler(void)
+ 281:../src/App.c  **** {
+ 1641              		.loc 2 281 1
+ 1642              		.cfi_startproc
+ 1643              		@ args = 0, pretend = 0, frame = 0
+ 1644              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1645              		@ link register save eliminated.
+ 1646 0750 80B4     		push	{r7}
+ 1647              		.cfi_def_cfa_offset 4
+ 1648              		.cfi_offset 7, -4
+ 1649 0752 00AF     		add	r7, sp, #0
+ 1650              		.cfi_def_cfa_register 7
+ 282:../src/App.c  **** 	InputArray[3] = TRUE;
+ 1651              		.loc 2 282 16
+ 1652 0754 064B     		ldr	r3, .L86
+ 1653 0756 0122     		movs	r2, #1
+ 1654 0758 DA70     		strb	r2, [r3, #3]
+ 283:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR3;
+ 1655              		.loc 2 283 11
+ 1656 075a 064B     		ldr	r3, .L86+4
+ 1657 075c 5B69     		ldr	r3, [r3, #20]
+ 1658 075e 054A     		ldr	r2, .L86+4
+ 1659 0760 43F00803 		orr	r3, r3, #8
+ 1660 0764 5361     		str	r3, [r2, #20]
+ 284:../src/App.c  **** }
+ 1661              		.loc 2 284 1
+ 1662 0766 00BF     		nop
+ 1663 0768 BD46     		mov	sp, r7
+ 1664              		.cfi_def_cfa_register 13
+ 1665              		@ sp needed
+ 1666 076a 80BC     		pop	{r7}
+ 1667              		.cfi_restore 7
+ 1668              		.cfi_def_cfa_offset 0
+ 1669 076c 7047     		bx	lr
+ 1670              	.L87:
+ 1671 076e 00BF     		.align	2
+ 1672              	.L86:
+ 1673 0770 00000000 		.word	InputArray
+ 1674 0774 003C0140 		.word	1073822720
+ 1675              		.cfi_endproc
+ 1676              	.LFE146:
+ 1678              		.align	1
+ 1679              		.global	EXTI4_IRQHandler
+ 1680              		.syntax unified
+ 1681              		.thumb
+ 1682              		.thumb_func
+ 1684              	EXTI4_IRQHandler:
+ 1685              	.LFB147:
+ 285:../src/App.c  **** 
+ 286:../src/App.c  **** void EXTI4_IRQHandler(void)
+ 287:../src/App.c  **** {
+ 1686              		.loc 2 287 1
+ 1687              		.cfi_startproc
+ 1688              		@ args = 0, pretend = 0, frame = 0
+ 1689              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1690              		@ link register save eliminated.
+ 1691 0778 80B4     		push	{r7}
+ 1692              		.cfi_def_cfa_offset 4
+ 1693              		.cfi_offset 7, -4
+ 1694 077a 00AF     		add	r7, sp, #0
+ 1695              		.cfi_def_cfa_register 7
+ 288:../src/App.c  **** 	InputArray[4] = TRUE;
+ 1696              		.loc 2 288 16
+ 1697 077c 064B     		ldr	r3, .L89
+ 1698 077e 0122     		movs	r2, #1
+ 1699 0780 1A71     		strb	r2, [r3, #4]
+ 289:../src/App.c  **** 	EXTI->PR |=  EXTI_PR_PR4;
+ 1700              		.loc 2 289 11
+ 1701 0782 064B     		ldr	r3, .L89+4
+ 1702 0784 5B69     		ldr	r3, [r3, #20]
+ 1703 0786 054A     		ldr	r2, .L89+4
+ 1704 0788 43F01003 		orr	r3, r3, #16
+ 1705 078c 5361     		str	r3, [r2, #20]
+ 290:../src/App.c  **** }
+ 1706              		.loc 2 290 1
+ 1707 078e 00BF     		nop
+ 1708 0790 BD46     		mov	sp, r7
+ 1709              		.cfi_def_cfa_register 13
+ 1710              		@ sp needed
+ 1711 0792 80BC     		pop	{r7}
+ 1712              		.cfi_restore 7
+ 1713              		.cfi_def_cfa_offset 0
+ 1714 0794 7047     		bx	lr
+ 1715              	.L90:
+ 1716 0796 00BF     		.align	2
+ 1717              	.L89:
+ 1718 0798 00000000 		.word	InputArray
+ 1719 079c 003C0140 		.word	1073822720
+ 1720              		.cfi_endproc
+ 1721              	.LFE147:
+ 1723              		.align	1
+ 1724              		.global	EXTI9_5_IRQHandler
+ 1725              		.syntax unified
+ 1726              		.thumb
+ 1727              		.thumb_func
+ 1729              	EXTI9_5_IRQHandler:
+ 1730              	.LFB148:
+ 291:../src/App.c  **** 
+ 292:../src/App.c  **** void EXTI9_5_IRQHandler(void)
+ 293:../src/App.c  **** {
+ 1731              		.loc 2 293 1
+ 1732              		.cfi_startproc
+ 1733              		@ args = 0, pretend = 0, frame = 0
+ 1734              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1735              		@ link register save eliminated.
+ 1736 07a0 80B4     		push	{r7}
+ 1737              		.cfi_def_cfa_offset 4
+ 1738              		.cfi_offset 7, -4
+ 1739 07a2 00AF     		add	r7, sp, #0
+ 1740              		.cfi_def_cfa_register 7
+ 294:../src/App.c  **** 	if(EXTI_PR_PR5 == (EXTI->PR & EXTI_PR_PR5))
+ 1741              		.loc 2 294 25
+ 1742 07a4 284B     		ldr	r3, .L98
+ 1743 07a6 5B69     		ldr	r3, [r3, #20]
+ 1744              		.loc 2 294 30
+ 1745 07a8 03F02003 		and	r3, r3, #32
+ 1746              		.loc 2 294 4
+ 1747 07ac 202B     		cmp	r3, #32
+ 1748 07ae 08D1     		bne	.L92
+ 295:../src/App.c  **** 	{
+ 296:../src/App.c  **** 		InputArray[5] = TRUE;
+ 1749              		.loc 2 296 17
+ 1750 07b0 264B     		ldr	r3, .L98+4
+ 1751 07b2 0122     		movs	r2, #1
+ 1752 07b4 5A71     		strb	r2, [r3, #5]
+ 297:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR5;
+ 1753              		.loc 2 297 12
+ 1754 07b6 244B     		ldr	r3, .L98
+ 1755 07b8 5B69     		ldr	r3, [r3, #20]
+ 1756 07ba 234A     		ldr	r2, .L98
+ 1757 07bc 43F02003 		orr	r3, r3, #32
+ 1758 07c0 5361     		str	r3, [r2, #20]
+ 1759              	.L92:
+ 298:../src/App.c  **** 	}
+ 299:../src/App.c  **** 	if(EXTI_PR_PR6 == (EXTI->PR & EXTI_PR_PR6))
+ 1760              		.loc 2 299 25
+ 1761 07c2 214B     		ldr	r3, .L98
+ 1762 07c4 5B69     		ldr	r3, [r3, #20]
+ 1763              		.loc 2 299 30
+ 1764 07c6 03F04003 		and	r3, r3, #64
+ 1765              		.loc 2 299 4
+ 1766 07ca 402B     		cmp	r3, #64
+ 1767 07cc 08D1     		bne	.L93
+ 300:../src/App.c  **** 	{
+ 301:../src/App.c  **** 		InputArray[6] = TRUE;
+ 1768              		.loc 2 301 17
+ 1769 07ce 1F4B     		ldr	r3, .L98+4
+ 1770 07d0 0122     		movs	r2, #1
+ 1771 07d2 9A71     		strb	r2, [r3, #6]
+ 302:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR6;
+ 1772              		.loc 2 302 12
+ 1773 07d4 1C4B     		ldr	r3, .L98
+ 1774 07d6 5B69     		ldr	r3, [r3, #20]
+ 1775 07d8 1B4A     		ldr	r2, .L98
+ 1776 07da 43F04003 		orr	r3, r3, #64
+ 1777 07de 5361     		str	r3, [r2, #20]
+ 1778              	.L93:
+ 303:../src/App.c  **** 	}
+ 304:../src/App.c  **** 	if(EXTI_PR_PR7 == (EXTI->PR & EXTI_PR_PR7))
+ 1779              		.loc 2 304 25
+ 1780 07e0 194B     		ldr	r3, .L98
+ 1781 07e2 5B69     		ldr	r3, [r3, #20]
+ 1782              		.loc 2 304 30
+ 1783 07e4 03F08003 		and	r3, r3, #128
+ 1784              		.loc 2 304 4
+ 1785 07e8 802B     		cmp	r3, #128
+ 1786 07ea 08D1     		bne	.L94
+ 305:../src/App.c  **** 	{
+ 306:../src/App.c  **** 		InputArray[7] = TRUE;
+ 1787              		.loc 2 306 17
+ 1788 07ec 174B     		ldr	r3, .L98+4
+ 1789 07ee 0122     		movs	r2, #1
+ 1790 07f0 DA71     		strb	r2, [r3, #7]
+ 307:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR7;
+ 1791              		.loc 2 307 12
+ 1792 07f2 154B     		ldr	r3, .L98
+ 1793 07f4 5B69     		ldr	r3, [r3, #20]
+ 1794 07f6 144A     		ldr	r2, .L98
+ 1795 07f8 43F08003 		orr	r3, r3, #128
+ 1796 07fc 5361     		str	r3, [r2, #20]
+ 1797              	.L94:
+ 308:../src/App.c  **** 	}
+ 309:../src/App.c  **** 	if(EXTI_PR_PR8 == (EXTI->PR & EXTI_PR_PR8))
+ 1798              		.loc 2 309 25
+ 1799 07fe 124B     		ldr	r3, .L98
+ 1800 0800 5B69     		ldr	r3, [r3, #20]
+ 1801              		.loc 2 309 30
+ 1802 0802 03F48073 		and	r3, r3, #256
+ 1803              		.loc 2 309 4
+ 1804 0806 B3F5807F 		cmp	r3, #256
+ 1805 080a 08D1     		bne	.L95
+ 310:../src/App.c  **** 	{
+ 311:../src/App.c  **** 		InputArray[8] = TRUE;
+ 1806              		.loc 2 311 17
+ 1807 080c 0F4B     		ldr	r3, .L98+4
+ 1808 080e 0122     		movs	r2, #1
+ 1809 0810 1A72     		strb	r2, [r3, #8]
+ 312:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR8;
+ 1810              		.loc 2 312 12
+ 1811 0812 0D4B     		ldr	r3, .L98
+ 1812 0814 5B69     		ldr	r3, [r3, #20]
+ 1813 0816 0C4A     		ldr	r2, .L98
+ 1814 0818 43F48073 		orr	r3, r3, #256
+ 1815 081c 5361     		str	r3, [r2, #20]
+ 1816              	.L95:
+ 313:../src/App.c  **** 	}
+ 314:../src/App.c  **** 	if(EXTI_PR_PR9 == (EXTI->PR & EXTI_PR_PR9))
+ 1817              		.loc 2 314 25
+ 1818 081e 0A4B     		ldr	r3, .L98
+ 1819 0820 5B69     		ldr	r3, [r3, #20]
+ 1820              		.loc 2 314 30
+ 1821 0822 03F40073 		and	r3, r3, #512
+ 1822              		.loc 2 314 4
+ 1823 0826 B3F5007F 		cmp	r3, #512
+ 1824 082a 08D1     		bne	.L97
+ 315:../src/App.c  **** 	{
+ 316:../src/App.c  **** 		InputArray[9] = TRUE;
+ 1825              		.loc 2 316 17
+ 1826 082c 074B     		ldr	r3, .L98+4
+ 1827 082e 0122     		movs	r2, #1
+ 1828 0830 5A72     		strb	r2, [r3, #9]
+ 317:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR9;
+ 1829              		.loc 2 317 12
+ 1830 0832 054B     		ldr	r3, .L98
+ 1831 0834 5B69     		ldr	r3, [r3, #20]
+ 1832 0836 044A     		ldr	r2, .L98
+ 1833 0838 43F40073 		orr	r3, r3, #512
+ 1834 083c 5361     		str	r3, [r2, #20]
+ 1835              	.L97:
+ 318:../src/App.c  **** 	}
+ 319:../src/App.c  **** }
+ 1836              		.loc 2 319 1
+ 1837 083e 00BF     		nop
+ 1838 0840 BD46     		mov	sp, r7
+ 1839              		.cfi_def_cfa_register 13
+ 1840              		@ sp needed
+ 1841 0842 80BC     		pop	{r7}
+ 1842              		.cfi_restore 7
+ 1843              		.cfi_def_cfa_offset 0
+ 1844 0844 7047     		bx	lr
+ 1845              	.L99:
+ 1846 0846 00BF     		.align	2
+ 1847              	.L98:
+ 1848 0848 003C0140 		.word	1073822720
+ 1849 084c 00000000 		.word	InputArray
+ 1850              		.cfi_endproc
+ 1851              	.LFE148:
+ 1853              		.align	1
+ 1854              		.global	EXTI15_10_IRQHandler
+ 1855              		.syntax unified
+ 1856              		.thumb
+ 1857              		.thumb_func
+ 1859              	EXTI15_10_IRQHandler:
+ 1860              	.LFB149:
+ 320:../src/App.c  **** 
+ 321:../src/App.c  **** void EXTI15_10_IRQHandler(void)
+ 322:../src/App.c  **** {
+ 1861              		.loc 2 322 1
+ 1862              		.cfi_startproc
+ 1863              		@ args = 0, pretend = 0, frame = 0
+ 1864              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1865              		@ link register save eliminated.
+ 1866 0850 80B4     		push	{r7}
+ 1867              		.cfi_def_cfa_offset 4
+ 1868              		.cfi_offset 7, -4
+ 1869 0852 00AF     		add	r7, sp, #0
+ 1870              		.cfi_def_cfa_register 7
+ 323:../src/App.c  **** 	if(EXTI_PR_PR10 == (EXTI->PR & EXTI_PR_PR10))
+ 1871              		.loc 2 323 26
+ 1872 0854 314B     		ldr	r3, .L108
+ 1873 0856 5B69     		ldr	r3, [r3, #20]
+ 1874              		.loc 2 323 31
+ 1875 0858 03F48063 		and	r3, r3, #1024
+ 1876              		.loc 2 323 4
+ 1877 085c B3F5806F 		cmp	r3, #1024
+ 1878 0860 08D1     		bne	.L101
+ 324:../src/App.c  **** 	{
+ 325:../src/App.c  **** 		InputArray[10] = TRUE;
+ 1879              		.loc 2 325 18
+ 1880 0862 2F4B     		ldr	r3, .L108+4
+ 1881 0864 0122     		movs	r2, #1
+ 1882 0866 9A72     		strb	r2, [r3, #10]
+ 326:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR10;
+ 1883              		.loc 2 326 12
+ 1884 0868 2C4B     		ldr	r3, .L108
+ 1885 086a 5B69     		ldr	r3, [r3, #20]
+ 1886 086c 2B4A     		ldr	r2, .L108
+ 1887 086e 43F48063 		orr	r3, r3, #1024
+ 1888 0872 5361     		str	r3, [r2, #20]
+ 1889              	.L101:
+ 327:../src/App.c  **** 	}
+ 328:../src/App.c  **** 	if(EXTI_PR_PR11 == (EXTI->PR & EXTI_PR_PR11))
+ 1890              		.loc 2 328 26
+ 1891 0874 294B     		ldr	r3, .L108
+ 1892 0876 5B69     		ldr	r3, [r3, #20]
+ 1893              		.loc 2 328 31
+ 1894 0878 03F40063 		and	r3, r3, #2048
+ 1895              		.loc 2 328 4
+ 1896 087c B3F5006F 		cmp	r3, #2048
+ 1897 0880 08D1     		bne	.L102
+ 329:../src/App.c  **** 	{
+ 330:../src/App.c  **** 		InputArray[11] = TRUE;
+ 1898              		.loc 2 330 18
+ 1899 0882 274B     		ldr	r3, .L108+4
+ 1900 0884 0122     		movs	r2, #1
+ 1901 0886 DA72     		strb	r2, [r3, #11]
+ 331:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR11;
+ 1902              		.loc 2 331 12
+ 1903 0888 244B     		ldr	r3, .L108
+ 1904 088a 5B69     		ldr	r3, [r3, #20]
+ 1905 088c 234A     		ldr	r2, .L108
+ 1906 088e 43F40063 		orr	r3, r3, #2048
+ 1907 0892 5361     		str	r3, [r2, #20]
+ 1908              	.L102:
+ 332:../src/App.c  **** 	}
+ 333:../src/App.c  **** 	if(EXTI_PR_PR12 == (EXTI->PR & EXTI_PR_PR12))
+ 1909              		.loc 2 333 26
+ 1910 0894 214B     		ldr	r3, .L108
+ 1911 0896 5B69     		ldr	r3, [r3, #20]
+ 1912              		.loc 2 333 31
+ 1913 0898 03F48053 		and	r3, r3, #4096
+ 1914              		.loc 2 333 4
+ 1915 089c B3F5805F 		cmp	r3, #4096
+ 1916 08a0 08D1     		bne	.L103
+ 334:../src/App.c  **** 	{
+ 335:../src/App.c  **** 		InputArray[12] = TRUE;
+ 1917              		.loc 2 335 18
+ 1918 08a2 1F4B     		ldr	r3, .L108+4
+ 1919 08a4 0122     		movs	r2, #1
+ 1920 08a6 1A73     		strb	r2, [r3, #12]
+ 336:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR12;
+ 1921              		.loc 2 336 12
+ 1922 08a8 1C4B     		ldr	r3, .L108
+ 1923 08aa 5B69     		ldr	r3, [r3, #20]
+ 1924 08ac 1B4A     		ldr	r2, .L108
+ 1925 08ae 43F48053 		orr	r3, r3, #4096
+ 1926 08b2 5361     		str	r3, [r2, #20]
+ 1927              	.L103:
+ 337:../src/App.c  **** 	}
+ 338:../src/App.c  **** 	if(EXTI_PR_PR13 == (EXTI->PR & EXTI_PR_PR13))
+ 1928              		.loc 2 338 26
+ 1929 08b4 194B     		ldr	r3, .L108
+ 1930 08b6 5B69     		ldr	r3, [r3, #20]
+ 1931              		.loc 2 338 31
+ 1932 08b8 03F40053 		and	r3, r3, #8192
+ 1933              		.loc 2 338 4
+ 1934 08bc B3F5005F 		cmp	r3, #8192
+ 1935 08c0 08D1     		bne	.L104
+ 339:../src/App.c  **** 	{
+ 340:../src/App.c  **** 		InputArray[13] = TRUE;
+ 1936              		.loc 2 340 18
+ 1937 08c2 174B     		ldr	r3, .L108+4
+ 1938 08c4 0122     		movs	r2, #1
+ 1939 08c6 5A73     		strb	r2, [r3, #13]
+ 341:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR13;
+ 1940              		.loc 2 341 12
+ 1941 08c8 144B     		ldr	r3, .L108
+ 1942 08ca 5B69     		ldr	r3, [r3, #20]
+ 1943 08cc 134A     		ldr	r2, .L108
+ 1944 08ce 43F40053 		orr	r3, r3, #8192
+ 1945 08d2 5361     		str	r3, [r2, #20]
+ 1946              	.L104:
+ 342:../src/App.c  **** 	}
+ 343:../src/App.c  **** 	if(EXTI_PR_PR14 == (EXTI->PR & EXTI_PR_PR14))
+ 1947              		.loc 2 343 26
+ 1948 08d4 114B     		ldr	r3, .L108
+ 1949 08d6 5B69     		ldr	r3, [r3, #20]
+ 1950              		.loc 2 343 31
+ 1951 08d8 03F48043 		and	r3, r3, #16384
+ 1952              		.loc 2 343 4
+ 1953 08dc B3F5804F 		cmp	r3, #16384
+ 1954 08e0 08D1     		bne	.L105
+ 344:../src/App.c  **** 	{
+ 345:../src/App.c  **** 		InputArray[14] = TRUE;
+ 1955              		.loc 2 345 18
+ 1956 08e2 0F4B     		ldr	r3, .L108+4
+ 1957 08e4 0122     		movs	r2, #1
+ 1958 08e6 9A73     		strb	r2, [r3, #14]
+ 346:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR14;
+ 1959              		.loc 2 346 12
+ 1960 08e8 0C4B     		ldr	r3, .L108
+ 1961 08ea 5B69     		ldr	r3, [r3, #20]
+ 1962 08ec 0B4A     		ldr	r2, .L108
+ 1963 08ee 43F48043 		orr	r3, r3, #16384
+ 1964 08f2 5361     		str	r3, [r2, #20]
+ 1965              	.L105:
+ 347:../src/App.c  **** 	}
+ 348:../src/App.c  **** 	if(EXTI_PR_PR15 == (EXTI->PR & EXTI_PR_PR15))
+ 1966              		.loc 2 348 26
+ 1967 08f4 094B     		ldr	r3, .L108
+ 1968 08f6 5B69     		ldr	r3, [r3, #20]
+ 1969              		.loc 2 348 31
+ 1970 08f8 03F40043 		and	r3, r3, #32768
+ 1971              		.loc 2 348 4
+ 1972 08fc B3F5004F 		cmp	r3, #32768
+ 1973 0900 08D1     		bne	.L107
+ 349:../src/App.c  **** 	{
+ 350:../src/App.c  **** 		InputArray[15] = TRUE;
+ 1974              		.loc 2 350 18
+ 1975 0902 074B     		ldr	r3, .L108+4
+ 1976 0904 0122     		movs	r2, #1
+ 1977 0906 DA73     		strb	r2, [r3, #15]
+ 351:../src/App.c  **** 		EXTI->PR |=  EXTI_PR_PR15;
+ 1978              		.loc 2 351 12
+ 1979 0908 044B     		ldr	r3, .L108
+ 1980 090a 5B69     		ldr	r3, [r3, #20]
+ 1981 090c 034A     		ldr	r2, .L108
+ 1982 090e 43F40043 		orr	r3, r3, #32768
+ 1983 0912 5361     		str	r3, [r2, #20]
+ 1984              	.L107:
+ 352:../src/App.c  **** 	}
+ 353:../src/App.c  **** }
+ 1985              		.loc 2 353 1
+ 1986 0914 00BF     		nop
+ 1987 0916 BD46     		mov	sp, r7
+ 1988              		.cfi_def_cfa_register 13
+ 1989              		@ sp needed
+ 1990 0918 80BC     		pop	{r7}
+ 1991              		.cfi_restore 7
+ 1992              		.cfi_def_cfa_offset 0
+ 1993 091a 7047     		bx	lr
+ 1994              	.L109:
+ 1995              		.align	2
+ 1996              	.L108:
+ 1997 091c 003C0140 		.word	1073822720
+ 1998 0920 00000000 		.word	InputArray
+ 1999              		.cfi_endproc
+ 2000              	.LFE149:
+ 2002              	.Letext0:
+ 2003              		.file 3 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
+ 2004              		.file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 2005              		.file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 2006              		.file 6 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
+ 2007              		.file 7 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
+ 2008              		.file 8 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
+ 2009              		.file 9 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
 DEFINED SYMBOLS
                             *ABS*:00000000 App.c
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:17     .text:00000000 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:22     .text:00000000 __NVIC_EnableIRQ
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:74     .text:00000034 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:78     .text:00000038 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:83     .text:00000038 __NVIC_SetPriority
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:151    .text:00000084 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:161    .bss:00000000 InputArray
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:158    .bss:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:167    .bss:00000010 USB_buffer
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:174    .data:00000000 Exti_Array
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:171    .data:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:259    .data:000000c0 Input_Array
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:441    .text:0000008c $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:446    .text:0000008c Enable_Exti_Interrupt
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:484    .text:000000b4 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:500    .text:000000f4 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:597    .text:0000017c $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:601    .text:00000180 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:606    .text:00000180 findEmptyPos
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:670    .text:000001bc $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:674    .text:000001c0 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:679    .text:000001c0 findExistingPos
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:746    .text:00000200 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:751    .rodata:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:760    .text:00000204 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:766    .text:00000204 Exti_Init
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1155   .text:00000494 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1169   .text:000004c4 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1279   .text:00000568 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1294   .text:00000570 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1300   .text:00000570 Input_Init
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1375   .text:000005d0 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1380   .text:000005d8 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1386   .text:000005d8 InputPolling
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1552   .text:000006d0 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1557   .text:000006d8 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1563   .text:000006d8 EXTI0_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1597   .text:000006f8 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1602   .text:00000700 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1608   .text:00000700 EXTI1_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1642   .text:00000720 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1647   .text:00000728 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1653   .text:00000728 EXTI2_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1687   .text:00000748 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1692   .text:00000750 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1698   .text:00000750 EXTI3_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1732   .text:00000770 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1737   .text:00000778 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1743   .text:00000778 EXTI4_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1777   .text:00000798 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1782   .text:000007a0 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1788   .text:000007a0 EXTI9_5_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1907   .text:00000848 $d
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1912   .text:00000850 $t
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:1918   .text:00000850 EXTI15_10_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccz89UM2.s:2056   .text:0000091c $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:17     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:22     .text:00000000 __NVIC_EnableIRQ
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:74     .text:00000034 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:78     .text:00000038 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:83     .text:00000038 __NVIC_SetPriority
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:151    .text:00000084 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:161    .bss:00000000 InputArray
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:158    .bss:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:167    .bss:00000010 USB_buffer
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:174    .data:00000000 Exti_Array
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:171    .data:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:259    .data:000000c0 Input_Array
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:382    .text:0000008c $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:387    .text:0000008c Enable_Exti_Interrupt
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:425    .text:000000b4 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:441    .text:000000f4 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:538    .text:0000017c $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:542    .text:00000180 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:547    .text:00000180 findEmptyPos
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:611    .text:000001bc $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:615    .text:000001c0 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:620    .text:000001c0 findExistingPos
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:687    .text:00000200 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:692    .rodata:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:701    .text:00000204 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:707    .text:00000204 Exti_Init
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1096   .text:00000494 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1110   .text:000004c4 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1220   .text:00000568 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1235   .text:00000570 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1241   .text:00000570 Input_Init
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1316   .text:000005d0 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1321   .text:000005d8 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1327   .text:000005d8 InputPolling
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1493   .text:000006d0 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1498   .text:000006d8 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1504   .text:000006d8 EXTI0_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1538   .text:000006f8 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1543   .text:00000700 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1549   .text:00000700 EXTI1_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1583   .text:00000720 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1588   .text:00000728 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1594   .text:00000728 EXTI2_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1628   .text:00000748 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1633   .text:00000750 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1639   .text:00000750 EXTI3_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1673   .text:00000770 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1678   .text:00000778 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1684   .text:00000778 EXTI4_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1718   .text:00000798 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1723   .text:000007a0 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1729   .text:000007a0 EXTI9_5_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1848   .text:00000848 $d
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1853   .text:00000850 $t
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1859   .text:00000850 EXTI15_10_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\cc1yCZPR.s:1997   .text:0000091c $d
                            .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
                            .group:00000000 wm4.stm32f407xx.h.34.dfd2ea1697b5c77f46734fce8e0379c1
                            .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c

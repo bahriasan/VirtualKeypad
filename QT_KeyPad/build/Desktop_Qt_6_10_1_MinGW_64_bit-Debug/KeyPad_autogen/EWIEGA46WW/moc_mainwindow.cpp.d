@@ -1,5 +1,5 @@
-C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/mainwindow.h \
-  C:/Users/BahriAsan/Documents/Qt_Projects/KeyPad/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/moc_predefs.h \
+C:/Users/bahri/OneDrive/Belgeler/KeyBoard/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/bahri/OneDrive/Belgeler/KeyBoard/mainwindow.h \
+  C:/Users/bahri/OneDrive/Belgeler/KeyBoard/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/KeyPad_autogen/moc_predefs.h \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QDebug \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QList \
   C:/Qt/6.10.1/mingw_64/include/QtCore/QObject \

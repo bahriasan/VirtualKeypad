@@ -41,8 +41,6 @@ public:
     QPushButton *pushButton_I;
     QPushButton *pushButton_O;
     QPushButton *pushButton_P;
-    QPushButton *pushButton_G1;
-    QPushButton *pushButton_U1;
     QPushButton *pushButton_A;
     QPushButton *pushButton_S;
     QPushButton *pushButton_D;
@@ -52,8 +50,6 @@ public:
     QPushButton *pushButton_J;
     QPushButton *pushButton_K;
     QPushButton *pushButton_L;
-    QPushButton *pushButton_S1;
-    QPushButton *pushButton_I1;
     QPushButton *pushButton_Z;
     QPushButton *pushButton_X;
     QPushButton *pushButton_C;
@@ -61,8 +57,6 @@ public:
     QPushButton *pushButton_B;
     QPushButton *pushButton_N;
     QPushButton *pushButton_M;
-    QPushButton *pushButton_O1;
-    QPushButton *pushButton_C1;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_2Quote;
     QPushButton *pushButton_Ex;
@@ -95,11 +89,11 @@ public:
     QPushButton *pushButton_LS;
     QPushButton *pushButton_OR;
     QHBoxLayout *horizontalLayout_3;
-    QPushButton *pushButton_Caps;
+    QPushButton *pushButton_Close;
+    QPushButton *pushButton_Touch;
     QPushButton *pushButton_SP;
     QPushButton *pushButton_ENT;
     QPushButton *pushButton_DEL;
-    QPushButton *pushButton_Close;
     QPushButton *pushButton_0;
     QPushButton *pushButton_1;
     QPushButton *pushButton_2;
@@ -130,7 +124,7 @@ public:
         centralwidget->setSizePolicy(sizePolicy);
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(0, 720, 1921, 292));
+        verticalLayoutWidget->setGeometry(QRect(0, 400, 1271, 292));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -220,20 +214,6 @@ public:
 
         horizontalLayout_1->addWidget(pushButton_P);
 
-        pushButton_G1 = new QPushButton(verticalLayoutWidget);
-        pushButton_G1->setObjectName("pushButton_G1");
-        sizePolicy.setHeightForWidth(pushButton_G1->sizePolicy().hasHeightForWidth());
-        pushButton_G1->setSizePolicy(sizePolicy);
-
-        horizontalLayout_1->addWidget(pushButton_G1);
-
-        pushButton_U1 = new QPushButton(verticalLayoutWidget);
-        pushButton_U1->setObjectName("pushButton_U1");
-        sizePolicy.setHeightForWidth(pushButton_U1->sizePolicy().hasHeightForWidth());
-        pushButton_U1->setSizePolicy(sizePolicy);
-
-        horizontalLayout_1->addWidget(pushButton_U1);
-
         pushButton_A = new QPushButton(verticalLayoutWidget);
         pushButton_A->setObjectName("pushButton_A");
         sizePolicy.setHeightForWidth(pushButton_A->sizePolicy().hasHeightForWidth());
@@ -297,20 +277,6 @@ public:
 
         horizontalLayout_1->addWidget(pushButton_L);
 
-        pushButton_S1 = new QPushButton(verticalLayoutWidget);
-        pushButton_S1->setObjectName("pushButton_S1");
-        sizePolicy.setHeightForWidth(pushButton_S1->sizePolicy().hasHeightForWidth());
-        pushButton_S1->setSizePolicy(sizePolicy);
-
-        horizontalLayout_1->addWidget(pushButton_S1);
-
-        pushButton_I1 = new QPushButton(verticalLayoutWidget);
-        pushButton_I1->setObjectName("pushButton_I1");
-        sizePolicy.setHeightForWidth(pushButton_I1->sizePolicy().hasHeightForWidth());
-        pushButton_I1->setSizePolicy(sizePolicy);
-
-        horizontalLayout_1->addWidget(pushButton_I1);
-
         pushButton_Z = new QPushButton(verticalLayoutWidget);
         pushButton_Z->setObjectName("pushButton_Z");
         sizePolicy.setHeightForWidth(pushButton_Z->sizePolicy().hasHeightForWidth());
@@ -359,20 +325,6 @@ public:
         pushButton_M->setSizePolicy(sizePolicy);
 
         horizontalLayout_1->addWidget(pushButton_M);
-
-        pushButton_O1 = new QPushButton(verticalLayoutWidget);
-        pushButton_O1->setObjectName("pushButton_O1");
-        sizePolicy.setHeightForWidth(pushButton_O1->sizePolicy().hasHeightForWidth());
-        pushButton_O1->setSizePolicy(sizePolicy);
-
-        horizontalLayout_1->addWidget(pushButton_O1);
-
-        pushButton_C1 = new QPushButton(verticalLayoutWidget);
-        pushButton_C1->setObjectName("pushButton_C1");
-        sizePolicy.setHeightForWidth(pushButton_C1->sizePolicy().hasHeightForWidth());
-        pushButton_C1->setSizePolicy(sizePolicy);
-
-        horizontalLayout_1->addWidget(pushButton_C1);
 
 
         verticalLayout_2->addLayout(horizontalLayout_1);
@@ -594,12 +546,19 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        pushButton_Caps = new QPushButton(verticalLayoutWidget);
-        pushButton_Caps->setObjectName("pushButton_Caps");
-        sizePolicy.setHeightForWidth(pushButton_Caps->sizePolicy().hasHeightForWidth());
-        pushButton_Caps->setSizePolicy(sizePolicy);
+        pushButton_Close = new QPushButton(verticalLayoutWidget);
+        pushButton_Close->setObjectName("pushButton_Close");
+        sizePolicy.setHeightForWidth(pushButton_Close->sizePolicy().hasHeightForWidth());
+        pushButton_Close->setSizePolicy(sizePolicy);
 
-        horizontalLayout_3->addWidget(pushButton_Caps);
+        horizontalLayout_3->addWidget(pushButton_Close);
+
+        pushButton_Touch = new QPushButton(verticalLayoutWidget);
+        pushButton_Touch->setObjectName("pushButton_Touch");
+        sizePolicy.setHeightForWidth(pushButton_Touch->sizePolicy().hasHeightForWidth());
+        pushButton_Touch->setSizePolicy(sizePolicy);
+
+        horizontalLayout_3->addWidget(pushButton_Touch);
 
         pushButton_SP = new QPushButton(verticalLayoutWidget);
         pushButton_SP->setObjectName("pushButton_SP");
@@ -621,13 +580,6 @@ public:
         pushButton_DEL->setSizePolicy(sizePolicy);
 
         horizontalLayout_3->addWidget(pushButton_DEL);
-
-        pushButton_Close = new QPushButton(verticalLayoutWidget);
-        pushButton_Close->setObjectName("pushButton_Close");
-        sizePolicy.setHeightForWidth(pushButton_Close->sizePolicy().hasHeightForWidth());
-        pushButton_Close->setSizePolicy(sizePolicy);
-
-        horizontalLayout_3->addWidget(pushButton_Close);
 
         pushButton_0 = new QPushButton(verticalLayoutWidget);
         pushButton_0->setObjectName("pushButton_0");
@@ -729,8 +681,6 @@ public:
         pushButton_I->setText(QCoreApplication::translate("MainWindow", "I", nullptr));
         pushButton_O->setText(QCoreApplication::translate("MainWindow", "O", nullptr));
         pushButton_P->setText(QCoreApplication::translate("MainWindow", "P", nullptr));
-        pushButton_G1->setText(QCoreApplication::translate("MainWindow", "\304\236", nullptr));
-        pushButton_U1->setText(QCoreApplication::translate("MainWindow", "\303\234", nullptr));
         pushButton_A->setText(QCoreApplication::translate("MainWindow", "A", nullptr));
         pushButton_S->setText(QCoreApplication::translate("MainWindow", "S", nullptr));
         pushButton_D->setText(QCoreApplication::translate("MainWindow", "D", nullptr));
@@ -740,8 +690,6 @@ public:
         pushButton_J->setText(QCoreApplication::translate("MainWindow", "J", nullptr));
         pushButton_K->setText(QCoreApplication::translate("MainWindow", "K", nullptr));
         pushButton_L->setText(QCoreApplication::translate("MainWindow", "L", nullptr));
-        pushButton_S1->setText(QCoreApplication::translate("MainWindow", "\305\236", nullptr));
-        pushButton_I1->setText(QCoreApplication::translate("MainWindow", "\304\260", nullptr));
         pushButton_Z->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
         pushButton_X->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         pushButton_C->setText(QCoreApplication::translate("MainWindow", "C", nullptr));
@@ -749,8 +697,6 @@ public:
         pushButton_B->setText(QCoreApplication::translate("MainWindow", "B", nullptr));
         pushButton_N->setText(QCoreApplication::translate("MainWindow", "N", nullptr));
         pushButton_M->setText(QCoreApplication::translate("MainWindow", "M", nullptr));
-        pushButton_O1->setText(QCoreApplication::translate("MainWindow", "\303\226", nullptr));
-        pushButton_C1->setText(QCoreApplication::translate("MainWindow", "\303\207", nullptr));
         pushButton_2Quote->setText(QCoreApplication::translate("MainWindow", "\"", nullptr));
         pushButton_Ex->setText(QCoreApplication::translate("MainWindow", "!", nullptr));
         pushButton_Quote->setText(QCoreApplication::translate("MainWindow", "'", nullptr));
@@ -781,11 +727,11 @@ public:
         pushButton_RS->setText(QCoreApplication::translate("MainWindow", ">", nullptr));
         pushButton_LS->setText(QCoreApplication::translate("MainWindow", "<", nullptr));
         pushButton_OR->setText(QCoreApplication::translate("MainWindow", "|", nullptr));
-        pushButton_Caps->setText(QCoreApplication::translate("MainWindow", "CapsLock", nullptr));
+        pushButton_Close->setText(QCoreApplication::translate("MainWindow", "CLOSE", nullptr));
+        pushButton_Touch->setText(QCoreApplication::translate("MainWindow", "TOUCH PAD", nullptr));
         pushButton_SP->setText(QCoreApplication::translate("MainWindow", "Space", nullptr));
         pushButton_ENT->setText(QCoreApplication::translate("MainWindow", "Enter", nullptr));
         pushButton_DEL->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-        pushButton_Close->setText(QCoreApplication::translate("MainWindow", "CLOSE", nullptr));
         pushButton_0->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         pushButton_1->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "2", nullptr));

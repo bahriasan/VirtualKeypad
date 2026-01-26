@@ -28,6 +28,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void toggleTouchPad();
+    bool isTouchPad();
 
 protected:
     void keyPressEvent(QKeyEvent* event) override;
@@ -35,5 +37,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+        void resetTouchPad();
+    bool TouchPad;
 };
 #endif // MAINWINDOW_H

@@ -103,7 +103,7 @@ int main (int argc, char* argv[])
 //	  delay(10000);//delay for Write process
 
 	  InputPolling();
-	  Usb_FS_SendReport(&USB_FS, USB_buffer, sizeof(USB_buffer));
+	  Usb_FS_SendReport(&USB_FS, USB_buffer, 8);
 	  delayMs(200);
     }
 }

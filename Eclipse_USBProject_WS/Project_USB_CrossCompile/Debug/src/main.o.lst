@@ -173,7 +173,7 @@
  105:../src/main.c **** 	  InputPolling();
   70              		.loc 1 105 4 discriminator 1
   71 0028 FFF7FEFF 		bl	InputPolling
- 106:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, USB_buffer, sizeof(USB_buffer));
+ 106:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, USB_buffer, 8);
   72              		.loc 1 106 4 discriminator 1
   73 002c 0822     		movs	r2, #8
   74 002e 0549     		ldr	r1, .L3+4
@@ -183,7 +183,7 @@
   77              		.loc 1 107 4 discriminator 1
   78 0036 C820     		movs	r0, #200
   79 0038 00F014F8 		bl	delayMs
- 105:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, USB_buffer, sizeof(USB_buffer));
+ 105:../src/main.c **** 	  Usb_FS_SendReport(&USB_FS, USB_buffer, 8);
   80              		.loc 1 105 4 discriminator 1
   81 003c F4E7     		b	.L2
   82              	.L4:
@@ -374,14 +374,14 @@
  239              		.file 9 "C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:18     .rodata:00000000 $d
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:32     .text:00000000 $t
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:38     .text:00000000 main
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:148    .text:00000064 delayMs
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:85     .text:00000040 $d
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:91     .text:0000004c $t
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:97     .text:0000004c OTG_FS_IRQHandler
-C:\Users\bahri\AppData\Local\Temp\ccgenoLH.s:123    .text:00000058 USART2_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:18     .rodata:00000000 $d
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:32     .text:00000000 $t
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:38     .text:00000000 main
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:148    .text:00000064 delayMs
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:85     .text:00000040 $d
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:91     .text:0000004c $t
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:97     .text:0000004c OTG_FS_IRQHandler
+C:\Users\bahri\AppData\Local\Temp\ccltLLST.s:123    .text:00000058 USART2_IRQHandler
                            .group:00000000 wm4.0.ce81f7773bc3d72bdddc828fc28d3a81
                            .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
                            .group:00000000 wm4.newlib.h.18.1c9fedb6b3cd797cff253cc0fd593ef2

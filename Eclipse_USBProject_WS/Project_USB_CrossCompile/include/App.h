@@ -51,6 +51,7 @@ typedef struct
 {
 	pinNo_type pinNumber;
 	GPIO_TypeDef* gpioPort;
+	ModifierCode_type modifierCode;
 	KeyCode_type keyCode;
 }input_type;
 

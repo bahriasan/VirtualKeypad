@@ -710,7 +710,7 @@ END GROUP
  .isr_vector    0x08000000      0x188 ./system/src/cmsis/startup.o
                 0x08000000                g_pfnVectors
 
-.text           0x08000188     0x4e5e
+.text           0x08000188     0x4eda
  *(.text .text.*)
  .text.Reset_Handler
                 0x08000188       0x48 ./system/src/cmsis/startup.o
@@ -800,86 +800,86 @@ END GROUP
                 0x080001d0                DMA2_Stream6_IRQHandler
                 0x080001d0                DMA1_Stream3_IRQHandler
  *fill*         0x080001d2        0x2 
- .text          0x080001d4      0x924 ./src/App.o
+ .text          0x080001d4      0x998 ./src/App.o
                 0x080003d8                Exti_Init
                 0x08000744                Input_Init
                 0x080007ac                InputPolling
-                0x080008ac                EXTI0_IRQHandler
-                0x080008d4                EXTI1_IRQHandler
-                0x080008fc                EXTI2_IRQHandler
-                0x08000924                EXTI3_IRQHandler
-                0x0800094c                EXTI4_IRQHandler
-                0x08000974                EXTI9_5_IRQHandler
-                0x08000a24                EXTI15_10_IRQHandler
- .text          0x08000af8      0x11c ./src/SystemInit.o
-                0x08000af8                SystemClockConfig
- .text          0x08000c14      0x2f0 ./src/gpio.o
-                0x08000c14                Gpio_Init
-                0x08000ecc                Gpio_Read
- .text          0x08000f04       0xb8 ./src/main.o
-                0x08000f04                main
-                0x08000f50                OTG_FS_IRQHandler
-                0x08000f5c                USART2_IRQHandler
- .text          0x08000fbc      0x100 ./src/rcc.o
-                0x08000fbc                RCC_ReadClock
- .text          0x080010bc      0x9e0 ./src/uart.o
-                0x08001528                Uart_Init
-                0x08001638                Uart_Read
-                0x08001708                Uart_Write
-                0x08001810                Uart_Write_Inst
-                0x08001868                Uart_Read_Inst
-                0x080018ac                Uart_EnableInterrupt
-                0x080019f0                Uart_IRQHandler
- .text          0x08001a9c     0x31a0 ./src/usb.o
-                0x08004200                Usb_FS_Init
-                0x08004228                Usb_FS_SendReport
-                0x080042c0                USB_FS_IRQHandler
-                0x080048cc                Helper_CopyByte
-                0x08004910                Usb_FS_EP_ActivateAll
-                0x08004b92                Usb_FS_EP_DeactivateAll
- .text          0x08004c3c      0x2e4 ./src/usbd.o
-                0x08004df0                GetFSDeviceDescriptor
-                0x08004e10                GetFSDeviceQualifierDescriptor
-                0x08004e30                GetFSConfigDescriptor
-                0x08004e50                GetFSLangIdStringDescriptor
-                0x08004e70                GetFSMfcIdStringDescriptor
-                0x08004e94                GetFSPdcIdStringDescriptor
-                0x08004eb8                GetFSSerialStringDescriptor
-                0x08004ed8                GetFSConfigStringDescriptor
-                0x08004efc                GetFSInterfaceStringDescriptor
- .text          0x08004f20       0x20 ./src/usbd_hid.o
-                0x08004f20                GetFSReportDescriptor
+                0x08000920                EXTI0_IRQHandler
+                0x08000948                EXTI1_IRQHandler
+                0x08000970                EXTI2_IRQHandler
+                0x08000998                EXTI3_IRQHandler
+                0x080009c0                EXTI4_IRQHandler
+                0x080009e8                EXTI9_5_IRQHandler
+                0x08000a98                EXTI15_10_IRQHandler
+ .text          0x08000b6c      0x11c ./src/SystemInit.o
+                0x08000b6c                SystemClockConfig
+ .text          0x08000c88      0x2f0 ./src/gpio.o
+                0x08000c88                Gpio_Init
+                0x08000f40                Gpio_Read
+ .text          0x08000f78       0xb8 ./src/main.o
+                0x08000f78                main
+                0x08000fc4                OTG_FS_IRQHandler
+                0x08000fd0                USART2_IRQHandler
+ .text          0x08001030      0x100 ./src/rcc.o
+                0x08001030                RCC_ReadClock
+ .text          0x08001130      0x9e0 ./src/uart.o
+                0x0800159c                Uart_Init
+                0x080016ac                Uart_Read
+                0x0800177c                Uart_Write
+                0x08001884                Uart_Write_Inst
+                0x080018dc                Uart_Read_Inst
+                0x08001920                Uart_EnableInterrupt
+                0x08001a64                Uart_IRQHandler
+ .text          0x08001b10     0x31a8 ./src/usb.o
+                0x0800427c                Usb_FS_Init
+                0x080042a4                Usb_FS_SendReport
+                0x0800433c                USB_FS_IRQHandler
+                0x08004948                Helper_CopyByte
+                0x0800498c                Usb_FS_EP_ActivateAll
+                0x08004c0e                Usb_FS_EP_DeactivateAll
+ .text          0x08004cb8      0x2e4 ./src/usbd.o
+                0x08004e6c                GetFSDeviceDescriptor
+                0x08004e8c                GetFSDeviceQualifierDescriptor
+                0x08004eac                GetFSConfigDescriptor
+                0x08004ecc                GetFSLangIdStringDescriptor
+                0x08004eec                GetFSMfcIdStringDescriptor
+                0x08004f10                GetFSPdcIdStringDescriptor
+                0x08004f34                GetFSSerialStringDescriptor
+                0x08004f54                GetFSConfigStringDescriptor
+                0x08004f78                GetFSInterfaceStringDescriptor
+ .text          0x08004f9c       0x20 ./src/usbd_hid.o
+                0x08004f9c                GetFSReportDescriptor
  *(.rodata .rodata.* .constdata .constdata.*)
- .rodata        0x08004f40        0xe ./src/App.o
- *fill*         0x08004f4e        0x2 
- .rodata        0x08004f50       0x10 ./src/main.o
- .rodata        0x08004f60       0x1e ./src/uart.o
- *fill*         0x08004f7e        0x2 
- .rodata        0x08004f80       0x1e ./src/usb.o
- *fill*         0x08004f9e        0x2 
- .rodata        0x08004fa0       0x46 ./src/usbd.o
+ .rodata        0x08004fbc        0xe ./src/App.o
+ *fill*         0x08004fca        0x2 
+ .rodata        0x08004fcc       0x10 ./src/main.o
+ .rodata        0x08004fdc       0x1e ./src/uart.o
+ *fill*         0x08004ffa        0x2 
+ .rodata        0x08004ffc       0x1e ./src/usb.o
+ *fill*         0x0800501a        0x2 
+ .rodata        0x0800501c       0x46 ./src/usbd.o
  *(vtable)
-                0x08004fe8                _sidata = LOADADDR (.data)
+                0x08005064                _sidata = LOADADDR (.data)
 
-.glue_7         0x08004fe8        0x0
- .glue_7        0x08004fe8        0x0 linker stubs
+.glue_7         0x08005064        0x0
+ .glue_7        0x08005064        0x0 linker stubs
 
-.glue_7t        0x08004fe8        0x0
- .glue_7t       0x08004fe8        0x0 linker stubs
+.glue_7t        0x08005064        0x0
+ .glue_7t       0x08005064        0x0 linker stubs
 
-.vfp11_veneer   0x08004fe8        0x0
- .vfp11_veneer  0x08004fe8        0x0 linker stubs
+.vfp11_veneer   0x08005064        0x0
+ .vfp11_veneer  0x08005064        0x0 linker stubs
 
-.v4_bx          0x08004fe8        0x0
- .v4_bx         0x08004fe8        0x0 linker stubs
+.v4_bx          0x08005064        0x0
+ .v4_bx         0x08005064        0x0 linker stubs
 
-.iplt           0x08004fe8        0x0
- .iplt          0x08004fe8        0x0 ./system/src/cmsis/startup.o
+.iplt           0x08005064        0x0
+ .iplt          0x08005064        0x0 ./system/src/cmsis/startup.o
 
-.rel.dyn        0x08004fe8        0x0
- .rel.iplt      0x08004fe8        0x0 ./system/src/cmsis/startup.o
+.rel.dyn        0x08005064        0x0
+ .rel.iplt      0x08005064        0x0 ./system/src/cmsis/startup.o
 
-.data           0x20000000      0x3a4 load address 0x08004fe8
+.data           0x20000000      0x3a4 load address 0x08005064
                 0x20000000                _sdata = .
  *(.data .data.*)
  .data          0x20000000      0x270 ./src/App.o
@@ -902,40 +902,43 @@ END GROUP
  *fill*         0x200003a3        0x1 
                 0x200003a4                _edata = .
 
-.igot.plt       0x200003a4        0x0 load address 0x0800538c
+.igot.plt       0x200003a4        0x0 load address 0x08005408
  .igot.plt      0x200003a4        0x0 ./system/src/cmsis/startup.o
 
-.bss            0x200003a4      0x82c load address 0x0800538c
+.bss            0x200003a4      0xc94 load address 0x08005408
                 0x200003a4                __bss_start__ = .
                 0x200003a4                _sbss = .
  *(.bss .bss.*)
- .bss           0x200003a4       0x18 ./src/App.o
+ .bss           0x200003a4      0x33c ./src/App.o
                 0x200003a4                InputArray
                 0x200003b4                USB_buffer
- .bss           0x200003bc       0x24 ./src/uart.o
-                0x200003bc                readData
-                0x200003dc                DataReceived_flag
- .bss           0x200003e0      0x5ed ./src/usb.o
-                0x200003e0                inputArray
-                0x200003e8                pending_RX
-                0x200003e9                resetReceived
-                0x200003ea                enumReceived
-                0x200003ec                TX_Ready
-                0x200003f0                XFER_Completed_In
-                0x200003f4                XFER_Completed_Out
-                0x200003f8                SetUpRX_Completed
-                0x200003fc                arrDbgFlw
-                0x200007e4                idd
-                0x200007e8                debug_setCfg
-                0x200007ec                dbgArrRead
-                0x2000097c                arr_dbgArr
- *fill*         0x200009cd        0x3 
- .bss           0x200009d0      0x200 ./src/usbd.o
-                0x200009d0                USB_StringUnicode
-                0x20000bd0                . = ALIGN (0x4)
-                0x20000bd0                _ebss = .
-                0x20000bd0                __bss_end__ = .
-                0x20000bd0                _sheap = .
+                0x200003bc                dbg_USBBuffer
+                0x200006dc                ibf
+ .bss           0x200006e0       0x24 ./src/uart.o
+                0x200006e0                readData
+                0x20000700                DataReceived_flag
+ .bss           0x20000704      0x731 ./src/usb.o
+                0x20000704                inputArray
+                0x2000070c                pending_RX
+                0x2000070d                resetReceived
+                0x2000070e                enumReceived
+                0x20000710                TX_Ready
+                0x20000714                XFER_Completed_In
+                0x20000718                XFER_Completed_Out
+                0x2000071c                SetUpRX_Completed
+                0x20000720                arrDbgFlw
+                0x20000b08                idd
+                0x20000b0c                debug_setCfg
+                0x20000b10                dbgArrRead
+                0x20000ca0                arr_dbgArr
+                0x20000e30                dbg_idx
+ *fill*         0x20000e35        0x3 
+ .bss           0x20000e38      0x200 ./src/usbd.o
+                0x20000e38                USB_StringUnicode
+                0x20001038                . = ALIGN (0x4)
+                0x20001038                _ebss = .
+                0x20001038                __bss_end__ = .
+                0x20001038                _sheap = .
 OUTPUT(Project_USB_CrossCompile.elf elf32-littlearm)
 LOAD linker stubs
 
@@ -974,27 +977,27 @@ LOAD linker stubs
  .comment       0x00000049       0x4a ./src/usbd.o
  .comment       0x00000049       0x4a ./src/usbd_hid.o
 
-.debug_info     0x00000000     0x5c34
- .debug_info    0x00000000      0xe10 ./src/App.o
- .debug_info    0x00000e10      0x345 ./src/SystemInit.o
- .debug_info    0x00001155      0x44d ./src/gpio.o
- .debug_info    0x000015a2      0xb18 ./src/main.o
- .debug_info    0x000020ba      0x369 ./src/rcc.o
- .debug_info    0x00002423      0xdec ./src/uart.o
- .debug_info    0x0000320f     0x2276 ./src/usb.o
- .debug_info    0x00005485      0x6c1 ./src/usbd.o
- .debug_info    0x00005b46       0xee ./src/usbd_hid.o
+.debug_info     0x00000000     0x5d12
+ .debug_info    0x00000000      0xeee ./src/App.o
+ .debug_info    0x00000eee      0x345 ./src/SystemInit.o
+ .debug_info    0x00001233      0x44d ./src/gpio.o
+ .debug_info    0x00001680      0xb18 ./src/main.o
+ .debug_info    0x00002198      0x369 ./src/rcc.o
+ .debug_info    0x00002501      0xdec ./src/uart.o
+ .debug_info    0x000032ed     0x2276 ./src/usb.o
+ .debug_info    0x00005563      0x6c1 ./src/usbd.o
+ .debug_info    0x00005c24       0xee ./src/usbd_hid.o
 
-.debug_abbrev   0x00000000      0xf2a
- .debug_abbrev  0x00000000      0x24f ./src/App.o
- .debug_abbrev  0x0000024f       0xe0 ./src/SystemInit.o
- .debug_abbrev  0x0000032f      0x132 ./src/gpio.o
- .debug_abbrev  0x00000461      0x1bd ./src/main.o
- .debug_abbrev  0x0000061e      0x138 ./src/rcc.o
- .debug_abbrev  0x00000756      0x27c ./src/uart.o
- .debug_abbrev  0x000009d2      0x33a ./src/usb.o
- .debug_abbrev  0x00000d0c      0x185 ./src/usbd.o
- .debug_abbrev  0x00000e91       0x99 ./src/usbd_hid.o
+.debug_abbrev   0x00000000      0xf91
+ .debug_abbrev  0x00000000      0x2a7 ./src/App.o
+ .debug_abbrev  0x000002a7       0xe0 ./src/SystemInit.o
+ .debug_abbrev  0x00000387      0x132 ./src/gpio.o
+ .debug_abbrev  0x000004b9      0x1bd ./src/main.o
+ .debug_abbrev  0x00000676      0x138 ./src/rcc.o
+ .debug_abbrev  0x000007ae      0x27c ./src/uart.o
+ .debug_abbrev  0x00000a2a      0x349 ./src/usb.o
+ .debug_abbrev  0x00000d73      0x185 ./src/usbd.o
+ .debug_abbrev  0x00000ef8       0x99 ./src/usbd_hid.o
 
 .debug_aranges  0x00000000      0x120
  .debug_aranges
@@ -1062,35 +1065,35 @@ LOAD linker stubs
  .debug_macro   0x0000222b      0x1c0 ./src/usbd.o
  .debug_macro   0x000023eb      0x163 ./src/usbd_hid.o
 
-.debug_line     0x00000000     0x4f76
- .debug_line    0x00000000      0x7a4 ./src/App.o
- .debug_line    0x000007a4      0x531 ./src/SystemInit.o
- .debug_line    0x00000cd5      0x5c7 ./src/gpio.o
- .debug_line    0x0000129c      0x52f ./src/main.o
- .debug_line    0x000017cb      0x4c3 ./src/rcc.o
- .debug_line    0x00001c8e      0x911 ./src/uart.o
- .debug_line    0x0000259f     0x20df ./src/usb.o
- .debug_line    0x0000467e      0x5aa ./src/usbd.o
- .debug_line    0x00004c28      0x34e ./src/usbd_hid.o
+.debug_line     0x00000000     0x4f84
+ .debug_line    0x00000000      0x7ce ./src/App.o
+ .debug_line    0x000007ce      0x531 ./src/SystemInit.o
+ .debug_line    0x00000cff      0x5c7 ./src/gpio.o
+ .debug_line    0x000012c6      0x52f ./src/main.o
+ .debug_line    0x000017f5      0x4c3 ./src/rcc.o
+ .debug_line    0x00001cb8      0x911 ./src/uart.o
+ .debug_line    0x000025c9     0x20c3 ./src/usb.o
+ .debug_line    0x0000468c      0x5aa ./src/usbd.o
+ .debug_line    0x00004c36      0x34e ./src/usbd_hid.o
 
-.debug_str      0x00000000    0x8f0c3
- .debug_str     0x00000000    0x8b76b ./src/App.o
-                              0x8b9a6 (size before relaxing)
- .debug_str     0x0008b76b      0x4a8 ./src/SystemInit.o
+.debug_str      0x00000000    0x8f171
+ .debug_str     0x00000000    0x8b828 ./src/App.o
+                              0x8ba63 (size before relaxing)
+ .debug_str     0x0008b828      0x4a8 ./src/SystemInit.o
                               0x8b17d (size before relaxing)
- .debug_str     0x0008bc13       0x56 ./src/gpio.o
+ .debug_str     0x0008bcd0       0x4f ./src/gpio.o
                               0x8b0e5 (size before relaxing)
- .debug_str     0x0008bc69     0x2b87 ./src/main.o
+ .debug_str     0x0008bd1f     0x2b87 ./src/main.o
                               0x8deda (size before relaxing)
- .debug_str     0x0008e7f0       0x64 ./src/rcc.o
+ .debug_str     0x0008e8a6       0x64 ./src/rcc.o
                               0x8b142 (size before relaxing)
- .debug_str     0x0008e854      0x1d0 ./src/uart.o
+ .debug_str     0x0008e90a      0x1d0 ./src/uart.o
                               0x8c122 (size before relaxing)
- .debug_str     0x0008ea24      0x4e0 ./src/usb.o
-                              0x8d92c (size before relaxing)
- .debug_str     0x0008ef04      0x197 ./src/usbd.o
+ .debug_str     0x0008eada      0x4d8 ./src/usb.o
+                              0x8d934 (size before relaxing)
+ .debug_str     0x0008efb2      0x197 ./src/usbd.o
                               0x8bbe3 (size before relaxing)
- .debug_str     0x0008f09b       0x28 ./src/usbd_hid.o
+ .debug_str     0x0008f149       0x28 ./src/usbd_hid.o
                                0x6eb3 (size before relaxing)
 
 .debug_frame    0x00000000      0xcb4

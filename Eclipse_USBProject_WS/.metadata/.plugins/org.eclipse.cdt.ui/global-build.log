@@ -1,14 +1,58 @@
-23:56:42 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+22:51:27 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+make all 
+'Building file: ../src/App.c'
+'Invoking: Cross GCC Compiler'
+arm-none-eabi-gcc -std=c11 -DSTM32F407xx -DDEBUG -DTRACE -I"C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\include" -I"C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include" -I"C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\system\include\cmsis" -O0 -g3 -Wall -c -fmessage-length=0 -mthumb -mcpu=cortex-m4 -Wa,-adhlns="src/App.o.lst" -MMD -MP -MF"src/App.d" -MT"src/App.o" -o "src/App.o" "../src/App.c"
+../src/App.c: In function 'InputPolling':
+../src/App.c:271:6: warning: implicit declaration of function 'Helper_CopyByte' [-Wimplicit-function-declaration]
+  271 |      Helper_CopyByte(&dbg_USBBuffer[ibf++], USB_buffer, 8);
+      |      ^~~~~~~~~~~~~~~
+'Finished building: ../src/App.c'
+' '
+'Building target: Project_USB_CrossCompile.elf'
+'Invoking: Cross GCC Linker'
+arm-none-eabi-gcc -L"C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\Project_USB_CrossCompile\ldscript" -T linkerbasic.ld -nostartfiles -Wl,-Map,"Project_Cross.map" --specs=nosys.specs -Xlinker --gc-sections -o "Project_USB_CrossCompile.elf"  ./system/src/cmsis/startup.o ./system/src/cmsis/system_stm32f4xx.o  ./src/App.o ./src/SystemInit.o ./src/gpio.o ./src/main.o ./src/rcc.o ./src/uart.o ./src/usb.o ./src/usbd.o ./src/usbd_hid.o   
+c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 08000188
+'Finished building target: Project_USB_CrossCompile.elf'
+' '
+arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
+' '
+22:51:45 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
 make all 
 make[1]: `main-build' için hiçbir þey yapýlmadý.
 arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
 ' '
-23:56:46 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+22:52:31 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
 make all 
 make[1]: `main-build' için hiçbir þey yapýlmadý.
 arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
 ' '
-00:04:12 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+22:53:17 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+make all 
+make[1]: `main-build' için hiçbir þey yapýlmadý.
+arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
+' '
+22:55:34 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+make all 
+make[1]: `main-build' için hiçbir þey yapýlmadý.
+arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
+' '
+00:02:31 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+make all 
+make[1]: `main-build' için hiçbir þey yapýlmadý.
+arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
+' '
+00:09:07 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+make all 
+make[1]: `main-build' için hiçbir þey yapýlmadý.
+arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
+' '
+00:09:41 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
+make all 
+make[1]: `main-build' için hiçbir þey yapýlmadý.
+arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"
+' '
+12:20:00 **** Incremental Build of configuration Debug for project Project_USB_CrossCompile ****
 make all 
 make[1]: `main-build' için hiçbir þey yapýlmadý.
 arm-none-eabi-objcopy -O binary "Project_USB_CrossCompile.elf" "Project_USB_CrossCompile.bin"

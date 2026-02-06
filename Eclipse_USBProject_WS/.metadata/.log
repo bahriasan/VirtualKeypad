@@ -1,4 +1,4 @@
-!SESSION 2026-01-26 00:21:37.739 -----------------------------------------------
+!SESSION 2026-01-30 21:06:37.755 -----------------------------------------------
 eclipse.buildId=4.28.0.20230608-1200
 java.version=17.0.8.1
 java.vendor=Eclipse Adoptium
@@ -6,61 +6,368 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
 Framework arguments:  -product org.eclipse.epp.package.embedcpp.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.embedcpp.product
 
-!ENTRY org.eclipse.egit.ui 2 0 2026-01-26 00:22:31.172
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\bahri'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+This is a continuation of log file C:\Users\bahri\GitHub\VirtualKeypad\Eclipse_USBProject_WS\.metadata\.bak_0.log
+Created Time: 2026-01-30 22:14:00.458
 
-!ENTRY org.eclipse.cdt.core 1 0 2026-01-26 00:23:25.987
-!MESSAGE Indexed 'Project_USB_CrossCompile' (10 sources, 55 headers) in 1,43 sec: 3.037 declarations; 10.847 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (%0)
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:28:11.435
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_empty_Cross/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:29:25.479
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_empty_Cross/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:29:25.725
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_empty_Cross/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:31:14.213
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_empty_Cross/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:31:48.914
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_USB_CrossCompile/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:32:19.579
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_USB_CrossCompile/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:32:51.211
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_USB_CrossCompile/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.core.resources 4 368 2026-01-26 00:32:59.551
-!MESSAGE Variable references non-existent resource : ${workspace_loc:/Project_USB_CrossCompile/Debug/Project_USB_CrossCompile.elf}
-
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 1 2026-01-26 00:33:26.170
-!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
-
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 1 2026-01-26 00:33:26.257
-!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
-
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-26 00:33:40.458
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.459
 !MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
 
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 1 2026-01-26 00:34:04.715
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.490
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.522
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.552
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.585
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.632
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.666
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.697
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.729
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.764
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.791
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.824
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.856
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.887
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.919
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.949
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:00.980
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.028
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.062
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.095
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.122
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.156
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.185
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.218
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.251
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.282
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.317
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.348
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.378
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.430
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.456
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.486
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.518
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.552
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.583
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.615
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.648
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.920
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.921
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.921
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.921
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.922
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.922
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.922
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:01.924
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.382
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.408
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.443
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.470
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.503
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.790
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.790
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.791
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.791
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.792
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.792
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.793
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.794
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:02.802
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.521
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.521
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.522
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.522
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.522
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.522
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.523
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.525
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.534
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.936
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.958
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:03.992
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.021
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.052
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.086
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.118
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.164
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.195
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.225
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.258
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.290
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.322
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.352
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.383
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.415
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.445
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.491
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.524
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.554
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.585
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.618
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.649
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.680
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.716
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.746
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.778
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.810
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.857
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.889
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.919
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.952
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:04.983
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.018
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.048
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.080
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.239
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.239
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.240
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.242
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.253
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.284
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.317
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.350
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.380
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.412
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-30 22:14:05.444
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.core 4 1 2026-01-30 22:15:31.174
 !MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
 
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 1 2026-01-26 00:34:04.793
+!ENTRY org.eclipse.embedcdt.debug.core 4 1 2026-01-30 22:15:31.253
 !MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
 
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 1 2026-01-26 00:34:31.682
-!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+!ENTRY org.eclipse.cdt.dsf 4 10005 2026-01-30 22:16:26.324
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIRunControl$9@1335b91b): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Interrupt failed.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2026-01-30 22:16:26.324
+!MESSAGE Interrupt failed.
 
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 1 2026-01-26 00:34:31.774
-!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
-!SESSION 2026-01-26 17:56:03.366 -----------------------------------------------
+!ENTRY org.eclipse.core.jobs 2 2 2026-01-30 22:16:26.763
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
+!SESSION 2026-02-05 14:56:49.959 -----------------------------------------------
 eclipse.buildId=4.28.0.20230608-1200
 java.version=17.0.8.1
 java.vendor=Eclipse Adoptium
@@ -68,18 +375,768 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
 Framework arguments:  -product org.eclipse.epp.package.embedcpp.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.embedcpp.product
 
-!ENTRY org.eclipse.egit.ui 2 0 2026-01-26 17:56:16.279
+!ENTRY org.eclipse.egit.ui 2 0 2026-02-05 14:57:08.372
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\bahri'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2026-02-05 15:20:40.644 -----------------------------------------------
+eclipse.buildId=4.28.0.20230608-1200
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Framework arguments:  -product org.eclipse.epp.package.embedcpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.embedcpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2026-02-05 15:20:51.686
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\bahri'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-01-27 00:04:12.968
-!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
-
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-01-27 00:04:13.719
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 16:46:17.413
 !MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
 
-!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-01-27 00:04:13.834
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 16:46:17.517
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:15.211
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:18.052
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:18.071
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.763
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.763
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.764
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.765
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.765
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.766
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.766
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.767
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.768
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:20.790
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.244
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.244
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.245
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.246
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.246
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.247
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.248
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.248
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:23.276
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.086
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.087
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.087
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.088
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.088
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.088
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.089
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.090
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.107
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.712
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.712
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.713
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.714
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.714
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.715
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.715
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.716
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:24.739
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.180
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.181
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.181
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.182
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.183
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.184
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.185
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.186
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:25.209
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.390
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.391
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.392
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.392
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.393
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.393
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.394
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.395
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:30.417
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.725
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.749
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.779
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.812
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.844
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.877
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.905
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.935
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:32.982
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.014
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.047
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.079
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.107
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.139
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.170
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.203
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.231
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.284
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.313
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.342
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.374
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.412
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.440
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.468
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.498
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.531
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.576
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.607
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.639
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.670
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.699
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.733
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.767
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.801
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.841
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.873
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.908
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.933
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.966
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:33.994
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.076
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.103
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.182
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.183
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.232
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.233
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.266
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.292
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.330
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.357
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.399
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.419
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.467
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.498
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.529
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.561
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.593
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.623
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.655
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.685
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.718
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.750
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.795
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.826
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.857
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.891
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.920
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.953
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:34.986
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 16:47:34.988
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.016
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.064
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 16:47:35.071
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.125
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.127
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.161
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.190
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.220
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.251
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.282
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.313
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.353
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.396
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.440
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.456
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.487
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.527
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.551
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.588
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.611
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.645
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.690
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.719
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.754
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.783
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.817
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.848
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.877
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.910
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.939
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:35.974
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.021
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.050
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.080
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.114
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.144
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.174
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.207
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.237
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.269
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.316
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.345
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.378
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.412
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.438
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.470
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.499
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.553
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.577
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.611
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.646
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.673
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.703
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.735
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.769
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.798
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.847
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.877
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.911
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.938
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:36.973
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.002
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.037
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.065
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.093
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.143
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.173
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.200
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.233
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.264
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.302
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.325
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.356
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.408
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.436
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.468
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.498
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.531
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.560
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.592
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.625
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.672
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.700
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.734
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.762
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.795
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.core 4 0 2026-02-05 16:47:37.824
+!MESSAGE Debug session 'Debug_OpenOCD' already started. Terminate the first one before restarting.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 5012 2026-02-05 16:47:41.575
+!MESSAGE Error in final launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+load C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\\Debug\\Project_USB_CrossCompile.elf
+Error message from debugger back end:
+Error finishing flash operation
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.embedcdt.debug.gdbjtag.openocd.core.dsf.LaunchConfigurationDelegate.launchDebugSession(LaunchConfigurationDelegate.java:453)
+	at org.eclipse.embedcdt.debug.gdbjtag.openocd.core.dsf.LaunchConfigurationDelegate.launchDebugger(LaunchConfigurationDelegate.java:178)
+	at org.eclipse.embedcdt.debug.gdbjtag.openocd.core.dsf.LaunchConfigurationDelegate.launch(LaunchConfigurationDelegate.java:154)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:806)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:717)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Failed to execute MI command:
+load C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\\Debug\\Project_USB_CrossCompile.elf
+Error message from debugger back end:
+Error finishing flash operation
+java.lang.Exception: Error finishing flash operation
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10004 2026-02-05 16:47:41.576
+!MESSAGE Failed to execute MI command:
+load C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\\Debug\\Project_USB_CrossCompile.elf
+Error message from debugger back end:
+Error finishing flash operation
+!SUBENTRY 2 org.eclipse.cdt.dsf.gdb 4 10004 2026-02-05 16:47:41.576
+!MESSAGE Failed to execute MI command:
+load C:\\Users\\bahri\\GitHub\\VirtualKeypad\\Eclipse_USBProject_WS\\Project_USB_CrossCompile\\Debug\\Project_USB_CrossCompile.elf
+Error message from debugger back end:
+Error finishing flash operation
+!STACK 0
+java.lang.Exception: Error finishing flash operation
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 16:47:53.871
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 16:47:53.945
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+!SESSION 2026-02-05 17:10:38.370 -----------------------------------------------
+eclipse.buildId=4.28.0.20230608-1200
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Framework arguments:  -product org.eclipse.epp.package.embedcpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.embedcpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2026-02-05 17:10:46.639
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\bahri'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 22:52:32.385
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 22:52:32.496
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 22:53:18.219
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 22:53:18.302
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 22:55:35.323
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-05 22:55:35.404
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-06 00:02:32.035
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-06 00:02:32.118
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-06 00:09:08.238
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-06 00:09:08.322
+!MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-06 00:09:41.927
+!MESSAGE C:\OpenOcd\xpack-openocd-0.12.0-2\bin\openocd.exe -c gdb_port 3333 -c telnet_port 4444 -c tcl_port 6666 -f C:\OpenOcd\xpack-openocd-0.12.0-2\openocd\scripts\board\stm32f4discovery.cfg -c echo "Started by GNU MCU Eclipse"
+
+!ENTRY org.eclipse.embedcdt.debug.gdbjtag.openocd.core 4 1 2026-02-06 00:09:42.010
 !MESSAGE C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gdb.exe --interpreter=mi2 --nx

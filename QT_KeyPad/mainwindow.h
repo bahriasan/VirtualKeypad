@@ -37,7 +37,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-        void resetTouchPad();
+    void resetTouchPad();
     bool TouchPad;
 };
 #endif // MAINWINDOW_H

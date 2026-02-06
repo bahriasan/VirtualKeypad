@@ -39,18 +39,36 @@ exti_t Exti_Array[EXTI_ARRAY_SIZE] =
 
 input_type Input_Array[INPUT_ARRAY_SIZE] =
 {
-	{ PIN1, GPIOC, KEY_F1 /*KEY_Q*/ }, 	  { PIN3, GPIOC, KEY_F2 /*KEY_W*/ }, 	{ PIN2, GPIOC, KEY_F3 /*KEY_E*/ },
-	{ PIN1, GPIOA, KEY_F4 /*KEY_R*/ },    { PIN0, GPIOA, KEY_F5 /*KEY_T*/ }, 	{ PIN3, GPIOA, KEY_F6 /*KEY_Y*/ },
-	{ PIN2, GPIOA, KEY_F7 /*KEY_U*/ },	  { PIN5, GPIOA, KEY_F8 /*KEY_I*/ },	{ PIN4, GPIOA, KEY_F9 /*KEY_O*/ },
-	{ PIN7, GPIOA, KEY_F10 /*KEY_P*/ },   { PIN6, GPIOA, KEY_F11 /*KEY_A*/ },	{ PIN5, GPIOC, KEY_F12 /*KEY_S*/ },
-	{ PIN4, GPIOC, KEY_F13 /*KEY_D*/ },   { PIN1, GPIOB, KEY_F14 /*KEY_F*/ }, 	{ PIN0, GPIOB, KEY_F15 /*KEY_G*/ },
-	{ PIN2, GPIOB, KEY_F16 /*KEY_H*/ },   { PIN7, GPIOE, KEY_F17 /*KEY_J*/ }, 	{ PIN8, GPIOE, KEY_F18 /*KEY_K*/ },
-	{ PIN9, GPIOE, KEY_F19 /*KEY_L*/ },	  { PIN9, GPIOE, KEY_F20 /*KEY_Z*/ },   { PIN10, GPIOE, KEY_F21 /*KEY_X*/ },
-	{ PIN11, GPIOE, KEY_F22 /*KEY_C*/ },  { PIN12, GPIOE, KEY_F23 /*KEY_V*/ },	{ PIN13, GPIOE, KEY_F24 /*KEY_B*/ },
+//	{ PIN1, GPIOC, KEY_F1 /*KEY_Q*/ }, 	  { PIN3, GPIOC, KEY_F2 /*KEY_W*/ }, 	{ PIN2, GPIOC, KEY_F3 /*KEY_E*/ },
+//	{ PIN1, GPIOA, KEY_F4 /*KEY_R*/ },    { PIN0, GPIOA, KEY_F5 /*KEY_T*/ }, 	{ PIN3, GPIOA, KEY_F6 /*KEY_Y*/ },
+//	{ PIN2, GPIOA, KEY_F7 /*KEY_U*/ },	  { PIN5, GPIOA, KEY_F8 /*KEY_I*/ },	{ PIN4, GPIOA, KEY_F9 /*KEY_O*/ },
+//	{ PIN7, GPIOA, KEY_F10 /*KEY_P*/ },   { PIN6, GPIOA, KEY_F11 /*KEY_A*/ },	{ PIN5, GPIOC, KEY_F12 /*KEY_S*/ },
+//	{ PIN4, GPIOC, KEY_F13 /*KEY_D*/ },   { PIN1, GPIOB, KEY_F14 /*KEY_F*/ }, 	{ PIN0, GPIOB, KEY_F15 /*KEY_G*/ },
+//	{ PIN2, GPIOB, KEY_F16 /*KEY_H*/ },   { PIN7, GPIOE, KEY_F17 /*KEY_J*/ }, 	{ PIN8, GPIOE, KEY_F18 /*KEY_K*/ },
+//	{ PIN9, GPIOE, KEY_F19 /*KEY_L*/ },	  { PIN9, GPIOE, KEY_F20 /*KEY_Z*/ },   { PIN10, GPIOE, KEY_F21 /*KEY_X*/ },
+//	{ PIN11, GPIOE, KEY_F22 /*KEY_C*/ },  { PIN12, GPIOE, KEY_F23 /*KEY_V*/ },	{ PIN13, GPIOE, KEY_F24 /*KEY_B*/ },
 //	{ PIN14, GPIOE, KEY_F25 /*KEY_N*/ },  { PIN15, GPIOE, KEY_F26 /*KEY_M*/ }, 	{ PIN10, GPIOB, KEY_F27 /*KEY_1*/ },
 //	{ PIN11, GPIOB, KEY_F28 /*KEY_2*/ },  { PIN12, GPIOB, KEY_F29 /*KEY_3*/ }, 	{ PIN13, GPIOB, KEY_F30 /*KEY_4*/ },
 //	{ PIN14, GPIOB, KEY_F31 /*KEY_5*/ },  { PIN15, GPIOB, KEY_F32 /*KEY_6*/ },  { PIN8, GPIOD, KEY_F33 /*KEY_7*/ },
 //	{ PIN9, GPIOD, KEY_F34 /*KEY_8*/ },   { PIN10, GPIOD, KEY_F35 /*KEY_9*/ },	{ PIN11, GPIOD, KEY_F36 /*KEY_0*/ }
+	{ PIN1,	GPIOC,	MOD_NO,	KEY_F1 /*KEY_Q*/ }, 			{ PIN3,	GPIOC,	MOD_NO,	KEY_F2 /*KEY_W*/ },
+	{ PIN2, GPIOC,	MOD_NO,	KEY_F3 /*KEY_E*/ },				{ PIN1,	GPIOA,	MOD_NO,	KEY_F4 /*KEY_R*/ },
+	{ PIN0, GPIOA,	MOD_NO,	KEY_F5 /*KEY_T*/ }, 			{ PIN3, GPIOA,	MOD_NO,	KEY_F6 /*KEY_Y*/ },
+	{ PIN2, GPIOA,	MOD_NO,	KEY_F7 /*KEY_U*/ },	  			{ PIN5, GPIOA,	MOD_NO,	KEY_F8 /*KEY_I*/ },
+	{ PIN4, GPIOA,	MOD_NO,	KEY_F9 /*KEY_O*/ },				{ PIN7, GPIOA,	MOD_NO,	KEY_F10 /*KEY_P*/ },
+	{ PIN6, GPIOA,	MOD_NO,	KEY_F11 /*KEY_A*/ },			{ PIN5, GPIOC,	MOD_NO,	KEY_F12 /*KEY_S*/ },
+	{ PIN4, GPIOC,	MOD_SHIFT_LEFT,	KEY_F1 /*KEY_D*/ },   	{ PIN1, GPIOB,	MOD_SHIFT_LEFT,	KEY_F2 /*KEY_F*/ },
+	{ PIN0, GPIOB,	MOD_SHIFT_LEFT,	KEY_F3 /*KEY_G*/ },		{ PIN2, GPIOB,	MOD_SHIFT_LEFT,	KEY_F4 /*KEY_H*/ },
+	{ PIN7, GPIOE,	MOD_SHIFT_LEFT,	KEY_F5 /*KEY_J*/ }, 	{ PIN8, GPIOE,	MOD_SHIFT_LEFT,	KEY_F6 /*KEY_K*/ },
+	{ PIN9, GPIOE,	MOD_SHIFT_LEFT,	KEY_F7 /*KEY_L*/ },		{ PIN9, GPIOE,	MOD_SHIFT_LEFT,	KEY_F8 /*KEY_Z*/ },
+	{ PIN10, GPIOE,	MOD_SHIFT_LEFT,	KEY_F9 /*KEY_X*/ },		{ PIN11, GPIOE,	MOD_SHIFT_LEFT,	KEY_F10 /*KEY_C*/ },
+	{ PIN12, GPIOE,	MOD_SHIFT_LEFT,	KEY_F11 /*KEY_V*/ },	{ PIN13, GPIOE,	MOD_SHIFT_LEFT,	KEY_F12 /*KEY_B*/ },
+	{ PIN14, GPIOE, MOD_CTRL_LEFT,	KEY_F1 /*KEY_N*/ },  	{ PIN15, GPIOE,	MOD_CTRL_LEFT,	KEY_F2 /*KEY_M*/ },
+	{ PIN10, GPIOB,	MOD_CTRL_LEFT,	KEY_F3 /*KEY_1*/ },		{ PIN11, GPIOB,	MOD_CTRL_LEFT,	KEY_F4 /*KEY_2*/ },
+	{ PIN12, GPIOB,	MOD_CTRL_LEFT,	KEY_F5 /*KEY_3*/ }, 	{ PIN13, GPIOB,	MOD_CTRL_LEFT,	KEY_F6 /*KEY_4*/ },
+	{ PIN14, GPIOB,	MOD_CTRL_LEFT,	KEY_F7 /*KEY_5*/ },  	{ PIN15, GPIOB,	MOD_CTRL_LEFT,	KEY_F8 /*KEY_6*/ },
+	{ PIN8, GPIOD,	MOD_CTRL_LEFT,	KEY_F9 /*KEY_7*/ },		{ PIN9, GPIOD,	MOD_CTRL_LEFT,	KEY_F10 /*KEY_8*/ },
+	{ PIN10, GPIOD,	MOD_CTRL_LEFT,	KEY_F11 /*KEY_9*/ },	{ PIN11, GPIOD,	MOD_CTRL_LEFT,	KEY_F12 /*KEY_0*/ }
 };
 
 
@@ -234,7 +252,10 @@ void Input_Init(void)
 	}
 }
 
-void InputPolling(void)
+uint8 dbg_USBBuffer[100][8] = {0};
+uint32 ibf = 0;
+
+void InputPolling(void)	//Assess that only (1 key + 1 modifier) combination is possible
 {
 	for(int i=0; i<INPUT_ARRAY_SIZE; ++i)
 	{
@@ -245,15 +266,20 @@ void InputPolling(void)
 			{
 				if(E_OK == findEmptyPos(&pos))	//find an empty position
 				{
-					USB_buffer[pos] = Input_Array[i].keyCode;
+					USB_buffer[pos] = (uint8)Input_Array[i].keyCode;
+					USB_buffer[0] = (uint8)Input_Array[i].modifierCode;
+					Helper_CopyByte(&dbg_USBBuffer[ibf++], USB_buffer, 8);
+
 				}//else Out of Limits
 			}//else already written
 		}
 		else if(FALSE == Gpio_Read(Input_Array[i].pinNumber, Input_Array[i].gpioPort))
 		{
-			if(E_OK == findExistingPos(&pos, Input_Array[i].keyCode))
+			if((E_OK == findExistingPos(&pos, Input_Array[i].keyCode)) && (USB_buffer[0] == Input_Array[i].modifierCode) )
 			{
 				USB_buffer[pos] = (uint8)0u;
+				USB_buffer[0] = (uint8)0u;
+				Helper_CopyByte(&dbg_USBBuffer[ibf++], USB_buffer, 8);
 			}
 		}
 	}

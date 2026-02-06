@@ -72,4 +72,17 @@ typedef enum
 	KEY_F24 = 0x73
 }KeyCode_type;
 
+typedef enum
+{
+	MOD_NO 			= (uint8)0x00,
+	MOD_CTRL_LEFT 	= (uint8)0x01,
+	MOD_SHIFT_LEFT 	= (uint8)0x02,
+	MOD_ALT_LEFT 	= (uint8)0x04,
+	MOD_GUI_LEFT 	= (uint8)0x08,
+	MOD_CTRL_RIGHT 	= (uint8)0x10,
+	MOD_SHIFT_RIGHT = (uint8)0x20,
+	MOD_ALT_RIGHT 	= (uint8)0x40,
+	MOD_GUI_RIGHT 	= (uint8)0x80
+}ModifierCode_type;
+
 #endif /* KEYBOARDUSAGETAG_H_ */
